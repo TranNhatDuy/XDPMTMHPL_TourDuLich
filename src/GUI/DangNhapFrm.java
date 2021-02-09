@@ -50,6 +50,11 @@ public class DangNhapFrm extends javax.swing.JFrame {
         jLabel3.setText("Password:");
 
         jcbAnHien.setText("Ẩn / Hiện");
+        jcbAnHien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbAnHienActionPerformed(evt);
+            }
+        });
 
         jbtDangNhap.setText("Đăng Nhập");
         jbtDangNhap.addActionListener(new java.awt.event.ActionListener() {
@@ -145,7 +150,7 @@ public class DangNhapFrm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jlDangKyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlDangKyMouseClicked
-      new DangKyFrm().setVisible(true);
+        new DangKyFrm().setVisible(true);
     }//GEN-LAST:event_jlDangKyMouseClicked
 
     private void jbtThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtThoatActionPerformed
@@ -153,8 +158,16 @@ public class DangNhapFrm extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtThoatActionPerformed
 
     private void jbtDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtDangNhapActionPerformed
-       new HomeFrm().setVisible(true);
+        new GUI_Tour().setVisible(true);
     }//GEN-LAST:event_jbtDangNhapActionPerformed
+
+    private void jcbAnHienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbAnHienActionPerformed
+        if (jcbAnHien.isSelected()) {
+            jpfPassword.setEchoChar((char) 0);
+        } else {
+            jpfPassword.setEchoChar('*');
+        }
+    }//GEN-LAST:event_jcbAnHienActionPerformed
 
     /**
      * @param args the command line arguments
