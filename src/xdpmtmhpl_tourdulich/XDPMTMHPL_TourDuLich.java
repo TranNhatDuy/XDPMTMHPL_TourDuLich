@@ -5,6 +5,8 @@
  */
 package xdpmtmhpl_tourdulich;
 
+import GUI.GUI_Tour;
+
 /**
  *
  * @author Admin
@@ -16,6 +18,8 @@ public class XDPMTMHPL_TourDuLich {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        GUI_Tour gui = new GUI_Tour();
+        gui.setVisible(true);
     }
     
 }

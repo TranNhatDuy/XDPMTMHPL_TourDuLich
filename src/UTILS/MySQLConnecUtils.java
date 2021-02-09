@@ -15,7 +15,7 @@ public class MySQLConnecUtils {
     public static Connection getMYSQLConnection() throws SQLException,
 		ClassNotFoundException {
 		String hostname = "localhost";
-		String dbname = "bookstore";
+		String dbname = "tourdulich";
 		String username = "root";
 		String password = "";
 		return getMySQLConnection(hostname, dbname, username, password);

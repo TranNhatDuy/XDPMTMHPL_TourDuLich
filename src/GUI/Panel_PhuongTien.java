@@ -5,18 +5,22 @@
  */
 package GUI;
 
+import java.awt.Color;
+import javax.swing.BorderFactory;
+
 /**
  *
  * @author Win 10
  */
-public class Panel_CN2 extends javax.swing.JPanel {
+public class Panel_PhuongTien extends javax.swing.JPanel {
 
     /**
-     * Creates new form Panel_CN2
+     * Creates new form Panel_CN3
      */
-    public Panel_CN2() {
+    public Panel_PhuongTien() {
         initComponents();
-        this.setSize(550,480);
+        this.setSize(672,496);
+        this.setBorder(BorderFactory.createLineBorder(Color.black));
     }
 
     /**
@@ -28,18 +32,18 @@ public class Panel_CN2 extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(550, 480));
         setLayout(null);
 
-        jLabel2.setText("Bảng chức năng số 2");
-        add(jLabel2);
-        jLabel2.setBounds(180, 140, 180, 80);
+        jLabel1.setText("Bảng của chức năng số 3");
+        add(jLabel1);
+        jLabel1.setBounds(150, 100, 231, 113);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

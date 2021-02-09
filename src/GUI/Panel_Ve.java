@@ -5,18 +5,21 @@
  */
 package GUI;
 
+import java.awt.Color;
+import javax.swing.BorderFactory;
+
 /**
  *
  * @author Win 10
  */
-public class Panel_CN1 extends javax.swing.JPanel {
+public class Panel_Ve extends javax.swing.JPanel {
 
     /**
-     * Creates new form Panel_CN1
+     * Creates new form Panel_Ve
      */
-    public Panel_CN1() {
+    public Panel_Ve() {
         initComponents();
-        this.setSize(550,500);
+        this.setBorder(BorderFactory.createLineBorder(Color.black));
     }
 
     /**
@@ -28,18 +31,19 @@ public class Panel_CN1 extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-
-        setPreferredSize(new java.awt.Dimension(550, 420));
-        setLayout(null);
-
-        jLabel1.setText("Bảng của chức năng số 1");
-        add(jLabel1);
-        jLabel1.setBounds(130, 120, 150, 70);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
