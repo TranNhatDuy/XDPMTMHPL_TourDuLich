@@ -53,7 +53,7 @@ public class Panel_KhachSan extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setText("KHÁCH SẠN");
         add(jLabel1);
-        jLabel1.setBounds(250, 20, 190, 44);
+        jLabel1.setBounds(241, 20, 190, 44);
 
         tblKhachSan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -66,19 +66,19 @@ public class Panel_KhachSan extends javax.swing.JPanel {
         jScrollPane2.setViewportView(tblKhachSan);
 
         add(jScrollPane2);
-        jScrollPane2.setBounds(40, 70, 630, 160);
+        jScrollPane2.setBounds(10, 70, 652, 160);
 
         jLabel2.setText("Mã khách sạn:");
         add(jLabel2);
-        jLabel2.setBounds(110, 260, 69, 14);
+        jLabel2.setBounds(115, 273, 69, 14);
 
         jLabel3.setText("Tên khách sạn:");
         add(jLabel3);
-        jLabel3.setBounds(110, 300, 73, 14);
+        jLabel3.setBounds(115, 313, 73, 14);
 
         jLabel4.setText("Giá:");
         add(jLabel4);
-        jLabel4.setBounds(160, 340, 30, 14);
+        jLabel4.setBounds(165, 353, 30, 14);
 
         txtGia.setForeground(new java.awt.Color(153, 153, 153));
         txtGia.setText("Giá khách sạn");
@@ -89,7 +89,7 @@ public class Panel_KhachSan extends javax.swing.JPanel {
             }
         });
         add(txtGia);
-        txtGia.setBounds(210, 340, 220, 20);
+        txtGia.setBounds(213, 350, 220, 20);
 
         txtMaKS.setForeground(new java.awt.Color(153, 153, 153));
         txtMaKS.setText("Mã khách sạn");
@@ -100,7 +100,7 @@ public class Panel_KhachSan extends javax.swing.JPanel {
             }
         });
         add(txtMaKS);
-        txtMaKS.setBounds(210, 260, 220, 20);
+        txtMaKS.setBounds(215, 273, 220, 20);
 
         txtTenKS.setForeground(new java.awt.Color(153, 153, 153));
         txtTenKS.setText("Tên khách sạn");
@@ -111,27 +111,27 @@ public class Panel_KhachSan extends javax.swing.JPanel {
             }
         });
         add(txtTenKS);
-        txtTenKS.setBounds(210, 300, 220, 20);
+        txtTenKS.setBounds(215, 313, 220, 20);
 
         btnLamMoi.setText("Làm mới");
         add(btnLamMoi);
-        btnLamMoi.setBounds(460, 300, 80, 20);
+        btnLamMoi.setBounds(465, 313, 80, 20);
 
         btnThem.setText("Thêm");
         add(btnThem);
-        btnThem.setBounds(130, 390, 80, 40);
+        btnThem.setBounds(198, 400, 80, 40);
 
         btnSua.setText("Sửa");
         add(btnSua);
-        btnSua.setBounds(240, 390, 80, 40);
+        btnSua.setBounds(296, 400, 80, 40);
 
         btnXoa.setText("Xoá");
         add(btnXoa);
-        btnXoa.setBounds(350, 390, 80, 40);
+        btnXoa.setBounds(394, 400, 80, 40);
 
         btnTimKiem.setText("Tìm kiếm");
         add(btnTimKiem);
-        btnTimKiem.setBounds(460, 260, 80, 20);
+        btnTimKiem.setBounds(465, 273, 80, 20);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtGiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtGiaMouseClicked
