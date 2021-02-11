@@ -6,7 +6,6 @@
 package DAO;
 
 import DTO.KhachHangDTO;
-import UTILS.MyDBConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,27 +22,10 @@ public class KhachHangDAOImp implements KhachHangDAO {
     private PreparedStatement ps;
     private ResultSet rs;
     private ArrayList<KhachHangDTO> khachhang = new ArrayList<>();
-   
+
     @Override
     public ArrayList<KhachHangDTO> loadDataKhachHang() {
-        String query = "SELECT * FROM khachhang";
-        try {
-            ps = conn.prepareStatement(query);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                KhachHangDTO kh = new KhachHangDTO();
-                kh.setMakh(rs.getString("MaKH"));
-                kh.setTenkh(rs.getString("Ten"));
-                kh.setSdt(rs.getString("SDT"));
-                kh.setDiachi(rs.getString("DiaChi"));
-                khachhang.add(kh);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return khachhang;
-
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

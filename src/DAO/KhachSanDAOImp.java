@@ -24,23 +24,7 @@ public class KhachSanDAOImp implements KhachSanDAO {
 
     @Override
     public ArrayList<KhachSanDTO> loadDataKhachSan() {
-        String query = "SELECT * FROM khachhang";
-        try {
-            ps = conn.prepareStatement(query);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                KhachSanDTO ks = new KhachSanDTO();
-                ks.setMaks(rs.getString("MaKS"));
-                ks.setTenks(rs.getString("TenKS"));
-                ks.setGia(rs.getFloat("Gia"));
-                khachsan.add(ks);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return khachsan;
-
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
