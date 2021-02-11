@@ -17,11 +17,6 @@ import DTO.KhachSanDTO;
  */
 public class KhachSanDAOImp implements KhachSanDAO {
 
-    private Connection conn;
-    private PreparedStatement ps;
-    private ResultSet rs;
-    private ArrayList<KhachSanDTO> khachsan = new ArrayList<>();
-
     @Override
     public ArrayList<KhachSanDTO> loadDataKhachSan() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

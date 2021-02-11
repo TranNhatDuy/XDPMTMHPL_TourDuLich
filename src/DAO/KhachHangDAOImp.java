@@ -18,10 +18,6 @@ import java.util.ArrayList;
  */
 public class KhachHangDAOImp implements KhachHangDAO {
 
-    private Connection conn;
-    private PreparedStatement ps;
-    private ResultSet rs;
-    private ArrayList<KhachHangDTO> khachhang = new ArrayList<>();
 
     @Override
     public ArrayList<KhachHangDTO> loadDataKhachHang() {
