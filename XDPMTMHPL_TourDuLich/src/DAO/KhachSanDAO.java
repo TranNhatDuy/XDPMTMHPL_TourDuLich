@@ -16,11 +16,11 @@ public interface KhachSanDAO {
 
     ArrayList<KhachSanDTO> loadDataKhachSan();
 
-    Boolean addKhachSan(KhachSanDTO kh);
+    Boolean addKhachSan(KhachSanDTO ks);
 
-    Boolean editKhachSan(KhachSanDTO kh);
+    Boolean editKhachSan(KhachSanDTO ks,String data);
 
-    Boolean removeKhachSan(KhachSanDTO kh);
+    Boolean removeKhachSan(KhachSanDTO ks,String data);
 
     ArrayList<KhachSanDTO> searchKhachSanMaKS(String data);
 

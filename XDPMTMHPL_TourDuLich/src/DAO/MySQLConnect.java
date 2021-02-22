@@ -3,6 +3,7 @@ package DAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -15,10 +16,11 @@ public class MySQLConnect {
     Connection conn = null;
     Statement st = null;
     ResultSet rs = null;
-    MySQLConnect(){
+    PreparedStatement ps = null;
+     MySQLConnect(){
         if(conn==null) {
             try{
-                Class.forName("com.mysql.jdbc.Driver");
+                Class.forName("com.mysql.cj.jdbc.Driver");
                 conn = DriverManager.getConnection(url, user, password);
             }
             catch(ClassNotFoundException e){
@@ -33,6 +35,7 @@ public class MySQLConnect {
     void  MySQLDisconnect(){
         try{
             if(rs!=null)rs.close();
+            if(ps!=null)rs.close();
             if(st!=null)st.close();
             if(conn!=null)conn.close();
         }

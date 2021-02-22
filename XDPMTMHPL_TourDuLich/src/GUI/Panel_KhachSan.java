@@ -5,8 +5,14 @@
  */
 package GUI;
 
+import DAO.KhachSanDAOImp;
+import DTO.KhachSanDTO;
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,10 +23,18 @@ public class Panel_KhachSan extends javax.swing.JPanel {
     /**
      * Creates new form Panel_CN2
      */
+    private List<KhachSanDTO> khachsan;
+    private DefaultTableModel modelks;
+
     public Panel_KhachSan() {
         initComponents();
-        this.setSize(672,496);
+        this.setSize(672, 496);
         this.setBorder(BorderFactory.createLineBorder(Color.black));
+
+        khachsan = new ArrayList<>();
+        modelks = (DefaultTableModel) tblKhachSan.getModel();
+
+        ShowKhachSan();
     }
 
     /**
@@ -60,6 +74,11 @@ public class Panel_KhachSan extends javax.swing.JPanel {
                 "Mã KS", "Tên KS", "Giá"
             }
         ));
+        tblKhachSan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblKhachSanMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblKhachSan);
 
         jLabel2.setText("Mã khách sạn:");
@@ -93,12 +112,32 @@ public class Panel_KhachSan extends javax.swing.JPanel {
         });
 
         btnLamMoi.setText("Làm mới");
+        btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLamMoiActionPerformed(evt);
+            }
+        });
 
         btnThem.setText("Thêm");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
 
         btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
 
         btnXoa.setText("Xoá");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
 
         btnTimKiem.setText("Tìm kiếm");
 
@@ -170,9 +209,24 @@ public class Panel_KhachSan extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void ShowKhachSan() {
+        khachsan = new KhachSanDAOImp().loadDataKhachSan();
+        modelks.setRowCount(0);
+        for (KhachSanDTO ks : khachsan) {
+            modelks.addRow(new Object[]{
+                ks.getMaks(), ks.getTenks(), ks.getGia()
+            });
+        }
+    }
+
+    private void ResetText() {
+        txtMaKS.setText("");
+        txtTenKS.setText("");
+        txtGia.setText("");
+    }
     private void txtGiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtGiaMouseClicked
         // TODO add your handling code here:
-        if(evt.getSource() == txtGia){
+        if (evt.getSource() == txtGia) {
             txtGia.setText("");
         }
     }//GEN-LAST:event_txtGiaMouseClicked
@@ -184,6 +238,119 @@ public class Panel_KhachSan extends javax.swing.JPanel {
     private void txtTenKSMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTenKSMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTenKSMouseClicked
+
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        String maks = txtMaKS.getText();
+        String tenks = txtTenKS.getText();
+        Float gia = Float.parseFloat(txtGia.getText());
+        Boolean isOK = true;
+
+        if (maks.length() == 0) {
+            JOptionPane.showMessageDialog(this, "Mã Khách Sạn không được để trống !!!");
+            isOK = false;
+        } else if (tenks.length() == 0) {
+            JOptionPane.showMessageDialog(this, "Tên Khách Sạn không được để trống !!!");
+            isOK = false;
+        } else if (gia == 0) {
+            JOptionPane.showMessageDialog(this, "Giá Khách Sạn không được để trống !!!");
+            isOK = false;
+        }
+        if (maks.length() > 0) {
+            for (KhachSanDTO ks : khachsan) {
+                if (ks.getMaks().matches(maks)) {
+                    JOptionPane.showMessageDialog(this, "Mã Khách Sạn không được trùng !!!");
+                    isOK = false;
+                }
+            }
+        }
+
+        if (isOK) {
+            KhachSanDTO ks = new KhachSanDTO();
+            ks.setMaks(maks);
+            ks.setTenks(tenks);
+            ks.setGia(gia);
+            if (new KhachSanDAOImp().addKhachSan(ks)) {
+                JOptionPane.showMessageDialog(this, "Thêm thành công khách sạn");
+                khachsan.add(ks);
+                ResetText();
+            } else {
+                JOptionPane.showMessageDialog(this, "Thêm không thành công!Nhập lại thông tin!");
+            }
+            ShowKhachSan();
+        }
+
+    }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        int indexKhachSan = tblKhachSan.getSelectedRow();
+        String data = modelks.getValueAt(indexKhachSan, 0).toString();
+        Boolean isOK = true;
+        if (indexKhachSan >= 0) {
+            if (JOptionPane.showConfirmDialog(this, "Bạn có muốn lưu không??") == 0) {
+                String maks = txtMaKS.getText();
+                String tenks = txtTenKS.getText();
+                Float gia = Float.parseFloat(txtGia.getText());
+                if (tenks.length() == 0) {
+                    JOptionPane.showMessageDialog(this, "Tên Khách Sạn không được để trống !!!");
+                    isOK = false;
+                } else if (gia == 0) {
+                    JOptionPane.showMessageDialog(this, "Giá Khách Sạn không được để trống !!!");
+                    isOK = false;
+                }
+                if (isOK) {
+                    KhachSanDTO ks = new KhachSanDTO();
+                    ks.setMaks(maks);
+                    ks.setTenks(tenks);
+                    ks.setGia(gia);
+                    if (new KhachSanDAOImp().editKhachSan(ks, data)) {
+                        JOptionPane.showMessageDialog(this, "Sửa thành công khách sạn");
+                        ShowKhachSan();
+                        ResetText();
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Sửa không thành công!!!");
+                    }
+                }
+            }
+        }
+
+    }//GEN-LAST:event_btnSuaActionPerformed
+
+    private void tblKhachSanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKhachSanMouseClicked
+        int indexKhachSan = tblKhachSan.getSelectedRow();
+        if (indexKhachSan == -1) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn dòng để hiển thị");
+        } else {
+            txtMaKS.setText(modelks.getValueAt(indexKhachSan, 0).toString());
+            txtMaKS.setEditable(false);
+            txtTenKS.setText(modelks.getValueAt(indexKhachSan, 1).toString());
+            txtGia.setText(modelks.getValueAt(indexKhachSan, 2).toString());
+        }
+    }//GEN-LAST:event_tblKhachSanMouseClicked
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        int indexKhachSan = tblKhachSan.getSelectedRow();
+        String data = modelks.getValueAt(indexKhachSan, 0).toString();
+        if (indexKhachSan >= 0) {
+            KhachSanDTO ks = new KhachSanDTO();
+            if (JOptionPane.showConfirmDialog(this, "Bạn có chắc muốn xoá không???") == 0) {
+                try {
+                    new KhachSanDAOImp().removeKhachSan(ks, data);
+                    JOptionPane.showMessageDialog(this, "Xoá thành công");
+                    ShowKhachSan();
+                    ResetText();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Chọn dòng rồi xoá!!!");
+            }
+        }
+    }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
+      ResetText();
+      txtMaKS.setEditable(true);
+    }//GEN-LAST:event_btnLamMoiActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

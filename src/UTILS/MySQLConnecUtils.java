@@ -28,4 +28,8 @@ public class MySQLConnecUtils {
 		return conn;
 		
 	}
+        public static void main(String[] args) throws SQLException, ClassNotFoundException {
+        MySQLConnecUtils my=new MySQLConnecUtils();
+            System.out.println(my.getMYSQLConnection());
+    }
 }
