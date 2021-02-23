@@ -13,19 +13,15 @@ import java.util.ArrayList;
  * @author Vo Duy Kiet
  */
 public interface PhuongTienDAO {
+    ArrayList<PhuongTienDTO> loadDataPhuongTien();       
+     
+    Boolean addPhuongTien(PhuongTienDTO pt);
 
-    ArrayList<PhuongTienDTO> loadDataPhuongTien();
+    Boolean editPhuongTien(PhuongTienDTO pt,String mapt);
 
-    Boolean addPhuongTien(PhuongTienDTO kh);
+    Boolean removePhuongTien(String mapt);
 
-    Boolean editPhuongTien(PhuongTienDTO kh);
-
-    Boolean removePhuongTien(PhuongTienDTO kh);
-
-    ArrayList<PhuongTienDTO> searchPhuongTienMaPT(String data);
-
-    ArrayList<PhuongTienDTO> searchPhuongTienTenPT(String data);
-
-    ArrayList<PhuongTienDTO> searchPhuongTienGia(String data);
+    ArrayList<PhuongTienDTO> searchPhuongTienMaPT(String mapt);
+   
 
 }
