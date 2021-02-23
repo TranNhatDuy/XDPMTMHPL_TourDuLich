@@ -5,8 +5,15 @@
  */
 package GUI;
 
+import DAO.PhuongTienDAO;
+import DAO.PhuongTienDAOImp;
+import DTO.PhuongTienDTO;
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,10 +24,30 @@ public class Panel_PhuongTien extends javax.swing.JPanel {
     /**
      * Creates new form Panel_CN3
      */
+    public static DefaultTableModel dtm;
+    ArrayList<PhuongTienDTO> DSPhuongTien = new ArrayList<>();
+    
     public Panel_PhuongTien() {
         initComponents();
         this.setSize(672,496);
         this.setBorder(BorderFactory.createLineBorder(Color.black));
+        showPT();
+    }
+    
+    private void showPT() {
+        dtm = (DefaultTableModel) tblPhuongTien.getModel();
+        PhuongTienDAOImp pt = new PhuongTienDAOImp();
+        DSPhuongTien =  pt.loadDataPhuongTien();      
+        dtm.setRowCount(0);      
+        DSPhuongTien.forEach((PhuongTienDTO) -> {
+            dtm.addRow(new Object[] {PhuongTienDTO.getMapt(), PhuongTienDTO.getTenpt(), 
+                PhuongTienDTO.getGia()});
+        });
+    }
+    public void reset(){
+        txtMaPT.setText("");
+        txtTenPT.setText("");                  
+        txtGia.setText("");
     }
 
     /**
@@ -60,6 +87,11 @@ public class Panel_PhuongTien extends javax.swing.JPanel {
                 "Mã PT", "Tên PT", "Giá"
             }
         ));
+        tblPhuongTien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblPhuongTienMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblPhuongTien);
 
         jLabel2.setText("Mã phương tiện:");
@@ -93,14 +125,39 @@ public class Panel_PhuongTien extends javax.swing.JPanel {
         });
 
         btnThem.setText("Thêm");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
 
         btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
 
         btnXoa.setText("Xoá");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
 
         btnLamMoi.setText("Làm mới");
+        btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLamMoiActionPerformed(evt);
+            }
+        });
 
         btnTimKiem.setText("Tìm kiếm");
+        btnTimKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimKiemActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -114,7 +171,7 @@ public class Panel_PhuongTien extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(237, 237, 237)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 187, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(97, 97, 97)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -182,9 +239,7 @@ public class Panel_PhuongTien extends javax.swing.JPanel {
 
     private void txtGiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtGiaMouseClicked
         // TODO add your handling code here:
-        if(evt.getSource() == txtGia){
-            txtGia.setText("");
-        }
+        
     }//GEN-LAST:event_txtGiaMouseClicked
 
     private void txtTenPTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTenPTMouseClicked
@@ -194,6 +249,86 @@ public class Panel_PhuongTien extends javax.swing.JPanel {
     private void txtMaPTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMaPTMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMaPTMouseClicked
+
+    private void tblPhuongTienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPhuongTienMouseClicked
+        // TODO add your handling code here:
+        int selectedIndex = tblPhuongTien.getSelectedRow();
+        PhuongTienDTO pt = DSPhuongTien.get(selectedIndex); 
+        txtMaPT.setText(pt.getMapt());
+        txtTenPT.setText(pt.getTenpt());                
+        txtGia.setText(Integer.toString((int) pt.getGia()));
+    }//GEN-LAST:event_tblPhuongTienMouseClicked
+
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        // TODO add your handling code here:
+        String mapt = txtMaPT.getText();
+        String tenpt = txtTenPT.getText();
+        int gia = Integer.parseInt(txtGia.getText());
+        
+
+        PhuongTienDTO ptDTO = new PhuongTienDTO(mapt, tenpt, gia);
+        PhuongTienDAOImp pt = new PhuongTienDAOImp();
+        pt.addPhuongTien(ptDTO);
+        JOptionPane.showMessageDialog(null, "Thêm thành công");
+        showPT();
+        reset();
+    }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        // TODO add your handling code here:
+        int selectedIndex = tblPhuongTien.getSelectedRow();
+        if(selectedIndex >= 0) {
+            PhuongTienDTO ptDTO = DSPhuongTien.get(selectedIndex);
+
+            int option = JOptionPane.showConfirmDialog(null, "Bạn có muốn xóa?");
+            if(option == 0) {
+                PhuongTienDAOImp pt = new PhuongTienDAOImp();
+                pt.removePhuongTien(ptDTO.getMapt());
+                JOptionPane.showMessageDialog(null, "Xóa thành công");
+                showPT(); 
+                reset();
+            }
+        }
+    }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        // TODO add your handling code here:
+        String mapt = txtMaPT.getText();
+        String tenpt = txtTenPT.getText();
+        int gia = Integer.parseInt(txtGia.getText());    
+        int indexPT = tblPhuongTien.getSelectedRow();
+        String data = dtm.getValueAt(indexPT, 0).toString();
+        PhuongTienDTO ptDTO = new PhuongTienDTO(mapt, tenpt, gia);
+        PhuongTienDAOImp pt = new PhuongTienDAOImp();
+        pt.editPhuongTien(ptDTO, data);
+        JOptionPane.showMessageDialog(null, "Sửa thành công");
+        showPT();
+        reset();
+    }//GEN-LAST:event_btnSuaActionPerformed
+
+    private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
+        // TODO add your handling code here:
+        String mapt = JOptionPane.showInputDialog(this, "Nhập mã pt cần tìm");
+        if(mapt != null && mapt.length() > 0) {
+            PhuongTienDAOImp pt = new PhuongTienDAOImp();
+            DSPhuongTien =  pt.searchPhuongTienMaPT(mapt);
+
+            dtm.setRowCount(0);
+
+            DSPhuongTien.forEach((PhuongTienDTO) -> {
+                dtm.addRow(new Object[] {PhuongTienDTO.getMapt(), PhuongTienDTO.getTenpt(),PhuongTienDTO.getGia()});
+            });
+            reset();
+        } else {
+            showPT();
+            reset();
+        }
+    }//GEN-LAST:event_btnTimKiemActionPerformed
+
+    private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
+        // TODO add your handling code here:
+        reset();
+    }//GEN-LAST:event_btnLamMoiActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
