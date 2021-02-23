@@ -16,11 +16,11 @@ public interface VeDAO {
 
     ArrayList<VeDTO> loadDataVe();
 
-    Boolean addVe(VeDTO kh);
+    Boolean addVe(VeDTO v);
 
-    Boolean editVe(VeDTO kh);
+    Boolean editVe(VeDTO v, String data);
 
-    Boolean removeVe(VeDTO kh);
+    Boolean removeVe(VeDTO v, String data);
 
     ArrayList<VeDTO> searchVeMaVe(String data);
 
