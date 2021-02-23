@@ -81,6 +81,11 @@ public class Panel_KhachHang extends javax.swing.JPanel {
         });
 
         btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
 
         tblKH.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -307,6 +312,22 @@ public class Panel_KhachHang extends javax.swing.JPanel {
         txtDiaChi.setText((String)(model.getValueAt(index,3)));
         
     }//GEN-LAST:event_tblKHMouseClicked
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        // TODO add your handling code here:
+        KhachHangDTO khDTO = new KhachHangDTO();
+        khDTO.setMakh(txtMaKH.getText());
+        khDTO.setTenkh(txtTenKH.getText());
+        khDTO.setSdt(txtSdt.getText());
+        khDTO.setDiachi(txtDiaChi.getText());
+        if(evt.getSource() == btnSua){
+            KhachHangDAOImp kh = new KhachHangDAOImp();
+            kh.editKhachHang(khDTO);
+            System.out.println(khDTO.getMakh()+ " " + khDTO.getTenkh());
+            showKhachHang();
+        }
+        
+    }//GEN-LAST:event_btnSuaActionPerformed
     private void showKhachHang(){
         model = (DefaultTableModel) tblKH.getModel();
         KhachHangDAOImp kh = new KhachHangDAOImp();

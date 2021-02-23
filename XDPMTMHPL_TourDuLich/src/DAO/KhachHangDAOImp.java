@@ -74,13 +74,31 @@ public class KhachHangDAOImp implements KhachHangDAO {
     public Boolean editKhachHang(KhachHangDTO kh) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         MySQLConnect Connect = new MySQLConnect();
+//        MySQLConnect Connect1 = new MySQLConnect();
         try
         {
-//            String query = "UPDATE khachhang SET ADDRESS = 'Vinh Phuc' WHERE ID = 6;
-            
-            Connect.st = Connect.conn.createStatement();
-            
-//            Connect.st.executeUpdate(query);    
+//            String query = "select * from khachhang where MaKH = '" + kh.getMakh() + "'";
+//            Connect.st = Connect.conn.createStatement();
+//            Connect.st.execute(query); 
+//            KhachHangDTO khFromDB = new KhachHangDTO();
+//            khFromDB.setMakh(Connect.rs.getString(1));
+//            khFromDB.setTenkh(Connect.rs.getString(2));
+//            khFromDB.setSdt(Connect.rs.getString(3));
+//            khFromDB.setDiachi(Connect.rs.getString(4));
+//            if(kh.getMakh() != khFromDB.getMakh() && kh.getTenkh() == khFromDB.getTenkh()){
+//                addKhachHang(kh);
+//            }
+//            else{
+//                if( kh.getSdt()!= khFromDB.getSdt() || kh.getDiachi()!= khFromDB.getDiachi()){
+                    String queryUpdate = "UPDATE khachhang SET SDT = '" + kh.getSdt() + "', Diachi = '" + kh.getDiachi() + "' WHERE MaKH = '" + kh.getMakh() + "'";
+//                    UPDATE khachhang SET SDT = ' + kh.getSDT() + ', Diachi = ' + kh.setDiachi + ' WHERE MaKH = ' + kh.geMaKH + '
+                    Connect.st = Connect.conn.createStatement();
+                    Connect.st.execute(queryUpdate); 
+//                }
+//                else{
+//                    JOptionPane.showMessageDialog(null,"Thông tin chưa chỉnh sửa.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+//                }
+//            }
 //            if(Connect.rs.next() == true){
 //                JOptionPane.showMessageDialog(null,"Eggs are not supposed to be green.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
 //            }
