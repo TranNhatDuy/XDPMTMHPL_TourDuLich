@@ -5,8 +5,24 @@
  */
 package GUI;
 
+import DAO.KhachHangDAOImp;
+import DAO.TourDAOImp;
+import DAO.VeDAOImp;
+import DTO.KhachHangDTO;
+import DTO.TourDTO;
+import DTO.VeDTO;
 import java.awt.Color;
+import java.sql.Array;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,10 +33,37 @@ public class Panel_Ve extends javax.swing.JPanel {
     /**
      * Creates new form Panel_Ve
      */
+    private List<KhachHangDTO> khachhang;
+    private DefaultTableModel modelkh;
+
+    private List<TourDTO> tour;
+    private DefaultTableModel modeltour;
+
+    private List<VeDTO> ve;
+    private DefaultTableModel modelve;
+
     public Panel_Ve() {
         initComponents();
         this.setBounds(0, 0, 672, 496);
         this.setBorder(BorderFactory.createLineBorder(Color.black));
+
+        txtMakhve.setEditable(false);
+        txtTenkhve.setEditable(false);
+        txtMatourve.setEditable(false);
+        txtTentourve.setEditable(false);
+
+        khachhang = new ArrayList<>();
+        modelkh = (DefaultTableModel) tblKhachHang.getModel();
+        showKhachHang();
+
+        tour = new ArrayList<>();
+        modeltour = (DefaultTableModel) tblTour.getModel();
+//        showTour();
+
+        ve = new ArrayList<>();
+        modelve = (DefaultTableModel) tblVe.getModel();
+        showVe();
+
     }
 
     /**
@@ -90,6 +133,11 @@ public class Panel_Ve extends javax.swing.JPanel {
                 "Mã Tour", "Tên Tour"
             }
         ));
+        tblTour.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblTourMouseClicked(evt);
+            }
+        });
         jScrollPane10.setViewportView(tblTour);
 
         add(jScrollPane10);
@@ -103,6 +151,11 @@ public class Panel_Ve extends javax.swing.JPanel {
                 "Mã KH", "Tên KH"
             }
         ));
+        tblKhachHang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblKhachHangMouseClicked(evt);
+            }
+        });
         jScrollPane11.setViewportView(tblKhachHang);
 
         add(jScrollPane11);
@@ -169,10 +222,20 @@ public class Panel_Ve extends javax.swing.JPanel {
         txtMakhve.setBounds(253, 338, 129, 20);
 
         btnThem.setText("Thêm");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
         add(btnThem);
         btnThem.setBounds(101, 430, 77, 32);
 
         btnXoa.setText("Xóa");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
         add(btnXoa);
         btnXoa.setBounds(196, 430, 77, 32);
 
@@ -185,10 +248,56 @@ public class Panel_Ve extends javax.swing.JPanel {
         btnTimKiem.setBounds(386, 430, 77, 32);
 
         btnLamMoi.setText("Làm mới");
+        btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLamMoiActionPerformed(evt);
+            }
+        });
         add(btnLamMoi);
         btnLamMoi.setBounds(481, 430, 77, 32);
     }// </editor-fold>//GEN-END:initComponents
 
+    void showKhachHang() {
+        khachhang = new KhachHangDAOImp().loadDataKhachHang();
+        modelkh.setRowCount(0);
+        for (KhachHangDTO kh : khachhang) {
+            modelkh.addRow(new Object[]{
+                kh.getMakh(), kh.getTenkh()
+            });
+        }
+    }
+
+//    void showTour() {
+//        tour = new TourDAOImp().loadDataTour();
+//        modeltour.setRowCount(0);
+//        for (TourDTO t : tour) {
+//            modeltour.addRow(new Object[]{
+//                t.getMatour(), t.getTentour()
+//            });
+//        }
+//    }
+    void showVe() {
+        ve = new VeDAOImp().loadDataVe();
+        modelve.setRowCount(0);
+        for (VeDTO v : ve) {
+            modelve.addRow(new Object[]{
+                v.getMave(), v.getTour().getMatour(), v.getKhachhang().getMakh(), v.getThoigiandat(), v.getTrangthai(),
+                v.getGia()
+            });
+        }
+    }
+
+    void Reset() {
+        txtMatourve.setText("");
+        txtTentourve.setText("");
+        txtMakhve.setText("");
+        txtTenkhve.setText("");
+        txtMave.setText("");
+        txtThoigiandat.setText("");
+        txtTrangthai.setText("");
+        txtGia.setText("");
+
+    }
     private void txtTentourveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTentourveActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTentourveActionPerformed
@@ -196,6 +305,89 @@ public class Panel_Ve extends javax.swing.JPanel {
     private void txtMakhveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMakhveActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMakhveActionPerformed
+
+    private void tblKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKhachHangMouseClicked
+        int indexKhachHang = tblKhachHang.getSelectedRow();
+        if (indexKhachHang >= 0) {
+            txtMakhve.setText(modelkh.getValueAt(indexKhachHang, 0).toString());
+            txtTenkhve.setText(modelkh.getValueAt(indexKhachHang, 1).toString());
+        } else {
+            JOptionPane.showMessageDialog(this, "Chọn dòng để hiển thị!!!");
+        }
+    }//GEN-LAST:event_tblKhachHangMouseClicked
+
+    private void tblTourMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTourMouseClicked
+        int indexTour = tblTour.getSelectedRow();
+        if (indexTour >= 0) {
+            txtMatourve.setText(modeltour.getValueAt(indexTour, 0).toString());
+            txtTentourve.setText(modeltour.getValueAt(indexTour, 1).toString());
+        } else {
+            JOptionPane.showMessageDialog(this, "Chọn dòng để hiển thị!!!");
+        }
+    }//GEN-LAST:event_tblTourMouseClicked
+
+    private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
+        Reset();
+    }//GEN-LAST:event_btnLamMoiActionPerformed
+
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        int indexTour = tblTour.getSelectedRow();
+        int indexKhachHang = tblKhachHang.getSelectedRow();
+
+        String mave = txtMave.getText();
+        Date thoigiandat = null;
+        try {
+            thoigiandat = (Date) new SimpleDateFormat("yyyy-MM-dd").parse(txtThoigiandat.getText());
+        } catch (ParseException ex) {
+            Logger.getLogger(Panel_Ve.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String trangthai = txtTrangthai.getText();
+        Float gia = Float.parseFloat(txtGia.getText());
+
+        Boolean isOK = true;
+        if (mave.length() == 0) {
+            JOptionPane.showMessageDialog(this, "Mã vé không được để trống");
+            isOK = false;
+        } else if (trangthai.length() == 0) {
+            JOptionPane.showMessageDialog(this, "Trang thái không được để trống");
+            isOK = false;
+        }
+        if (indexTour == -1 || indexKhachHang == -1) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn dòng để hiển thị");
+            isOK = false;
+        }
+        if (isOK) {
+            TourDTO t = tour.get(indexTour);
+            KhachHangDTO kh = khachhang.get(indexKhachHang);
+            VeDTO v = new VeDTO(mave, t, kh, thoigiandat, trangthai, gia);
+            if (new VeDAOImp().addVe(v)) {
+                JOptionPane.showMessageDialog(this, "Thêm thành công vé");
+                ve.add(v);
+                showVe();
+                Reset();
+            } else {
+                JOptionPane.showMessageDialog(this, "Thêm không thành công");
+            }
+        }
+
+    }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        int indexVe = tblVe.getSelectedRow();
+        String data = modelve.getValueAt(indexVe, 0).toString();
+        boolean isOK = true;
+        if (indexVe >= 0) {
+            if (JOptionPane.showConfirmDialog(this, "Bạn có chắc muốn xoá vé không?") == 0) {
+                VeDTO v = new VeDTO();
+                new VeDAOImp().removeVe(v, data);
+                JOptionPane.showMessageDialog(this, "Xoá thành công");
+                showVe();
+                Reset();
+            } else {
+                JOptionPane.showMessageDialog(this, "Chọn dòng để xoá");
+            }
+        }
+    }//GEN-LAST:event_btnXoaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
