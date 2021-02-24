@@ -14,7 +14,13 @@ import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.RowFilter;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -63,6 +69,7 @@ public class Panel_KhachHang extends javax.swing.JPanel {
         txtTenKH = new javax.swing.JTextField();
         txtSdt = new javax.swing.JTextField();
         txtDiaChi = new javax.swing.JTextField();
+        txtTimkiem = new javax.swing.JTextField();
 
         setPreferredSize(new java.awt.Dimension(672, 496));
 
@@ -124,6 +131,11 @@ public class Panel_KhachHang extends javax.swing.JPanel {
         });
 
         btnLamMoi.setText("Làm mới");
+        btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLamMoiActionPerformed(evt);
+            }
+        });
 
         txtMaKH.setForeground(new java.awt.Color(153, 153, 153));
         txtMaKH.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -162,7 +174,9 @@ public class Panel_KhachHang extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(230, 230, 230)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtTimkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(90, 90, 90)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,7 +205,7 @@ public class Panel_KhachHang extends javax.swing.JPanel {
                         .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(66, 66, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1)
@@ -200,9 +214,14 @@ public class Panel_KhachHang extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(txtTimkiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,7 +249,7 @@ public class Panel_KhachHang extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblDiaChi)
                     .addComponent(txtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -241,6 +260,21 @@ public class Panel_KhachHang extends javax.swing.JPanel {
 
     private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
         // TODO add your handling code here:
+        
+        if(evt.getSource() == btnTimKiem){
+//            JOptionPane.showInputDialog("Nhập Số CMND hoặc Tên hoặc số điện thoại");
+            String st = JOptionPane.showInputDialog("Nhập Số CMND hoặc Tên hoặc số điện thoại");
+            
+            int size = tblKH.getRowCount();
+            // Thứ tự cột: ID, Name, Class
+            for (int i = 0; i< size; i++){
+                    if (tblKH.getValueAt(i,1).toString().equals(st)){
+                        // Làm j thì làm
+                        
+                        break;
+                    }
+                }
+        }
     }//GEN-LAST:event_btnTimKiemActionPerformed
 
     private void txtMaKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMaKHMouseClicked
@@ -252,23 +286,23 @@ public class Panel_KhachHang extends javax.swing.JPanel {
 
     private void txtTenKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTenKHMouseClicked
         // TODO add your handling code here:
-        if(evt.getSource() == txtTenKH){
-            txtTenKH.setText("");
-        }
+//        if(evt.getSource() == txtTenKH){
+//            txtTenKH.setText("");
+//        }
     }//GEN-LAST:event_txtTenKHMouseClicked
 
     private void txtSdtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtSdtMouseClicked
         // TODO add your handling code here:
-        if(evt.getSource() == txtSdt){
-            txtSdt.setText("");
-        }
+//        if(evt.getSource() == txtSdt){
+//            txtSdt.setText("");
+//        }
     }//GEN-LAST:event_txtSdtMouseClicked
 
     private void txtDiaChiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDiaChiMouseClicked
         // TODO add your handling code here:
-        if(evt.getSource() == txtDiaChi){
-            txtDiaChi.setText("");
-        }
+//        if(evt.getSource() == txtDiaChi){
+//            txtDiaChi.setText("");
+//        }
     }//GEN-LAST:event_txtDiaChiMouseClicked
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
@@ -328,6 +362,16 @@ public class Panel_KhachHang extends javax.swing.JPanel {
         }
         
     }//GEN-LAST:event_btnSuaActionPerformed
+
+    private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
+        // TODO add your handling code here:
+        if(evt.getSource() == btnLamMoi){
+            txtMaKH.setText("");
+            txtTenKH.setText("");
+            txtSdt.setText("");
+            txtDiaChi.setText("");
+        }
+    }//GEN-LAST:event_btnLamMoiActionPerformed
     private void showKhachHang(){
         model = (DefaultTableModel) tblKH.getModel();
         KhachHangDAOImp kh = new KhachHangDAOImp();
@@ -339,6 +383,42 @@ public class Panel_KhachHang extends javax.swing.JPanel {
             model.addRow(new Object[] {KhachHangDTO.getMakh(), KhachHangDTO.getTenkh(), KhachHangDTO.getSdt(), KhachHangDTO.getDiachi()});
         }); 
         tblKH.setModel(model);
+        
+//        --------------Tìm kiếm-------------
+        TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(tblKH.getModel());
+        tblKH.setRowSorter(rowSorter);
+        
+        txtTimkiem.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+//                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                String text = txtTimkiem.getText();
+
+                if (text.trim().length() == 0) {
+                    rowSorter.setRowFilter(null);
+                } else {
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+                }
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+//                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                String text = txtTimkiem.getText();
+
+                if (text.trim().length() == 0) {
+                    rowSorter.setRowFilter(null);
+                } else {
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+                }
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        });
+//        --------------Tìm kiếm-------------
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -358,5 +438,6 @@ public class Panel_KhachHang extends javax.swing.JPanel {
     private javax.swing.JTextField txtMaKH;
     private javax.swing.JTextField txtSdt;
     private javax.swing.JTextField txtTenKH;
+    private javax.swing.JTextField txtTimkiem;
     // End of variables declaration//GEN-END:variables
 }
