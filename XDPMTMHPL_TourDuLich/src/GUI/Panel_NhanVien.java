@@ -5,7 +5,7 @@
  */
 package GUI;
 
-import DAO.NhanVienDAOImp;
+import BLL.NhanVienBLL;
 import DTO.NhanVienDTO;
 import java.awt.Color;
 import java.util.ArrayList;
@@ -312,10 +312,10 @@ public class Panel_NhanVien extends javax.swing.JPanel {
             String st = JOptionPane.showInputDialog("Nhập Số CMND hoặc Tên hoặc số điện thoại");
 
             int size = tblNV.getRowCount();
-            // Thứ tự cột: ID, Name, Class
+           
             for (int i = 0; i < size; i++) {
                 if (tblNV.getValueAt(i, 1).toString().equals(st)) {
-                    // Làm j thì làm
+                    
 
                     break;
                 }
@@ -330,9 +330,8 @@ public class Panel_NhanVien extends javax.swing.JPanel {
         nv.setTenNV(txtTenNV.getText());
         nv.setSDT(txtSDT.getText());
         nv.setDiaChi(txtDiaChi.getText());
-        if (evt.getSource() == btnThem) {
-            NhanVienDAOImp addNV = new NhanVienDAOImp();
-            addNV.addNhanVien(nv);
+        if (evt.getSource() == btnThem) {          
+            NhanVienBLL.addNhanVien(nv);
             showNhanVien();
         }
     }//GEN-LAST:event_btnThemActionPerformed
@@ -357,7 +356,7 @@ public class Panel_NhanVien extends javax.swing.JPanel {
             if (txtMaNV.getText() == "") {
                 JOptionPane.showMessageDialog(null, "Chưa chọn dữ liệu", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                new NhanVienDAOImp().removeNhanVien(data);
+                NhanVienBLL.removeNhanVien(data);
                 showNhanVien();
             }
 
@@ -382,9 +381,8 @@ public class Panel_NhanVien extends javax.swing.JPanel {
         NVDTO.setSDT(txtSDT.getText());
         NVDTO.setDiaChi(txtDiaChi.getText());
         NVDTO.setNhiemVu(txtNhiemVu.getText());
-        if (evt.getSource() == btnSua) {
-            NhanVienDAOImp NV = new NhanVienDAOImp();
-            NV.editNhanVien(NVDTO, data);
+        if (evt.getSource() == btnSua) {         
+            NhanVienBLL.editNhanVien(NVDTO, data);
             System.out.println(NVDTO.getMaNV() + " " + NVDTO.getTenNV());
             showNhanVien();
         }
@@ -452,7 +450,7 @@ public class Panel_NhanVien extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void showNhanVien() {
-         nhanvien = new NhanVienDAOImp().loadDataNhanVien();
+        nhanvien = NhanVienBLL.loadDataNhanVien();
         model.setRowCount(0);
         for (NhanVienDTO NV : nhanvien) {
             model.addRow(new Object[]{
