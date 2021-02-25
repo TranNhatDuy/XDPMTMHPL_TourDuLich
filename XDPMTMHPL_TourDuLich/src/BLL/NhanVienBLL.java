@@ -8,17 +8,17 @@ import java.util.ArrayList;
 
 public class NhanVienBLL {
     public static ArrayList<NhanVienDTO> loadDataNhanVien() {
-        NhanVienDAO nv = new NhanVienDAO();
-        return nv.loadDataNhanVien();
+        NhanVienDAO pt = new NhanVienDAO();
+        return pt.loadDataNhanVien();
     }      
-    public static void addNhanVien(NhanVienDTO nv) {
-        NhanVienDAO.addNhanVien(nv);
+    public static void addNhanVien(NhanVienDTO pt) {
+        NhanVienDAO.addNhanVien(pt);
     }      
-    public static void editNhanVien(NhanVienDTO nv,String data) {          
-        NhanVienDAO.editNhanVien(nv, data);
+    public static void editNhanVien(NhanVienDTO pt,String data) {          
+        NhanVienDAO.editNhanVien(pt, data);
     }
-    public static void removeNhanVien(String manv) {
-        NhanVienDAO.removeNhanVien(manv);
+    public static void removeNhanVien(String mapt) {
+        NhanVienDAO.removeNhanVien(mapt);
     } 
    
 }
