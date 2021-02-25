@@ -7,8 +7,10 @@ package GUI;
 
 import DAO.NhanVienDAOImp;
 import DTO.NhanVienDTO;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.event.DocumentEvent;
@@ -31,7 +33,8 @@ public class Panel_NhanVien extends javax.swing.JPanel {
 
     public Panel_NhanVien() {
         initComponents();
-        
+        this.setBounds(0, 0, 672, 496);
+        this.setBorder(BorderFactory.createLineBorder(Color.black));
         nhanvien=new ArrayList<>();
         model=(DefaultTableModel) tblNV.getModel();
         showNhanVien();
