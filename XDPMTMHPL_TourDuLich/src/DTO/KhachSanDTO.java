@@ -23,6 +23,11 @@ public class KhachSanDTO {
         this.gia = gia;
     }
 
+    public KhachSanDTO(String maks, String tenks) {
+        this.maks = maks;
+        this.tenks = tenks;
+    }
+    
     public String getMaks() {
         return maks;
     }

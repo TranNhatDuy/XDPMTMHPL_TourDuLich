@@ -53,7 +53,7 @@ public class PhuongTienDAOImp {
         try{
            String sql = "insert into phuongtien value('";
            sql += kh.getMapt()+"','"+kh.getTenpt()+"','"+kh.getGia()+"')";
-           connect.st = (com.mysql.jdbc.Statement) connect.conn.createStatement();
+           connect.st = connect.conn.createStatement();
            connect.st.executeUpdate(sql);        
         }catch(SQLException ex){
             Logger.getLogger(PhuongTienDAO.class.getName()).log(Level.SEVERE, null, ex);  
