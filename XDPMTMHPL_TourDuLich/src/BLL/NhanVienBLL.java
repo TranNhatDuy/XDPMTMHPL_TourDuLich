@@ -1,5 +1,5 @@
 
-package DAO;
+package BLL;
 
 import DTO.NhanVienDTO;
 import java.util.ArrayList;
@@ -8,19 +8,19 @@ import java.util.ArrayList;
  *
  * @author Vo Duy Kiet
  */
-public class NhanVienDAO {
+public class NhanVienBLL {
     public static ArrayList<NhanVienDTO> loadDataNhanVien() {
-        NhanVienDAOImp pt = new NhanVienDAOImp();
+        NhanVienBLL pt = new NhanVienBLL();
         return pt.loadDataNhanVien();
     }      
     public static void addNhanVien(NhanVienDTO pt) {
-        NhanVienDAOImp.addNhanVien(pt);
+        NhanVienBLL.addNhanVien(pt);
     }      
     public static void editNhanVien(NhanVienDTO pt,String data) {          
-        NhanVienDAOImp.editNhanVien(pt, data);
+        NhanVienBLL.editNhanVien(pt, data);
     }
     public static void removeNhanVien(String mapt) {
-         NhanVienDAOImp.removeNhanVien(mapt);
+         NhanVienBLL.removeNhanVien(mapt);
     } 
    
 }
