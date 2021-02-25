@@ -13,7 +13,6 @@ import GUI.Panel_KhachHang;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 
-
 /**
  *
  * @author Win 10
@@ -27,19 +26,21 @@ public class GUI_Tour extends javax.swing.JFrame {
         initComponents();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int x = screenSize.width - 850;
-        int x1 = x/2;
+        int x1 = x / 2;
         this.setBounds(x1, 100, 850, 550);
         this.setResizable(false);
         this.setTitle("Quản Lý Tour Du Lịch");
-        
+
         Image();
     }
-    public void Image(){     
+
+    public void Image() {
 //        ImageIcon icon = new ImageIcon(getClass().getResource("/Images/bg.jpg"));
         ImageIcon img = new ImageIcon("src/Images/bg.jpg");
         // KÍCH THƯỚC HÌNH ẢNH LÀ 672,496 => kích thước panel cũng vậy
         lbl_Image.setIcon(img);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -55,7 +56,7 @@ public class GUI_Tour extends javax.swing.JFrame {
         btnPhTien = new javax.swing.JButton();
         btnTour = new javax.swing.JButton();
         btnVe = new javax.swing.JButton();
-        btnTrangChu = new javax.swing.JButton();
+        btnNhanVien = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         lbl_Image = new javax.swing.JLabel();
 
@@ -99,10 +100,10 @@ public class GUI_Tour extends javax.swing.JFrame {
             }
         });
 
-        btnTrangChu.setText("Trang chủ");
-        btnTrangChu.addActionListener(new java.awt.event.ActionListener() {
+        btnNhanVien.setText("Nhân Viên");
+        btnNhanVien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTrangChuActionPerformed(evt);
+                btnNhanVienActionPerformed(evt);
             }
         });
 
@@ -113,7 +114,7 @@ public class GUI_Tour extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnTrangChu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnVe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnTour, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnKhSan, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
@@ -125,7 +126,7 @@ public class GUI_Tour extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(btnTrangChu, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnKhHang, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -175,16 +176,17 @@ public class GUI_Tour extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    Panel_NhanVien pnNV = new Panel_NhanVien();
     Panel_KhachHang pnKH = new Panel_KhachHang();
     Panel_KhachSan pnKS = new Panel_KhachSan();
     Panel_PhuongTien pnPT = new Panel_PhuongTien();
     Panel_Tour pnTour = new Panel_Tour();
     Panel_Ve pnVe = new Panel_Ve();
-    
+
 
     private void btnKhHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhHangActionPerformed
         // TODO add your handling code here:
-        if(evt.getSource() == btnKhHang){
+        if (evt.getSource() == btnKhHang) {
 //            jPanel3.removeAll();
 //            jPanel3.remove(pnKS);
 //            jPanel3.remove(pnPT);
@@ -196,18 +198,18 @@ public class GUI_Tour extends javax.swing.JFrame {
 //            jPanel3.add(pn_cn1);
 //            pnKH.setVisible(true);
 //            jPanel3.add(pnKH);
-             jPanel3.removeAll();
-             jPanel3.add(pnKH);
-             jPanel3.repaint();
-             pnKH.repaint();
-             pnKH.revalidate();
+            jPanel3.removeAll();
+            jPanel3.add(pnKH);
+            jPanel3.repaint();
+            pnKH.repaint();
+            pnKH.revalidate();
         }
     }//GEN-LAST:event_btnKhHangActionPerformed
 
     private void btnKhSanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhSanActionPerformed
         // TODO add your handling code here:
-        
-        if(evt.getSource() == btnKhSan){
+
+        if (evt.getSource() == btnKhSan) {
 //            jPanel3.removeAll();
 //            jPanel3.remove(pnKH);
 //            jPanel3.remove(pnPT);
@@ -219,17 +221,17 @@ public class GUI_Tour extends javax.swing.JFrame {
 //            jPanel3.add(pn_cn2);
 //            pnKS.setVisible(true);
 //            jPanel3.add(pnKS);
-             jPanel3.removeAll();
-             jPanel3.add(pnKS);
-             jPanel3.repaint();
-             pnKS.revalidate();
-             pnKS.repaint();
+            jPanel3.removeAll();
+            jPanel3.add(pnKS);
+            jPanel3.repaint();
+            pnKS.revalidate();
+            pnKS.repaint();
         }
     }//GEN-LAST:event_btnKhSanActionPerformed
 
     private void btnPhTienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPhTienActionPerformed
         // TODO add your handling code here:
-        if(evt.getSource() == btnPhTien){
+        if (evt.getSource() == btnPhTien) {
 //            jPanel3.removeAll();
 //            jPanel3.remove(pnKH);
 //            jPanel3.remove(pnKS);
@@ -241,17 +243,17 @@ public class GUI_Tour extends javax.swing.JFrame {
 //            jPanel3.add(pn_cn3);
 //            pnPT.setVisible(true);
 //            jPanel3.add(pnPT);
-             jPanel3.removeAll();
-             jPanel3.add(pnPT);
-             jPanel3.repaint();
-             pnPT.revalidate();
-             pnPT.repaint();
+            jPanel3.removeAll();
+            jPanel3.add(pnPT);
+            jPanel3.repaint();
+            pnPT.revalidate();
+            pnPT.repaint();
         }
     }//GEN-LAST:event_btnPhTienActionPerformed
 
     private void btnTourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTourActionPerformed
         // TODO add your handling code here:
-        if(evt.getSource() == btnTour){
+        if (evt.getSource() == btnTour) {
 //            jPanel3.removeAll();
 //            jPanel3.remove(pnKH);
 //            jPanel3.remove(pnKS);
@@ -263,17 +265,17 @@ public class GUI_Tour extends javax.swing.JFrame {
 //            jPanel3.add(pn_cn3);
 //            pnTour.setVisible(true);
 //            jPanel3.add(pnTour);
-             jPanel3.removeAll();
-             jPanel3.add(pnTour);
-             jPanel3.repaint();
-             pnTour.revalidate();
-             pnTour.repaint();
+            jPanel3.removeAll();
+            jPanel3.add(pnTour);
+            jPanel3.repaint();
+            pnTour.revalidate();
+            pnTour.repaint();
         }
     }//GEN-LAST:event_btnTourActionPerformed
 
     private void btnVeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVeActionPerformed
         // TODO add your handling code here:
-        if(evt.getSource() == btnVe){
+        if (evt.getSource() == btnVe) {
 //            jPanel3.removeAll();
 //            jPanel3.remove(pnKH);
 //            jPanel3.remove(pnKS);
@@ -285,35 +287,33 @@ public class GUI_Tour extends javax.swing.JFrame {
 //            jPanel3.add(pn_cn3);
 //            pnVe.setVisible(true);
 //            jPanel3.add(pnVe);
-             jPanel3.removeAll();
-             jPanel3.add(pnVe);
-             jPanel3.repaint();
-             pnVe.revalidate();
-             pnVe.repaint();
+            jPanel3.removeAll();
+            jPanel3.add(pnVe);
+            jPanel3.repaint();
+            pnVe.revalidate();
+            pnVe.repaint();
         }
     }//GEN-LAST:event_btnVeActionPerformed
 
-    private void btnTrangChuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrangChuActionPerformed
+    private void btnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienActionPerformed
         // TODO add your handling code here:
-        if(evt.getSource() == btnTrangChu){
+        if (evt.getSource() == btnNhanVien) {
 //            jPanel3.removeAll();
 //            jPanel3.add(lbl_Image);
 //            jPanel3.repaint();
 //            lbl_Image.setVisible(true);
 //            jPanel3.add(lbl_Image);
-             jPanel3.removeAll();
-             jPanel3.add(lbl_Image);
-             jPanel3.repaint();
-             lbl_Image.revalidate();
-             lbl_Image.repaint(); 
+            jPanel3.removeAll();
+            jPanel3.add(pnNV);
+            jPanel3.repaint();
+            pnNV.revalidate();
+            pnNV.repaint();
         }
-    }//GEN-LAST:event_btnTrangChuActionPerformed
- 
+    }//GEN-LAST:event_btnNhanVienActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    
-   
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -349,9 +349,9 @@ public class GUI_Tour extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnKhHang;
     private javax.swing.JButton btnKhSan;
+    private javax.swing.JButton btnNhanVien;
     private javax.swing.JButton btnPhTien;
     private javax.swing.JButton btnTour;
-    private javax.swing.JButton btnTrangChu;
     private javax.swing.JButton btnVe;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;

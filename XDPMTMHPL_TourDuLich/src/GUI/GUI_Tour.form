@@ -56,7 +56,7 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="btnTrangChu" max="32767" attributes="0"/>
+                      <Component id="btnNhanVien" max="32767" attributes="0"/>
                       <Component id="btnVe" alignment="1" max="32767" attributes="0"/>
                       <Component id="btnTour" alignment="1" max="32767" attributes="0"/>
                       <Component id="btnKhSan" alignment="1" pref="130" max="32767" attributes="0"/>
@@ -71,7 +71,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                  <Component id="btnTrangChu" min="-2" pref="56" max="-2" attributes="0"/>
+                  <Component id="btnNhanVien" min="-2" pref="56" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnKhHang" min="-2" pref="56" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -130,12 +130,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVeActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnTrangChu">
+        <Component class="javax.swing.JButton" name="btnNhanVien">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Trang ch&#x1ee7;"/>
+            <Property name="text" type="java.lang.String" value="Nh&#xe2;n Vi&#xea;n"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTrangChuActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNhanVienActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
