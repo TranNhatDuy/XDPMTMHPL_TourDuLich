@@ -20,9 +20,8 @@ import java.util.logging.Logger;
  *
  * @author Vo Duy Kiet
  */
-public class PhuongTienDAOImp implements PhuongTienDAO{
+public class PhuongTienDAOImp {
 
-    @Override
     public ArrayList<PhuongTienDTO> loadDataPhuongTien() {
         ArrayList<PhuongTienDTO> DSPhuongTien = new ArrayList<>();
         MySQLConnect connect = new MySQLConnect();
@@ -48,8 +47,8 @@ public class PhuongTienDAOImp implements PhuongTienDAO{
         return DSPhuongTien;
     }
 
-    @Override
-    public Boolean addPhuongTien(PhuongTienDTO kh) {
+  
+    public static void addPhuongTien(PhuongTienDTO kh) {
         MySQLConnect connect = new MySQLConnect();
         try{
            String sql = "insert into phuongtien value('";
@@ -59,26 +58,24 @@ public class PhuongTienDAOImp implements PhuongTienDAO{
         }catch(SQLException ex){
             Logger.getLogger(PhuongTienDAO.class.getName()).log(Level.SEVERE, null, ex);  
         }   
-        connect.MySQLDisconnect();
-        return false;
+        connect.MySQLDisconnect();    
     }
 
-    public Boolean editPhuongTien(PhuongTienDTO pt,String mapt) {
+    public static void editPhuongTien(PhuongTienDTO pt,String data) {
         PreparedStatement ps = null;
         String query = "update phuongtien set tenpt=?, gia=? where mapt=?";
         try {
             ps = new MySQLConnect().conn.prepareStatement(query);
             ps.setString(1, pt.getTenpt());
             ps.setFloat(2, pt.getGia());
-            ps.setString(3, mapt);
-            return ps.executeUpdate() > 0;
+            ps.setString(3, data);
+            ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
-        }
-        return false;
+        }      
     }
 
-    public Boolean removePhuongTien(String mapt) {
+    public static void removePhuongTien(String mapt) {
         MySQLConnect connect = new MySQLConnect();
         try{
           String sql= "delete from phuongtien where mapt='"+mapt+"'";
@@ -89,10 +86,9 @@ public class PhuongTienDAOImp implements PhuongTienDAO{
         }catch(SQLException ex){
           Logger.getLogger(PhuongTienDAO.class.getName()).log(Level.SEVERE, null, ex);
         }    
-        return false;
     }
 
-    @Override
+
     public ArrayList<PhuongTienDTO> searchPhuongTienMaPT(String mapt) {
         ArrayList<PhuongTienDTO> DSPhuongTien = new ArrayList<>();
         MySQLConnect connect = new MySQLConnect();

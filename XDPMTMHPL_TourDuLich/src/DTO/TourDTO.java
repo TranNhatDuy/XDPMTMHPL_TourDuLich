@@ -17,13 +17,13 @@ public class TourDTO {
     private Date ngaybd, ngaykt;
     private float gia;
     private int soluong;
-    private PhuongTienDTO phuongtien;
-    private KhachSanDTO khachsan;
+    private String phuongtien;
+    private String khachsan;
 
     public TourDTO() {
     }
 
-    public TourDTO(String matour, String tentour, Date ngaybd, Date ngaykt, float gia, int soluong, PhuongTienDTO phuongtien, KhachSanDTO khachsan) {
+    public TourDTO(String matour, String tentour, Date ngaybd, Date ngaykt, float gia, int soluong, String phuongtien, String khachsan) {
         this.matour = matour;
         this.tentour = tentour;
         this.ngaybd = ngaybd;
@@ -82,20 +82,22 @@ public class TourDTO {
         this.soluong = soluong;
     }
 
-    public PhuongTienDTO getPhuongtien() {
+    public String getPhuongtien() {
         return phuongtien;
     }
 
-    public void setPhuongtien(PhuongTienDTO phuongtien) {
+    public void setPhuongtien(String phuongtien) {
         this.phuongtien = phuongtien;
     }
 
-    public KhachSanDTO getKhachsan() {
+    public String getKhachsan() {
         return khachsan;
     }
 
-    public void setKhachsan(KhachSanDTO khachsan) {
+    public void setKhachsan(String khachsan) {
         this.khachsan = khachsan;
     }
+
+    
 
 }

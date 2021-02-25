@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> dd3083be208f4a43136a689b76e177004d283922
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -40,7 +44,11 @@ public class NhanVienDAOImp {
     }
 
   
+<<<<<<< HEAD
     public  void addNhanVien(NhanVienDTO nv) {
+=======
+    public static void addNhanVien(NhanVienDTO nv) {
+>>>>>>> dd3083be208f4a43136a689b76e177004d283922
         MySQLConnect connect = new MySQLConnect();
         try{
            String sql = "insert into nhanvien value('";
@@ -53,7 +61,11 @@ public class NhanVienDAOImp {
         connect.MySQLDisconnect();    
     }
 
+<<<<<<< HEAD
     public  void editNhanVien(NhanVienDTO pt,String data) {
+=======
+    public static void editNhanVien(NhanVienDTO pt,String data) {
+>>>>>>> dd3083be208f4a43136a689b76e177004d283922
         PreparedStatement ps = null;
         String query = "update nhanvien set tennv=?, sdt=? , diachi=?, nhiemvu=? where manv=?";
         try {
@@ -69,7 +81,11 @@ public class NhanVienDAOImp {
         }      
     }
 
+<<<<<<< HEAD
     public  void removeNhanVien(String manv) {
+=======
+    public static void removeNhanVien(String manv) {
+>>>>>>> dd3083be208f4a43136a689b76e177004d283922
         MySQLConnect connect = new MySQLConnect();
         try{
           String sql= "delete from nhanvien where manv='"+manv+"'";
@@ -81,5 +97,10 @@ public class NhanVienDAOImp {
           Logger.getLogger(NhanVienDAOImp.class.getName()).log(Level.SEVERE, null, ex);
         }    
     }    
+<<<<<<< HEAD
 
 }
+=======
+    
+}
+>>>>>>> dd3083be208f4a43136a689b76e177004d283922
