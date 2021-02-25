@@ -7,7 +7,6 @@
 package GUI;
 
 import DAO.PhuongTienDAO;
-import DAO.PhuongTienDAOImp;
 import DTO.PhuongTienDTO;
 import java.awt.Color;
 import java.util.ArrayList;
@@ -36,9 +35,8 @@ public class Panel_PhuongTien extends javax.swing.JPanel {
     }
     
     private void showPT() {
-        dtm = (DefaultTableModel) tblPhuongTien.getModel();
-        PhuongTienDAOImp pt = new PhuongTienDAOImp();
-        DSPhuongTien =  pt.loadDataPhuongTien();      
+        dtm = (DefaultTableModel) tblPhuongTien.getModel();      
+        DSPhuongTien =  PhuongTienDAO.loadDataPhuongTien();      
         dtm.setRowCount(0);      
         DSPhuongTien.forEach((PhuongTienDTO) -> {
             dtm.addRow(new Object[] {PhuongTienDTO.getMapt(), PhuongTienDTO.getTenpt(), 
@@ -267,9 +265,8 @@ public class Panel_PhuongTien extends javax.swing.JPanel {
         int gia = Integer.parseInt(txtGia.getText());
         
 
-        PhuongTienDTO ptDTO = new PhuongTienDTO(mapt, tenpt, gia);
-        PhuongTienDAOImp pt = new PhuongTienDAOImp();
-        pt.addPhuongTien(ptDTO);
+        PhuongTienDTO ptDTO = new PhuongTienDTO(mapt, tenpt, gia);       
+        PhuongTienDAO.addPhuongTien(ptDTO);
         JOptionPane.showMessageDialog(null, "Thêm thành công");
         showPT();
         reset();
@@ -282,9 +279,8 @@ public class Panel_PhuongTien extends javax.swing.JPanel {
             PhuongTienDTO ptDTO = DSPhuongTien.get(selectedIndex);
 
             int option = JOptionPane.showConfirmDialog(null, "Bạn có muốn xóa?");
-            if(option == 0) {
-                PhuongTienDAOImp pt = new PhuongTienDAOImp();
-                pt.removePhuongTien(ptDTO.getMapt());
+            if(option == 0) {               
+                PhuongTienDAO.removePhuongTien(ptDTO.getMapt());
                 JOptionPane.showMessageDialog(null, "Xóa thành công");
                 showPT(); 
                 reset();
@@ -299,9 +295,8 @@ public class Panel_PhuongTien extends javax.swing.JPanel {
         int gia = Integer.parseInt(txtGia.getText());    
         int indexPT = tblPhuongTien.getSelectedRow();
         String data = dtm.getValueAt(indexPT, 0).toString();
-        PhuongTienDTO ptDTO = new PhuongTienDTO(mapt, tenpt, gia);
-        PhuongTienDAOImp pt = new PhuongTienDAOImp();
-        pt.editPhuongTien(ptDTO, data);
+        PhuongTienDTO ptDTO = new PhuongTienDTO(mapt, tenpt, gia);     
+        PhuongTienDAO.editPhuongTien(ptDTO, data);
         JOptionPane.showMessageDialog(null, "Sửa thành công");
         showPT();
         reset();
@@ -310,12 +305,9 @@ public class Panel_PhuongTien extends javax.swing.JPanel {
     private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
         // TODO add your handling code here:
         String mapt = JOptionPane.showInputDialog(this, "Nhập mã pt cần tìm");
-        if(mapt != null && mapt.length() > 0) {
-            PhuongTienDAOImp pt = new PhuongTienDAOImp();
-            DSPhuongTien =  pt.searchPhuongTienMaPT(mapt);
-
+        if(mapt != null && mapt.length() > 0) {           
+            DSPhuongTien =  PhuongTienDAO.searchPhuongTienMaPT(mapt);
             dtm.setRowCount(0);
-
             DSPhuongTien.forEach((PhuongTienDTO) -> {
                 dtm.addRow(new Object[] {PhuongTienDTO.getMapt(), PhuongTienDTO.getTenpt(),PhuongTienDTO.getGia()});
             });
