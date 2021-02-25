@@ -45,7 +45,7 @@ public class NhanVienDAOImp {
         MySQLConnect connect = new MySQLConnect();
         try{
            String sql = "insert into nhanvien value('";
-           sql += nv.getManv()+"','"+nv.getTennv()+"','"+nv.getSDT()+"','"+nv.getDiachi()+"','"+nv.getNhiemvu()+"')";
+           sql += nv.getMaNV()+"','"+nv.getTenNV()+"','"+nv.getSDT()+"','"+nv.getDiaChi()+"','"+nv.getNhiemVu()+"')";
            connect.st = connect.conn.createStatement();
            connect.st.executeUpdate(sql);        
         }catch(SQLException ex){
@@ -59,10 +59,10 @@ public class NhanVienDAOImp {
         String query = "update nhanvien set tennv=?, sdt=? , diachi=?, nhiemvu=? where manv=?";
         try {
             ps = new MySQLConnect().conn.prepareStatement(query);
-            ps.setString(1, pt.getTennv());
+            ps.setString(1, pt.getTenNV());
             ps.setString(2, pt.getSDT());
-            ps.setString(3, pt.getDiachi());
-            ps.setString(4, pt.getNhiemvu());
+            ps.setString(3, pt.getDiaChi());
+            ps.setString(4, pt.getNhiemVu());
             ps.setString(5, data);
             ps.executeUpdate();
         } catch (Exception e) {
