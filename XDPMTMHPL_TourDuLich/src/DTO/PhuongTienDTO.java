@@ -22,6 +22,11 @@ public class PhuongTienDTO {
         this.tenpt = tenpt;
         this.gia = gia;
     }
+    
+    public PhuongTienDTO(String mapt, String tenpt) {
+        this.mapt = mapt;
+        this.tenpt = tenpt;
+    }
 
     public String getMapt() {
         return mapt;
