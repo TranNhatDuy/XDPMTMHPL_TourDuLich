@@ -6,12 +6,15 @@
 package GUI;
 
 import DAO.KhachSanDAOImp;
+import DAO.PhuongTienDAOImp;
 import DAO.TourDAOImp;
 import DTO.KhachSanDTO;
+import DTO.PhuongTienDTO;
 import DTO.TourDTO;
 import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
 import java.awt.Color;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.BorderFactory;
@@ -27,6 +30,7 @@ public class Panel_Tour extends javax.swing.JPanel {
     /**
      * Creates new form Panel_Tour
      */
+    List<TourDTO> tour;
     DefaultTableModel dtmtour;
     DefaultTableModel dtmks;
     DefaultTableModel dtmpt;
@@ -39,8 +43,10 @@ public class Panel_Tour extends javax.swing.JPanel {
         
         dtmtour = (DefaultTableModel) tblTour.getModel();
         dtmks = (DefaultTableModel) tblKS.getModel();
+        dtmpt = (DefaultTableModel) tblPT.getModel();
         showTour();
         ShowKhachSan();
+        ShowPhuongTien();
     }
     
     private void showTour() {
@@ -65,6 +71,18 @@ public class Panel_Tour extends javax.swing.JPanel {
         
         ksList.forEach((KhachSanDTO) -> {
             dtmks.addRow(new Object[] {KhachSanDTO.getMaks(), KhachSanDTO.getTenks() 
+                });
+        });
+    }
+    
+    private void ShowPhuongTien() {
+        List<PhuongTienDTO> ptList = new ArrayList<>();
+        ptList =  new PhuongTienDAOImp().loadDataPhuongTien();
+        
+        dtmpt.setRowCount(0);
+        
+        ptList.forEach((PhuongTienDTO) -> {
+            dtmpt.addRow(new Object[] {PhuongTienDTO.getMapt(), PhuongTienDTO.getTenpt()
                 });
         });
     }
@@ -165,6 +183,11 @@ public class Panel_Tour extends javax.swing.JPanel {
                 "Mã Phương Tiện", "Phương Tiện"
             }
         ));
+        tblPT.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblPTMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblPT);
 
         add(jScrollPane2);
@@ -288,14 +311,68 @@ public class Panel_Tour extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        String maTour = txtMaTour.getText();
-        String tenTour = txtTenTour.getText();
-        String ngayBD = txtNgayBD.getText();
-        String ngayKT = txtNgayKT.getText();
-        Float gia = Float.parseFloat(txtGia.getText());
-        int sl = Integer.parseInt(txtSoLuong.getText());
-        String pt = txtTenPT.getText();
-        String ks = txtTenKS.getText();
+//        String maTour = txtMaTour.getText();
+//        String tenTour = txtTenTour.getText();
+//        String ngayBD = txtNgayBD.getText();
+//        String ngayKT = txtNgayKT.getText();
+//        Float gia = Float.parseFloat(txtGia.getText());
+//        int sl = Integer.parseInt(txtSoLuong.getText());
+//        String pt = txtTenPT.getText();
+//        String ks = txtTenKS.getText();
+//
+//        Boolean isOK = true;
+//
+//        if (maTour.length() == 0) {
+//            JOptionPane.showMessageDialog(this, "Mã Tour không được để trống!");
+//            isOK = false;
+//        } else if (tenTour.length() == 0) {
+//            JOptionPane.showMessageDialog(this, "Tên Tour không được để trống!");
+//            isOK = false;
+//        } else if (ngayBD.length() == 0) {
+//            JOptionPane.showMessageDialog(this, "Ngày bắt đầu không được để trống!");
+//            isOK = false;
+//        } else if (ngayKT.length() == 0) {
+//            JOptionPane.showMessageDialog(this, "Ngày kết thúc không được để trống!");
+//            isOK = false;
+//        } else if (gia == 0) {
+//            JOptionPane.showMessageDialog(this, "Giá không được bằng 0!");
+//            isOK = false;
+//        } else if (sl == 0) {
+//            JOptionPane.showMessageDialog(this, "Số lượng không được bằng 0!");
+//            isOK = false;
+//        } else if (pt.length() == 0) {
+//            JOptionPane.showMessageDialog(this, "Vui lòng chọn phương tiện!");
+//            isOK = false;
+//        } else if (ks.length() == 0) {
+//            JOptionPane.showMessageDialog(this, "Vui lòng chọn khách sạn!");
+//            isOK = false;
+//        }
+//
+//        if (maTour.length() > 0) {
+//            for (TourDTO tour : tour) {
+//                if (tour.getMatour().matches(maTour)) {
+//                    JOptionPane.showMessageDialog(this, "Mã Tour không được trùng !!!");
+//                    isOK = false;
+//                }
+//            }
+//        }
+//
+//        if (isOK) {
+//            TourDTO tour = new TourDTO();
+//            tour.setMatour(maTour);
+//            tour.setTentour(tenTour);
+//            Date ngaybd = new SimpleDateFormat("ddMMyyyy").parse(ngayBD);
+//            tour.setNgaybd();
+//            
+//            if (new KhachSanDAOImp().addKhachSan(ks)) {
+//                JOptionPane.showMessageDialog(this, "Thêm thành công khách sạn");
+//                khachsan.add(ks);
+//                ResetText();
+//            } else {
+//                JOptionPane.showMessageDialog(this, "Thêm không thành công!Nhập lại thông tin!");
+//            }
+//            ShowKhachSan();
+//        }
         
               
     }//GEN-LAST:event_btnThemActionPerformed
@@ -331,6 +408,12 @@ public class Panel_Tour extends javax.swing.JPanel {
     private void txtSoLuongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSoLuongActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSoLuongActionPerformed
+
+    private void tblPTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPTMouseClicked
+        // TODO add your handling code here:
+        int indexPT = tblPT.getSelectedRow();
+        txtTenPT.setText(dtmpt.getValueAt(indexPT, 1).toString());
+    }//GEN-LAST:event_tblPTMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
