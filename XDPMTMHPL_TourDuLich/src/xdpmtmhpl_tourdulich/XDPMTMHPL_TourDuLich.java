@@ -5,6 +5,7 @@
  */
 package xdpmtmhpl_tourdulich;
 
+import GUI.DangNhapFrm;
 import GUI.GUI_Tour;
 
 /**
@@ -18,8 +19,7 @@ public class XDPMTMHPL_TourDuLich {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        GUI_Tour gui = new GUI_Tour();
-        gui.setVisible(true);
+        new DangNhapFrm().setVisible(true);
     }
     
 }

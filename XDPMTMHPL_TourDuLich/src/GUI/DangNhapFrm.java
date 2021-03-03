@@ -5,6 +5,20 @@
  */
 package GUI;
 
+import DAO.XuLyTaiKhoan;
+import DAO.MySQLConnect;
+import DTO.TaiKhoanDTO;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Vo Duy Kiet
@@ -14,10 +28,14 @@ public class DangNhapFrm extends javax.swing.JFrame {
     /**
      * Creates new form DangNhapFrm
      */
+    private List<TaiKhoanDTO> taikhoan;
+
     public DangNhapFrm() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setTitle("Trang đăng nhập");
+
+        taikhoan = new ArrayList<>();
     }
 
     /**
@@ -33,12 +51,12 @@ public class DangNhapFrm extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jtfUsername = new javax.swing.JTextField();
         jcbAnHien = new javax.swing.JCheckBox();
         jbtDangNhap = new javax.swing.JButton();
         jbtThoat = new javax.swing.JButton();
         jlDangKy = new javax.swing.JLabel();
         jpfPassword = new javax.swing.JPasswordField();
+        jtfUsername = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,20 +106,23 @@ public class DangNhapFrm extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3)
-                        .addGap(30, 30, 30)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
                                 .addComponent(jbtDangNhap)
                                 .addGap(49, 49, 49)
-                                .addComponent(jbtThoat))
-                            .addComponent(jpfPassword)))
+                                .addComponent(jbtThoat)
+                                .addGap(0, 6, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addComponent(jpfPassword))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jtfUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)))
+                        .addComponent(jtfUsername)))
                 .addGap(18, 18, 18)
                 .addComponent(jcbAnHien)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addGap(57, 57, 57))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(127, 127, 127)
                 .addComponent(jlDangKy)
@@ -122,10 +143,10 @@ public class DangNhapFrm extends javax.swing.JFrame {
                     .addComponent(jtfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jpfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jcbAnHien)))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(jpfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcbAnHien, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbtDangNhap)
@@ -151,6 +172,7 @@ public class DangNhapFrm extends javax.swing.JFrame {
 
     private void jlDangKyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlDangKyMouseClicked
         new DangKyFrm().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jlDangKyMouseClicked
 
     private void jbtThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtThoatActionPerformed
@@ -158,7 +180,52 @@ public class DangNhapFrm extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtThoatActionPerformed
 
     private void jbtDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtDangNhapActionPerformed
-        new GUI_Tour().setVisible(true);
+        String username = jtfUsername.getText();
+        String pw = new String(jpfPassword.getPassword());
+        Connection conn = null;
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        StringBuilder sb = new StringBuilder();
+        if (username.equals("")) {
+            JOptionPane.showMessageDialog(this, "username is empty \n");
+        }
+        if (pw.equals("")) {
+            JOptionPane.showMessageDialog(this, "password is empty \n");
+        }
+        if (sb.length() > 0) {
+            JOptionPane.showMessageDialog(this, sb.toString(), "Invalidation", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+//        int log=1;
+//        TaiKhoanDTO tk=new TaiKhoanDTO();
+//        if(new XuLyTaiKhoan().Login(tk)==true){
+//            log=0;
+//        }
+//        if(log==0){
+//            JOptionPane.showMessageDialog(this, "Thanh cong");
+//            new GUI_Tour().setVisible(true);
+//            this.dispose();
+//        }
+        try {
+            conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/tourdulich?useUnicode=yes&characterEncoding=UTF-8", "root", "");
+            ps=conn.prepareStatement("SELECT * FROM taikhoan");
+            rs=ps.executeQuery();
+            int log=1;
+            while(rs.next()){
+            if(rs.getString(1).equals(username) && rs.getString(2).equals(pw)){
+                log=0;
+                break;
+            }}
+            if(log==0){
+                JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
+                new GUI_Tour().setVisible(true);
+                this.dispose();
+            }
+        
+        } catch (SQLException ex) {
+            Logger.getLogger(DangNhapFrm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_jbtDangNhapActionPerformed
 
     private void jcbAnHienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbAnHienActionPerformed
@@ -183,16 +250,24 @@ public class DangNhapFrm extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DangNhapFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DangNhapFrm.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DangNhapFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DangNhapFrm.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DangNhapFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DangNhapFrm.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DangNhapFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DangNhapFrm.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -216,4 +291,8 @@ public class DangNhapFrm extends javax.swing.JFrame {
     private javax.swing.JPasswordField jpfPassword;
     private javax.swing.JTextField jtfUsername;
     // End of variables declaration//GEN-END:variables
+
+    private void wwhile(boolean next) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
