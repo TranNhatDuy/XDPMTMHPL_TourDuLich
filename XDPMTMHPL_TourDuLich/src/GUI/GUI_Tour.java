@@ -57,6 +57,7 @@ public class GUI_Tour extends javax.swing.JFrame {
         btnTour = new javax.swing.JButton();
         btnVe = new javax.swing.JButton();
         btnNhanVien = new javax.swing.JButton();
+        btnDangxuat = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         lbl_Image = new javax.swing.JLabel();
 
@@ -107,6 +108,13 @@ public class GUI_Tour extends javax.swing.JFrame {
             }
         });
 
+        btnDangxuat.setText("Đăng xuất");
+        btnDangxuat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDangxuatActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -121,6 +129,10 @@ public class GUI_Tour extends javax.swing.JFrame {
                     .addComponent(btnKhHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnPhTien, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(btnDangxuat)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,10 +149,13 @@ public class GUI_Tour extends javax.swing.JFrame {
                 .addComponent(btnTour, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnVe, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(btnDangxuat))
         );
 
         jPanel3.setBackground(new java.awt.Color(102, 255, 102));
+
+        lbl_Image.setToolTipText("");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -311,6 +326,12 @@ public class GUI_Tour extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnNhanVienActionPerformed
 
+    private void btnDangxuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangxuatActionPerformed
+        // TODO add your handling code here:      
+        new DangNhapFrm().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnDangxuatActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -347,6 +368,7 @@ public class GUI_Tour extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDangxuat;
     private javax.swing.JButton btnKhHang;
     private javax.swing.JButton btnKhSan;
     private javax.swing.JButton btnNhanVien;
