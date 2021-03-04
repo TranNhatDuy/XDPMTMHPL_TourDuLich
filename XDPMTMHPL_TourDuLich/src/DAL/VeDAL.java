@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAO;
+package DAL;
 
 import DTO.KhachHangDTO;
 import DTO.TourDTO;
@@ -16,12 +16,12 @@ import java.util.ArrayList;
  *
  * @author Vo Duy Kiet
  */
-public class VeDAOImp implements VeDAO {
+public class VeDAL {
 
     private PreparedStatement ps;
     private ResultSet rs;
 
-    @Override
+    
     public ArrayList<VeDTO> loadDataVe() {
         ArrayList<VeDTO> ve = new ArrayList<>();
         String query = "SELECT * FROM ve";
@@ -48,7 +48,7 @@ public class VeDAOImp implements VeDAO {
         return ve;
     }
 
-    @Override
+    
     public Boolean addVe(VeDTO v) {
         String query = "INSERT INTO ve(MaVe,MaTour,MaKH,Thoigiandat,Trangthai,Gia) VALUE(?,?,?,?,?,?)";
         try {
@@ -67,7 +67,7 @@ public class VeDAOImp implements VeDAO {
         return false;
     }
 
-    @Override
+    
     public Boolean editVe(VeDTO v, String data) {
         String query = "UPDATE ve SET MaTour=?,MaKH=?,Thoigiandat=?,Trangthai=?"
                 + ",Gia=? WHERE MaVe=?";
@@ -87,7 +87,7 @@ public class VeDAOImp implements VeDAO {
         return false;
     }
 
-    @Override
+    
     public Boolean removeVe(String data) {
         String query = "DELETE FROM ve WHERE MaVe=?";
         try {

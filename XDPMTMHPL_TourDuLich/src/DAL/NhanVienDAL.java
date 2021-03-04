@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAO;
+package DAL;
 
 import DTO.NhanVienDTO;
 import java.sql.PreparedStatement;
@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class NhanVienDAOImp {
+public class NhanVienDAL {
 
     private MySQLConnect connect = new MySQLConnect();
 
@@ -32,7 +32,7 @@ public class NhanVienDAOImp {
                 DSNhanVien.add(nv);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(NhanVienDAOImp.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(NhanVienDAL.class.getName()).log(Level.SEVERE, null, ex);
         }
         connect.MySQLDisconnect();
         return DSNhanVien;
@@ -45,7 +45,7 @@ public class NhanVienDAOImp {
             connect.st = connect.conn.createStatement();
             connect.st.executeUpdate(sql);
         } catch (SQLException ex) {
-            Logger.getLogger(NhanVienDAOImp.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(NhanVienDAL.class.getName()).log(Level.SEVERE, null, ex);
         }
         connect.MySQLDisconnect();
         return false;
@@ -75,7 +75,7 @@ public class NhanVienDAOImp {
             connect.st = connect.conn.createStatement();
             connect.st.executeUpdate(sql);
         } catch (SQLException ex) {
-            Logger.getLogger(NhanVienDAOImp.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(NhanVienDAL.class.getName()).log(Level.SEVERE, null, ex);
         }
         connect.MySQLDisconnect();
         return false;

@@ -6,9 +6,9 @@
 package GUI;
 
 import BLL.VeBLL;
-import DAO.KhachHangDAOImp;
-import DAO.TourDAOImp;
-import DAO.VeDAOImp;
+import DAL.KhachHangDAL;
+import DAL.TourDAL;
+import DAL.VeDAL;
 import DTO.KhachHangDTO;
 import DTO.TourDTO;
 import DTO.VeDTO;
@@ -248,7 +248,7 @@ public class Panel_Ve extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     void showKhachHang() {
-        khachhang = new KhachHangDAOImp().loadDataKhachHang();
+        khachhang = new KhachHangDAL().loadDataKhachHang();
         modelkh.setRowCount(0);
         for (KhachHangDTO kh : khachhang) {
             modelkh.addRow(new Object[]{
@@ -258,7 +258,7 @@ public class Panel_Ve extends javax.swing.JPanel {
     }
 
 //    void showTour() {
-//        tour = new TourDAOImp().loadDataTour();
+//        tour = new TourDAL().loadDataTour();
 //        modeltour.setRowCount(0);
 //        for (TourDTO t : tour) {
 //            modeltour.addRow(new Object[]{
@@ -267,7 +267,7 @@ public class Panel_Ve extends javax.swing.JPanel {
 //        }
 //    }
     void showVe() {
-        ve = new VeDAOImp().loadDataVe();
+        ve = new VeDAL().loadDataVe();
         modelve.setRowCount(0);
         for (VeDTO v : ve) {
             modelve.addRow(new Object[]{

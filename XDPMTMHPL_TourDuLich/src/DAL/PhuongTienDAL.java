@@ -4,7 +4,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAO;
+package DAL;
 
 import DTO.PhuongTienDTO;
 import java.sql.PreparedStatement;
@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  *
  * @author Vo Duy Kiet
  */
-public class PhuongTienDAOImp implements PhuongTienDAO{
+public class PhuongTienDAL {
 
     public ArrayList<PhuongTienDTO> loadDataPhuongTien() {
         ArrayList<PhuongTienDTO> DSPhuongTien = new ArrayList<>();
@@ -40,7 +40,7 @@ public class PhuongTienDAOImp implements PhuongTienDAO{
                 DSPhuongTien.add(pt);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(PhuongTienDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PhuongTienDAL.class.getName()).log(Level.SEVERE, null, ex);
         } 
             
         connect.MySQLDisconnect();                        
@@ -56,7 +56,7 @@ public class PhuongTienDAOImp implements PhuongTienDAO{
            connect.st = connect.conn.createStatement();
            connect.st.executeUpdate(sql);        
         }catch(SQLException ex){
-            Logger.getLogger(PhuongTienDAO.class.getName()).log(Level.SEVERE, null, ex);  
+            Logger.getLogger(PhuongTienDAL.class.getName()).log(Level.SEVERE, null, ex);  
         }   
         connect.MySQLDisconnect();    
         return false;
@@ -86,35 +86,35 @@ public class PhuongTienDAOImp implements PhuongTienDAO{
           connect.st.executeUpdate(sql);
 
         }catch(SQLException ex){
-          Logger.getLogger(PhuongTienDAO.class.getName()).log(Level.SEVERE, null, ex);
+          Logger.getLogger(PhuongTienDAL.class.getName()).log(Level.SEVERE, null, ex);
         }   
         connect.MySQLDisconnect();
         return false;
     }
 
 
-//    public ArrayList<PhuongTienDTO> searchPhuongTienMaPT(String mapt) {
-//        ArrayList<PhuongTienDTO> DSPhuongTien = new ArrayList<>();
-//        MySQLConnect connect = new MySQLConnect();
-//       
-//        Statement statement = null;
-//        
-//        try {                                           
-//            String sql = "select * from phuongtien where mapt='"+mapt+"'";
-//            statement = connect.conn.createStatement();
-//            
-//            ResultSet rs = statement.executeQuery(sql);
-//            
-//            while (rs.next()) {                
-//                PhuongTienDTO pt = new PhuongTienDTO(rs.getString("mapt"), 
-//                        rs.getString("tenpt"), rs.getFloat("gia"));                
-//                DSPhuongTien.add(pt);
-//            }
-//        } catch (SQLException ex) {
-//            Logger.getLogger(PhuongTienDAO.class.getName()).log(Level.SEVERE, null, ex);
-//        } 
-//            
-//        connect.MySQLDisconnect();                        
-//        return DSPhuongTien;
-//    }
+    public ArrayList<PhuongTienDTO> searchPhuongTienMaPT(String mapt) {
+        ArrayList<PhuongTienDTO> DSPhuongTien = new ArrayList<>();
+        MySQLConnect connect = new MySQLConnect();
+       
+        Statement statement = null;
+        
+        try {                                           
+            String sql = "select * from phuongtien where mapt='"+mapt+"'";
+            statement = connect.conn.createStatement();
+            
+            ResultSet rs = statement.executeQuery(sql);
+            
+            while (rs.next()) {                
+                PhuongTienDTO pt = new PhuongTienDTO(rs.getString("mapt"), 
+                        rs.getString("tenpt"), rs.getFloat("gia"));                
+                DSPhuongTien.add(pt);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PhuongTienDAL.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+            
+        connect.MySQLDisconnect();                        
+        return DSPhuongTien;
+    }
 }

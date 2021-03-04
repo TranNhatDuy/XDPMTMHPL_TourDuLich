@@ -7,7 +7,6 @@
 package GUI;
 
 import BLL.PhuongTienBLL;
-import DAO.PhuongTienDAO;
 import DTO.PhuongTienDTO;
 import java.awt.Color;
 import java.util.ArrayList;

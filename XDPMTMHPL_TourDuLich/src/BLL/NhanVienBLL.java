@@ -1,12 +1,12 @@
 package BLL;
 
-import DAO.NhanVienDAOImp;
+import DAL.NhanVienDAL;
 import DTO.NhanVienDTO;
 import java.util.ArrayList;
 
 public class NhanVienBLL {
 
-    private NhanVienDAOImp nhanvien = new NhanVienDAOImp();
+    private NhanVienDAL nhanvien = new NhanVienDAL();
 
     public ArrayList<NhanVienDTO> loadDataNhanVien() {
         return nhanvien.loadDataNhanVien();

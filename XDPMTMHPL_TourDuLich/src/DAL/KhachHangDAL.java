@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAO;
+package DAL;
 
 import DTO.KhachHangDTO;
 import java.sql.Connection;
@@ -17,10 +17,10 @@ import javax.swing.JOptionPane;
  *
  * @author Vo Duy Kiet
  */
-public class KhachHangDAOImp implements KhachHangDAO {
+public class KhachHangDAL  {
 
     
-    @Override
+    
     public ArrayList<KhachHangDTO> loadDataKhachHang() {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         ArrayList<KhachHangDTO> ds = new ArrayList<KhachHangDTO>();
@@ -47,7 +47,7 @@ public class KhachHangDAOImp implements KhachHangDAO {
         return ds;  
     }
 
-    @Override
+    
     public Boolean addKhachHang(KhachHangDTO kh) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         MySQLConnect Connect = new MySQLConnect();
@@ -70,7 +70,7 @@ public class KhachHangDAOImp implements KhachHangDAO {
         return true;
     }
 
-    @Override
+    
     public Boolean editKhachHang(KhachHangDTO kh) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         MySQLConnect Connect = new MySQLConnect();
@@ -112,7 +112,7 @@ public class KhachHangDAOImp implements KhachHangDAO {
         return true;
     }
 
-    @Override
+    
     public Boolean removeKhachHang(KhachHangDTO kh) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         MySQLConnect Connect = new MySQLConnect();

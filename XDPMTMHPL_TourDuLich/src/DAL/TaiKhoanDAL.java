@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAO;
+package DAL;
 
 import DTO.TaiKhoanDTO;
 import java.security.MessageDigest;
@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  *
  * @author Vo Duy Kiet
  */
-public class XuLyTaiKhoan {
+public class TaiKhoanDAL {
 
     private PreparedStatement ps;
     private ResultSet rs;
