@@ -11,52 +11,54 @@ package DTO;
  */
 public class KhachHangDTO {
 
-    private String makh, tenkh, sdt, diachi;
+    String makh, tenkh, sdt, ngaysinh, email;
 
-    public KhachHangDTO() {
-    }
-
-    public KhachHangDTO(String makh, String tenkh, String sdt, String diachi) {
+    public KhachHangDTO(String makh, String tenkh, String sdt, String ngaysinh, String email) {
         this.makh = makh;
         this.tenkh = tenkh;
         this.sdt = sdt;
-        this.diachi = diachi;
+        this.ngaysinh = ngaysinh;
+        this.email = email;
     }
 
     public String getMakh() {
         return makh;
     }
 
-    public void setMakh(String makh) {
-        this.makh = makh;
-    }
-
     public String getTenkh() {
         return tenkh;
-    }
-
-    public void setTenkh(String tenkh) {
-        this.tenkh = tenkh;
     }
 
     public String getSdt() {
         return sdt;
     }
 
+    public String getNgaysinh() {
+        return ngaysinh;
+    }
+
+    public void setMakh(String makh) {
+        this.makh = makh;
+    }
+
+    public void setTenkh(String tenkh) {
+        this.tenkh = tenkh;
+    }
+
     public void setSdt(String sdt) {
         this.sdt = sdt;
     }
 
-    public String getDiachi() {
-        return diachi;
+    public void setNgaysinh(String ngaysinh) {
+        this.ngaysinh = ngaysinh;
     }
 
-    public void setDiachi(String diachi) {
-        this.diachi = diachi;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public void getTenkh(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String getEmail() {
+        return email;
     }
-
-}
+    
+}  

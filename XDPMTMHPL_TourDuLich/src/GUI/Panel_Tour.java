@@ -11,7 +11,6 @@ import DAL.TourDAL;
 import DTO.KhachSanDTO;
 import DTO.PhuongTienDTO;
 import DTO.TourDTO;
-import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
 import java.awt.Color;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
