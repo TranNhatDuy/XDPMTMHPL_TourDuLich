@@ -5,7 +5,7 @@
  */
 package BLL;
 
-import DAO.VeDAOImp;
+import DAL.VeDAL;
 import DTO.VeDTO;
 import java.util.ArrayList;
 
@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * @author Vo Duy Kiet
  */
 public class VeBLL {
-    VeDAOImp ve = new VeDAOImp();
+    VeDAL ve = new VeDAL();
 
     public ArrayList<VeDTO> loadDataVe() {
         return ve.loadDataVe();

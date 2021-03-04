@@ -5,9 +5,8 @@
  */
 package GUI;
 
-import DAO.KhachHangDAO;
-import DAO.KhachHangDAOImp;
-import DAO.MySQLConnect;
+import DAL.KhachHangDAL;
+import DAL.MySQLConnect;
 import DTO.KhachHangDTO;
 import java.awt.Color;
 import java.util.ArrayList;
@@ -313,7 +312,7 @@ public class Panel_KhachHang extends javax.swing.JPanel {
         kh.setSdt(txtSdt.getText());
         kh.setDiachi(txtDiaChi.getText());
         if(evt.getSource() == btnThem){
-            KhachHangDAOImp addKH = new KhachHangDAOImp();
+            KhachHangDAL addKH = new KhachHangDAL();
             addKH.addKhachHang(kh);
             showKhachHang();
         }
@@ -328,7 +327,7 @@ public class Panel_KhachHang extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null,"Chưa chọn dữ liệu", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
             }
             else{
-                KhachHangDAOImp removeKH = new KhachHangDAOImp();
+                KhachHangDAL removeKH = new KhachHangDAL();
                 removeKH.removeKhachHang(kh);
                 showKhachHang();
             }
@@ -355,7 +354,7 @@ public class Panel_KhachHang extends javax.swing.JPanel {
         khDTO.setSdt(txtSdt.getText());
         khDTO.setDiachi(txtDiaChi.getText());
         if(evt.getSource() == btnSua){
-            KhachHangDAOImp kh = new KhachHangDAOImp();
+            KhachHangDAL kh = new KhachHangDAL();
             kh.editKhachHang(khDTO);
             System.out.println(khDTO.getMakh()+ " " + khDTO.getTenkh());
             showKhachHang();
@@ -374,7 +373,7 @@ public class Panel_KhachHang extends javax.swing.JPanel {
     }//GEN-LAST:event_btnLamMoiActionPerformed
     private void showKhachHang(){
         model = (DefaultTableModel) tblKH.getModel();
-        KhachHangDAOImp kh = new KhachHangDAOImp();
+        KhachHangDAL kh = new KhachHangDAL();
         kh.loadDataKhachHang();
         ArrayList<KhachHangDTO> ds = new ArrayList<>();
         ds = kh.loadDataKhachHang();

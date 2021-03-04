@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAO;
+package DAL;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,12 +15,12 @@ import DTO.KhachSanDTO;
  *
  * @author Vo Duy Kiet
  */
-public class KhachSanDAOImp implements KhachSanDAO {
+public class KhachSanDAL {
 
     private PreparedStatement ps;
     private ResultSet rs;
 
-    @Override
+  
     public ArrayList<KhachSanDTO> loadDataKhachSan() {
         String query = "SELECT * FROM khachsan";
         ArrayList<KhachSanDTO> khachsan = new ArrayList<>();
@@ -40,7 +40,7 @@ public class KhachSanDAOImp implements KhachSanDAO {
         return khachsan;
     }
 
-    @Override
+    
     public Boolean addKhachSan(KhachSanDTO ks) {
         String query = "INSERT INTO khachsan(MaKS,TenKS,Gia) VALUE(?,?,?)";
         try {
@@ -56,7 +56,7 @@ public class KhachSanDAOImp implements KhachSanDAO {
         return false;
     }
 
-    @Override
+    
     public Boolean editKhachSan(KhachSanDTO ks, String data) {
         String query = "UPDATE khachsan SET TenKS=?,Gia=? WHERE MaKS=?";
         try {
@@ -71,7 +71,7 @@ public class KhachSanDAOImp implements KhachSanDAO {
         return false;
     }
 
-    @Override
+    
     public Boolean removeKhachSan(String data) {
         String query = "DELETE FROM khachsan WHERE MaKS=?";
         try {

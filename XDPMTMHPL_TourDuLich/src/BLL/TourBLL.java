@@ -5,7 +5,7 @@
  */
 package BLL;
 
-import DAO.TourDAOImp;
+import DAL.TourDAL;
 import DTO.TourDTO;
 import java.util.ArrayList;
 
@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * @author Vo Duy Kiet
  */
 public class TourBLL {
-    private TourDAOImp tourimp=new TourDAOImp();
+    private TourDAL tourimp=new TourDAL();
     ArrayList<TourDTO> loadDataTour(){
         return tourimp.loadDataTour();
     }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAO;
+package DAL;
 
 import DTO.TourDTO;
 import java.sql.Connection;
@@ -20,12 +20,12 @@ import java.util.logging.Logger;
  *
  * @author Vo Duy Kiet
  */
-public class TourDAOImp implements TourDAO {
+public class TourDAL {
 
     private PreparedStatement ps;
     private ResultSet rs;
 
-    @Override
+    
     public ArrayList<TourDTO> loadDataTour() {
 
         ArrayList<TourDTO> tourList = new ArrayList<>();
@@ -42,12 +42,12 @@ public class TourDAOImp implements TourDAO {
                 tourList.add(tour);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(TourDAOImp.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TourDAL.class.getName()).log(Level.SEVERE, null, ex);
         }
         return tourList;
     }
 
-    @Override
+    
     public Boolean addTour(TourDTO tour) {
 
         String sql = "INSERT INTO `tour`(`MaTour`, `Ten`, `NgayBD`, `NgayKT`, `Gia`, `Soluong`, `MaPT`, `MaKS`) VALUES (?,?,?,?,?,?,?,?)";
@@ -63,19 +63,19 @@ public class TourDAOImp implements TourDAO {
             ps.setString(8, tour.getKhachsan());
             ps.execute();
         } catch (SQLException ex) {
-            Logger.getLogger(TourDAOImp.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TourDAL.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return false;
 //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
+    
     public Boolean editTour(TourDTO tour,String data) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
+    
     public Boolean removeTour(String data) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

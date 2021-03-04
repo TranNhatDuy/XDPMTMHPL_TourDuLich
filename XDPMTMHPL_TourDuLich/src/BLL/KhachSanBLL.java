@@ -5,7 +5,7 @@
  */
 package BLL;
 
-import DAO.KhachSanDAOImp;
+import DAL.KhachSanDAL;
 import DTO.KhachSanDTO;
 import java.util.ArrayList;
 
@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public class KhachSanBLL {
 
-    private KhachSanDAOImp khachsan = new KhachSanDAOImp();
+    private KhachSanDAL khachsan = new KhachSanDAL();
 
     public ArrayList<KhachSanDTO> loadDataKhachSan() {
         return khachsan.loadDataKhachSan();

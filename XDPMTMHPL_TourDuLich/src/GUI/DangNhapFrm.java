@@ -5,8 +5,8 @@
  */
 package GUI;
 
-import DAO.XuLyTaiKhoan;
-import DAO.MySQLConnect;
+import DAL.TaiKhoanDAL;
+import DAL.MySQLConnect;
 import DTO.TaiKhoanDTO;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -198,7 +198,7 @@ public class DangNhapFrm extends javax.swing.JFrame {
         }
 //        int log=1;
 //        TaiKhoanDTO tk=new TaiKhoanDTO();
-//        if(new XuLyTaiKhoan().Login(tk)==true){
+//        if(new TaiKhoanDAL().Login(tk)==true){
 //            log=0;
 //        }
 //        if(log==0){

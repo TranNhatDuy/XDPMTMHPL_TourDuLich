@@ -5,7 +5,7 @@
  */
 package BLL;
 
-import DAO.PhuongTienDAOImp;
+import DAL.PhuongTienDAL;
 import DTO.PhuongTienDTO;
 import java.util.ArrayList;
 
@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public class PhuongTienBLL {
 
-    PhuongTienDAOImp phuongtien = new PhuongTienDAOImp();
+    PhuongTienDAL phuongtien = new PhuongTienDAL();
 
     public ArrayList<PhuongTienDTO> loadDataPhuongTien() {
         return phuongtien.loadDataPhuongTien();

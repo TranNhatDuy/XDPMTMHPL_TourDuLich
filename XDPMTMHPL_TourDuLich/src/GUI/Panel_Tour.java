@@ -5,9 +5,9 @@
  */
 package GUI;
 
-import DAO.KhachSanDAOImp;
-import DAO.PhuongTienDAOImp;
-import DAO.TourDAOImp;
+import DAL.KhachSanDAL;
+import DAL.PhuongTienDAL;
+import DAL.TourDAL;
 import DTO.KhachSanDTO;
 import DTO.PhuongTienDTO;
 import DTO.TourDTO;
@@ -51,7 +51,7 @@ public class Panel_Tour extends javax.swing.JPanel {
     
     private void showTour() {
         List<TourDTO> tourList = new ArrayList<>();
-        tourList =  new TourDAOImp().loadDataTour();
+        tourList =  new TourDAL().loadDataTour();
         
         dtmtour.setRowCount(0);
         
@@ -65,7 +65,7 @@ public class Panel_Tour extends javax.swing.JPanel {
     
     private void ShowKhachSan() {
         List<KhachSanDTO> ksList = new ArrayList<>();
-        ksList =  new KhachSanDAOImp().loadDataKhachSan();
+        ksList =  new KhachSanDAL().loadDataKhachSan();
         
         dtmks.setRowCount(0);
         
@@ -77,7 +77,7 @@ public class Panel_Tour extends javax.swing.JPanel {
     
     private void ShowPhuongTien() {
         List<PhuongTienDTO> ptList = new ArrayList<>();
-        ptList =  new PhuongTienDAOImp().loadDataPhuongTien();
+        ptList =  new PhuongTienDAL().loadDataPhuongTien();
         
         dtmpt.setRowCount(0);
         
@@ -364,7 +364,7 @@ public class Panel_Tour extends javax.swing.JPanel {
 //            Date ngaybd = new SimpleDateFormat("ddMMyyyy").parse(ngayBD);
 //            tour.setNgaybd();
 //            
-//            if (new KhachSanDAOImp().addKhachSan(ks)) {
+//            if (new KhachSanDAL().addKhachSan(ks)) {
 //                JOptionPane.showMessageDialog(this, "Thêm thành công khách sạn");
 //                khachsan.add(ks);
 //                ResetText();
