@@ -5,7 +5,7 @@
  */
 package GUI;
 
-import DAO.XuLyTaiKhoan;
+import DAL.TaiKhoanDAL;
 import DTO.TaiKhoanDTO;
 import javax.swing.JOptionPane;
 
@@ -151,7 +151,7 @@ public class DangKyFrm extends javax.swing.JFrame {
         TaiKhoanDTO tk=new TaiKhoanDTO();
         tk.setUsername(username);
         tk.setPassword(pw);
-       if(new XuLyTaiKhoan().Register(tk)){
+       if(new TaiKhoanDAL().Register(tk)){
            JOptionPane.showMessageDialog(this, "Thành công");
        }
        else {

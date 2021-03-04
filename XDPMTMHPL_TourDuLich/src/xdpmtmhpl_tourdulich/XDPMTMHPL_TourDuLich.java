@@ -19,7 +19,6 @@ public class XDPMTMHPL_TourDuLich {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        new DangNhapFrm().setVisible(true);
     }
     
 }
