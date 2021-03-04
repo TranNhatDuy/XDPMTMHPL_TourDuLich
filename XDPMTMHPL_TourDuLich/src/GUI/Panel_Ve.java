@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import BLL.VeBLL;
 import DAO.KhachHangDAOImp;
 import DAO.TourDAOImp;
 import DAO.VeDAOImp;
@@ -22,7 +23,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -47,9 +53,7 @@ public class Panel_Ve extends javax.swing.JPanel {
         this.setBounds(0, 0, 672, 496);
         this.setBorder(BorderFactory.createLineBorder(Color.black));
 
-        txtMakhve.setEditable(false);
         txtTenkhve.setEditable(false);
-        txtMatourve.setEditable(false);
         txtTentourve.setEditable(false);
 
         khachhang = new ArrayList<>();
@@ -63,7 +67,7 @@ public class Panel_Ve extends javax.swing.JPanel {
         ve = new ArrayList<>();
         modelve = (DefaultTableModel) tblVe.getModel();
         showVe();
-
+        TimKiem();
     }
 
     /**
@@ -90,19 +94,16 @@ public class Panel_Ve extends javax.swing.JPanel {
         jLabel35 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
         txtGia = new javax.swing.JTextField();
-        jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
-        txtMatourve = new javax.swing.JTextField();
         txtTentourve = new javax.swing.JTextField();
         txtTenkhve = new javax.swing.JTextField();
         jLabel30 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
-        txtMakhve = new javax.swing.JTextField();
         btnThem = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
-        btnTimKiem = new javax.swing.JButton();
         btnLamMoi = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        txtTimkiem = new javax.swing.JTextField();
 
         setPreferredSize(new java.awt.Dimension(800, 500));
         setLayout(null);
@@ -123,7 +124,7 @@ public class Panel_Ve extends javax.swing.JPanel {
         jScrollPane9.setViewportView(tblVe);
 
         add(jScrollPane9);
-        jScrollPane9.setBounds(10, 61, 652, 153);
+        jScrollPane9.setBounds(10, 90, 652, 153);
 
         tblTour.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -141,7 +142,7 @@ public class Panel_Ve extends javax.swing.JPanel {
         jScrollPane10.setViewportView(tblTour);
 
         add(jScrollPane10);
-        jScrollPane10.setBounds(10, 220, 177, 100);
+        jScrollPane10.setBounds(10, 260, 177, 100);
 
         tblKhachHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -159,41 +160,35 @@ public class Panel_Ve extends javax.swing.JPanel {
         jScrollPane11.setViewportView(tblKhachHang);
 
         add(jScrollPane11);
-        jScrollPane11.setBounds(205, 220, 177, 100);
+        jScrollPane11.setBounds(210, 260, 177, 100);
 
         jLabel31.setText("Mã Vé:");
         add(jLabel31);
-        jLabel31.setBounds(422, 226, 33, 14);
+        jLabel31.setBounds(420, 260, 33, 14);
         add(txtMave);
-        txtMave.setBounds(512, 223, 150, 20);
+        txtMave.setBounds(510, 260, 150, 20);
 
         jLabel34.setText("Thời Gian Đặt:");
         add(jLabel34);
-        jLabel34.setBounds(422, 264, 69, 14);
+        jLabel34.setBounds(420, 300, 69, 14);
         add(txtThoigiandat);
-        txtThoigiandat.setBounds(512, 261, 150, 20);
+        txtThoigiandat.setBounds(510, 300, 150, 20);
         add(txtTrangthai);
-        txtTrangthai.setBounds(512, 303, 150, 20);
+        txtTrangthai.setBounds(510, 340, 150, 20);
 
         jLabel35.setText("Trạng Thái:");
         add(jLabel35);
-        jLabel35.setBounds(422, 306, 55, 14);
+        jLabel35.setBounds(420, 340, 55, 14);
 
         jLabel36.setText("Giá:");
         add(jLabel36);
-        jLabel36.setBounds(422, 341, 19, 14);
+        jLabel36.setBounds(420, 380, 19, 14);
         add(txtGia);
-        txtGia.setBounds(512, 341, 150, 20);
-
-        jLabel27.setText("Mã Tour:");
-        add(jLabel27);
-        jLabel27.setBounds(10, 341, 43, 14);
+        txtGia.setBounds(510, 380, 150, 20);
 
         jLabel28.setText("Tên Tour:");
         add(jLabel28);
         jLabel28.setBounds(10, 379, 47, 14);
-        add(txtMatourve);
-        txtMatourve.setBounds(63, 338, 124, 20);
 
         txtTentourve.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -208,18 +203,6 @@ public class Panel_Ve extends javax.swing.JPanel {
         jLabel30.setText("Tên KH:");
         add(jLabel30);
         jLabel30.setBounds(205, 379, 38, 14);
-
-        jLabel29.setText("Mã KH:");
-        add(jLabel29);
-        jLabel29.setBounds(205, 341, 34, 14);
-
-        txtMakhve.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMakhveActionPerformed(evt);
-            }
-        });
-        add(txtMakhve);
-        txtMakhve.setBounds(253, 338, 129, 20);
 
         btnThem.setText("Thêm");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
@@ -237,15 +220,16 @@ public class Panel_Ve extends javax.swing.JPanel {
             }
         });
         add(btnXoa);
-        btnXoa.setBounds(196, 430, 77, 32);
+        btnXoa.setBounds(230, 430, 77, 32);
 
         btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
         add(btnSua);
-        btnSua.setBounds(291, 430, 77, 32);
-
-        btnTimKiem.setText("Tìm kiếm");
-        add(btnTimKiem);
-        btnTimKiem.setBounds(386, 430, 77, 32);
+        btnSua.setBounds(360, 430, 77, 32);
 
         btnLamMoi.setText("Làm mới");
         btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
@@ -255,6 +239,12 @@ public class Panel_Ve extends javax.swing.JPanel {
         });
         add(btnLamMoi);
         btnLamMoi.setBounds(481, 430, 77, 32);
+
+        jLabel2.setText("Tìm kiếm :");
+        add(jLabel2);
+        jLabel2.setBounds(40, 70, 50, 14);
+        add(txtTimkiem);
+        txtTimkiem.setBounds(100, 60, 150, 20);
     }// </editor-fold>//GEN-END:initComponents
 
     void showKhachHang() {
@@ -288,28 +278,52 @@ public class Panel_Ve extends javax.swing.JPanel {
     }
 
     void Reset() {
-        txtMatourve.setText("");
         txtTentourve.setText("");
-        txtMakhve.setText("");
         txtTenkhve.setText("");
         txtMave.setText("");
         txtThoigiandat.setText("");
         txtTrangthai.setText("");
         txtGia.setText("");
+    }
+
+    private void TimKiem() {
+        TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(tblVe.getModel());
+        tblVe.setRowSorter(rowSorter);
+        txtTimkiem.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent de) {
+                String text = txtTimkiem.getText();
+                if (text.trim().length() == 0) {
+                    rowSorter.setRowFilter(null);
+                } else {
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+                }
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent de) {
+                String text = txtTimkiem.getText();
+                if (text.length() == 0) {
+                    rowSorter.setRowFilter(null);
+                } else {
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+                }
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent de) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        });
 
     }
     private void txtTentourveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTentourveActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTentourveActionPerformed
 
-    private void txtMakhveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMakhveActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMakhveActionPerformed
-
     private void tblKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKhachHangMouseClicked
         int indexKhachHang = tblKhachHang.getSelectedRow();
         if (indexKhachHang >= 0) {
-            txtMakhve.setText(modelkh.getValueAt(indexKhachHang, 0).toString());
             txtTenkhve.setText(modelkh.getValueAt(indexKhachHang, 1).toString());
         } else {
             JOptionPane.showMessageDialog(this, "Chọn dòng để hiển thị!!!");
@@ -319,7 +333,6 @@ public class Panel_Ve extends javax.swing.JPanel {
     private void tblTourMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTourMouseClicked
         int indexTour = tblTour.getSelectedRow();
         if (indexTour >= 0) {
-            txtMatourve.setText(modeltour.getValueAt(indexTour, 0).toString());
             txtTentourve.setText(modeltour.getValueAt(indexTour, 1).toString());
         } else {
             JOptionPane.showMessageDialog(this, "Chọn dòng để hiển thị!!!");
@@ -360,7 +373,7 @@ public class Panel_Ve extends javax.swing.JPanel {
             TourDTO t = tour.get(indexTour);
             KhachHangDTO kh = khachhang.get(indexKhachHang);
             VeDTO v = new VeDTO(mave, t, kh, thoigiandat, trangthai, gia);
-            if (new VeDAOImp().addVe(v)) {
+            if (new VeBLL().addVe(v)) {
                 JOptionPane.showMessageDialog(this, "Thêm thành công vé");
                 ve.add(v);
                 showVe();
@@ -379,7 +392,7 @@ public class Panel_Ve extends javax.swing.JPanel {
         if (indexVe >= 0) {
             if (JOptionPane.showConfirmDialog(this, "Bạn có chắc muốn xoá vé không?") == 0) {
                 VeDTO v = new VeDTO();
-                new VeDAOImp().removeVe(v, data);
+                new VeBLL().removeVe(data);
                 JOptionPane.showMessageDialog(this, "Xoá thành công");
                 showVe();
                 Reset();
@@ -389,17 +402,19 @@ public class Panel_Ve extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnXoaActionPerformed
 
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSuaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLamMoi;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
-    private javax.swing.JButton btnTimKiem;
     private javax.swing.JButton btnXoa;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel34;
@@ -412,12 +427,11 @@ public class Panel_Ve extends javax.swing.JPanel {
     private javax.swing.JTable tblTour;
     private javax.swing.JTable tblVe;
     private javax.swing.JTextField txtGia;
-    private javax.swing.JTextField txtMakhve;
-    private javax.swing.JTextField txtMatourve;
     private javax.swing.JTextField txtMave;
     private javax.swing.JTextField txtTenkhve;
     private javax.swing.JTextField txtTentourve;
     private javax.swing.JTextField txtThoigiandat;
+    private javax.swing.JTextField txtTimkiem;
     private javax.swing.JTextField txtTrangthai;
     // End of variables declaration//GEN-END:variables
 }

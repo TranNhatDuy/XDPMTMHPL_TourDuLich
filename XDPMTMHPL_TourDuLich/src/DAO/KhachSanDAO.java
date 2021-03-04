@@ -20,12 +20,6 @@ public interface KhachSanDAO {
 
     Boolean editKhachSan(KhachSanDTO ks,String data);
 
-    Boolean removeKhachSan(KhachSanDTO ks,String data);
-
-    ArrayList<KhachSanDTO> searchKhachSanMaKS(String data);
-
-    ArrayList<KhachSanDTO> searchKhachSanTenKS(String data);
-
-    ArrayList<KhachSanDTO> searchKhachSanGia(String data);
+    Boolean removeKhachSan(String data);
 
 }

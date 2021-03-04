@@ -20,14 +20,6 @@ public interface VeDAO {
 
     Boolean editVe(VeDTO v, String data);
 
-    Boolean removeVe(VeDTO v, String data);
-
-    ArrayList<VeDTO> searchVeMaVe(String data);
-
-    ArrayList<VeDTO> searchVeThoiGianDat(String data);
-
-    ArrayList<VeDTO> searchVeTrangThai(String data);
-
-    ArrayList<VeDTO> searchVeGia(String data);
+    Boolean removeVe(String data);
 
 }

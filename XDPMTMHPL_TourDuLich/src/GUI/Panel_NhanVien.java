@@ -300,7 +300,7 @@ public class Panel_NhanVien extends javax.swing.JPanel {
         nv.setSDT(txtSDT.getText());
         nv.setDiaChi(txtDiaChi.getText());
         if (evt.getSource() == btnThem) {          
-            NhanVienBLL.addNhanVien(nv);
+            new NhanVienBLL().addNhanVien(nv);
             showNhanVien();
         }
     }//GEN-LAST:event_btnThemActionPerformed
@@ -325,7 +325,7 @@ public class Panel_NhanVien extends javax.swing.JPanel {
             if (txtMaNV.getText() == "") {
                 JOptionPane.showMessageDialog(null, "Chưa chọn dữ liệu", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                NhanVienBLL.removeNhanVien(data);
+                new NhanVienBLL().removeNhanVien(data);
                 showNhanVien();
             }
 
@@ -351,7 +351,7 @@ public class Panel_NhanVien extends javax.swing.JPanel {
         NVDTO.setDiaChi(txtDiaChi.getText());
         NVDTO.setNhiemVu(txtNhiemVu.getText());
         if (evt.getSource() == btnSua) {         
-            NhanVienBLL.editNhanVien(NVDTO, data);
+            new NhanVienBLL().editNhanVien(NVDTO, data);
             System.out.println(NVDTO.getMaNV() + " " + NVDTO.getTenNV());
             showNhanVien();
         }
@@ -418,7 +418,7 @@ public class Panel_NhanVien extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void showNhanVien() {
-        nhanvien = NhanVienBLL.loadDataNhanVien();
+        nhanvien =new NhanVienBLL().loadDataNhanVien();
         model.setRowCount(0);
         for (NhanVienDTO NV : nhanvien) {
             model.addRow(new Object[]{

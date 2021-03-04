@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  *
  * @author Vo Duy Kiet
  */
-public class PhuongTienDAOImp {
+public class PhuongTienDAOImp implements PhuongTienDAO{
 
     public ArrayList<PhuongTienDTO> loadDataPhuongTien() {
         ArrayList<PhuongTienDTO> DSPhuongTien = new ArrayList<>();
@@ -48,20 +48,21 @@ public class PhuongTienDAOImp {
     }
 
   
-    public static void addPhuongTien(PhuongTienDTO kh) {
+    public boolean addPhuongTien(PhuongTienDTO pt) {
         MySQLConnect connect = new MySQLConnect();
         try{
            String sql = "insert into phuongtien value('";
-           sql += kh.getMapt()+"','"+kh.getTenpt()+"','"+kh.getGia()+"')";
+           sql += pt.getMapt()+"','"+pt.getTenpt()+"','"+pt.getGia()+"')";
            connect.st = connect.conn.createStatement();
            connect.st.executeUpdate(sql);        
         }catch(SQLException ex){
             Logger.getLogger(PhuongTienDAO.class.getName()).log(Level.SEVERE, null, ex);  
         }   
         connect.MySQLDisconnect();    
+        return false;
     }
 
-    public static void editPhuongTien(PhuongTienDTO pt,String data) {
+    public boolean editPhuongTien(PhuongTienDTO pt,String data) {
         PreparedStatement ps = null;
         String query = "update phuongtien set tenpt=?, gia=? where mapt=?";
         try {
@@ -72,10 +73,11 @@ public class PhuongTienDAOImp {
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
-        }      
+        }  
+        return false;
     }
 
-    public static void removePhuongTien(String mapt) {
+    public boolean removePhuongTien(String mapt) {
         MySQLConnect connect = new MySQLConnect();
         try{
           String sql= "delete from phuongtien where mapt='"+mapt+"'";
@@ -85,49 +87,34 @@ public class PhuongTienDAOImp {
 
         }catch(SQLException ex){
           Logger.getLogger(PhuongTienDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }    
+        }   
+        connect.MySQLDisconnect();
+        return false;
     }
 
 
-    public ArrayList<PhuongTienDTO> searchPhuongTienMaPT(String mapt) {
-        ArrayList<PhuongTienDTO> DSPhuongTien = new ArrayList<>();
-        MySQLConnect connect = new MySQLConnect();
-       
-        Statement statement = null;
-        
-        try {                                           
-            String sql = "select * from phuongtien where mapt='"+mapt+"'";
-            statement = connect.conn.createStatement();
-            
-            ResultSet rs = statement.executeQuery(sql);
-            
-            while (rs.next()) {                
-                PhuongTienDTO pt = new PhuongTienDTO(rs.getString("mapt"), 
-                        rs.getString("tenpt"), rs.getFloat("gia"));                
-                DSPhuongTien.add(pt);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(PhuongTienDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-            
-        connect.MySQLDisconnect();                        
-        return DSPhuongTien;
-    }
-
-    public ArrayList<PhuongTienDTO> searchPhuongTienTenPT(String data) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public ArrayList<PhuongTienDTO> searchPhuongTienGia(String data) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public Boolean removePhuongTien(PhuongTienDTO kh) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public Boolean editPhuongTien(PhuongTienDTO kh) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+//    public ArrayList<PhuongTienDTO> searchPhuongTienMaPT(String mapt) {
+//        ArrayList<PhuongTienDTO> DSPhuongTien = new ArrayList<>();
+//        MySQLConnect connect = new MySQLConnect();
+//       
+//        Statement statement = null;
+//        
+//        try {                                           
+//            String sql = "select * from phuongtien where mapt='"+mapt+"'";
+//            statement = connect.conn.createStatement();
+//            
+//            ResultSet rs = statement.executeQuery(sql);
+//            
+//            while (rs.next()) {                
+//                PhuongTienDTO pt = new PhuongTienDTO(rs.getString("mapt"), 
+//                        rs.getString("tenpt"), rs.getFloat("gia"));                
+//                DSPhuongTien.add(pt);
+//            }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(PhuongTienDAO.class.getName()).log(Level.SEVERE, null, ex);
+//        } 
+//            
+//        connect.MySQLDisconnect();                        
+//        return DSPhuongTien;
+//    }
 }

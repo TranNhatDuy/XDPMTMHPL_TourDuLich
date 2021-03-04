@@ -72,31 +72,16 @@ public class KhachSanDAOImp implements KhachSanDAO {
     }
 
     @Override
-    public Boolean removeKhachSan(KhachSanDTO ks, String data) {
+    public Boolean removeKhachSan(String data) {
         String query = "DELETE FROM khachsan WHERE MaKS=?";
         try {
-            ps=new MySQLConnect().conn.prepareStatement(query);
+            ps = new MySQLConnect().conn.prepareStatement(query);
             ps.setString(1, data);
             ps.execute();
         } catch (Exception e) {
             e.printStackTrace();
         }
         return false;
-    }
-
-    @Override
-    public ArrayList<KhachSanDTO> searchKhachSanMaKS(String data) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public ArrayList<KhachSanDTO> searchKhachSanTenKS(String data) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public ArrayList<KhachSanDTO> searchKhachSanGia(String data) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

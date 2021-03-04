@@ -16,19 +16,10 @@ public interface TourDAO {
 
     ArrayList<TourDTO> loadDataTour();
 
-    Boolean addTour(TourDTO kh);
+    Boolean addTour(TourDTO tour);
 
-    Boolean editTour(TourDTO kh);
+    Boolean editTour(TourDTO tour,String data);
 
-    Boolean removeTour(TourDTO kh);
+    Boolean removeTour(String data);
 
-    ArrayList<TourDTO> searchTourMaTour(String data);
-
-    ArrayList<TourDTO> searchTourTenTour(String data);
-
-    ArrayList<TourDTO> searchTourNgayBD(String data);
-
-    ArrayList<TourDTO> searchTourNgayKT(String data);
-
-    ArrayList<TourDTO> searchTourGia(String data);
 }

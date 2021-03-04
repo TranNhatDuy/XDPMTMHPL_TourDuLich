@@ -88,7 +88,7 @@ public class VeDAOImp implements VeDAO {
     }
 
     @Override
-    public Boolean removeVe(VeDTO v, String data) {
+    public Boolean removeVe(String data) {
         String query = "DELETE FROM ve WHERE MaVe=?";
         try {
             ps = new MySQLConnect().conn.prepareStatement(query);
@@ -98,26 +98,6 @@ public class VeDAOImp implements VeDAO {
             e.printStackTrace();
         }
         return false;
-    }
-
-    @Override
-    public ArrayList<VeDTO> searchVeMaVe(String data) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public ArrayList<VeDTO> searchVeThoiGianDat(String data) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public ArrayList<VeDTO> searchVeTrangThai(String data) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public ArrayList<VeDTO> searchVeGia(String data) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

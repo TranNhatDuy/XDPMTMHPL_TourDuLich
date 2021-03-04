@@ -1,24 +1,27 @@
-
 package BLL;
 
-import DAO.NhanVienDAO;
+import DAO.NhanVienDAOImp;
 import DTO.NhanVienDTO;
 import java.util.ArrayList;
 
-
 public class NhanVienBLL {
-    public static ArrayList<NhanVienDTO> loadDataNhanVien() {
-        NhanVienDAO pt = new NhanVienDAO();
-        return pt.loadDataNhanVien();
-    }      
-    public static void addNhanVien(NhanVienDTO pt) {
-        NhanVienDAO.addNhanVien(pt);
-    }      
-    public static void editNhanVien(NhanVienDTO pt,String data) {          
-        NhanVienDAO.editNhanVien(pt, data);
+
+    private NhanVienDAOImp nhanvien = new NhanVienDAOImp();
+
+    public ArrayList<NhanVienDTO> loadDataNhanVien() {
+        return nhanvien.loadDataNhanVien();
     }
-    public static void removeNhanVien(String mapt) {
-        NhanVienDAO.removeNhanVien(mapt);
-    } 
-   
+
+    public boolean addNhanVien(NhanVienDTO pt) {
+        return nhanvien.addNhanVien(pt);
+    }
+
+    public boolean editNhanVien(NhanVienDTO pt, String data) {
+        return nhanvien.editNhanVien(pt, data);
+    }
+
+    public boolean removeNhanVien(String data) {
+        return nhanvien.removeNhanVien(data);
+    }
+
 }

@@ -5,7 +5,7 @@
  */
 package GUI;
 
-import DAO.KhachSanDAOImp;
+import BLL.KhachSanBLL;
 import DTO.KhachSanDTO;
 import java.awt.Color;
 import java.util.ArrayList;
@@ -222,7 +222,7 @@ public class Panel_KhachSan extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ShowKhachSan() {
-        khachsan = new KhachSanDAOImp().loadDataKhachSan();
+        khachsan = new KhachSanBLL().loadDataKhachSan();
         modelks.setRowCount(0);
         for (KhachSanDTO ks : khachsan) {
             modelks.addRow(new Object[]{
@@ -313,7 +313,7 @@ public class Panel_KhachSan extends javax.swing.JPanel {
             ks.setMaks(maks);
             ks.setTenks(tenks);
             ks.setGia(gia);
-            if (new KhachSanDAOImp().addKhachSan(ks)) {
+            if (new KhachSanBLL().addKhachSan(ks)) {
                 JOptionPane.showMessageDialog(this, "Thêm thành công khách sạn");
                 khachsan.add(ks);
                 ResetText();
@@ -346,7 +346,7 @@ public class Panel_KhachSan extends javax.swing.JPanel {
                     ks.setMaks(maks);
                     ks.setTenks(tenks);
                     ks.setGia(gia);
-                    if (new KhachSanDAOImp().editKhachSan(ks, data)) {
+                    if (new KhachSanBLL().editKhachSan(ks, data)) {
                         JOptionPane.showMessageDialog(this, "Sửa thành công khách sạn");
                         ShowKhachSan();
                         ResetText();
@@ -378,7 +378,7 @@ public class Panel_KhachSan extends javax.swing.JPanel {
             KhachSanDTO ks = new KhachSanDTO();
             if (JOptionPane.showConfirmDialog(this, "Bạn có chắc muốn xoá không???") == 0) {
                 try {
-                    new KhachSanDAOImp().removeKhachSan(ks, data);
+                    new KhachSanBLL().removeKhachSan(data);
                     JOptionPane.showMessageDialog(this, "Xoá thành công");
                     ShowKhachSan();
                     ResetText();

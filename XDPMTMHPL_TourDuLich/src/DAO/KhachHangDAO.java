@@ -22,12 +22,4 @@ public interface KhachHangDAO {
 
     Boolean removeKhachHang(KhachHangDTO kh);
 
-    ArrayList<KhachHangDTO> searchKhachHangMaKH(String data);
-
-    ArrayList<KhachHangDTO> searchKhachHangTenKH(String data);
-
-    ArrayList<KhachHangDTO> searchKhachHangSDT(String data);
-
-    ArrayList<KhachHangDTO> searchKhachHangDiaChi(String data);
-
 }

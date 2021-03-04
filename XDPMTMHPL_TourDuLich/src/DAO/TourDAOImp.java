@@ -20,25 +20,25 @@ import java.util.logging.Logger;
  *
  * @author Vo Duy Kiet
  */
-public class TourDAOImp implements TourDAO{
+public class TourDAOImp implements TourDAO {
 
     private PreparedStatement ps;
     private ResultSet rs;
-    
+
     @Override
     public ArrayList<TourDTO> loadDataTour() {
-        
+
         ArrayList<TourDTO> tourList = new ArrayList<>();
-        
+
         try {
-            String sql = "SELECT * FROM tour, khachsan, phuongtien WHERE tour.MaPT = phuongtien.MaPT AND tour.MaKS = khachsan.MaKS";
+            String sql = "SELECT * FROM tour, tourachsan, phuongtien WHERE tour.MaPT = phuongtien.MaPT AND tour.MaKS = tourachsan.MaKS";
             ps = new MySQLConnect().conn.prepareStatement(sql);
             rs = ps.executeQuery();
-            while (rs.next()) {                
-                TourDTO tour = new TourDTO(rs.getString("MaTour"), rs.getString("Ten"), 
-                        rs.getDate("NgayBD"), rs.getDate("NgayKT"), 
+            while (rs.next()) {
+                TourDTO tour = new TourDTO(rs.getString("MaTour"), rs.getString("Ten"),
+                        rs.getDate("NgayBD"), rs.getDate("NgayKT"),
                         rs.getFloat("Gia"), rs.getInt("Soluong"),
-                        rs.getString("TenPT"), rs.getString("TenKS"));                
+                        rs.getString("TenPT"), rs.getString("TenKS"));
                 tourList.add(tour);
             }
         } catch (SQLException ex) {
@@ -48,62 +48,36 @@ public class TourDAOImp implements TourDAO{
     }
 
     @Override
-    public Boolean addTour(TourDTO kh) {
-        
+    public Boolean addTour(TourDTO tour) {
+
         String sql = "INSERT INTO `tour`(`MaTour`, `Ten`, `NgayBD`, `NgayKT`, `Gia`, `Soluong`, `MaPT`, `MaKS`) VALUES (?,?,?,?,?,?,?,?)";
         try {
             ps = new MySQLConnect().conn.prepareCall(sql);
-            ps.setString(1, kh.getMatour());
-            ps.setString(2, kh.getTentour());
-            ps.setDate(3, kh.getNgaybd());
-            ps.setDate(4, kh.getNgaykt());
-            ps.setFloat(5, kh.getGia());
-            ps.setInt(6, kh.getSoluong());
-            ps.setString(7, kh.getPhuongtien());
-            ps.setString(8, kh.getKhachsan());
+            ps.setString(1, tour.getMatour());
+            ps.setString(2, tour.getTentour());
+            ps.setDate(3, tour.getNgaybd());
+            ps.setDate(4, tour.getNgaykt());
+            ps.setFloat(5, tour.getGia());
+            ps.setInt(6, tour.getSoluong());
+            ps.setString(7, tour.getPhuongtien());
+            ps.setString(8, tour.getKhachsan());
             ps.execute();
         } catch (SQLException ex) {
             Logger.getLogger(TourDAOImp.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return false;
 //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Boolean editTour(TourDTO kh) {
+    public Boolean editTour(TourDTO tour,String data) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Boolean removeTour(TourDTO kh) {
+    public Boolean removeTour(String data) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-    @Override
-    public ArrayList<TourDTO> searchTourMaTour(String data) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public ArrayList<TourDTO> searchTourTenTour(String data) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public ArrayList<TourDTO> searchTourNgayBD(String data) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public ArrayList<TourDTO> searchTourNgayKT(String data) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public ArrayList<TourDTO> searchTourGia(String data) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 
 }

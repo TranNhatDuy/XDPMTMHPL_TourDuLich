@@ -135,24 +135,4 @@ public class KhachHangDAOImp implements KhachHangDAO {
         Connect.MySQLDisconnect();
         return true;
     }
-
-    @Override
-    public ArrayList<KhachHangDTO> searchKhachHangMaKH(String data) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public ArrayList<KhachHangDTO> searchKhachHangTenKH(String data) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public ArrayList<KhachHangDTO> searchKhachHangSDT(String data) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public ArrayList<KhachHangDTO> searchKhachHangDiaChi(String data) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }
