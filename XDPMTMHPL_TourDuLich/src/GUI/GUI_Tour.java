@@ -25,9 +25,9 @@ public class GUI_Tour extends javax.swing.JFrame {
     public GUI_Tour() {
         initComponents();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        int x = screenSize.width - 850;
+        int x = screenSize.width - 950;
         int x1 = x / 2;
-        this.setBounds(x1, 100, 850, 550);
+        this.setBounds(x1, 20, 950, 670);
         this.setResizable(false);
         this.setTitle("Quản Lý Tour Du Lịch");
 
@@ -52,8 +52,6 @@ public class GUI_Tour extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         btnKhHang = new javax.swing.JButton();
-        btnKhSan = new javax.swing.JButton();
-        btnPhTien = new javax.swing.JButton();
         btnTour = new javax.swing.JButton();
         btnVe = new javax.swing.JButton();
         btnNhanVien = new javax.swing.JButton();
@@ -68,21 +66,6 @@ public class GUI_Tour extends javax.swing.JFrame {
         btnKhHang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnKhHangActionPerformed(evt);
-            }
-        });
-
-        btnKhSan.setText("Khách Sạn");
-        btnKhSan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnKhSanActionPerformed(evt);
-            }
-        });
-
-        btnPhTien.setText("Phương Tiện");
-        btnPhTien.setToolTipText("");
-        btnPhTien.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPhTienActionPerformed(evt);
             }
         });
 
@@ -125,31 +108,25 @@ public class GUI_Tour extends javax.swing.JFrame {
                     .addComponent(btnNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnVe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnTour, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnKhSan, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                    .addComponent(btnKhHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnPhTien, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnKhHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(btnDangxuat)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(btnNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addContainerGap()
+                .addComponent(btnTour, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(151, 151, 151)
                 .addComponent(btnKhHang, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnKhSan, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnPhTien, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnTour, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnVe, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnDangxuat))
         );
 
@@ -161,11 +138,11 @@ public class GUI_Tour extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbl_Image, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE)
+            .addComponent(lbl_Image, javax.swing.GroupLayout.DEFAULT_SIZE, 850, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbl_Image, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lbl_Image, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -202,17 +179,6 @@ public class GUI_Tour extends javax.swing.JFrame {
     private void btnKhHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhHangActionPerformed
         // TODO add your handling code here:
         if (evt.getSource() == btnKhHang) {
-//            jPanel3.removeAll();
-//            jPanel3.remove(pnKS);
-//            jPanel3.remove(pnPT);
-//            jPanel3.remove(pnTour);
-//            jPanel3.remove(pnVe);
-//            lbl_Image.setVisible(false);
-//            jPanel3.setBackground(Color.red);
-//            Panel_KhachHang pn_cn1 = new Panel_KhachHang();
-//            jPanel3.add(pn_cn1);
-//            pnKH.setVisible(true);
-//            jPanel3.add(pnKH);
             jPanel3.removeAll();
             jPanel3.add(pnKH);
             jPanel3.repaint();
@@ -221,65 +187,9 @@ public class GUI_Tour extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnKhHangActionPerformed
 
-    private void btnKhSanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhSanActionPerformed
-        // TODO add your handling code here:
-
-        if (evt.getSource() == btnKhSan) {
-//            jPanel3.removeAll();
-//            jPanel3.remove(pnKH);
-//            jPanel3.remove(pnPT);
-//            jPanel3.remove(pnTour);
-//            jPanel3.remove(pnVe);
-//            lbl_Image.setVisible(false);
-//            jPanel3.setBackground(Color.yellow);
-//            Panel_KhachSan pn_cn2 = new Panel_KhachSan();
-//            jPanel3.add(pn_cn2);
-//            pnKS.setVisible(true);
-//            jPanel3.add(pnKS);
-            jPanel3.removeAll();
-            jPanel3.add(pnKS);
-            jPanel3.repaint();
-            pnKS.revalidate();
-            pnKS.repaint();
-        }
-    }//GEN-LAST:event_btnKhSanActionPerformed
-
-    private void btnPhTienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPhTienActionPerformed
-        // TODO add your handling code here:
-        if (evt.getSource() == btnPhTien) {
-//            jPanel3.removeAll();
-//            jPanel3.remove(pnKH);
-//            jPanel3.remove(pnKS);
-//            jPanel3.remove(pnTour);
-//            jPanel3.remove(pnVe);
-//            lbl_Image.setVisible(false);
-//            jPanel3.setBackground(Color.black);
-//            Panel_PhuongTien pn_cn3 = new Panel_PhuongTien();
-//            jPanel3.add(pn_cn3);
-//            pnPT.setVisible(true);
-//            jPanel3.add(pnPT);
-            jPanel3.removeAll();
-            jPanel3.add(pnPT);
-            jPanel3.repaint();
-            pnPT.revalidate();
-            pnPT.repaint();
-        }
-    }//GEN-LAST:event_btnPhTienActionPerformed
-
     private void btnTourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTourActionPerformed
         // TODO add your handling code here:
         if (evt.getSource() == btnTour) {
-//            jPanel3.removeAll();
-//            jPanel3.remove(pnKH);
-//            jPanel3.remove(pnKS);
-//            jPanel3.remove(pnPT);
-//            jPanel3.remove(pnVe);
-//            lbl_Image.setVisible(false);
-//            jPanel3.setBackground(Color.black);
-//            Panel_PhuongTien pn_cn3 = new Panel_PhuongTien();
-//            jPanel3.add(pn_cn3);
-//            pnTour.setVisible(true);
-//            jPanel3.add(pnTour);
             jPanel3.removeAll();
             jPanel3.add(pnTour);
             jPanel3.repaint();
@@ -291,17 +201,6 @@ public class GUI_Tour extends javax.swing.JFrame {
     private void btnVeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVeActionPerformed
         // TODO add your handling code here:
         if (evt.getSource() == btnVe) {
-//            jPanel3.removeAll();
-//            jPanel3.remove(pnKH);
-//            jPanel3.remove(pnKS);
-//            jPanel3.remove(pnTour);
-//            jPanel3.remove(pnPT);
-//            lbl_Image.setVisible(false);
-//            jPanel3.setBackground(Color.black);
-//            Panel_PhuongTien pn_cn3 = new Panel_PhuongTien();
-//            jPanel3.add(pn_cn3);
-//            pnVe.setVisible(true);
-//            jPanel3.add(pnVe);
             jPanel3.removeAll();
             jPanel3.add(pnVe);
             jPanel3.repaint();
@@ -313,11 +212,6 @@ public class GUI_Tour extends javax.swing.JFrame {
     private void btnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienActionPerformed
         // TODO add your handling code here:
         if (evt.getSource() == btnNhanVien) {
-//            jPanel3.removeAll();
-//            jPanel3.add(lbl_Image);
-//            jPanel3.repaint();
-//            lbl_Image.setVisible(true);
-//            jPanel3.add(lbl_Image);
             jPanel3.removeAll();
             jPanel3.add(pnNV);
             jPanel3.repaint();
@@ -370,9 +264,7 @@ public class GUI_Tour extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDangxuat;
     private javax.swing.JButton btnKhHang;
-    private javax.swing.JButton btnKhSan;
     private javax.swing.JButton btnNhanVien;
-    private javax.swing.JButton btnPhTien;
     private javax.swing.JButton btnTour;
     private javax.swing.JButton btnVe;
     private javax.swing.JPanel jPanel1;

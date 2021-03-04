@@ -34,7 +34,7 @@ public class Panel_KhachHang extends javax.swing.JPanel {
         initComponents();
 //        this.setSize(672,496);
         
-        this.setBounds(0, 0, 672, 496);
+        this.setBounds(0, 0, 767, 617);
         this.setBorder(BorderFactory.createLineBorder(Color.black));
         
         showKhachHang();
@@ -71,7 +71,7 @@ public class Panel_KhachHang extends javax.swing.JPanel {
         txtDiaChi = new javax.swing.JTextField();
         txtTimkiem = new javax.swing.JTextField();
 
-        setPreferredSize(new java.awt.Dimension(672, 496));
+        setPreferredSize(new java.awt.Dimension(800, 660));
 
         btnThem.setText("Thêm");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
@@ -205,7 +205,7 @@ public class Panel_KhachHang extends javax.swing.JPanel {
                         .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(66, 66, Short.MAX_VALUE))
+                .addGap(141, 194, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1)
@@ -249,7 +249,7 @@ public class Panel_KhachHang extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblDiaChi)
                     .addComponent(txtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 178, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
