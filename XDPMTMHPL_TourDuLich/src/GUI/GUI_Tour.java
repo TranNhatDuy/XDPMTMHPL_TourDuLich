@@ -57,7 +57,6 @@ public class GUI_Tour extends javax.swing.JFrame {
         btnNhanVien = new javax.swing.JButton();
         btnDangxuat = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        lbl_Image = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(850, 530));
@@ -132,17 +131,15 @@ public class GUI_Tour extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(102, 255, 102));
 
-        lbl_Image.setToolTipText("");
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbl_Image, javax.swing.GroupLayout.DEFAULT_SIZE, 850, Short.MAX_VALUE)
+            .addGap(0, 850, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbl_Image, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE)
+            .addGap(0, 660, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -269,6 +266,5 @@ public class GUI_Tour extends javax.swing.JFrame {
     private javax.swing.JButton btnVe;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JLabel lbl_Image;
     // End of variables declaration//GEN-END:variables
 }
