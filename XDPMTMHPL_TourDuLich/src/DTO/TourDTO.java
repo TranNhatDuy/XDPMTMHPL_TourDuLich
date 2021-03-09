@@ -13,91 +13,59 @@ import java.sql.Date;
  */
 public class TourDTO {
 
-    private String matour, tentour;
-    private Date ngaybd, ngaykt;
-    private float gia;
-    private int soluong;
-    private String phuongtien;
-    private String khachsan;
+    String matour, tentour, mota, maloai, magia;
 
-    public TourDTO() {
-    }
-
-    public TourDTO(String matour, String tentour, Date ngaybd, Date ngaykt, float gia, int soluong, String phuongtien, String khachsan) {
+    public TourDTO(String matour, String tentour, String mota, String maloai, String magia) {
         this.matour = matour;
         this.tentour = tentour;
-        this.ngaybd = ngaybd;
-        this.ngaykt = ngaykt;
-        this.gia = gia;
-        this.soluong = soluong;
-        this.phuongtien = phuongtien;
-        this.khachsan = khachsan;
+        this.mota = mota;
+        this.maloai = maloai;
+        this.magia = magia;
     }
 
     public String getMatour() {
         return matour;
     }
 
-    public void setMatour(String matour) {
-        this.matour = matour;
-    }
-
     public String getTentour() {
         return tentour;
+    }
+
+    public String getMota() {
+        return mota;
+    }
+
+    public String getMaloai() {
+        return maloai;
+    }
+
+    public String getMagia() {
+        return magia;
+    }
+
+    public void setMatour(String matour) {
+        this.matour = matour;
     }
 
     public void setTentour(String tentour) {
         this.tentour = tentour;
     }
 
-    public Date getNgaybd() {
-        return ngaybd;
+    public void setMota(String mota) {
+        this.mota = mota;
     }
 
-    public void setNgaybd(Date ngaybd) {
-        this.ngaybd = ngaybd;
+    public void setMaloai(String maloai) {
+        this.maloai = maloai;
     }
 
-    public Date getNgaykt() {
-        return ngaykt;
+    public void setMagia(String magia) {
+        this.magia = magia;
     }
+   
 
-    public void setNgaykt(Date ngaykt) {
-        this.ngaykt = ngaykt;
-    }
 
-    public float getGia() {
-        return gia;
-    }
-
-    public void setGia(float gia) {
-        this.gia = gia;
-    }
-
-    public int getSoluong() {
-        return soluong;
-    }
-
-    public void setSoluong(int soluong) {
-        this.soluong = soluong;
-    }
-
-    public String getPhuongtien() {
-        return phuongtien;
-    }
-
-    public void setPhuongtien(String phuongtien) {
-        this.phuongtien = phuongtien;
-    }
-
-    public String getKhachsan() {
-        return khachsan;
-    }
-
-    public void setKhachsan(String khachsan) {
-        this.khachsan = khachsan;
-    }
-
+   
     
 
 }

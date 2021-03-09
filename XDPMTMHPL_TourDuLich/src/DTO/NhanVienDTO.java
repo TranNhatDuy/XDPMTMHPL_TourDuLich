@@ -10,56 +10,64 @@ package DTO;
  * @author Win 10
  */
 public class NhanVienDTO {
-    private String MaNV, TenNV, SDT, DiaChi, NhiemVu;
-    public NhanVienDTO(){
-        
+    String manv, tennv, sdt, ngaysinh, email, nhiemvu;
+    
+    public NhanVienDTO(String manv, String tennv, String sdt, String ngaysinh, String email, String nhiemvu) {
+        this.manv = manv;
+        this.tennv = tennv;
+        this.sdt = sdt;
+        this.ngaysinh = ngaysinh;
+        this.email = email;
+        this.nhiemvu = nhiemvu;
     }
 
-    public NhanVienDTO(String MaNV, String TenNV, String SDT, String DiaChi, String NhiemVu) {
-        this.MaNV = MaNV;
-        this.TenNV = TenNV;
-        this.SDT = SDT;
-        this.DiaChi = DiaChi;
-        this.NhiemVu = NhiemVu;
+    public String getManv() {
+        return manv;
     }
 
-    public String getMaNV() {
-        return MaNV;
+    public String getTennv() {
+        return tennv;
     }
 
-    public String getTenNV() {
-        return TenNV;
+    public String getSdt() {
+        return sdt;
     }
 
-    public String getSDT() {
-        return SDT;
+    public String getNgaysinh() {
+        return ngaysinh;
     }
 
-    public String getDiaChi() {
-        return DiaChi;
+    public String getEmail() {
+        return email;
     }
 
-    public String getNhiemVu() {
-        return NhiemVu;
+    public String getNhiemvu() {
+        return nhiemvu;
     }
 
-    public void setMaNV(String MaNV) {
-        this.MaNV = MaNV;
+    public void setManv(String manv) {
+        this.manv = manv;
     }
 
-    public void setTenNV(String TenNV) {
-        this.TenNV = TenNV;
+    public void setTennv(String tennv) {
+        this.tennv = tennv;
     }
 
-    public void setSDT(String SDT) {
-        this.SDT = SDT;
+    public void setSdt(String sdt) {
+        this.sdt = sdt;
     }
 
-    public void setDiaChi(String DiaChi) {
-        this.DiaChi = DiaChi;
+    public void setNgaysinh(String ngaysinh) {
+        this.ngaysinh = ngaysinh;
     }
 
-    public void setNhiemVu(String NhiemVu) {
-        this.NhiemVu = NhiemVu;
+    public void setEmail(String email) {
+        this.email = email;
     }
+
+    public void setNhiemvu(String nhiemvu) {
+        this.nhiemvu = nhiemvu;
+    }
+
+    
 }

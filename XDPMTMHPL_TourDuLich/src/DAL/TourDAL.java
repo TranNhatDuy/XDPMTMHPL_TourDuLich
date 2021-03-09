@@ -31,14 +31,14 @@ public class TourDAL {
         ArrayList<TourDTO> tourList = new ArrayList<>();
 
         try {
-            String sql = "SELECT * FROM tour, tourachsan, phuongtien WHERE tour.MaPT = phuongtien.MaPT AND tour.MaKS = tourachsan.MaKS";
+            String sql = "SELECT * FROM tour";
             ps = new MySQLConnect().conn.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
                 TourDTO tour = new TourDTO(rs.getString("MaTour"), rs.getString("Ten"),
                         rs.getDate("NgayBD"), rs.getDate("NgayKT"),
                         rs.getFloat("Gia"), rs.getInt("Soluong"),
-                        rs.getString("TenPT"), rs.getString("TenKS"));
+                        rs.getString("MaPT"), rs.getString("MaKS"));
                 tourList.add(tour);
             }
         } catch (SQLException ex) {
