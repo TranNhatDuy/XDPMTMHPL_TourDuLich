@@ -306,34 +306,34 @@ public class Panel_KhachHang extends javax.swing.JPanel {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-        KhachHangDTO kh = new KhachHangDTO();
-        kh.setMakh(txtMaKH.getText());
-        kh.setTenkh(txtTenKH.getText());
-        kh.setSdt(txtSdt.getText());
-        kh.setDiachi(txtDiaChi.getText());
-        if(evt.getSource() == btnThem){
-            KhachHangDAL addKH = new KhachHangDAL();
-            addKH.addKhachHang(kh);
-            showKhachHang();
-        }
+//        KhachHangDTO kh = new KhachHangDTO();
+//        kh.setMakh(txtMaKH.getText());
+//        kh.setTenkh(txtTenKH.getText());
+//        kh.setSdt(txtSdt.getText());
+//        kh.setDiachi(txtDiaChi.getText());
+//        if(evt.getSource() == btnThem){
+//            KhachHangDAL addKH = new KhachHangDAL();
+//            addKH.addKhachHang(kh);
+//            showKhachHang();
+//        }
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
-        // TODO add your handling code here:
-        KhachHangDTO kh = new KhachHangDTO(txtMaKH.getText(), txtTenKH.getText(), txtSdt.getText(), txtDiaChi.getText());
-        
-        if(evt.getSource() == btnXoa){
-            if(txtMaKH.getText() == ""){
-                JOptionPane.showMessageDialog(null,"Chưa chọn dữ liệu", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-            }
-            else{
-                KhachHangDAL removeKH = new KhachHangDAL();
-                removeKH.removeKhachHang(kh);
-                showKhachHang();
-            }
-            
-        }
-        
+//        // TODO add your handling code here:
+//        KhachHangDTO kh = new KhachHangDTO(txtMaKH.getText(), txtTenKH.getText(), txtSdt.getText(), txtDiaChi.getText());
+//        
+//        if(evt.getSource() == btnXoa){
+//            if(txtMaKH.getText() == ""){
+//                JOptionPane.showMessageDialog(null,"Chưa chọn dữ liệu", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+//            }
+//            else{
+//                KhachHangDAL removeKH = new KhachHangDAL();
+//                removeKH.removeKhachHang(kh);
+//                showKhachHang();
+//            }
+//            
+//        }
+//        
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void tblKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKHMouseClicked
@@ -348,18 +348,18 @@ public class Panel_KhachHang extends javax.swing.JPanel {
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
-        KhachHangDTO khDTO = new KhachHangDTO();
-        khDTO.setMakh(txtMaKH.getText());
-        khDTO.setTenkh(txtTenKH.getText());
-        khDTO.setSdt(txtSdt.getText());
-        khDTO.setDiachi(txtDiaChi.getText());
-        if(evt.getSource() == btnSua){
-            KhachHangDAL kh = new KhachHangDAL();
-            kh.editKhachHang(khDTO);
-            System.out.println(khDTO.getMakh()+ " " + khDTO.getTenkh());
-            showKhachHang();
-        }
-        
+//        KhachHangDTO khDTO = new KhachHangDTO();
+//        khDTO.setMakh(txtMaKH.getText());
+//        khDTO.setTenkh(txtTenKH.getText());
+//        khDTO.setSdt(txtSdt.getText());
+//        khDTO.setDiachi(txtDiaChi.getText());
+//        if(evt.getSource() == btnSua){
+//            KhachHangDAL kh = new KhachHangDAL();
+//            kh.editKhachHang(khDTO);
+//            System.out.println(khDTO.getMakh()+ " " + khDTO.getTenkh());
+//            showKhachHang();
+//        }
+//        
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
@@ -379,7 +379,7 @@ public class Panel_KhachHang extends javax.swing.JPanel {
         ds = kh.loadDataKhachHang();
         model.setRowCount(0);
         ds.forEach((KhachHangDTO) -> {
-            model.addRow(new Object[] {KhachHangDTO.getMakh(), KhachHangDTO.getTenkh(), KhachHangDTO.getSdt(), KhachHangDTO.getDiachi()});
+//            model.addRow(new Object[] {KhachHangDTO.getMakh(), KhachHangDTO.getTenkh(), KhachHangDTO.getSdt(), KhachHangDTO.getDiachi()});
         }); 
         tblKH.setModel(model);
         

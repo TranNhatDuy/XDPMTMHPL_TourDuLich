@@ -35,11 +35,11 @@ public class TourDAL {
             ps = new MySQLConnect().conn.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
-                TourDTO tour = new TourDTO(rs.getString("MaTour"), rs.getString("Ten"),
-                        rs.getDate("NgayBD"), rs.getDate("NgayKT"),
-                        rs.getFloat("Gia"), rs.getInt("Soluong"),
-                        rs.getString("MaPT"), rs.getString("MaKS"));
-                tourList.add(tour);
+//                TourDTO tour = new TourDTO(rs.getString("MaTour"), rs.getString("Ten"),
+//                        rs.getDate("NgayBD"), rs.getDate("NgayKT"),
+//                        rs.getFloat("Gia"), rs.getInt("Soluong"),
+//                        rs.getString("MaPT"), rs.getString("MaKS"));
+//                tourList.add(tour);
             }
         } catch (SQLException ex) {
             Logger.getLogger(TourDAL.class.getName()).log(Level.SEVERE, null, ex);
@@ -55,12 +55,12 @@ public class TourDAL {
             ps = new MySQLConnect().conn.prepareCall(sql);
             ps.setString(1, tour.getMatour());
             ps.setString(2, tour.getTentour());
-            ps.setDate(3, tour.getNgaybd());
-            ps.setDate(4, tour.getNgaykt());
-            ps.setFloat(5, tour.getGia());
-            ps.setInt(6, tour.getSoluong());
-            ps.setString(7, tour.getPhuongtien());
-            ps.setString(8, tour.getKhachsan());
+//            ps.setDate(3, tour.getNgaybd());
+//            ps.setDate(4, tour.getNgaykt());
+//            ps.setFloat(5, tour.getGia());
+//            ps.setInt(6, tour.getSoluong());
+//            ps.setString(7, tour.getPhuongtien());
+//            ps.setString(8, tour.getKhachsan());
             ps.execute();
         } catch (SQLException ex) {
             Logger.getLogger(TourDAL.class.getName()).log(Level.SEVERE, null, ex);
