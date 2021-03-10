@@ -294,15 +294,15 @@ public class Panel_NhanVien extends javax.swing.JPanel {
     }
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-        NhanVienDTO nv = new NhanVienDTO();
-        nv.setMaNV(txtMaNV.getText());
-        nv.setTenNV(txtTenNV.getText());
-        nv.setSDT(txtSDT.getText());
-        nv.setDiaChi(txtDiaChi.getText());
-        if (evt.getSource() == btnThem) {          
-            new NhanVienBLL().addNhanVien(nv);
-            showNhanVien();
-        }
+//        NhanVienDTO nv = new NhanVienDTO();
+//        nv.setMaNV(txtMaNV.getText());
+//        nv.setTenNV(txtTenNV.getText());
+//        nv.setSDT(txtSDT.getText());
+//        nv.setDiaChi(txtDiaChi.getText());
+//        if (evt.getSource() == btnThem) {          
+//            new NhanVienBLL().addNhanVien(nv);
+//            showNhanVien();
+//        }
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
@@ -318,18 +318,18 @@ public class Panel_NhanVien extends javax.swing.JPanel {
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
-        NhanVienDTO nv = new NhanVienDTO(txtMaNV.getText(), txtTenNV.getText(), txtSDT.getText(), txtDiaChi.getText(), txtNhiemVu.getText());
-         int indexNhanVien=tblNV.getSelectedRow();
-        String data=model.getValueAt(indexNhanVien, 0).toString();
-        if (evt.getSource() == btnXoa) {
-            if (txtMaNV.getText() == "") {
-                JOptionPane.showMessageDialog(null, "Chưa chọn dữ liệu", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                new NhanVienBLL().removeNhanVien(data);
-                showNhanVien();
-            }
-
-        }
+//        NhanVienDTO nv = new NhanVienDTO(txtMaNV.getText(), txtTenNV.getText(), txtSDT.getText(), txtDiaChi.getText(), txtNhiemVu.getText());
+//         int indexNhanVien=tblNV.getSelectedRow();
+//        String data=model.getValueAt(indexNhanVien, 0).toString();
+//        if (evt.getSource() == btnXoa) {
+//            if (txtMaNV.getText() == "") {
+//                JOptionPane.showMessageDialog(null, "Chưa chọn dữ liệu", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+//            } else {
+//                new NhanVienBLL().removeNhanVien(data);
+//                showNhanVien();
+//            }
+//
+//        }
 
     }//GEN-LAST:event_btnXoaActionPerformed
 
@@ -342,19 +342,19 @@ public class Panel_NhanVien extends javax.swing.JPanel {
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
-        int indexNhanVien=tblNV.getSelectedRow();
-        String data=model.getValueAt(indexNhanVien, 0).toString();
-        NhanVienDTO NVDTO = new NhanVienDTO();
-        NVDTO.setMaNV(txtMaNV.getText());
-        NVDTO.setTenNV(txtTenNV.getText());
-        NVDTO.setSDT(txtSDT.getText());
-        NVDTO.setDiaChi(txtDiaChi.getText());
-        NVDTO.setNhiemVu(txtNhiemVu.getText());
-        if (evt.getSource() == btnSua) {         
-            new NhanVienBLL().editNhanVien(NVDTO, data);
-            System.out.println(NVDTO.getMaNV() + " " + NVDTO.getTenNV());
-            showNhanVien();
-        }
+//        int indexNhanVien=tblNV.getSelectedRow();
+//        String data=model.getValueAt(indexNhanVien, 0).toString();
+//        NhanVienDTO NVDTO = new NhanVienDTO();
+//        NVDTO.setMaNV(txtMaNV.getText());
+//        NVDTO.setTenNV(txtTenNV.getText());
+//        NVDTO.setSDT(txtSDT.getText());
+//        NVDTO.setDiaChi(txtDiaChi.getText());
+//        NVDTO.setNhiemVu(txtNhiemVu.getText());
+//        if (evt.getSource() == btnSua) {         
+//            new NhanVienBLL().editNhanVien(NVDTO, data);
+//            System.out.println(NVDTO.getMaNV() + " " + NVDTO.getTenNV());
+//            showNhanVien();
+//        }
 
     }//GEN-LAST:event_btnSuaActionPerformed
 
@@ -422,7 +422,7 @@ public class Panel_NhanVien extends javax.swing.JPanel {
         model.setRowCount(0);
         for (NhanVienDTO NV : nhanvien) {
             model.addRow(new Object[]{
-                NV.getMaNV(), NV.getTenNV(), NV.getSDT(),NV.getDiaChi(),NV.getNhiemVu()
+//                NV.getMaNV(), NV.getTenNV(), NV.getSDT(),NV.getDiaChi(),NV.getNhiemVu()
             });
         }
     }
