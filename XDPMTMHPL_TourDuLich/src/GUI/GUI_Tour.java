@@ -37,7 +37,7 @@ public class GUI_Tour extends javax.swing.JFrame {
     public void Image() {
 //        ImageIcon icon = new ImageIcon(getClass().getResource("/Images/bg.jpg"));
         ImageIcon img = new ImageIcon("src/Images/bg.jpg");
-        // KÍCH THƯỚC HÌNH ẢNH LÀ 672,496 => kích thước panel cũng vậy
+        // KÍCH THƯỚC HÌNH ẢNH LÀ 767,617 => kích thước panel cũng vậy
         lbl_Image.setIcon(img);
     }
 
@@ -60,6 +60,7 @@ public class GUI_Tour extends javax.swing.JFrame {
         btnDiaDiem = new javax.swing.JButton();
         btnDoan = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
+        lbl_Image = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(850, 530));
@@ -146,7 +147,7 @@ public class GUI_Tour extends javax.swing.JFrame {
                 .addComponent(btnNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnVe, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addComponent(btnDangxuat))
         );
 
@@ -156,11 +157,11 @@ public class GUI_Tour extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 850, Short.MAX_VALUE)
+            .addComponent(lbl_Image, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 660, Short.MAX_VALUE)
+            .addComponent(lbl_Image, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -277,5 +278,6 @@ public class GUI_Tour extends javax.swing.JFrame {
     private javax.swing.JButton btnVe;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel lbl_Image;
     // End of variables declaration//GEN-END:variables
 }
