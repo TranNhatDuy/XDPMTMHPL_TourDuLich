@@ -10,9 +10,13 @@ package DTO;
  * @author Admin
  */
 public class GiaDTO {
+
     String magia, matour;
     int sotien;
     String ngayden, ngaydi;
+
+    public GiaDTO() {
+    }
 
     public GiaDTO(String magia, String matour, int sotien, String ngayden, String ngaydi) {
         this.magia = magia;
@@ -62,8 +66,4 @@ public class GiaDTO {
         this.ngaydi = ngaydi;
     }
 
-    
-    
-    
-    
 }
