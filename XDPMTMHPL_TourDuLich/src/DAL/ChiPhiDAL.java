@@ -3,25 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package BLL;
-
+package DAL;
 
 /**
  *
  * @author HUYNHVIETBINH
  */
-public class GiaBLL {
+public class ChiPhiDAL {
     
-
-import DAL.GiaDAL;
-import DTO.GiaDTO;
-import java.util.ArrayList;
-
-/**
- *
- * @author Vo Duy Kiet
- */
-public class GiaBLL {
-    
-
 }

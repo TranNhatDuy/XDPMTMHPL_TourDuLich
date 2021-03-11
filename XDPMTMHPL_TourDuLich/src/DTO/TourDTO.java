@@ -13,14 +13,17 @@ import java.sql.Date;
  */
 public class TourDTO {
 
-    String matour, tentour, mota, maloai, magia;
+    String matour, tentour, madd, mota;
 
-    public TourDTO(String matour, String tentour, String mota, String maloai, String magia) {
+    public TourDTO() {
+        
+    }
+    
+    public TourDTO(String matour, String tentour, String madd, String mota) {
         this.matour = matour;
         this.tentour = tentour;
+        this.madd = madd;
         this.mota = mota;
-        this.maloai = maloai;
-        this.magia = magia;
     }
 
     public String getMatour() {
@@ -31,16 +34,12 @@ public class TourDTO {
         return tentour;
     }
 
+    public String getMadd() {
+        return madd;
+    }
+
     public String getMota() {
         return mota;
-    }
-
-    public String getMaloai() {
-        return maloai;
-    }
-
-    public String getMagia() {
-        return magia;
     }
 
     public void setMatour(String matour) {
@@ -51,18 +50,15 @@ public class TourDTO {
         this.tentour = tentour;
     }
 
+    public void setMadd(String madd) {
+        this.madd = madd;
+    }
+
     public void setMota(String mota) {
         this.mota = mota;
     }
 
-    public void setMaloai(String maloai) {
-        this.maloai = maloai;
-    }
-
-    public void setMagia(String magia) {
-        this.magia = magia;
-    }
-   
+    
 
 
    
