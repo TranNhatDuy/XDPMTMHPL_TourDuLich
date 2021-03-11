@@ -209,9 +209,10 @@ public class GUI_Tour extends javax.swing.JFrame {
     Panel_NhanVien pnNV = new Panel_NhanVien();
     Panel_KhachHang pnKH = new Panel_KhachHang();
     Panel_ChiPhi pnCP = new Panel_ChiPhi();
-   //   Panel_Gia pnGia = new Panel_Gia();
+    Panel_Gia pnGia = new Panel_Gia();
     Panel_Doan pnDoan = new Panel_Doan();
     Panel_Tour pnTour = new Panel_Tour();
+    Panel_DiaDiem pnDd = new Panel_DiaDiem();
 
 
     private void btnKhHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhHangActionPerformed
@@ -258,13 +259,13 @@ public class GUI_Tour extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGiaActionPerformed
 
     private void btnDiaDiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiaDiemActionPerformed
-//        if (evt.getSource() == btnDiaDiem) {
-//            jPanel3.removeAll();
-//            jPanel3.add(pn);
-//            jPanel3.repaint();
-//            pn.revalidate();
-//            pnGia.repaint();
-//        }
+        if (evt.getSource() == btnDiaDiem) {
+            jPanel3.removeAll();
+            jPanel3.add(pnDd);
+            jPanel3.repaint();
+            pnDd.revalidate();
+            pnGia.repaint();
+        }
     }//GEN-LAST:event_btnDiaDiemActionPerformed
 
     private void btnDoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoanActionPerformed
@@ -279,6 +280,13 @@ public class GUI_Tour extends javax.swing.JFrame {
 
     private void btnChiphiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiphiActionPerformed
         // TODO add your handling code here:
+        if (evt.getSource() == btnChiphi) {
+            jPanel3.removeAll();
+            jPanel3.add(pnCP);
+            jPanel3.repaint();
+            pnCP.revalidate();
+            pnCP.repaint();
+        }
     }//GEN-LAST:event_btnChiphiActionPerformed
 
     /**
