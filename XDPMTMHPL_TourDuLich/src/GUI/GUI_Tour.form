@@ -56,7 +56,6 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="btnNhanVien" max="32767" attributes="0"/>
-                              <Component id="btnVe" alignment="1" max="32767" attributes="0"/>
                               <Component id="btnTour" alignment="1" max="32767" attributes="0"/>
                               <Component id="btnKhHang" alignment="1" max="32767" attributes="0"/>
                           </Group>
@@ -98,9 +97,7 @@
                   <Component id="btnKhHang" min="-2" pref="56" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnNhanVien" min="-2" pref="56" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnVe" min="-2" pref="56" max="-2" attributes="0"/>
-                  <EmptySpace pref="46" max="32767" attributes="0"/>
+                  <EmptySpace pref="108" max="32767" attributes="0"/>
                   <Component id="btnDangxuat" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -123,11 +120,6 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTourActionPerformed"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnVe">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="V&#xe9;"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnNhanVien">
           <Properties>
