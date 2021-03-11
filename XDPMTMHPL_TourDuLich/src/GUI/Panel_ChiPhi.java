@@ -19,7 +19,7 @@ public class Panel_ChiPhi extends javax.swing.JPanel {
      */
     public Panel_ChiPhi() {
         initComponents();
-        this.setBounds(0, 0, 786, 629);
+        this.setBounds(0, 0, 786, 632);
         this.setBorder(BorderFactory.createLineBorder(Color.black));
         
     }
