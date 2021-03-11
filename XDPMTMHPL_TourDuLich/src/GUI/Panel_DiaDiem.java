@@ -9,12 +9,12 @@ package GUI;
  *
  * @author Win 10
  */
-public class Panel_DiaDiem_1 extends javax.swing.JPanel {
+public class Panel_DiaDiem extends javax.swing.JPanel {
 
     /**
      * Creates new form Panel_Gia
      */
-    public Panel_DiaDiem_1() {
+    public Panel_DiaDiem() {
         initComponents();
         this.setBounds(0, 0, 786, 629);
     }
