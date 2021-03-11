@@ -279,6 +279,13 @@ public class GUI_Tour extends javax.swing.JFrame {
 
     private void btnChiphiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiphiActionPerformed
         // TODO add your handling code here:
+        if (evt.getSource() == btnChiphi) {
+            jPanel3.removeAll();
+            jPanel3.add(pnCP);
+            jPanel3.repaint();
+            pnCP.revalidate();
+            pnCP.repaint();
+        }
     }//GEN-LAST:event_btnChiphiActionPerformed
 
     /**

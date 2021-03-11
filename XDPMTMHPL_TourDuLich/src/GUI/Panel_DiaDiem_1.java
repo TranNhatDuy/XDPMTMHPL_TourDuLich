@@ -5,6 +5,9 @@
  */
 package GUI;
 
+import java.awt.Color;
+import javax.swing.BorderFactory;
+
 /**
  *
  * @author Win 10
@@ -16,7 +19,8 @@ public class Panel_DiaDiem_1 extends javax.swing.JPanel {
      */
     public Panel_DiaDiem_1() {
         initComponents();
-        this.setBounds(0, 0, 786, 629);
+        this.setBounds(0, 0, 786, 632);
+        this.setBorder(BorderFactory.createLineBorder(Color.black));
     }
 
     /**

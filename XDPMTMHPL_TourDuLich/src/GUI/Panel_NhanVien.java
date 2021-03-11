@@ -33,7 +33,7 @@ public class Panel_NhanVien extends javax.swing.JPanel {
 
     public Panel_NhanVien() {
         initComponents();
-        this.setBounds(0, 0, 786, 629);
+        this.setBounds(0, 0, 786, 632);
         this.setBorder(BorderFactory.createLineBorder(Color.black));
         nhanvien=new ArrayList<>();
         model=(DefaultTableModel) tblNV.getModel();
