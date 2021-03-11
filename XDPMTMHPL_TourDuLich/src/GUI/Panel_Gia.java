@@ -317,6 +317,23 @@ public class Panel_Gia extends javax.swing.JPanel {
         String magia=txtMaGia.getText();
         String madd=txtMaDiaDiem.getText();
         int sotien=Integer.parseInt(txtGia.getText());
+        String tungay=txtTuNgay.getText();
+        String denngay=txtDenNgay.getText();
+        Boolean isOK=true;
+        if(magia.length()==0){
+            JOptionPane.showMessageDialog(this, "Mã giá không được để trống");
+            isOK=false;
+        }else if(madd.length()==0){
+            JOptionPane.showMessageDialog(this, "Mã địa điểm không được để trống");
+            isOK=false;
+        } else if(tungay.length()==0){
+            JOptionPane.showMessageDialog(this, "Từ ngày không được để trống");
+            isOK=false;
+        }else if(denngay.length()==0){
+            JOptionPane.showMessageDialog(this, "Đến ngày không được để trống");
+            isOK=false;
+        }
+        
     }//GEN-LAST:event_btnThemGiaActionPerformed
 
 
