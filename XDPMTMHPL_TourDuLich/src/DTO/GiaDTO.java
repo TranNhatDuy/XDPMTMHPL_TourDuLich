@@ -11,59 +11,59 @@ package DTO;
  */
 public class GiaDTO {
 
-    String magia, matour;
+    String magia, madd;
     int sotien;
-    String ngayden, ngaydi;
+    String denngay, tungay;
 
     public GiaDTO() {
     }
 
-    public GiaDTO(String magia, String matour, int sotien, String ngayden, String ngaydi) {
+    public GiaDTO(String magia, String madd, int sotien, String denngay, String tungay) {
         this.magia = magia;
-        this.matour = matour;
+        this.madd = madd;
         this.sotien = sotien;
-        this.ngayden = ngayden;
-        this.ngaydi = ngaydi;
+        this.denngay = denngay;
+        this.tungay = tungay;
     }
 
     public String getMagia() {
         return magia;
     }
 
-    public String getMatour() {
-        return matour;
+    public String getMadd() {
+        return madd;
     }
 
     public int getSotien() {
         return sotien;
     }
 
-    public String getNgayden() {
-        return ngayden;
+    public String getDenngay() {
+        return denngay;
     }
 
-    public String getNgaydi() {
-        return ngaydi;
+    public void setDenngay(String denngay) {
+        this.denngay = denngay;
+    }
+
+    public String getTungay() {
+        return tungay;
+    }
+
+    public void setTungay(String tungay) {
+        this.tungay = tungay;
     }
 
     public void setMagia(String magia) {
         this.magia = magia;
     }
 
-    public void setMatour(String matour) {
-        this.matour = matour;
+    public void setMadd(String magia) {
+        this.madd = madd;
     }
 
     public void setSotien(int sotien) {
         this.sotien = sotien;
-    }
-
-    public void setNgayden(String ngayden) {
-        this.ngayden = ngayden;
-    }
-
-    public void setNgaydi(String ngaydi) {
-        this.ngaydi = ngaydi;
     }
 
 }
