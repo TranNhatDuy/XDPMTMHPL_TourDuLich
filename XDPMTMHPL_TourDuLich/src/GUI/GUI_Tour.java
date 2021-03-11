@@ -53,7 +53,6 @@ public class GUI_Tour extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         btnKhHang = new javax.swing.JButton();
         btnTour = new javax.swing.JButton();
-        btnVe = new javax.swing.JButton();
         btnNhanVien = new javax.swing.JButton();
         btnDangxuat = new javax.swing.JButton();
         btnGia = new javax.swing.JButton();
@@ -78,8 +77,6 @@ public class GUI_Tour extends javax.swing.JFrame {
                 btnTourActionPerformed(evt);
             }
         });
-
-        btnVe.setText("Vé");
 
         btnNhanVien.setText("Nhân Viên");
         btnNhanVien.addActionListener(new java.awt.event.ActionListener() {
@@ -126,7 +123,6 @@ public class GUI_Tour extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnVe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnTour, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnKhHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -159,9 +155,7 @@ public class GUI_Tour extends javax.swing.JFrame {
                 .addComponent(btnKhHang, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnVe, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
                 .addComponent(btnDangxuat))
         );
 
@@ -321,7 +315,6 @@ public class GUI_Tour extends javax.swing.JFrame {
     private javax.swing.JButton btnKhHang;
     private javax.swing.JButton btnNhanVien;
     private javax.swing.JButton btnTour;
-    private javax.swing.JButton btnVe;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lbl_Image;
