@@ -249,13 +249,13 @@ public class GUI_Tour extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNhanVienActionPerformed
 
     private void btnGiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGiaActionPerformed
-//        if (evt.getSource() == btnGia) {
-//            jPanel3.removeAll();
-//            jPanel3.add(pnGia);
-//            jPanel3.repaint();
-//            pnGia.revalidate();
-//            pnGia.repaint();
-//        }
+        if (evt.getSource() == btnGia) {
+            jPanel3.removeAll();
+            jPanel3.add(pnGia);
+            jPanel3.repaint();
+            pnGia.revalidate();
+            pnGia.repaint();
+        }
     }//GEN-LAST:event_btnGiaActionPerformed
 
     private void btnDiaDiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiaDiemActionPerformed
