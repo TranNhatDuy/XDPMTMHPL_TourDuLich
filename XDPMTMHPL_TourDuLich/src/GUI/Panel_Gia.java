@@ -16,6 +16,7 @@ public class Panel_Gia extends javax.swing.JPanel {
      */
     public Panel_Gia() {
         initComponents();
+        this.setBounds(0, 0, 786, 629);
     }
 
     /**

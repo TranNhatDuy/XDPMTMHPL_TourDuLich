@@ -16,6 +16,7 @@ public class Panel_Doan extends javax.swing.JPanel {
      */
     public Panel_Doan() {
         initComponents();
+        this.setBounds(0, 0, 786, 629);
     }
 
     /**

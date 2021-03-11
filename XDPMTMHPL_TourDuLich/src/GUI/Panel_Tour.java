@@ -403,7 +403,7 @@ public class Panel_Tour extends javax.swing.JPanel {
         txtNgayBD.setText(dtmtour.getValueAt(indexTour, 2).toString());
         txtNgayKT.setText(dtmtour.getValueAt(indexTour, 3).toString());
         txtGia.setText(dtmtour.getValueAt(indexTour, 4).toString());
-        txtSoLuong.setText(dtmtour.getValueAt(indexTour, 5).toString());
+//        txtSoLuong.setText(dtmtour.getValueAt(indexTour, 5).toString());
 //        txtTenPT.setText(dtmtour.getValueAt(indexTour, 6).toString());
 //        txtTenKS.setText(dtmtour.getValueAt(indexTour, 7).toString());
     }//GEN-LAST:event_tblTourMouseClicked
@@ -414,7 +414,7 @@ public class Panel_Tour extends javax.swing.JPanel {
         txtNgayBD.setText("");
         txtNgayKT.setText("");
         txtGia.setText("");
-        txtSoLuong.setText("");
+   //     txtSoLuong.setText("");
 //        txtTenPT.setText("");
 //        txtTenKS.setText("");
     }//GEN-LAST:event_btnLamMoiMouseClicked

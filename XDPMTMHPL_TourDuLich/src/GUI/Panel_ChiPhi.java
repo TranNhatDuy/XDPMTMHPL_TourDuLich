@@ -45,6 +45,8 @@ public class Panel_ChiPhi extends javax.swing.JPanel {
         btnXoa = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
 
+        setPreferredSize(new java.awt.Dimension(684, 508));
+
         jLabel1.setText("Mã chi phí:");
 
         jLabel2.setText("Mã đoàn:");
@@ -112,7 +114,7 @@ public class Panel_ChiPhi extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,12 +146,12 @@ public class Panel_ChiPhi extends javax.swing.JPanel {
                             .addComponent(jLabel6)
                             .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(133, 133, 133)
+                .addGap(124, 124, 124)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThem)
                     .addComponent(btnXoa)
                     .addComponent(btnSua))
-                .addContainerGap(171, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

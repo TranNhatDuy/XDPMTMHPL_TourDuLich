@@ -3,9 +3,6 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[850, 530]"/>
-    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -152,16 +149,25 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Gi&#xe1;"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGiaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnDiaDiem">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x110;&#x1ecb;a &#x111;i&#x1ec3;m"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDiaDiemActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnDoan">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x110;o&#xe0;n"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDoanActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -183,7 +189,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="lbl_Image" alignment="1" max="32767" attributes="0"/>
+              <Component id="lbl_Image" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>

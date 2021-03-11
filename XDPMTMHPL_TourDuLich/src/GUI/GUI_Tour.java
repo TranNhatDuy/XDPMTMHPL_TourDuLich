@@ -63,7 +63,6 @@ public class GUI_Tour extends javax.swing.JFrame {
         lbl_Image = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(850, 530));
 
         btnKhHang.setText("Khách Hàng");
         btnKhHang.addActionListener(new java.awt.event.ActionListener() {
@@ -97,10 +96,25 @@ public class GUI_Tour extends javax.swing.JFrame {
         });
 
         btnGia.setText("Giá");
+        btnGia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGiaActionPerformed(evt);
+            }
+        });
 
         btnDiaDiem.setText("Địa điểm");
+        btnDiaDiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDiaDiemActionPerformed(evt);
+            }
+        });
 
         btnDoan.setText("Đoàn");
+        btnDoan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDoanActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -161,7 +175,7 @@ public class GUI_Tour extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbl_Image, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lbl_Image, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -189,7 +203,9 @@ public class GUI_Tour extends javax.swing.JFrame {
 
     Panel_NhanVien pnNV = new Panel_NhanVien();
     Panel_KhachHang pnKH = new Panel_KhachHang();
-    
+    Panel_ChiPhi pnCP = new Panel_ChiPhi();
+    Panel_Gia pnGia = new Panel_Gia();
+    Panel_Doan pnDoan = new Panel_Doan();
     Panel_Tour pnTour = new Panel_Tour();
 
 
@@ -231,6 +247,36 @@ public class GUI_Tour extends javax.swing.JFrame {
         new DangNhapFrm().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnDangxuatActionPerformed
+
+    private void btnGiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGiaActionPerformed
+        if (evt.getSource() == btnGia) {
+            jPanel3.removeAll();
+            jPanel3.add(pnGia);
+            jPanel3.repaint();
+            pnGia.revalidate();
+            pnGia.repaint();
+        }
+    }//GEN-LAST:event_btnGiaActionPerformed
+
+    private void btnDiaDiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiaDiemActionPerformed
+//        if (evt.getSource() == btnDiaDiem) {
+//            jPanel3.removeAll();
+//            jPanel3.add(pn);
+//            jPanel3.repaint();
+//            pn.revalidate();
+//            pnGia.repaint();
+//        }
+    }//GEN-LAST:event_btnDiaDiemActionPerformed
+
+    private void btnDoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoanActionPerformed
+        if (evt.getSource() == btnDoan) {
+            jPanel3.removeAll();
+            jPanel3.add(pnDoan);
+            jPanel3.repaint();
+            pnDoan.revalidate();
+            pnDoan.repaint();
+        }
+    }//GEN-LAST:event_btnDoanActionPerformed
 
     /**
      * @param args the command line arguments
