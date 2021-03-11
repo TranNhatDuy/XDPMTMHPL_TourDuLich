@@ -28,7 +28,8 @@ public class NhanVienDAL {
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()) {
                 NhanVienDTO nv = new NhanVienDTO(rs.getString("manv"),
-                        rs.getString("tennv"), rs.getString("sdt"), rs.getString("diachi"), rs.getString("nhiemvu"));
+                        rs.getString("tennv"), rs.getString("madoan"), rs.getString("sdt"),
+                        rs.getString("diachi"), rs.getString("email"), rs.getString("nhiemvu"));
                 DSNhanVien.add(nv);
             }
         } catch (SQLException ex) {
@@ -41,7 +42,8 @@ public class NhanVienDAL {
     public boolean addNhanVien(NhanVienDTO nv) {
         try {
             String sql = "insert into nhanvien value('";
-            sql += nv.getMaNV() + "','" + nv.getTenNV() + "','" + nv.getSDT() + "','" + nv.getDiaChi() + "','" + nv.getNhiemVu() + "')";
+            sql += nv.getManv() + "','" + nv.getTennv() + "','" + nv.getSdt() + "','" + nv.getNgaysinh() + "','" + nv.getEmail() + "'"
+                    + "                                     ,'" + nv.getNhiemvu() + "'+)";
             connect.st = connect.conn.createStatement();
             connect.st.executeUpdate(sql);
         } catch (SQLException ex) {
@@ -56,11 +58,13 @@ public class NhanVienDAL {
         String query = "update nhanvien set tennv=?, sdt=? , diachi=?, nhiemvu=? where manv=?";
         try {
             ps = new MySQLConnect().conn.prepareStatement(query);
-            ps.setString(1, pt.getTenNV());
-            ps.setString(2, pt.getSDT());
-            ps.setString(3, pt.getDiaChi());
-            ps.setString(4, pt.getNhiemVu());
-            ps.setString(5, data);
+            ps.setString(1, pt.getMadoan());
+            ps.setString(2, pt.getTennv());
+            ps.setString(3, pt.getSdt());
+            ps.setString(4, pt.getNgaysinh());
+            ps.setString(5, pt.getEmail());
+            ps.setString(6, pt.getNhiemvu());
+            ps.setString(7, data);
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();

@@ -10,10 +10,15 @@ package DTO;
  * @author Win 10
  */
 public class NhanVienDTO {
-    String manv, tennv, sdt, ngaysinh, email, nhiemvu;
-    
-    public NhanVienDTO(String manv, String tennv, String sdt, String ngaysinh, String email, String nhiemvu) {
+
+    String manv, madoan, tennv, sdt, ngaysinh, email, nhiemvu;
+
+    public NhanVienDTO() {
+    }
+
+    public NhanVienDTO(String manv, String madoan, String tennv, String sdt, String ngaysinh, String email, String nhiemvu) {
         this.manv = manv;
+        this.madoan = madoan;
         this.tennv = tennv;
         this.sdt = sdt;
         this.ngaysinh = ngaysinh;
@@ -27,6 +32,14 @@ public class NhanVienDTO {
 
     public String getTennv() {
         return tennv;
+    }
+
+    public String getMadoan() {
+        return madoan;
+    }
+
+    public void setMadoan(String madoan) {
+        this.madoan = madoan;
     }
 
     public String getSdt() {
@@ -69,5 +82,4 @@ public class NhanVienDTO {
         this.nhiemvu = nhiemvu;
     }
 
-    
 }

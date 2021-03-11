@@ -9,12 +9,12 @@ package GUI;
  *
  * @author Win 10
  */
-public class Panel_DiaDiem extends javax.swing.JPanel {
+public class Panel_DiaDiem_1 extends javax.swing.JPanel {
 
     /**
      * Creates new form Panel_Gia
      */
-    public Panel_DiaDiem() {
+    public Panel_DiaDiem_1() {
         initComponents();
         this.setBounds(0, 0, 786, 629);
     }
@@ -78,7 +78,7 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(767, 617));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel1.setText("Chi Tiết Tour");
+        jLabel1.setText("Địa điểm");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel2.setText("Giá");
@@ -214,10 +214,6 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(324, 324, 324))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -308,6 +304,10 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
                     .addComponent(jScrollPane2)
                     .addComponent(jScrollPane3))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(344, 344, 344)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
