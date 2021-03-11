@@ -33,7 +33,7 @@ public class Panel_KhachHang extends javax.swing.JPanel {
         initComponents();
 //        this.setSize(672,496);
         
-        this.setBounds(0, 0, 767, 617);
+        this.setBounds(0, 0, 786, 629);
         this.setBorder(BorderFactory.createLineBorder(Color.black));
         
         showKhachHang();
