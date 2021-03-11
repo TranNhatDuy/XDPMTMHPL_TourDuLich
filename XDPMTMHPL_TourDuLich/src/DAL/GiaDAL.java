@@ -5,6 +5,7 @@
  */
 package DAL;
 
+import DTO.DiaDiemDTO;
 import DTO.GiaDTO;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,8 +28,12 @@ public class GiaDAL {
             rs = ps.executeQuery();
             while (rs.next()) {
                 GiaDTO g = new GiaDTO();
+                DiaDiemDTO d=new DiaDiemDTO();
+                
+                d.setMadd(rs.getString("madd"));
+                
                 g.setMagia(rs.getString("magia"));
-                g.setMadd(rs.getString("madd"));
+                g.setDiadiem(d);
                 g.setSotien(rs.getInt("sotien"));
                 g.setTungay(rs.getString("tungay"));
                 g.setDenngay(rs.getString("denngay"));
@@ -45,7 +50,7 @@ public class GiaDAL {
         try {
             ps = new MySQLConnect().conn.prepareStatement(query);
             ps.setString(1, g.getMagia());
-            ps.setString(2, g.getMadd());
+            ps.setString(2, g.getDiadiem().getMadd());
             ps.setInt(3, g.getSotien());
             ps.setString(4, g.getTungay());
             ps.setString(5, g.getDenngay());
@@ -60,7 +65,7 @@ public class GiaDAL {
         String query = "UPDATE gia SET madd=?,sotien=?,tungay=?,denngay=? WHERE magia=?";
         try {
             ps = new MySQLConnect().conn.prepareStatement(query);
-            ps.setString(1, g.getMadd());
+            ps.setString(1, g.getDiadiem().getMadd());
             ps.setInt(2, g.getSotien());
             ps.setString(3, g.getTungay());
             ps.setString(4, g.getDenngay());
