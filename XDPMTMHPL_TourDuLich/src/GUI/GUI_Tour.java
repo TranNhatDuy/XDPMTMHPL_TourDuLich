@@ -8,7 +8,7 @@ package GUI;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JButton;
-import GUI.Panel_KhachHang;
+//import GUI.Panel_KhachHang;
 //import com.sun.org.apache.xml.internal.resolver.helpers.PublicId;
 import java.awt.Color;
 import javax.swing.ImageIcon;

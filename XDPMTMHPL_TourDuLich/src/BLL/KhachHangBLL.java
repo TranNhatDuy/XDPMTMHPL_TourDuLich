@@ -5,23 +5,10 @@
  */
 package BLL;
 
-
 /**
  *
  * @author HUYNHVIETBINH
  */
-public class GiaBLL {
+public class KhachHangBLL {
     
-
-import DAL.GiaDAL;
-import DTO.GiaDTO;
-import java.util.ArrayList;
-
-/**
- *
- * @author Vo Duy Kiet
- */
-public class GiaBLL {
-    
-
 }
