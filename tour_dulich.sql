@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 04, 2021 at 02:08 PM
+-- Generation Time: Mar 11, 2021 at 06:55 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.4
 
@@ -32,18 +32,6 @@ CREATE TABLE `chiphi` (
   `madoan` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `tongchiphi` int(11) NOT NULL,
   `chitiet` varchar(50) COLLATE utf8_unicode_ci NOT NULL COMMENT 'lưu danh sách chi phí (json)'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `chitiet`
---
-
-CREATE TABLE `chitiet` (
-  `mact` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `matour` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `madd` varchar(50) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -82,8 +70,8 @@ CREATE TABLE `doan` (
 
 CREATE TABLE `gia` (
   `magia` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `madd` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `sotien` int(11) NOT NULL,
-  `matour` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `tungay` date NOT NULL,
   `denngay` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -96,47 +84,11 @@ CREATE TABLE `gia` (
 
 CREATE TABLE `khachhang` (
   `makh` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `madoan` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `tenkh` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `sdt` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `ngaysinh` date NOT NULL,
   `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `loai`
---
-
-CREATE TABLE `loai` (
-  `maloai` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `tenloai` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `mota` varchar(50) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `loaichiphi`
---
-
-CREATE TABLE `loaichiphi` (
-  `malcp` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `tenlcp` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `mota` varchar(50) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `nguoidi`
---
-
-CREATE TABLE `nguoidi` (
-  `mand` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `madoan` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `nguoidi_dsnhanvien` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'lưu danh sách mã số nhân viên đi (json)',
-  `nguoidi_dskhach` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'lưu danh sách mã số khách hàng (json)'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -147,6 +99,7 @@ CREATE TABLE `nguoidi` (
 
 CREATE TABLE `nhanvien` (
   `manv` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `madoan` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `tennv` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `sdt` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `ngaysinh` date NOT NULL,
@@ -163,9 +116,8 @@ CREATE TABLE `nhanvien` (
 CREATE TABLE `tours` (
   `matour` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `tentour` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `mota` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `maloai` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `magia` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+  `madd` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `mota` varchar(50) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -178,14 +130,6 @@ CREATE TABLE `tours` (
 ALTER TABLE `chiphi`
   ADD PRIMARY KEY (`macp`,`madoan`),
   ADD KEY `doan_id` (`madoan`);
-
---
--- Indexes for table `chitiet`
---
-ALTER TABLE `chitiet`
-  ADD PRIMARY KEY (`mact`),
-  ADD KEY `tour_id` (`matour`,`madd`),
-  ADD KEY `dd_id` (`madd`);
 
 --
 -- Indexes for table `diadiem`
@@ -205,46 +149,28 @@ ALTER TABLE `doan`
 --
 ALTER TABLE `gia`
   ADD PRIMARY KEY (`magia`),
-  ADD KEY `tour_id` (`matour`);
+  ADD KEY `madd` (`madd`);
 
 --
 -- Indexes for table `khachhang`
 --
 ALTER TABLE `khachhang`
-  ADD PRIMARY KEY (`makh`);
-
---
--- Indexes for table `loai`
---
-ALTER TABLE `loai`
-  ADD PRIMARY KEY (`maloai`);
-
---
--- Indexes for table `loaichiphi`
---
-ALTER TABLE `loaichiphi`
-  ADD PRIMARY KEY (`malcp`);
-
---
--- Indexes for table `nguoidi`
---
-ALTER TABLE `nguoidi`
-  ADD PRIMARY KEY (`mand`,`madoan`),
-  ADD KEY `doan_id` (`madoan`);
+  ADD PRIMARY KEY (`makh`),
+  ADD KEY `madoan` (`madoan`);
 
 --
 -- Indexes for table `nhanvien`
 --
 ALTER TABLE `nhanvien`
-  ADD PRIMARY KEY (`manv`);
+  ADD PRIMARY KEY (`manv`),
+  ADD KEY `madoan` (`madoan`);
 
 --
 -- Indexes for table `tours`
 --
 ALTER TABLE `tours`
   ADD PRIMARY KEY (`matour`),
-  ADD KEY `loai_id` (`maloai`),
-  ADD KEY `gia_id` (`magia`);
+  ADD KEY `madd` (`madd`);
 
 --
 -- Constraints for dumped tables
@@ -257,30 +183,34 @@ ALTER TABLE `chiphi`
   ADD CONSTRAINT `chiphi_ibfk_1` FOREIGN KEY (`madoan`) REFERENCES `doan` (`madoan`);
 
 --
--- Constraints for table `chitiet`
---
-ALTER TABLE `chitiet`
-  ADD CONSTRAINT `chitiet_ibfk_1` FOREIGN KEY (`madd`) REFERENCES `diadiem` (`madd`),
-  ADD CONSTRAINT `chitiet_ibfk_2` FOREIGN KEY (`matour`) REFERENCES `tours` (`matour`);
-
---
 -- Constraints for table `doan`
 --
 ALTER TABLE `doan`
   ADD CONSTRAINT `doan_ibfk_1` FOREIGN KEY (`matour`) REFERENCES `tours` (`matour`);
 
 --
--- Constraints for table `nguoidi`
+-- Constraints for table `gia`
 --
-ALTER TABLE `nguoidi`
-  ADD CONSTRAINT `nguoidi_ibfk_1` FOREIGN KEY (`madoan`) REFERENCES `doan` (`madoan`);
+ALTER TABLE `gia`
+  ADD CONSTRAINT `gia_ibfk_1` FOREIGN KEY (`madd`) REFERENCES `diadiem` (`madd`);
+
+--
+-- Constraints for table `khachhang`
+--
+ALTER TABLE `khachhang`
+  ADD CONSTRAINT `khachhang_ibfk_1` FOREIGN KEY (`madoan`) REFERENCES `doan` (`madoan`);
+
+--
+-- Constraints for table `nhanvien`
+--
+ALTER TABLE `nhanvien`
+  ADD CONSTRAINT `nhanvien_ibfk_1` FOREIGN KEY (`madoan`) REFERENCES `doan` (`madoan`);
 
 --
 -- Constraints for table `tours`
 --
 ALTER TABLE `tours`
-  ADD CONSTRAINT `tours_ibfk_1` FOREIGN KEY (`maloai`) REFERENCES `loai` (`maloai`),
-  ADD CONSTRAINT `tours_ibfk_2` FOREIGN KEY (`magia`) REFERENCES `gia` (`magia`);
+  ADD CONSTRAINT `tours_ibfk_3` FOREIGN KEY (`madd`) REFERENCES `diadiem` (`madd`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
