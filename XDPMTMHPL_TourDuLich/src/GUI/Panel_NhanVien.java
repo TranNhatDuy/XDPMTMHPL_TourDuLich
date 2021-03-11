@@ -33,7 +33,7 @@ public class Panel_NhanVien extends javax.swing.JPanel {
 
     public Panel_NhanVien() {
         initComponents();
-        this.setBounds(0, 0, 786, 629);
+        this.setBounds(0, 0, 786, 632);
         this.setBorder(BorderFactory.createLineBorder(Color.black));
         nhanvien=new ArrayList<>();
         model=(DefaultTableModel) tblNV.getModel();
@@ -71,6 +71,8 @@ public class Panel_NhanVien extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         lblMaKH1 = new javax.swing.JLabel();
         txtMaDoan = new javax.swing.JTextField();
+
+        setPreferredSize(new java.awt.Dimension(786, 629));
 
         lblDiaChi.setText("Địa chỉ:");
 
@@ -231,7 +233,7 @@ public class Panel_NhanVien extends javax.swing.JPanel {
                         .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addContainerGap(198, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -273,7 +275,7 @@ public class Panel_NhanVien extends javax.swing.JPanel {
                     .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(188, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -1,9 +1,12 @@
-/*
+﻿/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package GUI;
+
+import java.awt.Color;
+import javax.swing.BorderFactory;
 
 /**
  *
@@ -16,8 +19,7 @@ public class Panel_Doan extends javax.swing.JPanel {
      */
     public Panel_Doan() {
         initComponents();
-        
-        this.setBounds(0, 0, 786, 629);
+
     }
 
     /**

@@ -33,7 +33,7 @@ public class Panel_Tour extends javax.swing.JPanel {
     
     public Panel_Tour() {
         initComponents();
-        this.setBounds(0, 0, 786, 629);
+        this.setBounds(0, 0, 786, 632);
         this.setBorder(BorderFactory.createLineBorder(Color.black));
         
         dtmtour = (DefaultTableModel) tblTour.getModel();
