@@ -32,6 +32,7 @@ public class TourDAL {
 
         try {
             String sql = "SELECT * FROM tour";
+//            String sql = "SELECT * FROM tour, khachsan, phuongtien WHERE tour.MaPT = phuongtien.MaPT AND tour.MaKS = tourachsan.MaKS";
             ps = new MySQLConnect().conn.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {

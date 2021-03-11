@@ -11,10 +11,14 @@ package DTO;
  */
 public class KhachHangDTO {
 
-    String makh, tenkh, sdt, ngaysinh, email;
+    String makh, madoan, tenkh, sdt, ngaysinh, email;
 
-    public KhachHangDTO(String makh, String tenkh, String sdt, String ngaysinh, String email) {
+    public KhachHangDTO() {
+    }
+
+    public KhachHangDTO(String makh, String madoan, String tenkh, String sdt, String ngaysinh, String email) {
         this.makh = makh;
+        this.madoan = madoan;
         this.tenkh = tenkh;
         this.sdt = sdt;
         this.ngaysinh = ngaysinh;
@@ -23,6 +27,14 @@ public class KhachHangDTO {
 
     public String getMakh() {
         return makh;
+    }
+
+    public String getMadoan() {
+        return madoan;
+    }
+
+    public void setMadoan(String madoan) {
+        this.madoan = madoan;
     }
 
     public String getTenkh() {
@@ -60,5 +72,5 @@ public class KhachHangDTO {
     public String getEmail() {
         return email;
     }
-    
-}  
+
+}
