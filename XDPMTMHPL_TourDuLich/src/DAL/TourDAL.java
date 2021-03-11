@@ -1,25 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package DAL;
 
 import DTO.TourDTO;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Vo Duy Kiet
- */
 public class TourDAL {
 
     private PreparedStatement ps;
@@ -27,58 +18,73 @@ public class TourDAL {
 
     
     public ArrayList<TourDTO> loadDataTour() {
-
-        ArrayList<TourDTO> tourList = new ArrayList<>();
-
-        try {
-            String sql = "SELECT * FROM tour";
-//            String sql = "SELECT * FROM tour, khachsan, phuongtien WHERE tour.MaPT = phuongtien.MaPT AND tour.MaKS = tourachsan.MaKS";
-            ps = new MySQLConnect().conn.prepareStatement(sql);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-//                TourDTO tour = new TourDTO(rs.getString("MaTour"), rs.getString("Ten"),
-//                        rs.getDate("NgayBD"), rs.getDate("NgayKT"),
-//                        rs.getFloat("Gia"), rs.getInt("Soluong"),
-//                        rs.getString("MaPT"), rs.getString("MaKS"));
-//                tourList.add(tour);
+        ArrayList<TourDTO> DSTour = new ArrayList<>();
+        MySQLConnect connect = new MySQLConnect();
+        
+        Statement statement = null;
+        
+        try {                                           
+            String sql = "select * from tours";
+            statement = connect.conn.createStatement();
+            
+            ResultSet rs = statement.executeQuery(sql);
+            
+            while (rs.next()) {                
+                TourDTO dd = new TourDTO(rs.getString("matour"), 
+                        rs.getString("tentour"), rs.getString("madd"), rs.getString("mota"));                
+                DSTour.add(dd);
             }
         } catch (SQLException ex) {
             Logger.getLogger(TourDAL.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return tourList;
+        } 
+            
+        connect.MySQLDisconnect();                        
+        return DSTour;
     }
 
     
-    public Boolean addTour(TourDTO tour) {
+    public static void addTour(TourDTO t) {
+        MySQLConnect connect = new MySQLConnect();
+        try{
+           String sql = "insert into tour value('";
+           sql += t.getMatour()+"','"+t.getTentour()+"','"+t.getMadd()+"','"+t.getMota()+"')";
+           connect.st = connect.conn.createStatement();
+           connect.st.executeUpdate(sql);        
+        }catch(SQLException ex){
+            Logger.getLogger(TourDTO.class.getName()).log(Level.SEVERE, null, ex);  
+        }   
+        connect.MySQLDisconnect();    
+    }
 
-        String sql = "INSERT INTO `tour`(`MaTour`, `Ten`, `NgayBD`, `NgayKT`, `Gia`, `Soluong`, `MaPT`, `MaKS`) VALUES (?,?,?,?,?,?,?,?)";
+
+
+    public static void editTour(TourDTO t,String data) {
+        PreparedStatement ps = null;
+        String query = "update tour set tentour=?, mota=? where matour=?";
         try {
-            ps = new MySQLConnect().conn.prepareCall(sql);
-            ps.setString(1, tour.getMatour());
-            ps.setString(2, tour.getTentour());
-//            ps.setDate(3, tour.getNgaybd());
-//            ps.setDate(4, tour.getNgaykt());
-//            ps.setFloat(5, tour.getGia());
-//            ps.setInt(6, tour.getSoluong());
-//            ps.setString(7, tour.getPhuongtien());
-//            ps.setString(8, tour.getKhachsan());
-            ps.execute();
-        } catch (SQLException ex) {
-            Logger.getLogger(TourDAL.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return false;
-//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            ps = new MySQLConnect().conn.prepareStatement(query);
+            ps.setString(1, t.getTentour());
+            ps.setString(2, t.getMadd());
+            ps.setString(3, t.getMota());
+            ps.setString(4, data);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }      
     }
 
-    
-    public Boolean editTour(TourDTO tour,String data) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
-    
-    public Boolean removeTour(String data) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public static void removeTour(String matour) {
+        MySQLConnect connect = new MySQLConnect();
+        try{
+          String sql= "delete from tour where matour='"+matour+"'";
+
+          connect.st = connect.conn.createStatement();
+          connect.st.executeUpdate(sql);
+
+        }catch(SQLException ex){
+          Logger.getLogger(TourDAL.class.getName()).log(Level.SEVERE, null, ex);
+        }    
+    }    
 
 }

@@ -36,7 +36,7 @@ public class Panel_Gia extends javax.swing.JPanel {
         gia=new ArrayList<>();
         
         TimKiemGia();
-        ShowGia();
+        //ShowGia();
     }
 
     /**
@@ -283,15 +283,15 @@ public class Panel_Gia extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    void ShowGia(){
-        gia=new GiaBLL().loadDataGia();
-        modelgia.setRowCount(0);
-        for (GiaDTO g : gia) {
-            modelgia.addRow(new Object[]{
-                g.getMagia(),g.getMadd(),g.getSotien(),g.getTungay(),g.getDenngay()
-            });
-        }
-    }
+//    void ShowGia(){
+//        gia=new GiaBLL().loadDataGia();
+//        modelgia.setRowCount(0);
+//        for (GiaDTO g : gia) {
+//            modelgia.addRow(new Object[]{
+//                g.getMagia(),g.getMadd(),g.getSotien(),g.getTungay(),g.getDenngay()
+//            });
+//        }
+//    }
     void TimKiemGia(){
         TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(tblGia.getModel());
         tblGia.setRowSorter(rowSorter);
