@@ -11,17 +11,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class NhanVienDAL {
 
+    public static PreparedStatement ps;
+    public static ResultSet rs;
     public static MySQLConnect connect = new MySQLConnect();
+    public static Statement statement;
 
     public ArrayList<NhanVienDTO> loadDataNhanVien() {
         ArrayList<NhanVienDTO> DSNhanVien = new ArrayList<>();
-        Statement statement = null;
         try {
             String sql = "select * from nhanvien";
             statement = connect.conn.createStatement();
@@ -53,7 +54,6 @@ public class NhanVienDAL {
     }
 
     public static void editNhanVien(NhanVienDTO nv, String data) {
-        PreparedStatement ps = null;
         String query = "update nhanvien set tennv=?, sdt=? , ngaysinh=?, email=?, nhiemvu=? where manv=?";
         try {
             ps = new MySQLConnect().conn.prepareStatement(query);

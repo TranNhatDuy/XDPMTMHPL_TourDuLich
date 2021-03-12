@@ -32,7 +32,8 @@ public class TourDAL {
             }
         } catch (SQLException ex) {
             Logger.getLogger(TourDAL.class.getName()).log(Level.SEVERE, null, ex);
-        }                         
+        } 
+        connect.MySQLDisconnect();
         return DSTour;
     }
   
@@ -44,7 +45,8 @@ public class TourDAL {
            connect.st.executeUpdate(sql);        
         }catch(SQLException ex){
             Logger.getLogger(TourDAL.class.getName()).log(Level.SEVERE, null, ex);  
-        }         
+        }   
+        connect.MySQLDisconnect();
     }
 
     public static void editTour(TourDTO t,String data) {
@@ -58,7 +60,8 @@ public class TourDAL {
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
-        }      
+        }  
+        connect.MySQLDisconnect();
     }
 
     public static void removeTour(String matour) {      
@@ -68,7 +71,8 @@ public class TourDAL {
             connect.st.executeUpdate(sql);
         }catch(SQLException ex){
           Logger.getLogger(TourDAL.class.getName()).log(Level.SEVERE, null, ex);
-        }    
+        }   
+        connect.MySQLDisconnect();
     }    
 
 }
