@@ -13,7 +13,7 @@ public class GiaDTO {
 
     String magia;
     int sotien;
-    String denngay=null, tungay=null;
+    String denngay, tungay;
     DiaDiemDTO diadiem;
 
     public GiaDTO() {
