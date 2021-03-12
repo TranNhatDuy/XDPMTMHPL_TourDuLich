@@ -7,22 +7,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class TourDAL {
 
-    private PreparedStatement ps;
-    private ResultSet rs;
-
+    public static PreparedStatement ps;
+    public static ResultSet rs;
+    public static MySQLConnect connect = new MySQLConnect();
+    public static Statement statement;
     
     public ArrayList<TourDTO> loadDataTour() {
-        ArrayList<TourDTO> DSTour = new ArrayList<>();
-        MySQLConnect connect = new MySQLConnect();
-        
-        Statement statement = null;
-        
+        ArrayList<TourDTO> DSTour = new ArrayList<>();                     
         try {                                           
             String sql = "select * from tours";
             statement = connect.conn.createStatement();
@@ -36,15 +32,11 @@ public class TourDAL {
             }
         } catch (SQLException ex) {
             Logger.getLogger(TourDAL.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-            
-        connect.MySQLDisconnect();                        
+        }                         
         return DSTour;
     }
-
-    
-    public static void addTour(TourDTO t) {
-        MySQLConnect connect = new MySQLConnect();
+  
+    public static void addTour(TourDTO t) {      
         try{
            String sql = "insert into tours value('";
            sql += t.getMatour()+"','"+t.getTentour()+"','"+t.getMadd()+"','"+t.getMota()+"')";
@@ -52,35 +44,28 @@ public class TourDAL {
            connect.st.executeUpdate(sql);        
         }catch(SQLException ex){
             Logger.getLogger(TourDAL.class.getName()).log(Level.SEVERE, null, ex);  
-        }   
-        connect.MySQLDisconnect();    
+        }         
     }
 
-
-
     public static void editTour(TourDTO t,String data) {
-        PreparedStatement ps = null;
-        String query = "update tours set tentour=?, mota=? where matour=?";
+        String query = "update tours set tentour=?, madd=?, mota=? where matour=?";
         try {
             ps = new MySQLConnect().conn.prepareStatement(query);
-            ps.setString(0, t.getTentour());
-            ps.setString(1, t.getMadd());
-            ps.setString(2, t.getMota());
-            ps.setString(3, data);
+            ps.setString(1, t.getTentour());
+            ps.setString(2, t.getMadd());
+            ps.setString(3, t.getMota());
+            ps.setString(4, data);
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }      
     }
 
-
-    public static void removeTour(String matour) {
-        MySQLConnect connect = new MySQLConnect();
+    public static void removeTour(String matour) {      
         try{     
             String sql= "delete from tours where matour='"+matour+"'";
             connect.st = connect.conn.createStatement();
             connect.st.executeUpdate(sql);
-
         }catch(SQLException ex){
           Logger.getLogger(TourDAL.class.getName()).log(Level.SEVERE, null, ex);
         }    

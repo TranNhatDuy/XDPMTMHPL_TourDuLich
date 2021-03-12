@@ -8,6 +8,7 @@ package GUI;
 import BLL.TourBLL;
 import DTO.TourDTO;
 import BLL.DiaDiemBLL;
+import DAL.TourDAL;
 import DTO.DiaDiemDTO;
 import java.awt.Color;
 import java.sql.Date;
@@ -112,7 +113,15 @@ public class Panel_Tour extends javax.swing.JPanel {
             new String [] {
                 "Mã Tour", "Tên Tour", "Mã địa điểm", "Mô tả"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblTour.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         tblTour.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -191,7 +200,7 @@ public class Panel_Tour extends javax.swing.JPanel {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, false, true, true
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -298,7 +307,7 @@ public class Panel_Tour extends javax.swing.JPanel {
                         .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnLamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -310,6 +319,7 @@ public class Panel_Tour extends javax.swing.JPanel {
         t.setMadd(txtMadd.getText());
         t.setMota(txpMota.getText());         
         TourBLL.addTour(t);
+        JOptionPane.showMessageDialog(null, "Thêm thành công");
         showTour();   
                
     }//GEN-LAST:event_btnThemActionPerformed
