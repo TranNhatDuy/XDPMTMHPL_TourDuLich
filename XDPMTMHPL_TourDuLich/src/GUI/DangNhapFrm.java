@@ -207,7 +207,7 @@ public class DangNhapFrm extends javax.swing.JFrame {
             //            this.dispose();
             //        }
         try {
-            conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/tourdulich?useUnicode=yes&characterEncoding=UTF-8", "root", "");
+            conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/tour_dulich?useUnicode=yes&characterEncoding=UTF-8", "root", "");
             ps=conn.prepareStatement("SELECT * FROM taikhoan");
             rs=ps.executeQuery();
             int log=1;

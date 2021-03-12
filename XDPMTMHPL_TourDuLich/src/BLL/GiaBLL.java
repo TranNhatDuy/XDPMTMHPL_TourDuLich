@@ -5,23 +5,30 @@
  */
 package BLL;
 
-
-/**
- *
- * @author HUYNHVIETBINH
- */
-public class GiaBLL {
-    
-
 import DAL.GiaDAL;
 import DTO.GiaDTO;
 import java.util.ArrayList;
 
 /**
  *
- * @author Vo Duy Kiet
+ * @author HUYNHVIETBINH
  */
 public class GiaBLL {
-    
+
+    public static ArrayList<GiaDTO> loadDataGia() {
+        return new GiaDAL().loadDataGia();
+    }
+
+    public static boolean addGia(GiaDTO g) {
+        return new GiaDAL().addGia(g);
+    }
+
+    public static boolean editGia(GiaDTO g, String data) {
+        return new GiaDAL().editGia(g, data);
+    }
+
+    public static boolean removeGia(GiaDTO g, String data) {
+        return new GiaDAL().removeGia(g, data);
+    }
 
 }
