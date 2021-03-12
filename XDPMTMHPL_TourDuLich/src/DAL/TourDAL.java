@@ -46,12 +46,12 @@ public class TourDAL {
     public static void addTour(TourDTO t) {
         MySQLConnect connect = new MySQLConnect();
         try{
-           String sql = "insert into tour value('";
+           String sql = "insert into tours value('";
            sql += t.getMatour()+"','"+t.getTentour()+"','"+t.getMadd()+"','"+t.getMota()+"')";
            connect.st = connect.conn.createStatement();
            connect.st.executeUpdate(sql);        
         }catch(SQLException ex){
-            Logger.getLogger(TourDTO.class.getName()).log(Level.SEVERE, null, ex);  
+            Logger.getLogger(TourDAL.class.getName()).log(Level.SEVERE, null, ex);  
         }   
         connect.MySQLDisconnect();    
     }
@@ -60,13 +60,13 @@ public class TourDAL {
 
     public static void editTour(TourDTO t,String data) {
         PreparedStatement ps = null;
-        String query = "update tour set tentour=?, mota=? where matour=?";
+        String query = "update tours set tentour=?, mota=? where matour=?";
         try {
             ps = new MySQLConnect().conn.prepareStatement(query);
-            ps.setString(1, t.getTentour());
-            ps.setString(2, t.getMadd());
-            ps.setString(3, t.getMota());
-            ps.setString(4, data);
+            ps.setString(0, t.getTentour());
+            ps.setString(1, t.getMadd());
+            ps.setString(2, t.getMota());
+            ps.setString(3, data);
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -76,11 +76,10 @@ public class TourDAL {
 
     public static void removeTour(String matour) {
         MySQLConnect connect = new MySQLConnect();
-        try{
-          String sql= "delete from tour where matour='"+matour+"'";
-
-          connect.st = connect.conn.createStatement();
-          connect.st.executeUpdate(sql);
+        try{     
+            String sql= "delete from tours where matour='"+matour+"'";
+            connect.st = connect.conn.createStatement();
+            connect.st.executeUpdate(sql);
 
         }catch(SQLException ex){
           Logger.getLogger(TourDAL.class.getName()).log(Level.SEVERE, null, ex);

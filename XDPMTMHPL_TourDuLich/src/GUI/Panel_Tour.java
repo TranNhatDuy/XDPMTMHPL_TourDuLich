@@ -361,14 +361,15 @@ public class Panel_Tour extends javax.swing.JPanel {
 
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
         // TODO add your handling code here:
-        int selectedIndex = tblDd.getSelectedRow();
-        DiaDiemDTO dd = ddList.get(selectedIndex); 
-        txtMadd.setText(dd .getMadd());
+        
         
     }//GEN-LAST:event_btnLamMoiActionPerformed
 
     private void tblDdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDdMouseClicked
         // TODO add your handling code here:
+        int selectedIndex = tblDd.getSelectedRow();
+        DiaDiemDTO dd = ddList.get(selectedIndex); 
+        txtMadd.setText(dd .getMadd());
         
     }//GEN-LAST:event_tblDdMouseClicked
 
