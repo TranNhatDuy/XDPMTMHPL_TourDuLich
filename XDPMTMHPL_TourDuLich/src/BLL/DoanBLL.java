@@ -5,10 +5,17 @@
  */
 package BLL;
 
+import DAL.DoanDAL;
+import DTO.DoanDTO;
+import java.util.ArrayList;
+
 /**
  *
  * @author HUYNHVIETBINH
  */
 public class DoanBLL {
-    
+    public static ArrayList<DoanDTO> loadDataDoan() {
+        DoanDAL nv = new DoanDAL();
+        return nv.loadDataDoan();
+    }
 }

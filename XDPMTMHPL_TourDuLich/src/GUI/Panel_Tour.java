@@ -140,7 +140,7 @@ public class Panel_Tour extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setText("QUẢN LÝ TOUR");
 
-        tblTour.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tblTour.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tblTour.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -177,16 +177,17 @@ public class Panel_Tour extends javax.swing.JPanel {
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel10.setText("Mô tả:");
 
-        txtTentour.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtTentour.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtTentour.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
-        txtMadd.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtMadd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtMadd.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtMadd.setEnabled(false);
 
-        txtMatour.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtMatour.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtMatour.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
+        btnThem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnThem.setText("Thêm");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,6 +195,7 @@ public class Panel_Tour extends javax.swing.JPanel {
             }
         });
 
+        btnXoa.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnXoa.setText("Xóa");
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -201,6 +203,7 @@ public class Panel_Tour extends javax.swing.JPanel {
             }
         });
 
+        btnSua.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnSua.setText("Sửa");
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -208,6 +211,7 @@ public class Panel_Tour extends javax.swing.JPanel {
             }
         });
 
+        btnLamMoi.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnLamMoi.setText("Làm mới");
         btnLamMoi.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -220,9 +224,12 @@ public class Panel_Tour extends javax.swing.JPanel {
             }
         });
 
+        txtTimkiem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Tìm kiếm");
 
+        tblDd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tblDd.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -249,6 +256,7 @@ public class Panel_Tour extends javax.swing.JPanel {
         });
         jScrollPane3.setViewportView(tblDd);
 
+        txpMota.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jScrollPane4.setViewportView(txpMota);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -256,7 +264,7 @@ public class Panel_Tour extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(253, 253, 253)
                         .addComponent(jLabel1))
@@ -292,7 +300,7 @@ public class Panel_Tour extends javax.swing.JPanel {
                                 .addComponent(jLabel8)
                                 .addGap(26, 26, 26)
                                 .addComponent(txtMadd, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 742, javax.swing.GroupLayout.PREFERRED_SIZE)))
