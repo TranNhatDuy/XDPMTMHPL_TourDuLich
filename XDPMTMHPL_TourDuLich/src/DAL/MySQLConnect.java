@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 public class MySQLConnect {
     String user = "root";
     String password="";
-    String url="jdbc:mysql://localhost:3306/tour_dulich?useUnicode=yes&characterEncoding=UTF-8";
+    String url="jdbc:mysql://localhost:3306/tour_dulich?useUnicode=yes&characterEncoding=UTF-8?autoReconnect=true";
     Connection conn = null;
     Statement st = null;
     ResultSet rs = null;

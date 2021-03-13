@@ -54,12 +54,13 @@ public class NhanVienDAL {
     }
 
     public static void editNhanVien(NhanVienDTO nv, String data) {
-        String query = "update nhanvien set tennv=?, sdt=? , ngaysinh=?, email=?, nhiemvu=? where manv=?";
+        String query = "update nhanvien set madoan=?, tennv=?, sdt=? , ngaysinh=?, email=?, nhiemvu=? where manv=?";
         try {
             ps = new MySQLConnect().conn.prepareStatement(query);
-            ps.setString(1, nv.getTennv());
-            ps.setString(2, nv.getSdt());
-            ps.setString(3, nv.getNgaysinh());
+            ps.setString(1, nv.getMadoan());
+            ps.setString(2, nv.getTennv());
+            ps.setString(3, nv.getSdt());
+            ps.setString(4, nv.getNgaysinh());
             ps.setString(5, nv.getEmail());
             ps.setString(6, nv.getNhiemvu());
             ps.setString(7, data);
