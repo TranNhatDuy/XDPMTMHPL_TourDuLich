@@ -123,7 +123,6 @@ public class Panel_NhanVien extends javax.swing.JPanel {
             }
         });
 
-        txtTennv.setForeground(new java.awt.Color(51, 51, 51));
         txtTennv.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtTennvMouseClicked(evt);

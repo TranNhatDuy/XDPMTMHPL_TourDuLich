@@ -11,13 +11,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class TourDAL {
-
-    public static PreparedStatement ps;
-    public static ResultSet rs;
-    public static MySQLConnect connect = new MySQLConnect();
-    public static Statement statement;
-    
+  
     public ArrayList<TourDTO> loadDataTour() {
+        MySQLConnect connect = new MySQLConnect();
+        Statement statement;
         ArrayList<TourDTO> DSTour = new ArrayList<>();                     
         try {                                           
             String sql = "select * from tours";
@@ -37,7 +34,8 @@ public class TourDAL {
         return DSTour;
     }
   
-    public static void addTour(TourDTO t) {      
+    public static void addTour(TourDTO t) {    
+        MySQLConnect connect = new MySQLConnect();
         try{
            String sql = "insert into tours value('";
            sql += t.getMatour()+"','"+t.getTentour()+"','"+t.getMadd()+"','"+t.getMota()+"')";
@@ -50,6 +48,8 @@ public class TourDAL {
     }
 
     public static void editTour(TourDTO t,String data) {
+        PreparedStatement ps;
+        MySQLConnect connect = new MySQLConnect();
         String query = "update tours set tentour=?, madd=?, mota=? where matour=?";
         try {
             ps = new MySQLConnect().conn.prepareStatement(query);
@@ -64,7 +64,8 @@ public class TourDAL {
         connect.MySQLDisconnect();
     }
 
-    public static void removeTour(String matour) {      
+    public static void removeTour(String matour) {  
+        MySQLConnect connect = new MySQLConnect();
         try{     
             String sql= "delete from tours where matour='"+matour+"'";
             connect.st = connect.conn.createStatement();

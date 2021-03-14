@@ -15,6 +15,7 @@ public class ChiPhiDTO {
     private int tongCP;
     private String chiTiet;
 
+    
     public ChiPhiDTO(String maCP, String maDoan, int tongCP, String chiTiet) {
         this.maCP = maCP;
         this.maDoan = maDoan;
@@ -22,6 +23,9 @@ public class ChiPhiDTO {
         this.chiTiet = chiTiet;
     }
 
+    public ChiPhiDTO() {
+    }
+    
     public String getMaCP() {
         return maCP;
     }
@@ -53,5 +57,12 @@ public class ChiPhiDTO {
     public void setChiTiet(String chiTiet) {
         this.chiTiet = chiTiet;
     }
-    
+    public static void main(String[] args) {
+        ChiPhiDTO cp = new ChiPhiDTO();
+        cp.setMaCP("ad");
+        cp.setMaDoan("DC01");
+        cp.setTongCP(12);
+        cp.setChiTiet("sdf");
+        System.out.println(cp);    
+    }
 }

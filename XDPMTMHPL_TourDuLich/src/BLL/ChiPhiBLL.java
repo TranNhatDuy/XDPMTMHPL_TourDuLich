@@ -5,10 +5,27 @@
  */
 package BLL;
 
+import DAL.ChiPhiDAL;
+import DTO.ChiPhiDTO;
+import java.util.ArrayList;
+
 /**
  *
  * @author HUYNHVIETBINH
  */
 public class ChiPhiBLL {
     
+    public ArrayList<ChiPhiDTO> loadDataChiPhi() {
+        ChiPhiDAL chiphi = new ChiPhiDAL();
+        return chiphi.loadDataChiPhi();
+    }
+    public static void addChiPhi(ChiPhiDTO cp) {
+        ChiPhiDAL.addChiPhi(cp);
+    }
+    public static void editChiPhi(ChiPhiDTO cp) {
+        ChiPhiDAL.editChiPhi(cp);
+    }
+    public static void removeChiPhi(String macp) {
+        ChiPhiDAL.removeChiPhi(macp);
+    }
 }

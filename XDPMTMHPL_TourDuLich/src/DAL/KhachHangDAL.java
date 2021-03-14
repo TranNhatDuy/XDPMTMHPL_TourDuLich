@@ -12,6 +12,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,35 +22,29 @@ import javax.swing.JOptionPane;
  */
 public class KhachHangDAL {
 
-    private Statement st = null;
-    private PreparedStatement ps = null;
-    private ResultSet rs = null;
+    private static Statement st = null;
+    private static PreparedStatement ps = null;
+    private static ResultSet rs = null;
 
     public ArrayList<KhachHangDTO> loadDataKhachHang() {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        ArrayList<KhachHangDTO> ds = new ArrayList<KhachHangDTO>();
+        ArrayList<KhachHangDTO> khList = new ArrayList<>();
+        
         try {
-            String query = "select * from khachhang";
-            st = new MySQLConnect().conn.createStatement();
-            rs = st.executeQuery(query);
+            String query = "SELECT * FROM khachhang";
+            ps = new MySQLConnect().conn.prepareStatement(query);
+            rs = ps.executeQuery();
             while (rs.next()) {
-                KhachHangDTO kh = new KhachHangDTO();
-                kh.setMakh(rs.getString(1));
-                kh.setMadoan(rs.getString(2));
-                kh.setTenkh(rs.getString(3));
-                kh.setSdt(rs.getString(4));
-                kh.setNgaysinh(rs.getString(5));
-                kh.setEmail(rs.getString(6));
-                ds.add(kh);
+                KhachHangDTO kh = new KhachHangDTO(rs.getString("makh"), rs.getString("madoan"), 
+                        rs.getString("tenkh"), rs.getString("sdt"), rs.getString("ngaysinh"),rs.getString("email"));
+                khList.add(kh);
             }
-        } catch (Exception e) {
-            System.out.println(e);
+        } catch (SQLException ex) {
+            Logger.getLogger(KhachHangDAL.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return ds;
+        return khList;
     }
 
-    public Boolean addKhachHang(KhachHangDTO kh) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public static void addKhachHang(KhachHangDTO kh) {
         MySQLConnect Connect = new MySQLConnect();
         try {
             String query = "insert into khachhang values('";
@@ -56,45 +52,37 @@ public class KhachHangDAL {
                     + kh.getSdt() + "','" + kh.getNgaysinh() + "','" + kh.getEmail() + "')";
             Connect.st = Connect.conn.createStatement();
             Connect.st.executeUpdate(query);
-//            if(Connect.rs.next() == true){
-//                JOptionPane.showMessageDialog(null,"Eggs are not supposed to be green.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-//            }
         } catch (Exception e) {
             System.out.println(e);
         }
-
         Connect.MySQLDisconnect();
-        return true;
+
     }
 
-    public Boolean editKhachHang(KhachHangDTO kh, String data) {
-        String query = "UPDATE khachhang SET madoan=?,tenkh=?,sdt=?,ngaysinh=?,email=? WHERE makh=?";
+    public static void editKhachHang(KhachHangDTO kh) {
+        String query = "UPDATE khachhang SET madoan=?, tenkh=?,sdt=?,ngaysinh=?,email=? WHERE makh=?";
         try {
             ps = new MySQLConnect().conn.prepareStatement(query);
+            ps.setString(6, kh.getMakh());
             ps.setString(1, kh.getMadoan());
             ps.setString(2, kh.getTenkh());
             ps.setString(3, kh.getSdt());
             ps.setString(4, kh.getNgaysinh());
             ps.setString(5, kh.getEmail());
-            ps.setString(6, data);
-            return ps.executeUpdate() > 0;
+            ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return false;
     }
 
-    public Boolean removeKhachHang(KhachHangDTO kh) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        MySQLConnect Connect = new MySQLConnect();
+    public static void removeKhachHang(String kh) {
+        String query = "DELETE FROM khachhang WHERE makh=?";
         try {
-            String query = "DELETE FROM `khachhang` WHERE MaKH = " + "'" + kh.getMakh() + "'";
-            st = new MySQLConnect().conn.createStatement();
-            Connect.st.executeUpdate(query);
+            ps = new MySQLConnect().conn.prepareStatement(query);
+            ps.setString(1, kh);
+            ps.execute();
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
-        Connect.MySQLDisconnect();
-        return true;
     }
 }
