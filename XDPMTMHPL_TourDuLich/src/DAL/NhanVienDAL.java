@@ -11,25 +11,23 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class NhanVienDAL {
 
-    private MySQLConnect connect = new MySQLConnect();
-
     public ArrayList<NhanVienDTO> loadDataNhanVien() {
+        MySQLConnect connect = new MySQLConnect();
+        Statement statement;
         ArrayList<NhanVienDTO> DSNhanVien = new ArrayList<>();
-        Statement statement = null;
         try {
             String sql = "select * from nhanvien";
             statement = connect.conn.createStatement();
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()) {
                 NhanVienDTO nv = new NhanVienDTO(rs.getString("manv"),
-                        rs.getString("tennv"), rs.getString("madoan"), rs.getString("sdt"),
-                        rs.getString("diachi"), rs.getString("email"), rs.getString("nhiemvu"));
+                        rs.getString("madoan"), rs.getString("tennv"), rs.getString("sdt"),
+                        rs.getString("ngaysinh"), rs.getString("email"), rs.getString("nhiemvu"));
                 DSNhanVien.add(nv);
             }
         } catch (SQLException ex) {
@@ -39,51 +37,48 @@ public class NhanVienDAL {
         return DSNhanVien;
     }
 
-    public boolean addNhanVien(NhanVienDTO nv) {
-        try {
-            String sql = "insert into nhanvien value('";
-            sql += nv.getManv() + "','" + nv.getTennv() + "','" + nv.getSdt() + "','" + nv.getNgaysinh() + "','" + nv.getEmail() + "'"
-                    + "                                     ,'" + nv.getNhiemvu() + "'+)";
-            connect.st = connect.conn.createStatement();
-            connect.st.executeUpdate(sql);
-        } catch (SQLException ex) {
-            Logger.getLogger(NhanVienDAL.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    public static void addNhanVien(NhanVienDTO nv) {
+        MySQLConnect connect = new MySQLConnect();
+        try{
+           String sql = "insert into nhanvien value('";
+           sql += nv.getManv()+"','"+nv.getMadoan()+"','"+nv.getTennv()+"','"+nv.getSdt()+"','"+nv.getNgaysinh()+"','"+nv.getEmail()+"','"+nv.getNhiemvu()+"')";
+           connect.st = connect.conn.createStatement();
+           connect.st.executeUpdate(sql);        
+        }catch(SQLException ex){
+            Logger.getLogger(NhanVienDAL.class.getName()).log(Level.SEVERE, null, ex);  
+        }   
         connect.MySQLDisconnect();
-        return false;
     }
 
-    public boolean editNhanVien(NhanVienDTO pt, String data) {
-        PreparedStatement ps = null;
-        String query = "update nhanvien set tennv=?, sdt=? , diachi=?, nhiemvu=? where manv=?";
+    public static void editNhanVien(NhanVienDTO nv, String data) {
+        MySQLConnect connect = new MySQLConnect();
+        PreparedStatement ps;
+        String query = "update nhanvien set madoan=?, tennv=?, sdt=? , ngaysinh=?, email=?, nhiemvu=? where manv=?";
         try {
             ps = new MySQLConnect().conn.prepareStatement(query);
-            ps.setString(1, pt.getMadoan());
-            ps.setString(2, pt.getTennv());
-            ps.setString(3, pt.getSdt());
-            ps.setString(4, pt.getNgaysinh());
-            ps.setString(5, pt.getEmail());
-            ps.setString(6, pt.getNhiemvu());
+            ps.setString(1, nv.getMadoan());
+            ps.setString(2, nv.getTennv());
+            ps.setString(3, nv.getSdt());
+            ps.setString(4, nv.getNgaysinh());
+            ps.setString(5, nv.getEmail());
+            ps.setString(6, nv.getNhiemvu());
             ps.setString(7, data);
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
         connect.MySQLDisconnect();
-        return false;
     }
 
-    public boolean removeNhanVien(String data) {
+    public static void removeNhanVien(String manv) {
+        MySQLConnect connect = new MySQLConnect();
         try {
-            String sql = "delete from nhanvien where manv='" + data + "'";
+            String sql = "delete from nhanvien where manv='" + manv + "'";
             connect.st = connect.conn.createStatement();
             connect.st.executeUpdate(sql);
         } catch (SQLException ex) {
             Logger.getLogger(NhanVienDAL.class.getName()).log(Level.SEVERE, null, ex);
         }
         connect.MySQLDisconnect();
-        return false;
-
     }
-
 }

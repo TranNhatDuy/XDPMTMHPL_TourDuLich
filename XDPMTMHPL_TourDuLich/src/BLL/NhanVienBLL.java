@@ -6,22 +6,21 @@ import java.util.ArrayList;
 
 public class NhanVienBLL {
 
-    private NhanVienDAL nhanvien = new NhanVienDAL();
-
-    public ArrayList<NhanVienDTO> loadDataNhanVien() {
-        return nhanvien.loadDataNhanVien();
+    public static ArrayList<NhanVienDTO> loadDataNhanVien() {
+        NhanVienDAL nv = new NhanVienDAL();
+        return nv.loadDataNhanVien();
     }
 
-    public boolean addNhanVien(NhanVienDTO pt) {
-        return nhanvien.addNhanVien(pt);
+    public static void addNhanVien(NhanVienDTO nv) {
+        NhanVienDAL.addNhanVien(nv);
     }
 
-    public boolean editNhanVien(NhanVienDTO pt, String data) {
-        return nhanvien.editNhanVien(pt, data);
+    public static void editNhanVien(NhanVienDTO nv, String data) {
+        NhanVienDAL.editNhanVien(nv, data);
     }
 
-    public boolean removeNhanVien(String data) {
-        return nhanvien.removeNhanVien(data);
+    public static void removeNhanVien(String manv) {
+        NhanVienDAL.removeNhanVien(manv);
     }
 
 }

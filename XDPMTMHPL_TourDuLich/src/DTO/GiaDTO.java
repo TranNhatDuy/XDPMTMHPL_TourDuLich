@@ -11,27 +11,24 @@ package DTO;
  */
 public class GiaDTO {
 
-    String magia, madd;
+    String magia;
     int sotien;
     String denngay, tungay;
+    DiaDiemDTO diadiem;
 
     public GiaDTO() {
     }
 
-    public GiaDTO(String magia, String madd, int sotien, String denngay, String tungay) {
+    public GiaDTO(String magia, DiaDiemDTO diadiem, int sotien, String tunngay, String denngay) {
         this.magia = magia;
-        this.madd = madd;
+        this.diadiem = diadiem;
         this.sotien = sotien;
-        this.denngay = denngay;
         this.tungay = tungay;
+        this.denngay = denngay;
     }
 
     public String getMagia() {
         return magia;
-    }
-
-    public String getMadd() {
-        return madd;
     }
 
     public int getSotien() {
@@ -58,8 +55,12 @@ public class GiaDTO {
         this.magia = magia;
     }
 
-    public void setMadd(String magia) {
-        this.madd = madd;
+    public DiaDiemDTO getDiadiem() {
+        return diadiem;
+    }
+
+    public void setDiadiem(DiaDiemDTO diadiem) {
+        this.diadiem = diadiem;
     }
 
     public void setSotien(int sotien) {

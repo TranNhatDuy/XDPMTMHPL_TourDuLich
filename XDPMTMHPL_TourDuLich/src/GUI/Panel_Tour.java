@@ -8,6 +8,7 @@ package GUI;
 import BLL.TourBLL;
 import DTO.TourDTO;
 import BLL.DiaDiemBLL;
+import DAL.TourDAL;
 import DTO.DiaDiemDTO;
 import java.awt.Color;
 import java.sql.Date;
@@ -16,7 +17,12 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -41,6 +47,7 @@ public class Panel_Tour extends javax.swing.JPanel {
         dtmdd = (DefaultTableModel) tblDd.getModel();
         showTour();
         showDiadiem();
+        TimKiem();
     }
     
     private void showDiadiem() {     
@@ -68,7 +75,36 @@ public class Panel_Tour extends javax.swing.JPanel {
     }
     
     
+    void TimKiem(){
+        TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(tblTour.getModel());
+        tblTour.setRowSorter(rowSorter);
+        txtTimkiem.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent de) {
+                String text = txtTimkiem.getText();
+                if (text.trim().length() == 0) {
+                    rowSorter.setRowFilter(null);
+                } else {
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+                }
+            }
 
+            @Override
+            public void removeUpdate(DocumentEvent de) {
+                String text = txtTimkiem.getText();
+                if (text.length() == 0) {
+                    rowSorter.setRowFilter(null);
+                } else {
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+                }
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent de) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        });
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -92,7 +128,7 @@ public class Panel_Tour extends javax.swing.JPanel {
         btnXoa = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
         btnLamMoi = new javax.swing.JButton();
-        txtTimKiem = new javax.swing.JTextField();
+        txtTimkiem = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblDd = new javax.swing.JTable();
@@ -104,7 +140,7 @@ public class Panel_Tour extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setText("QUẢN LÝ TOUR");
 
-        tblTour.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tblTour.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tblTour.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -112,7 +148,15 @@ public class Panel_Tour extends javax.swing.JPanel {
             new String [] {
                 "Mã Tour", "Tên Tour", "Mã địa điểm", "Mô tả"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblTour.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         tblTour.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -133,16 +177,17 @@ public class Panel_Tour extends javax.swing.JPanel {
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel10.setText("Mô tả:");
 
-        txtTentour.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtTentour.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtTentour.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
-        txtMadd.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtMadd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtMadd.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtMadd.setEnabled(false);
 
-        txtMatour.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtMatour.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtMatour.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
+        btnThem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnThem.setText("Thêm");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,6 +195,7 @@ public class Panel_Tour extends javax.swing.JPanel {
             }
         });
 
+        btnXoa.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnXoa.setText("Xóa");
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -157,6 +203,7 @@ public class Panel_Tour extends javax.swing.JPanel {
             }
         });
 
+        btnSua.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnSua.setText("Sửa");
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,6 +211,7 @@ public class Panel_Tour extends javax.swing.JPanel {
             }
         });
 
+        btnLamMoi.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnLamMoi.setText("Làm mới");
         btnLamMoi.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -176,9 +224,12 @@ public class Panel_Tour extends javax.swing.JPanel {
             }
         });
 
+        txtTimkiem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Tìm kiếm");
 
+        tblDd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tblDd.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -191,7 +242,7 @@ public class Panel_Tour extends javax.swing.JPanel {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, false, true, true
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -205,6 +256,7 @@ public class Panel_Tour extends javax.swing.JPanel {
         });
         jScrollPane3.setViewportView(tblDd);
 
+        txpMota.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jScrollPane4.setViewportView(txpMota);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -212,7 +264,7 @@ public class Panel_Tour extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(253, 253, 253)
                         .addComponent(jLabel1))
@@ -220,7 +272,7 @@ public class Panel_Tour extends javax.swing.JPanel {
                         .addGap(10, 10, 10)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
-                        .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtTimkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(63, 63, 63)
                         .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -248,7 +300,7 @@ public class Panel_Tour extends javax.swing.JPanel {
                                 .addComponent(jLabel8)
                                 .addGap(26, 26, 26)
                                 .addComponent(txtMadd, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 742, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -264,7 +316,7 @@ public class Panel_Tour extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(jLabel2))
-                    .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTimkiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(11, 11, 11)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -298,7 +350,7 @@ public class Panel_Tour extends javax.swing.JPanel {
                         .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnLamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -310,6 +362,7 @@ public class Panel_Tour extends javax.swing.JPanel {
         t.setMadd(txtMadd.getText());
         t.setMota(txpMota.getText());         
         TourBLL.addTour(t);
+        JOptionPane.showMessageDialog(null, "Thêm thành công");
         showTour();   
                
     }//GEN-LAST:event_btnThemActionPerformed
@@ -361,14 +414,15 @@ public class Panel_Tour extends javax.swing.JPanel {
 
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
         // TODO add your handling code here:
-        int selectedIndex = tblDd.getSelectedRow();
-        DiaDiemDTO dd = ddList.get(selectedIndex); 
-        txtMadd.setText(dd .getMadd());
+        
         
     }//GEN-LAST:event_btnLamMoiActionPerformed
 
     private void tblDdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDdMouseClicked
         // TODO add your handling code here:
+        int selectedIndex = tblDd.getSelectedRow();
+        DiaDiemDTO dd = ddList.get(selectedIndex); 
+        txtMadd.setText(dd .getMadd());
         
     }//GEN-LAST:event_tblDdMouseClicked
 
@@ -393,6 +447,6 @@ public class Panel_Tour extends javax.swing.JPanel {
     private javax.swing.JTextField txtMadd;
     private javax.swing.JTextField txtMatour;
     private javax.swing.JTextField txtTentour;
-    private javax.swing.JTextField txtTimKiem;
+    private javax.swing.JTextField txtTimkiem;
     // End of variables declaration//GEN-END:variables
 }

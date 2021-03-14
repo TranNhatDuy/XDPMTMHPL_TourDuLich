@@ -44,6 +44,9 @@ public class DiaDiemDTO {
         this.mota = mota;
     }
 
+    public DiaDiemDTO() {
+    }
+
     public DiaDiemDTO(String madd, String thanhpho, String tendd, String mota) {
         this.madd = madd;
         this.thanhpho = thanhpho;
