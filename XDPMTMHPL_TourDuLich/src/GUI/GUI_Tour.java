@@ -59,6 +59,7 @@ public class GUI_Tour extends javax.swing.JFrame {
         btnChiphi = new javax.swing.JButton();
         btnNhanVien = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        btnThongKe = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         lbl_Image = new javax.swing.JLabel();
 
@@ -126,6 +127,14 @@ public class GUI_Tour extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(204, 0, 0));
         jLabel1.setText("Đăng xuất");
 
+        btnThongKe.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnThongKe.setText("Thống Kê");
+        btnThongKe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThongKeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -141,25 +150,28 @@ public class GUI_Tour extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(btnThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(7, 7, 7)
                 .addComponent(btnTour, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnGia, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnDiaDiem, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnDoan, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnChiphi, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnKhHang, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(20, Short.MAX_VALUE))
         );
@@ -213,6 +225,7 @@ public class GUI_Tour extends javax.swing.JFrame {
     Panel_Doan pnDoan = new Panel_Doan();
     Panel_Tour pnTour = new Panel_Tour();
     Panel_DiaDiem pnDd = new Panel_DiaDiem();
+    Panel_ThongKe pnTk = new Panel_ThongKe();
 
 
     private void btnKhHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhHangActionPerformed
@@ -289,6 +302,17 @@ public class GUI_Tour extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnChiphiActionPerformed
 
+    private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
+        // TODO add your handling code here:
+        if (evt.getSource() == btnThongKe) {
+            jPanel3.removeAll();
+            jPanel3.add(pnTk);
+            jPanel3.repaint();
+            pnTk.revalidate();
+            pnTk.repaint();
+        }
+    }//GEN-LAST:event_btnThongKeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -331,6 +355,7 @@ public class GUI_Tour extends javax.swing.JFrame {
     private javax.swing.JButton btnGia;
     private javax.swing.JButton btnKhHang;
     private javax.swing.JButton btnNhanVien;
+    private javax.swing.JButton btnThongKe;
     private javax.swing.JButton btnTour;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
