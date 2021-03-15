@@ -25,20 +25,37 @@ public class GUI_Tour extends javax.swing.JFrame {
     public GUI_Tour() {
         initComponents();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        int x = screenSize.width - 950;
+        int x = screenSize.width - 948;
         int x1 = x / 2;
-        this.setBounds(x1, 20, 950, 670);
+        this.setBounds(x1, 20, 948, 661);
         this.setResizable(false);
         this.setTitle("Quản Lý Tour Du Lịch");
 
-        Image();
+        ImageAndIcons();
     }
 
-    public void Image() {
+    public void ImageAndIcons() {
 //        ImageIcon icon = new ImageIcon(getClass().getResource("/Images/bg.jpg"));
         ImageIcon img = new ImageIcon("src/Images/bg.jpg");
-        // KÍCH THƯỚC HÌNH ẢNH LÀ 767,617 => kích thước panel cũng vậy
         lbl_Image.setIcon(img);
+        
+        ImageIcon tour = new ImageIcon("src/Images/icon_tour.png");
+        ImageIcon price = new ImageIcon("src/Images/icon_price.png");
+        ImageIcon location = new ImageIcon("src/Images/icon_location.png");
+        ImageIcon group = new ImageIcon("src/Images/icons_group.png");
+        ImageIcon cost = new ImageIcon("src/Images/icon_cost.png");
+        ImageIcon customer = new ImageIcon("src/Images/icons_customer.png");
+        ImageIcon staff = new ImageIcon("src/Images/icon_staff.png");
+        ImageIcon statistics = new ImageIcon("src/Images/icon_statistics.png");
+        
+        btnTour.setIcon(tour);
+        btnGia.setIcon(price);
+        btnDiaDiem.setIcon(location);
+        btnDoan.setIcon(group);
+        btnChiphi.setIcon(cost);
+        btnKhHang.setIcon(customer);
+        btnNhanVien.setIcon(staff);
+        btnThongKe.setIcon(statistics);
     }
 
     /**
@@ -58,13 +75,16 @@ public class GUI_Tour extends javax.swing.JFrame {
         btnDoan = new javax.swing.JButton();
         btnChiphi = new javax.swing.JButton();
         btnNhanVien = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         btnThongKe = new javax.swing.JButton();
+        btnDangXuat = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         lbl_Image = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(249, 247, 241));
+
+        btnKhHang.setBackground(new java.awt.Color(255, 127, 174));
         btnKhHang.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnKhHang.setText("Khách Hàng");
         btnKhHang.addActionListener(new java.awt.event.ActionListener() {
@@ -73,6 +93,7 @@ public class GUI_Tour extends javax.swing.JFrame {
             }
         });
 
+        btnTour.setBackground(new java.awt.Color(255, 127, 174));
         btnTour.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnTour.setText("Tour");
         btnTour.setToolTipText("");
@@ -82,6 +103,7 @@ public class GUI_Tour extends javax.swing.JFrame {
             }
         });
 
+        btnGia.setBackground(new java.awt.Color(255, 127, 174));
         btnGia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnGia.setText("Giá");
         btnGia.addActionListener(new java.awt.event.ActionListener() {
@@ -90,6 +112,7 @@ public class GUI_Tour extends javax.swing.JFrame {
             }
         });
 
+        btnDiaDiem.setBackground(new java.awt.Color(255, 127, 174));
         btnDiaDiem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnDiaDiem.setText("Địa điểm");
         btnDiaDiem.addActionListener(new java.awt.event.ActionListener() {
@@ -98,6 +121,7 @@ public class GUI_Tour extends javax.swing.JFrame {
             }
         });
 
+        btnDoan.setBackground(new java.awt.Color(255, 127, 174));
         btnDoan.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnDoan.setText("Đoàn");
         btnDoan.addActionListener(new java.awt.event.ActionListener() {
@@ -106,6 +130,7 @@ public class GUI_Tour extends javax.swing.JFrame {
             }
         });
 
+        btnChiphi.setBackground(new java.awt.Color(255, 127, 174));
         btnChiphi.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnChiphi.setText("Chi phí");
         btnChiphi.setToolTipText("");
@@ -115,6 +140,7 @@ public class GUI_Tour extends javax.swing.JFrame {
             }
         });
 
+        btnNhanVien.setBackground(new java.awt.Color(255, 127, 174));
         btnNhanVien.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnNhanVien.setText("Nhân Viên");
         btnNhanVien.addActionListener(new java.awt.event.ActionListener() {
@@ -123,10 +149,7 @@ public class GUI_Tour extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(204, 0, 0));
-        jLabel1.setText("Đăng xuất");
-
+        btnThongKe.setBackground(new java.awt.Color(255, 127, 174));
         btnThongKe.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnThongKe.setText("Thống Kê");
         btnThongKe.addActionListener(new java.awt.event.ActionListener() {
@@ -135,22 +158,28 @@ public class GUI_Tour extends javax.swing.JFrame {
             }
         });
 
+        btnDangXuat.setBackground(new java.awt.Color(131, 51, 233));
+        btnDangXuat.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnDangXuat.setText("Đăng xuất");
+        btnDangXuat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDangXuatActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(btnTour, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnGia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnDiaDiem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnDoan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnChiphi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnKhHang, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-            .addComponent(btnNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(btnGia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnDiaDiem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnDoan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnChiphi, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnKhHang, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+            .addComponent(btnNhanVien, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnDangXuat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,11 +198,11 @@ public class GUI_Tour extends javax.swing.JFrame {
                 .addComponent(btnKhHang, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(23, 23, 23)
+                .addComponent(btnDangXuat)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(102, 255, 102));
@@ -183,17 +212,11 @@ public class GUI_Tour extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(84, Short.MAX_VALUE)
-                .addComponent(lbl_Image, javax.swing.GroupLayout.PREFERRED_SIZE, 692, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(lbl_Image, javax.swing.GroupLayout.DEFAULT_SIZE, 786, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbl_Image, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45))
+            .addComponent(lbl_Image, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -208,11 +231,8 @@ public class GUI_Tour extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 632, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 632, Short.MAX_VALUE)
         );
 
         pack();
@@ -313,6 +333,13 @@ public class GUI_Tour extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnThongKeActionPerformed
 
+    private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuatActionPerformed
+        // TODO add your handling code here:
+        if (evt.getSource() == btnDangXuat) {
+            this.setVisible(false);
+        }
+    }//GEN-LAST:event_btnDangXuatActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -350,6 +377,7 @@ public class GUI_Tour extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChiphi;
+    private javax.swing.JButton btnDangXuat;
     private javax.swing.JButton btnDiaDiem;
     private javax.swing.JButton btnDoan;
     private javax.swing.JButton btnGia;
@@ -357,7 +385,6 @@ public class GUI_Tour extends javax.swing.JFrame {
     private javax.swing.JButton btnNhanVien;
     private javax.swing.JButton btnThongKe;
     private javax.swing.JButton btnTour;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lbl_Image;
