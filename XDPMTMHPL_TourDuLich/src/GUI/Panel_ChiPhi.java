@@ -7,10 +7,12 @@ package GUI;
 
 
 import BLL.ChiPhiBLL;
+import BLL.DoanBLL;
+import DAL.ChiPhiDAL;
 import DTO.ChiPhiDTO;
+import DTO.DoanDTO;
 import java.awt.Color;
 import java.util.ArrayList;
-import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
@@ -29,21 +31,23 @@ public class Panel_ChiPhi extends javax.swing.JPanel {
     /**
      * Creates new form Panel_ChiPhi
      */
-    List<ChiPhiDTO> chiphi;
-    private DefaultTableModel dtmcp;
+    private ArrayList<ChiPhiDTO> cpList;
+    private ArrayList<DoanDTO> dList;
+    private DefaultTableModel dtmcp, dtmd;
     
     public Panel_ChiPhi() {
         initComponents();
         this.setBounds(0, 0, 786, 632);
         this.setBorder(BorderFactory.createLineBorder(Color.black));
         dtmcp = (DefaultTableModel) tblCP.getModel();
+        dtmd = (DefaultTableModel) tblD.getModel();
         ShowChiPhi();
+        ShowDoan();
         TimKiemChiPhi();
         
     }
     
     public void ShowChiPhi(){
-        ArrayList<ChiPhiDTO> cpList = new ArrayList<>();
         cpList =  new ChiPhiBLL().loadDataChiPhi();
         
         dtmcp.setRowCount(0);
@@ -52,6 +56,26 @@ public class Panel_ChiPhi extends javax.swing.JPanel {
                 ChiPhiDTO.getTongCP(), ChiPhiDTO.getChiTiet()});
         });
     }
+    
+    public void ShowDoan(){
+        dList =  new DoanBLL().loadDataDoan();
+        
+        dtmd.setRowCount(0);
+        dList.forEach((DoanDTO) -> {
+            dtmd.addRow(new Object[] {DoanDTO.getMadoan(), DoanDTO.getMatour(), 
+                DoanDTO.getTendoan(), DoanDTO.getNgaydi(), DoanDTO.getNgayve(), 
+                DoanDTO.getChitietchuongtrinh()});
+        });
+    }
+//    private void ShowDoan() {
+//        dList = DoanBLL.loadDataDoan();
+//        dtmd.setRowCount(0);
+//        for (DoanDTO d : dList) {
+//            dtmd.addRow(new Object[]{
+//               d.getMadoan(), d.getMatour(), d.getTendoan(),d.getNgaydi(),d.getNgayve(),d.getChitietchuongtrinh()
+//            });
+//        }
+//    }
     
     public void TimKiemChiPhi(){
         TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(tblCP.getModel());
@@ -99,7 +123,7 @@ public class Panel_ChiPhi extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblDoan = new javax.swing.JTable();
+        tblD = new javax.swing.JTable();
         txtTongCP = new javax.swing.JTextField();
         txtMaCP = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -131,8 +155,8 @@ public class Panel_ChiPhi extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Chi tiết:");
 
-        tblDoan.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tblDoan.setModel(new javax.swing.table.DefaultTableModel(
+        tblD.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tblD.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -143,7 +167,12 @@ public class Panel_ChiPhi extends javax.swing.JPanel {
                 "Mã đoàn", "Mã tour", "Tên đoàn", "Ngày đi", "Ngày về", "Chi tiết chương trình"
             }
         ));
-        jScrollPane2.setViewportView(tblDoan);
+        tblD.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tblD);
 
         txtTongCP.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtTongCP.addActionListener(new java.awt.event.ActionListener() {
@@ -391,6 +420,11 @@ public class Panel_ChiPhi extends javax.swing.JPanel {
         txtChiTiet.setText(dtmcp.getValueAt(indexTour, 3).toString());
     }//GEN-LAST:event_tblCPMouseClicked
 
+    private void tblDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDMouseClicked
+        int indexTour = tblD.getSelectedRow();
+        txtMaDoan.setText(dtmd.getValueAt(indexTour, 0).toString());
+    }//GEN-LAST:event_tblDMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLamMoi;
@@ -407,7 +441,7 @@ public class Panel_ChiPhi extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable tblCP;
-    private javax.swing.JTable tblDoan;
+    private javax.swing.JTable tblD;
     private javax.swing.JTextPane txtChiTiet;
     private javax.swing.JTextField txtMaCP;
     private javax.swing.JTextField txtMaDoan;

@@ -21,25 +21,25 @@ import java.util.logging.Logger;
 public class DoanDAL {
     public static PreparedStatement ps;
     public static ResultSet rs;
-    public static MySQLConnect connect = new MySQLConnect();
     public static Statement statement;
 
     public ArrayList<DoanDTO> loadDataDoan() {
-        ArrayList<DoanDTO> DSDoan = new ArrayList<>();
+        ArrayList<DoanDTO> dList = new ArrayList<>();
+        
         try {
-            String sql = "select * from doan";
-            statement = connect.conn.createStatement();
-            ResultSet rs = statement.executeQuery(sql);
+            String query = "SELECT * FROM doan";
+            ps = new MySQLConnect().conn.prepareStatement(query);
+            rs = ps.executeQuery();
             while (rs.next()) {
                 DoanDTO d = new DoanDTO(rs.getString("madoan"),
                         rs.getString("matour"), rs.getString("tendoan"), rs.getString("ngaydi"),
                         rs.getString("ngayve"), rs.getString("chitietchuongtrinh"));
-                DSDoan.add(d);
+                dList.add(d);
             }
         } catch (SQLException ex) {
             Logger.getLogger(DoanDAL.class.getName()).log(Level.SEVERE, null, ex);
         }
-        connect.MySQLDisconnect();
-        return DSDoan;
+        //connect.MySQLDisconnect();
+        return dList;
     }
 }
