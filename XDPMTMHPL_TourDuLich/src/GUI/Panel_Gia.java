@@ -414,8 +414,9 @@ void BlockText() {
         if (indexGia >= 0) {
             GiaDTO g = new GiaDTO();
             g.setSotien(Integer.parseInt(txtGia.getText()));
-            g.setTungay(jdcTuNgay.getDateFormatString());
-            g.setDenngay(jdcDenNgay.getDateFormatString());
+            g.setTungay(new SimpleDateFormat("yyyy-MM-dd").format(jdcTuNgay.getDate()));
+            g.setDenngay(new SimpleDateFormat("yyyy-MM-dd").format(jdcDenNgay.getDate()));
+            g.setDiadiem(new DiaDiemDTO(tblGia.getValueAt(indexGia, 1).toString(), "", "", ""));
             if (JOptionPane.showConfirmDialog(this, "Bạn có chắc muốn sửa không") == 0) {
                 new GiaBLL().editGia(g, data);
                 JOptionPane.showMessageDialog(this, "Sửa thành công");

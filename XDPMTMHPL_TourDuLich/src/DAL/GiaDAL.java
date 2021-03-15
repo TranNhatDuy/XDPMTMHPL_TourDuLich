@@ -7,6 +7,7 @@ package DAL;
 
 import DTO.DiaDiemDTO;
 import DTO.GiaDTO;
+import com.mysql.jdbc.Statement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
@@ -20,9 +21,7 @@ public class GiaDAL {
 
     private PreparedStatement ps = null;
     private ResultSet rs = null;
-    
-   
-    
+
     public ArrayList<GiaDTO> loadDataGia() {
         ArrayList<GiaDTO> gia = new ArrayList<>();
         String query = "SELECT * FROM gia";
@@ -31,10 +30,10 @@ public class GiaDAL {
             rs = ps.executeQuery();
             while (rs.next()) {
                 GiaDTO g = new GiaDTO();
-                DiaDiemDTO d=new DiaDiemDTO();
-                
+                DiaDiemDTO d = new DiaDiemDTO();
+
                 d.setMadd(rs.getString("madd"));
-                
+
                 g.setMagia(rs.getString("magia"));
                 g.setDiadiem(d);
                 g.setSotien(rs.getInt("sotien"));
@@ -51,13 +50,13 @@ public class GiaDAL {
     public boolean addGia(GiaDTO g) {
         String query = "INSERT INTO gia(magia,madd,sotien,tungay,denngay) VALUES(?,?,?,?,?)";
         try {
-            
+
             ps = new MySQLConnect().conn.prepareStatement(query);
             ps.setString(1, g.getMagia());
             ps.setString(2, g.getDiadiem().getMadd());
             ps.setInt(3, g.getSotien());
-            ps.setString(4,new SimpleDateFormat("yyyy-MM-dd").format(g.getTungay()));
-            ps.setString(5,new SimpleDateFormat("yyyy-MM-dd").format(g.getDenngay()));
+            ps.setString(4, g.getTungay());
+            ps.setString(5, g.getDenngay());
             return ps.executeUpdate() > 0;
         } catch (Exception e) {
             e.printStackTrace();
@@ -73,8 +72,8 @@ public class GiaDAL {
             ps.setInt(2, g.getSotien());
             ps.setString(3, g.getTungay());
             ps.setString(4, g.getDenngay());
-            ps.setString(5, g.getMagia());
-            return ps.executeUpdate() > 0;
+            ps.setString(5, data);  
+            return ps.executeUpdate()>0;
         } catch (Exception e) {
             e.printStackTrace();
         }

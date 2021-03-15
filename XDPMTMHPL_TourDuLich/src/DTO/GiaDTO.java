@@ -19,7 +19,7 @@ public class GiaDTO {
     public GiaDTO() {
     }
 
-    public GiaDTO(String magia, DiaDiemDTO diadiem, int sotien, String tunngay, String denngay) {
+    public GiaDTO(String magia, DiaDiemDTO diadiem, int sotien, String tungay, String denngay) {
         this.magia = magia;
         this.diadiem = diadiem;
         this.sotien = sotien;

@@ -11,11 +11,11 @@ import javax.swing.JOptionPane;
 public class MySQLConnect {
     String user = "root";
     String password="";
-    String url="jdbc:mysql://localhost:3306/tour_dulich?useUnicode=yes&characterEncoding=UTF-8";
+    String url="jdbc:mysql://localhost:3306/tour_dulich";
     Connection conn = null;
     Statement st = null;
     ResultSet rs = null;
-    MySQLConnect(){
+    public MySQLConnect(){
         if(conn==null) {
             try{
                 Class.forName("com.mysql.jdbc.Driver");
@@ -39,5 +39,8 @@ public class MySQLConnect {
         catch(SQLException e){
             JOptionPane.showMessageDialog(null,e.toString());
         }
+    }
+    public Connection getConnect(){
+        return this.conn;
     }
 }

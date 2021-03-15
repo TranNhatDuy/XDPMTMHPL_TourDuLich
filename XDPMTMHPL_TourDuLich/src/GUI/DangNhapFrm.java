@@ -196,18 +196,8 @@ public class DangNhapFrm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, sb.toString(), "Invalidation", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        //        int log=1;
-        //        TaiKhoanDTO tk=new TaiKhoanDTO();
-        //        if(new TaiKhoanDAL().Login(tk)==true){
-            //            log=0;
-            //        }
-        //        if(log==0){
-            //            JOptionPane.showMessageDialog(this, "Thanh cong");
-            //            new GUI_Tour().setVisible(true);
-            //            this.dispose();
-            //        }
         try {
-            conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/tour_dulich?useUnicode=yes&characterEncoding=UTF-8", "root", "");
+            conn = new MySQLConnect().getConnect();
             ps=conn.prepareStatement("SELECT * FROM taikhoan");
             rs=ps.executeQuery();
             int log=1;
