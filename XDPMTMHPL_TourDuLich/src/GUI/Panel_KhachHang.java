@@ -1,4 +1,5 @@
 package GUI;
+
 import BLL.DoanBLL;
 import BLL.KhachHangBLL;
 import DAL.KhachHangDAL;
@@ -6,6 +7,7 @@ import DAL.MySQLConnect;
 import DTO.DoanDTO;
 import DTO.KhachHangDTO;
 import java.awt.Color;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
@@ -23,12 +25,13 @@ import javax.swing.table.TableRowSorter;
  * @author Win 10
  */
 public class Panel_KhachHang extends javax.swing.JPanel {
-
+    
     DefaultTableModel dtmkh, dtmd;
     private ArrayList<KhachHangDTO> khList;
     private ArrayList<DoanDTO> dList;
+
     public Panel_KhachHang() {
-       
+        
         initComponents();
         this.setBounds(0, 0, 786, 632);
         this.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -38,27 +41,28 @@ public class Panel_KhachHang extends javax.swing.JPanel {
         ShowDoan();
         
     }
-    private void showKhachHang(){
-        khList =  new KhachHangBLL().loadDataKhachHang();
+
+    private void showKhachHang() {
+        khList = new KhachHangBLL().loadDataKhachHang();
         
         dtmkh.setRowCount(0);
         khList.forEach((KhachHangDTO) -> {
-            dtmkh.addRow(new Object[] {KhachHangDTO.getMakh(), KhachHangDTO.getMadoan(), 
+            dtmkh.addRow(new Object[]{KhachHangDTO.getMakh(), KhachHangDTO.getMadoan(),
                 KhachHangDTO.getTenkh(), KhachHangDTO.getSdt(), KhachHangDTO.getNgaysinh(), KhachHangDTO.getEmail()});
         });
     }
     
-    public void ShowDoan(){
-        dList =  new DoanBLL().loadDataDoan();
+    public void ShowDoan() {
+        dList = new DoanBLL().loadDataDoan();
         
         dtmd.setRowCount(0);
         dList.forEach((DoanDTO) -> {
-            dtmd.addRow(new Object[] {DoanDTO.getMadoan(), DoanDTO.getMatour(), 
-                DoanDTO.getTendoan(), DoanDTO.getNgaydi(), DoanDTO.getNgayve(), 
+            dtmd.addRow(new Object[]{DoanDTO.getMadoan(), DoanDTO.getMatour(),
+                DoanDTO.getTendoan(), DoanDTO.getNgaydi(), DoanDTO.getNgayve(),
                 DoanDTO.getChitietchuongtrinh()});
         });
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -76,7 +80,6 @@ public class Panel_KhachHang extends javax.swing.JPanel {
         btnLamMoi = new javax.swing.JButton();
         txtTenKH = new javax.swing.JTextField();
         txtSdt = new javax.swing.JTextField();
-        txtNgaySinh = new javax.swing.JTextField();
         txtTimkiem = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -86,6 +89,7 @@ public class Panel_KhachHang extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblD = new javax.swing.JTable();
         txtMaKH = new javax.swing.JTextField();
+        jdcNgaySinh = new com.toedter.calendar.JDateChooser();
 
         setPreferredSize(new java.awt.Dimension(786, 629));
 
@@ -166,13 +170,6 @@ public class Panel_KhachHang extends javax.swing.JPanel {
         txtSdt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtSdtMouseClicked(evt);
-            }
-        });
-
-        txtNgaySinh.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtNgaySinh.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtNgaySinhMouseClicked(evt);
             }
         });
 
@@ -260,14 +257,13 @@ public class Panel_KhachHang extends javax.swing.JPanel {
                             .addComponent(jLabel3)
                             .addComponent(lblMaKH))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtMaKH, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txtMaDoan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
-                                .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtNgaySinh, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtSdt, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtTenKH)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtMaKH, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                            .addComponent(txtMaDoan, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                            .addComponent(txtEmail)
+                            .addComponent(txtSdt)
+                            .addComponent(txtTenKH, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jdcNgaySinh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -298,9 +294,9 @@ public class Panel_KhachHang extends javax.swing.JPanel {
                             .addComponent(txtSdt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblSdt))
                         .addGap(22, 22, 22)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblDiaChi))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblDiaChi)
+                            .addComponent(jdcNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
@@ -316,7 +312,7 @@ public class Panel_KhachHang extends javax.swing.JPanel {
                     .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -334,24 +330,28 @@ public class Panel_KhachHang extends javax.swing.JPanel {
 //        }
     }//GEN-LAST:event_txtSdtMouseClicked
 
-    private void txtNgaySinhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNgaySinhMouseClicked
-        // TODO add your handling code here:
-//        if(evt.getSource() == txtDiaChi){
-//            txtDiaChi.setText("");
-//        }
-    }//GEN-LAST:event_txtNgaySinhMouseClicked
-
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
+        boolean isOK = true;
         KhachHangDTO kh = new KhachHangDTO();
         kh.setMakh(txtMaKH.getText());
         kh.setMadoan(txtMaDoan.getText());
         kh.setTenkh(txtTenKH.getText());
         kh.setSdt(txtSdt.getText());
-        kh.setNgaysinh(txtNgaySinh.getText());
+        kh.setNgaysinh(new SimpleDateFormat("yyyy-MM-dd").format(jdcNgaySinh.getDate()));
         kh.setEmail(txtEmail.getText());
-
-        if(evt.getSource() == btnThem){
+        
+        if (txtMaKH.getText().length() > 0) {
+            for (KhachHangDTO k : khList) {
+                if (k.getMakh().matches(txtMaKH.getText())) {
+                    JOptionPane.showMessageDialog(this, "Mã khách hàng không được trùng");
+                    isOK = false;
+                    txtMaKH.setText("");
+                }
+            }
+        }
+        
+        if (evt.getSource() == btnThem) {
             KhachHangBLL.addKhachHang(kh);
             showKhachHang();
         }
@@ -360,22 +360,26 @@ public class Panel_KhachHang extends javax.swing.JPanel {
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         String makh = txtMaKH.getText();
         int option = JOptionPane.showConfirmDialog(this, "Bạn có muốn xóa?");
-        if(option == 0) {
+        if (option == 0) {
             KhachHangBLL.removeKhachHang(makh);
             JOptionPane.showMessageDialog(this, "Xóa thành công");
-            showKhachHang();                              
+            showKhachHang();            
         }
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void tblKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKHMouseClicked
         // TODO add your handling code here:
         int index = tblKH.getSelectedRow();
-	txtMaKH.setText((String)(dtmkh.getValueAt(index,0)));
-	txtMaDoan.setText((String)(dtmkh.getValueAt(index,1))); 
-	txtTenKH.setText((String)(dtmkh.getValueAt(index,2)));
-        txtSdt.setText((String)(dtmkh.getValueAt(index,3)));
-        txtNgaySinh.setText((String)(dtmkh.getValueAt(index,4)));
-        txtEmail.setText((String)(dtmkh.getValueAt(index,5)));
+        txtMaKH.setText((String) (dtmkh.getValueAt(index, 0)));
+        txtMaDoan.setText((String) (dtmkh.getValueAt(index, 1)));        
+        txtTenKH.setText((String) (dtmkh.getValueAt(index, 2)));
+        txtSdt.setText((String) (dtmkh.getValueAt(index, 3)));
+        try {
+            jdcNgaySinh.setDate(new SimpleDateFormat("yyyy-MM-dd").parse((String) dtmkh.getValueAt(index, 4)));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        txtEmail.setText((String) (dtmkh.getValueAt(index, 5)));
     }//GEN-LAST:event_tblKHMouseClicked
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
@@ -384,24 +388,24 @@ public class Panel_KhachHang extends javax.swing.JPanel {
         kh.setMadoan(txtMaDoan.getText());
         kh.setTenkh(txtTenKH.getText());
         kh.setSdt(txtSdt.getText());
-        kh.setNgaysinh(txtNgaySinh.getText());
+        kh.setNgaysinh(new SimpleDateFormat("yyyy-MM-dd").format(jdcNgaySinh.getDate()));
         kh.setEmail(txtEmail.getText());
-
+        
         KhachHangBLL.editKhachHang(kh);
         JOptionPane.showMessageDialog(null, "Sửa thành công");
         showKhachHang();
-
         
+
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
         // TODO add your handling code here:
-        if(evt.getSource() == btnLamMoi){
+        if (evt.getSource() == btnLamMoi) {
             txtMaKH.setText("");
             txtMaDoan.setText("");
             txtTenKH.setText("");
             txtSdt.setText("");
-            txtNgaySinh.setText("");
+            jdcNgaySinh.setDateFormatString("");
             txtEmail.setText("");
         }
     }//GEN-LAST:event_btnLamMoiActionPerformed
@@ -426,6 +430,7 @@ public class Panel_KhachHang extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private com.toedter.calendar.JDateChooser jdcNgaySinh;
     private javax.swing.JLabel lblDiaChi;
     private javax.swing.JLabel lblMaKH;
     private javax.swing.JLabel lblSdt;
@@ -435,7 +440,6 @@ public class Panel_KhachHang extends javax.swing.JPanel {
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtMaDoan;
     private javax.swing.JTextField txtMaKH;
-    private javax.swing.JTextField txtNgaySinh;
     private javax.swing.JTextField txtSdt;
     private javax.swing.JTextField txtTenKH;
     private javax.swing.JTextField txtTimkiem;
