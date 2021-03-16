@@ -19,6 +19,8 @@ public class XDPMTMHPL_TourDuLich {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        GUI_Tour gt = new GUI_Tour();
+        gt.setVisible(true);
     }
     
 }
