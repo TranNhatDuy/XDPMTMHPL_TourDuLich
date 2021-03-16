@@ -10,13 +10,9 @@ import javax.swing.JOptionPane;
 public class MySQLConnect {
 
     String user = "root";
-<<<<<<< Updated upstream
-    String password="";
-    String url="jdbc:mysql://localhost:3306/tour_dulich?useUnicode=yes&characterEncoding=UTF-8";
-=======
+
     String password = "";
     String url = "jdbc:mysql://localhost:3306/tour_dulich";
->>>>>>> Stashed changes
     Connection conn = null;
     Statement st = null;
     ResultSet rs = null;

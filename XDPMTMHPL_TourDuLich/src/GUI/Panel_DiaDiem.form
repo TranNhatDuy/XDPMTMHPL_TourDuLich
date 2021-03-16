@@ -42,49 +42,6 @@
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-<<<<<<< Updated upstream
-                              <EmptySpace min="-2" pref="318" max="-2" attributes="0"/>
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="118" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="160" max="-2" attributes="0"/>
-                                      <Component id="btnThemDD" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="txtMaTour" max="32767" attributes="0"/>
-                                          <Component id="jTextField1" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jTextField2" min="-2" pref="136" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="btnXoaDD" min="-2" pref="93" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jScrollPane3" min="-2" pref="223" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="btnSuaDD" min="-2" pref="93" max="-2" attributes="0"/>
-                                          <Component id="jScrollPane4" max="32767" attributes="0"/>
-=======
                               <EmptySpace min="-2" pref="162" max="-2" attributes="0"/>
                               <Component id="btnThemDD" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -113,17 +70,12 @@
                                           <Component id="txtTendd" alignment="0" pref="136" max="32767" attributes="0"/>
                                           <Component id="txtMadd" max="32767" attributes="0"/>
                                           <Component id="cbTp" alignment="0" max="32767" attributes="0"/>
->>>>>>> Stashed changes
                                       </Group>
                                   </Group>
                               </Group>
                           </Group>
                       </Group>
-<<<<<<< Updated upstream
-                      <EmptySpace min="0" pref="140" max="32767" attributes="0"/>
-=======
                       <EmptySpace min="0" pref="156" max="32767" attributes="0"/>
->>>>>>> Stashed changes
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
