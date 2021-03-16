@@ -21,6 +21,10 @@ public class DoanDTO {
         this.chitietchuongtrinh = chitietchuongtrinh;
     }
 
+    public DoanDTO() {
+        
+    }
+
     public String getMadoan() {
         return madoan;
     }

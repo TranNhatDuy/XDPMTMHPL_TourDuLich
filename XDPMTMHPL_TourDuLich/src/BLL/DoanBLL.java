@@ -18,4 +18,13 @@ public class DoanBLL {
         DoanDAL nv = new DoanDAL();
         return nv.loadDataDoan();
     }
+    public static void addDoan(DoanDTO d) {
+        DoanDAL.addDoan(d);
+    }      
+    public static void editDoan(DoanDTO d,String data) {          
+        DoanDAL.editDoan(d, data);
+    }
+    public static void removeDoan(String madoan) {
+        DoanDAL.removeDoan(madoan);
+    } 
 }
