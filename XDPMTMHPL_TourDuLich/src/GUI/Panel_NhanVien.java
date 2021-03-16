@@ -453,6 +453,7 @@ public class Panel_NhanVien extends javax.swing.JPanel {
             }
             txtEmail.setText(dtmNV.getValueAt(selectedIndex, 5).toString().trim());
             cbNhiemvu.setSelectedItem(dtmNV.getValueAt(selectedIndex, 6).toString().trim());
+            txtMadoan.setText(dtmNV.getValueAt(selectedIndex, 1).toString().trim());
         }
 
 
