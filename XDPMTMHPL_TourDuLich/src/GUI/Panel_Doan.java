@@ -8,6 +8,7 @@ import DTO.TourDTO;
 import java.awt.Color;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -387,12 +388,11 @@ public class Panel_Doan extends javax.swing.JPanel {
 
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
         // TODO add your handling code here:
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         txtMadoan.setText("");
         txtMatour.setText("");
         txtTendoan.setText("");
-        dcNgaydi.setDateFormatString("");
-        dcNgayve.setDateFormatString("");
+        dcNgaydi.setCalendar(null);
+        dcNgayve.setCalendar(null);      
         txtaChitiet.setText("");
     }//GEN-LAST:event_btnLamMoiActionPerformed
 

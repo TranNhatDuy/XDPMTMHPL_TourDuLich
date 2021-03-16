@@ -83,7 +83,7 @@ public class Panel_Gia extends javax.swing.JPanel {
         jbtSua = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        btnLammoi = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         txtTimGia = new javax.swing.JTextField();
         txtMaGia = new javax.swing.JTextField();
@@ -142,7 +142,12 @@ public class Panel_Gia extends javax.swing.JPanel {
 
         jLabel7.setText("Đến Ngày:");
 
-        jButton4.setText("Làm Mới");
+        btnLammoi.setText("Làm Mới");
+        btnLammoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLammoiActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Tìm kiếm:");
 
@@ -205,7 +210,7 @@ public class Panel_Gia extends javax.swing.JPanel {
                                     .addComponent(jdcTuNgay, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
                                     .addComponent(jdcDenNgay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(33, 33, 33)
-                                .addComponent(jButton4))
+                                .addComponent(btnLammoi))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(154, 154, 154)
                                 .addComponent(jbtThem)
@@ -235,7 +240,7 @@ public class Panel_Gia extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel6)
                                     .addComponent(txtMaGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton4))
+                                    .addComponent(btnLammoi))
                                 .addGap(24, 24, 24)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel3)
@@ -318,8 +323,8 @@ void BlockText() {
         txtMaGia.setText("");
         txtMaDiaDiem.setText("");
         txtGia.setText("");
-        jdcTuNgay.setDateFormatString("");
-        jdcDenNgay.setDateFormatString("");
+        jdcTuNgay.setCalendar(null);
+        jdcDenNgay.setCalendar(null);
         txtTimGia.setText("");
     }
 
@@ -432,9 +437,14 @@ void BlockText() {
         }
     }//GEN-LAST:event_tblGiaMouseClicked
 
+    private void btnLammoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLammoiActionPerformed
+        // TODO add your handling code here:
+        Reset();
+    }//GEN-LAST:event_btnLammoiActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnLammoi;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -405,7 +405,7 @@ public class Panel_KhachHang extends javax.swing.JPanel {
             txtMaDoan.setText("");
             txtTenKH.setText("");
             txtSdt.setText("");
-            jdcNgaySinh.setDateFormatString("");
+            jdcNgaySinh.setCalendar(null);
             txtEmail.setText("");
         }
     }//GEN-LAST:event_btnLamMoiActionPerformed

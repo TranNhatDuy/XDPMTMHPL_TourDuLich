@@ -359,7 +359,7 @@ public class Panel_NhanVien extends javax.swing.JPanel {
         txtMadoan.setEditable(false);
         txtTennv.setText("");
         txtSdt.setText("");
-        jdcNgaySinh.setDateFormatString("");
+        jdcNgaySinh.setCalendar(null);
         txtEmail.setText("");
         cbNhiemvu.setSelectedItem("Hướng dẫn viên");
     }
