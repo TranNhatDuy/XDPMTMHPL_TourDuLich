@@ -5,13 +5,15 @@
  */
 package DTO;
 
+import javax.swing.JTextField;
+import javax.swing.JTextPane;
+
 /**
  *
  * @author Admin
  */
 public class DiaDiemDTO {
     String madd, thanhpho, tendd, mota;
-
     public String getMadd() {
         return madd;
     }

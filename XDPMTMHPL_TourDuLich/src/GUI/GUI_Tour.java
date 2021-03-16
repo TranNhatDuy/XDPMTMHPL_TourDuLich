@@ -38,7 +38,7 @@ public class GUI_Tour extends javax.swing.JFrame {
 //        ImageIcon icon = new ImageIcon(getClass().getResource("/Images/bg.jpg"));
         ImageIcon img = new ImageIcon("src/Images/bg.jpg");
         lbl_Image.setIcon(img);
-        
+
         ImageIcon tour = new ImageIcon("src/Images/icon_tour.png");
         ImageIcon price = new ImageIcon("src/Images/icon_price.png");
         ImageIcon location = new ImageIcon("src/Images/icon_location.png");
@@ -47,7 +47,7 @@ public class GUI_Tour extends javax.swing.JFrame {
         ImageIcon customer = new ImageIcon("src/Images/icons_customer.png");
         ImageIcon staff = new ImageIcon("src/Images/icon_staff.png");
         ImageIcon statistics = new ImageIcon("src/Images/icon_statistics.png");
-        
+
         btnTour.setIcon(tour);
         btnGia.setIcon(price);
         btnDiaDiem.setIcon(location);

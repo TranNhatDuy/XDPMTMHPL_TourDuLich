@@ -5,8 +5,19 @@
  */
 package GUI;
 
+import BLL.DiaDiemBLL;
+import DTO.DiaDiemDTO;
 import java.awt.Color;
+import java.awt.TrayIcon;
+import java.util.ArrayList;
 import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -17,10 +28,16 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
     /**
      * Creates new form Panel_Gia
      */
+    DefaultTableModel dtm;
+
     public Panel_DiaDiem() {
         initComponents();
         this.setBounds(0, 0, 786, 632);
         this.setBorder(BorderFactory.createLineBorder(Color.black));
+        dtm = (DefaultTableModel) tblDiaDiem.getModel();
+        showDiaDiem();
+        TimKiem();
+
     }
 
     /**
@@ -37,8 +54,7 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        txtTendd = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblDiaDiem = new javax.swing.JTable();
@@ -47,11 +63,11 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
         btnThemDD = new javax.swing.JButton();
         btnXoaDD = new javax.swing.JButton();
         btnSuaDD = new javax.swing.JButton();
-        txtMaTour = new javax.swing.JTextField();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        txtMadd = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        txtMoTa = new javax.swing.JTextPane();
+        btnLamMoi = new javax.swing.JButton();
+        cbTp = new javax.swing.JComboBox<>();
 
         setPreferredSize(new java.awt.Dimension(786, 629));
 
@@ -59,10 +75,10 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
         jLabel1.setText("Địa điểm");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel6.setText("Mã Tour:");
+        jLabel6.setText("Mã địa điểm:");
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel7.setText("Mã địa điểm:");
+        jLabel7.setText("Tên địa điểm:");
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("Thành phố:");
@@ -80,9 +96,14 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Mã Tour", "Mã địa điểm", "Thành phố", "Mô tả"
+                "Mã địa điểm", "Tên địa điểm", "Thành phố", "Mô tả"
             }
         ));
+        tblDiaDiem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDiaDiemMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblDiaDiem);
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -90,29 +111,37 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
 
         btnThemDD.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnThemDD.setText("Thêm");
+        btnThemDD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemDDActionPerformed(evt);
+            }
+        });
 
         btnXoaDD.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnXoaDD.setText("Xóa");
+        btnXoaDD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaDDActionPerformed(evt);
+            }
+        });
 
         btnSuaDD.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnSuaDD.setText("Sửa");
 
-        txtMaTour.setEnabled(false);
+        txtMadd.setText("ID tự động tăng\n");
+        txtMadd.setEnabled(false);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "Mã Tour", "Tên Tour"
+        jScrollPane4.setViewportView(txtMoTa);
+
+        btnLamMoi.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnLamMoi.setText("Làm mới");
+        btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLamMoiActionPerformed(evt);
             }
-        ));
-        jScrollPane3.setViewportView(jTable1);
+        });
 
-        jScrollPane4.setViewportView(jTextPane1);
+        cbTp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hồ Chí Minh", "Hà Nội", "Đà Nẵng", "Huế", "Vĩnh Long", "Đà Lạt", "Quy Nhơn", "Vũng Tàu", "Hạ Long", "Thanh Hóa", "Buôn Ma Thuột", "Long Xuyên", "Mỹ Tho", "Vinh", "Hải Dương", "Hải Phòng", "Cần Thơ" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -136,6 +165,7 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
                                 .addGap(318, 318, 318)
                                 .addComponent(jLabel1))
                             .addGroup(layout.createSequentialGroup()
+<<<<<<< Updated upstream
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(118, 118, 118)
@@ -166,6 +196,34 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
                                             .addComponent(btnSuaDD, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jScrollPane4))))))
                         .addGap(0, 140, Short.MAX_VALUE)))
+=======
+                                .addGap(162, 162, 162)
+                                .addComponent(btnThemDD)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnXoaDD, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnSuaDD, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnLamMoi))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(245, 245, 245)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel9)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel7)
+                                            .addComponent(jLabel6)
+                                            .addComponent(jLabel8))
+                                        .addGap(57, 57, 57)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtTendd, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                                            .addComponent(txtMadd)
+                                            .addComponent(cbTp, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                        .addGap(0, 156, Short.MAX_VALUE)))
+>>>>>>> Stashed changes
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -178,41 +236,127 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
                     .addComponent(jLabel14)
                     .addComponent(txtTimDD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel12)
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel6)
-                                .addComponent(txtMaTour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(15, 15, 15)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel9)
-                                .addComponent(jLabel7)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel8)))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel12)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(txtTendd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(txtMadd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(cbTp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThemDD)
                     .addComponent(btnXoaDD)
-                    .addComponent(btnSuaDD))
-                .addGap(200, 200, 200))
+                    .addComponent(btnSuaDD)
+                    .addComponent(btnLamMoi))
+                .addGap(207, 207, 207))
         );
     }// </editor-fold>//GEN-END:initComponents
+    AutoCreateID autoID = new AutoCreateID();
+    private void btnThemDDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemDDActionPerformed
+        // TODO add your handling code here:
 
+        if (evt.getSource() == btnThemDD) {
+            String id = "";
+            String tp = (String) cbTp.getSelectedItem();
+            id = AutoCreateID.AutoID(txtTendd.getText(), id);
+            txtMadd.setText(id);
+            System.out.println(id);
+            DiaDiemDTO dd = new DiaDiemDTO(txtMadd.getText(), tp, txtTendd.getText(), txtMoTa.getText());
+            DiaDiemBLL.addDiaDiem(dd);
+        }
+        showDiaDiem();
+    }//GEN-LAST:event_btnThemDDActionPerformed
+
+    private void tblDiaDiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDiaDiemMouseClicked
+        // TODO add your handling code here:
+        int index = tblDiaDiem.getSelectedRow();
+        txtMadd.setText((String) (dtm.getValueAt(index, 0)));
+        txtTendd.setText((String) (dtm.getValueAt(index, 1)));
+        cbTp.setSelectedItem((String) (dtm.getValueAt(index, 2)));
+        txtMoTa.setText((String) (dtm.getValueAt(index, 3)));
+    }//GEN-LAST:event_tblDiaDiemMouseClicked
+
+    private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
+        // TODO add your handling code here:
+        if (evt.getSource() == btnLamMoi) {
+            txtMadd.setText("ID tự động tăng");
+            txtTendd.setText("");
+            cbTp.setSelectedIndex(0);
+            txtMoTa.setText("");
+        }
+    }//GEN-LAST:event_btnLamMoiActionPerformed
+
+    private void btnXoaDDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaDDActionPerformed
+        // TODO add your handling code here:
+        if (evt.getSource() == btnXoaDD) {
+            if (txtMadd.getText().equals("") || txtTendd.getText().equals("") || txtMoTa.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "Thông tin còn trống", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            } else {
+                DiaDiemBLL.removeDiaDiem(txtMadd.getText());
+
+            }
+        }
+        showDiaDiem();
+    }//GEN-LAST:event_btnXoaDDActionPerformed
+    private void showDiaDiem() {
+        ArrayList<DiaDiemDTO> ddList = new DiaDiemBLL().loadDataDiaDiem();
+
+        dtm.setRowCount(0);
+        ddList.forEach((DiaDiemDTO) -> {
+            dtm.addRow(new Object[]{DiaDiemDTO.getMadd(), DiaDiemDTO.getTendd(), DiaDiemDTO.getThanhpho(), DiaDiemDTO.getMota()});
+        });
+    }
+
+    void TimKiem() {
+        TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(tblDiaDiem.getModel());
+        tblDiaDiem.setRowSorter(rowSorter);
+        txtTimDD.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent de) {
+                String text = txtTimDD.getText();
+                if (text.trim().length() == 0) {
+                    rowSorter.setRowFilter(null);
+                } else {
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+                }
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent de) {
+                String text = txtTimDD.getText();
+                if (text.length() == 0) {
+                    rowSorter.setRowFilter(null);
+                } else {
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+                }
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent de) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLamMoi;
     private javax.swing.JButton btnSuaDD;
     private javax.swing.JButton btnThemDD;
     private javax.swing.JButton btnXoaDD;
+    private javax.swing.JComboBox<String> cbTp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
@@ -221,14 +365,11 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JTable tblDiaDiem;
-    private javax.swing.JTextField txtMaTour;
+    private javax.swing.JTextField txtMadd;
+    private javax.swing.JTextPane txtMoTa;
+    private javax.swing.JTextField txtTendd;
     private javax.swing.JTextField txtTimDD;
     // End of variables declaration//GEN-END:variables
 }

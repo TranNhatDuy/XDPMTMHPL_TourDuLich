@@ -30,7 +30,6 @@ public class DiaDiemBLL {
     public static void removeDiaDiem(String madd) {
         DiaDiemDAL.removeDiaDiem(madd);
     } 
-   
 }
 
 

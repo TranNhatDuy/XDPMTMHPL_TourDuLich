@@ -10,6 +10,7 @@ package DTO;
  * @author Admin
  */
 public class DoanDTO {
+
     String madoan, matour, tendoan, ngaydi, ngayve, chitietchuongtrinh;
 
     public DoanDTO(String madoan, String matour, String tendoan, String ngaydi, String ngayve, String chitietchuongtrinh) {
@@ -72,5 +73,5 @@ public class DoanDTO {
     public void setChitietchuongtrinh(String chitietchuongtrinh) {
         this.chitietchuongtrinh = chitietchuongtrinh;
     }
-    
+
 }
