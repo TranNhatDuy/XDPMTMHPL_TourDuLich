@@ -260,6 +260,7 @@ public class Panel_Gia extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 void BlockText() {
         txtMaDiaDiem.setEditable(false);
+
     }
 
     void ShowDiaDiem() {
@@ -345,15 +346,13 @@ void BlockText() {
         if (magia.length() == 0) {
             JOptionPane.showMessageDialog(this, "Mã giá không được để trống");
             isOK = false;
+        } else if (tungay.equals("")) {
+            JOptionPane.showMessageDialog(jButton4, "Từ ngày không được để trống");
+            isOK = false;
+        } else if (denngay.equals("")) {
+            JOptionPane.showMessageDialog(this, "Đến ngày không được để trống");
+            isOK = false;
         }
-//        } else if (tungay.length() == 0) {
-//            JOptionPane.showMessageDialog(this, "Từ ngày không được để trống");
-//            isOK = false;
-//        } else if (denngay.length() == 0) {
-//            JOptionPane.showMessageDialog(this, "Đến ngày không được để trống");
-//            isOK = false;
-//        }
-
         if (magia.length() > 0) {
             for (GiaDTO g : gia) {
                 if (g.getMagia().matches(magia)) {
@@ -363,6 +362,7 @@ void BlockText() {
                 }
             }
         }
+        
 
         if (isOK) {
 
@@ -423,8 +423,8 @@ void BlockText() {
             txtMaDiaDiem.setText(modelgia.getValueAt(index, 1).toString().trim());
             txtGia.setText(modelgia.getValueAt(index, 2).toString().trim());
             try {
-                jdcTuNgay.setDate(new SimpleDateFormat("yyyy-MM-dd").parse((String)modelgia.getValueAt(index, 3)));
-                jdcDenNgay.setDate(new SimpleDateFormat("yyyy-MM-dd").parse((String)modelgia.getValueAt(index, 4)));
+                jdcTuNgay.setDate(new SimpleDateFormat("yyyy-MM-dd").parse((String) modelgia.getValueAt(index, 3)));
+                jdcDenNgay.setDate(new SimpleDateFormat("yyyy-MM-dd").parse((String) modelgia.getValueAt(index, 4)));
             } catch (Exception e) {
                 e.printStackTrace();
             }
