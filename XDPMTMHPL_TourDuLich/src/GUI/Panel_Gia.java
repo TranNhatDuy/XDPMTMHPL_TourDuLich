@@ -75,7 +75,6 @@ public class Panel_Gia extends javax.swing.JPanel {
         jdcDenNgay = new com.toedter.calendar.JDateChooser();
         txtMaDiaDiem = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtThanhPho = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jbtThem = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
@@ -86,7 +85,6 @@ public class Panel_Gia extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         txtTimGia = new javax.swing.JTextField();
         txtMaGia = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -148,8 +146,6 @@ public class Panel_Gia extends javax.swing.JPanel {
 
         jLabel2.setText("Tìm kiếm:");
 
-        jLabel8.setText("Thành Phố:");
-
         tblGia.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -170,10 +166,10 @@ public class Panel_Gia extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 51, Short.MAX_VALUE)
+                .addGap(0, 66, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 14, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 683, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -211,12 +207,8 @@ public class Panel_Gia extends javax.swing.JPanel {
                                 .addGap(33, 33, 33)
                                 .addComponent(jButton4))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jbtThem)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel8)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtThanhPho, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(154, 154, 154)
+                                .addComponent(jbtThem)
                                 .addGap(74, 74, 74)
                                 .addComponent(jbtXoa)
                                 .addGap(78, 78, 78)
@@ -258,21 +250,17 @@ public class Panel_Gia extends javax.swing.JPanel {
                             .addComponent(jLabel7)
                             .addComponent(txtMaDiaDiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jdcDenNgay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(txtThanhPho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
+                .addGap(65, 65, 65)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbtThem)
                     .addComponent(jbtXoa)
                     .addComponent(jbtSua))
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 void BlockText() {
         txtMaDiaDiem.setEditable(false);
-        txtThanhPho.setEditable(false);
+        txtMaGia.setEditable(false);
     }
 
     void ShowDiaDiem() {
@@ -330,8 +318,8 @@ void BlockText() {
         txtMaGia.setText("");
         txtMaDiaDiem.setText("");
         txtGia.setText("");
-//        jdcTuNgay.setDate();
-//        txtDenNgay.setText("");
+        jdcTuNgay.setDateFormatString("");
+        jdcDenNgay.setDateFormatString("");
         txtTimGia.setText("");
     }
 
@@ -341,7 +329,7 @@ void BlockText() {
             JOptionPane.showMessageDialog(this, "Chọn dòng trong bảng để hiển thị");
         } else {
             txtMaDiaDiem.setText(modeldiadiem.getValueAt(index_diadiem, 0).toString().trim());
-            txtThanhPho.setText(modeldiadiem.getValueAt(index_diadiem, 1).toString().trim());
+            txtMaGia.setEditable(true);
         }
     }//GEN-LAST:event_tblDiaDiemMouseClicked
 
@@ -355,19 +343,19 @@ void BlockText() {
         String tungay = sdf.format(jdcTuNgay.getDate());
         String denngay = sdf.format(jdcDenNgay.getDate());
         Boolean isOK = true;
-
-        if (magia.length() == 0) {
-            JOptionPane.showMessageDialog(this, "Mã giá không được để trống");
-            isOK = false;
-        }
-//        } else if (tungay.length() == 0) {
-//            JOptionPane.showMessageDialog(this, "Từ ngày không được để trống");
+//        if (magia.length() == 0) {
+//            JOptionPane.showMessageDialog(this, "Mã giá không được để trống");
 //            isOK = false;
-//        } else if (denngay.length() == 0) {
+//        } else if (tungay.equals("")) {
+//            JOptionPane.showMessageDialog(jButton4, "Từ ngày không được để trống");
+//            isOK = false;
+//        } else if (denngay.equals("")) {
 //            JOptionPane.showMessageDialog(this, "Đến ngày không được để trống");
 //            isOK = false;
+//        } else if (sotien < 0) {
+//            JOptionPane.showMessageDialog(this, "Giá không được để trống");
+//            isOK = false;
 //        }
-
         if (magia.length() > 0) {
             for (GiaDTO g : gia) {
                 if (g.getMagia().matches(magia)) {
@@ -377,7 +365,6 @@ void BlockText() {
                 }
             }
         }
-
         if (isOK) {
 
             DiaDiemDTO dd = diadiem.get(index_diadiem);
@@ -437,8 +424,8 @@ void BlockText() {
             txtMaDiaDiem.setText(modelgia.getValueAt(index, 1).toString().trim());
             txtGia.setText(modelgia.getValueAt(index, 2).toString().trim());
             try {
-                jdcTuNgay.setDate(new SimpleDateFormat("yyyy-MM-dd").parse((String)modelgia.getValueAt(index, 3)));
-                jdcDenNgay.setDate(new SimpleDateFormat("yyyy-MM-dd").parse((String)modelgia.getValueAt(index, 4)));
+                jdcTuNgay.setDate(new SimpleDateFormat("yyyy-MM-dd").parse((String) modelgia.getValueAt(index, 3)));
+                jdcDenNgay.setDate(new SimpleDateFormat("yyyy-MM-dd").parse((String) modelgia.getValueAt(index, 4)));
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -455,7 +442,6 @@ void BlockText() {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton jbtSua;
@@ -468,7 +454,6 @@ void BlockText() {
     private javax.swing.JTextField txtGia;
     private javax.swing.JTextField txtMaDiaDiem;
     private javax.swing.JTextField txtMaGia;
-    private javax.swing.JTextField txtThanhPho;
     private javax.swing.JTextField txtTimGia;
     // End of variables declaration//GEN-END:variables
 }

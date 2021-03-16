@@ -11,6 +11,7 @@ import DAL.NhanVienDAL;
 import DTO.DoanDTO;
 import DTO.NhanVienDTO;
 import java.awt.Color;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.BorderFactory;
@@ -35,13 +36,13 @@ public class Panel_NhanVien extends javax.swing.JPanel {
         initComponents();
         this.setBounds(0, 0, 786, 632);
         this.setBorder(BorderFactory.createLineBorder(Color.black));
-        nvList=new ArrayList<>();
-        dtmNV=(DefaultTableModel) tblNV.getModel();
+        nvList = new ArrayList<>();
+        dtmNV = (DefaultTableModel) tblNV.getModel();
         dtmDoan = (DefaultTableModel) tblDoan.getModel();
         showNhanVien();
         showDoan();
         TimKiem();
-        
+
     }
 
     /**
@@ -63,7 +64,6 @@ public class Panel_NhanVien extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblNV = new javax.swing.JTable();
         txtSdt = new javax.swing.JTextField();
-        txtNgaysinh = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         txtTimkiem = new javax.swing.JTextField();
         lblMaKH = new javax.swing.JLabel();
@@ -78,6 +78,7 @@ public class Panel_NhanVien extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
         txtMadoan = new javax.swing.JTextField();
+        jdcNgaySinh = new com.toedter.calendar.JDateChooser();
 
         setPreferredSize(new java.awt.Dimension(786, 629));
 
@@ -151,12 +152,6 @@ public class Panel_NhanVien extends javax.swing.JPanel {
         txtSdt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtSdtMouseClicked(evt);
-            }
-        });
-
-        txtNgaysinh.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtNgaysinhMouseClicked(evt);
             }
         });
 
@@ -238,11 +233,11 @@ public class Panel_NhanVien extends javax.swing.JPanel {
                                     .addComponent(lblSdt)
                                     .addComponent(lblDiaChi))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtManv, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtTennv, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtSdt, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtNgaysinh, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtManv, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                                    .addComponent(txtTennv, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                                    .addComponent(txtSdt, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                                    .addComponent(jdcNgaySinh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
@@ -308,23 +303,27 @@ public class Panel_NhanVien extends javax.swing.JPanel {
                             .addComponent(txtMadoan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(45, 45, 45)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDiaChi)
-                    .addComponent(txtNgaysinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDiaChi1)
-                    .addComponent(cbNhiemvu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblDiaChi)
+                            .addComponent(lblDiaChi1)
+                            .addComponent(cbNhiemvu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnLamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(22, 22, 22))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jdcNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    void TimKiem(){
-         TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(tblNV.getModel());
+    void TimKiem() {
+        TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(tblNV.getModel());
         tblNV.setRowSorter(rowSorter);
         txtTimkiem.getDocument().addDocumentListener(new DocumentListener() {
             @Override
@@ -353,98 +352,115 @@ public class Panel_NhanVien extends javax.swing.JPanel {
             }
         });
     }
+
+    void reset() {
+        txtManv.setText("");
+        txtMadoan.setText("");
+        txtMadoan.setEditable(false);
+        txtTennv.setText("");
+        txtSdt.setText("");
+        jdcNgaySinh.setDateFormatString("");
+        txtEmail.setText("");
+        cbNhiemvu.setSelectedItem("Hướng dẫn viên");
+    }
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
+        boolean isOK=true;
         NhanVienDTO nv = new NhanVienDTO();
         nv.setManv(txtManv.getText());
         nv.setMadoan(txtMadoan.getText());
         nv.setTennv(txtTennv.getText());
         nv.setSdt(txtSdt.getText());
-        nv.setNgaysinh(txtNgaysinh.getText());
+        nv.setNgaysinh(new SimpleDateFormat("yyyy-MM-dd").format(jdcNgaySinh.getDate()));
         nv.setEmail(txtEmail.getText());
-        nv.setNhiemvu(cbNhiemvu.getSelectedItem().toString());         
+        nv.setNhiemvu(cbNhiemvu.getSelectedItem().toString());
+        
+        if(txtManv.getText().length()>0){
+            for (NhanVienDTO n : nvList) {
+                if(n.getManv().matches(txtManv.getText())){
+                    JOptionPane.showMessageDialog(this, "Mã nhân viên không được trùng");
+                    isOK=false;
+                }
+            }
+        }
+        
         NhanVienBLL.addNhanVien(nv);
         JOptionPane.showMessageDialog(null, "Thêm thành công");
-        showNhanVien();    
+        reset();
+        showNhanVien();
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
-        // TODO add your handling code here:
-        if (evt.getSource() == btnLamMoi) {
-            txtManv.setText("");
-            txtMadoan.setText("");;
-            txtTennv.setText("");;
-            txtSdt.setText("");
-            txtNgaysinh.setText("");;
-            txtEmail.setText("");;
-            cbNhiemvu.setSelectedItem("Hướng dẫn viên");
-        }
+        reset();
     }//GEN-LAST:event_btnLamMoiActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
         int selectedIndex = tblNV.getSelectedRow();
-                if(selectedIndex >= 0) {
-                    NhanVienDTO t = nvList.get(selectedIndex);
+        if (selectedIndex >= 0) {
+            NhanVienDTO t = nvList.get(selectedIndex);
 
-                    int option = JOptionPane.showConfirmDialog(null, "Bạn có muốn xóa?");
-                    if(option == 0) {
-                        NhanVienBLL.removeNhanVien(t.getManv());
-                        JOptionPane.showMessageDialog(null, "Xóa thành công");
-                        showNhanVien();                              
-                    }
-                }
+            int option = JOptionPane.showConfirmDialog(null, "Bạn có muốn xóa?");
+            if (option == 0) {
+                NhanVienBLL.removeNhanVien(t.getManv());
+                JOptionPane.showMessageDialog(null, "Xóa thành công");
+                showNhanVien();
+            }
+        }
 
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void txtManvMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtManvMouseClicked
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_txtManvMouseClicked
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
-        String manv= txtManv.getText();
-        String madoan = txtMadoan.getText();               
+        String manv = txtManv.getText();
+        String madoan = txtMadoan.getText();
         String tennv = txtTennv.getText();
-        String sdt = txtSdt.getText(); 
-        String ngaysinh = txtNgaysinh.getText(); 
-        String email = txtEmail.getText(); 
+        String sdt = txtSdt.getText();
+        String ngaysinh = new SimpleDateFormat("yyyy-MM-dd").format(jdcNgaySinh.getDate());
+        String email = txtEmail.getText();
         String nhiemvu = cbNhiemvu.getSelectedItem().toString();
 
         NhanVienDTO nv = new NhanVienDTO(manv, madoan, tennv, sdt, ngaysinh, email, nhiemvu);
         NhanVienBLL.editNhanVien(nv, manv);
         JOptionPane.showMessageDialog(null, "Sửa thành công");
+        reset();
         showNhanVien();
 
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void txtTennvMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTennvMouseClicked
-     
+
     }//GEN-LAST:event_txtTennvMouseClicked
 
     private void tblNVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblNVMouseClicked
         // TODO add your handling code here:
         int selectedIndex = tblNV.getSelectedRow();
-        NhanVienDTO nv = nvList.get(selectedIndex); 
-        txtManv.setText(nv.getManv());
-        txtMadoan.setText(nv.getMadoan());                                    
-        txtTennv.setText(nv.getTennv()); 
-        txtSdt.setText(nv.getSdt()); 
-        txtNgaysinh.setText(nv.getNgaysinh());
-        txtEmail.setText(nv.getEmail());
-        cbNhiemvu.setSelectedItem(nv.getNhiemvu());
-        
-       
+        if (selectedIndex == -1) {
+            JOptionPane.showMessageDialog(btnLamMoi, "Vui lòng chọn dòng trong bảng để hiển thị!");
+        } else {
+            txtManv.setText(dtmNV.getValueAt(selectedIndex, 0).toString().trim());
+            txtTennv.setText(dtmNV.getValueAt(selectedIndex, 2).toString().trim());
+            txtSdt.setText(dtmNV.getValueAt(selectedIndex, 3).toString().trim());
+            try {
+                jdcNgaySinh.setDate(new SimpleDateFormat("yyyy-MM-dd").parse((String) dtmNV.getValueAt(selectedIndex, 4)));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            txtEmail.setText(dtmNV.getValueAt(selectedIndex, 5).toString().trim());
+            cbNhiemvu.setSelectedItem(dtmNV.getValueAt(selectedIndex, 6).toString().trim());
+        }
+
+
     }//GEN-LAST:event_tblNVMouseClicked
 
     private void txtSdtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtSdtMouseClicked
-     
-    }//GEN-LAST:event_txtSdtMouseClicked
 
-    private void txtNgaysinhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNgaysinhMouseClicked
-    
-    }//GEN-LAST:event_txtNgaysinhMouseClicked
+    }//GEN-LAST:event_txtSdtMouseClicked
 
     private void txtEmailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtEmailMouseClicked
         // TODO add your handling code here:
@@ -453,9 +469,12 @@ public class Panel_NhanVien extends javax.swing.JPanel {
     private void tblDoanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDoanMouseClicked
         // TODO add your handling code here:
         int selectedIndex = tblDoan.getSelectedRow();
-        DoanDTO d = doanList.get(selectedIndex); 
-        txtMadoan.setText(d.getMadoan());
-        
+        if (selectedIndex == -1) {
+            JOptionPane.showMessageDialog(btnLamMoi, "Vui lòng chọn dòng trong bảng để hiển thị");
+        } else {
+            txtMadoan.setText(dtmDoan.getValueAt(selectedIndex, 0).toString().trim());
+        }
+
     }//GEN-LAST:event_tblDoanMouseClicked
 
 
@@ -470,6 +489,7 @@ public class Panel_NhanVien extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private com.toedter.calendar.JDateChooser jdcNgaySinh;
     private javax.swing.JLabel lblDiaChi;
     private javax.swing.JLabel lblDiaChi1;
     private javax.swing.JLabel lblMaKH;
@@ -481,7 +501,6 @@ public class Panel_NhanVien extends javax.swing.JPanel {
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtMadoan;
     private javax.swing.JTextField txtManv;
-    private javax.swing.JTextField txtNgaysinh;
     private javax.swing.JTextField txtSdt;
     private javax.swing.JTextField txtTennv;
     private javax.swing.JTextField txtTimkiem;
@@ -492,18 +511,17 @@ public class Panel_NhanVien extends javax.swing.JPanel {
         dtmNV.setRowCount(0);
         for (NhanVienDTO NV : nvList) {
             dtmNV.addRow(new Object[]{
-               NV.getManv(), NV.getMadoan(), NV.getTennv(),NV.getSdt(),NV.getNgaysinh(),NV.getEmail(),NV.getNhiemvu()
+                NV.getManv(), NV.getMadoan(), NV.getTennv(), NV.getSdt(), NV.getNgaysinh(), NV.getEmail(), NV.getNhiemvu()
             });
         }
     }
-      
-    
+
     private void showDoan() {
         doanList = DoanBLL.loadDataDoan();
         dtmDoan.setRowCount(0);
         for (DoanDTO d : doanList) {
             dtmDoan.addRow(new Object[]{
-               d.getMadoan(), d.getMatour(), d.getTendoan(),d.getNgaydi(),d.getNgayve(),d.getChitietchuongtrinh()
+                d.getMadoan(), d.getMatour(), d.getTendoan(), d.getNgaydi(), d.getNgayve(), d.getChitietchuongtrinh()
             });
         }
     }
