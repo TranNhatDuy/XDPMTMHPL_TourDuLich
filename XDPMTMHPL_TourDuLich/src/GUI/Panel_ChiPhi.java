@@ -138,6 +138,7 @@ public class Panel_ChiPhi extends javax.swing.JPanel {
         tblCP = new javax.swing.JTable();
         btnLamMoi = new javax.swing.JButton();
 
+        setEnabled(false);
         setPreferredSize(new java.awt.Dimension(786, 629));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
@@ -191,6 +192,7 @@ public class Panel_ChiPhi extends javax.swing.JPanel {
         txtChiTiet.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jScrollPane3.setViewportView(txtChiTiet);
 
+        txtMaDoan.setEditable(false);
         txtMaDoan.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtMaDoan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -296,11 +298,12 @@ public class Panel_ChiPhi extends javax.swing.JPanel {
                                     .addComponent(jScrollPane3))
                                 .addGap(32, 32, 32)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel3)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtMaDoan))))))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtMaDoan, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
