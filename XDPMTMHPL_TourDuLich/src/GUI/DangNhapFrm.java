@@ -191,21 +191,21 @@ public class DangNhapFrm extends javax.swing.JFrame {
                     log=0; 
                     break;
                 }
-//                else {
-//                    log=2;
-//                    break;
-//                }
+                if(rs.getString(1).equals(username) || rs.getString(2).equals(pw)) {
+                    log=2;
+                    break;
+                }
             }
             if(log==0){
                 JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
                 new GUI_Tour().setVisible(true);
                 this.dispose();
             }
-//            if(log==2 && !username.equals("") && !pw.equals("")){
-//                JOptionPane.showMessageDialog(this, "Đăng nhập thất bại");
-//                jtfUsername.setText("");
-//                jpfPassword.setText("");
-//            }
+            if(log==2 && !username.equals("") && !pw.equals("")){
+                JOptionPane.showMessageDialog(this, "Đăng nhập thất bại");
+                jtfUsername.setText("");
+                jpfPassword.setText("");
+            }
 
         } catch (SQLException ex) {
             Logger.getLogger(DangNhapFrm.class.getName()).log(Level.SEVERE, null, ex);
