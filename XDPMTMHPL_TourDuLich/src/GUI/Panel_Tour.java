@@ -132,7 +132,6 @@ public class Panel_Tour extends javax.swing.JPanel {
         jScrollPane4 = new javax.swing.JScrollPane();
         txpMota = new javax.swing.JTextPane();
 
-        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(786, 632));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
