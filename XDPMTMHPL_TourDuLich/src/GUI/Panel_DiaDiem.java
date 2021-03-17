@@ -234,7 +234,7 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
     AutoCreateID autoID = new AutoCreateID();
     private void btnThemDDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemDDActionPerformed
         // TODO add your handling code here:
-
+        
         if (evt.getSource() == btnThemDD) {
             String id = "";
             String tp = (String) cbTp.getSelectedItem();

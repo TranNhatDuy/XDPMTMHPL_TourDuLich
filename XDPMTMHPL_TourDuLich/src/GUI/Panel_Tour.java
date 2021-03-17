@@ -29,7 +29,7 @@ import javax.swing.table.TableRowSorter;
  * @author Win 10
  */
 public class Panel_Tour extends javax.swing.JPanel {
-    
+
     /**
      * Creates new form Panel_Tour
      */
@@ -37,45 +37,41 @@ public class Panel_Tour extends javax.swing.JPanel {
     List<DiaDiemDTO> ddList;
     DefaultTableModel dtmtour, dtmdd;
 
-    
     public Panel_Tour() {
         initComponents();
         this.setBounds(0, 0, 786, 632);
         this.setBorder(BorderFactory.createLineBorder(Color.black));
-        
+
         dtmtour = (DefaultTableModel) tblTour.getModel();
         dtmdd = (DefaultTableModel) tblDd.getModel();
         showTour();
         showDiadiem();
         TimKiem();
     }
-    
-    private void showDiadiem() {     
+
+    private void showDiadiem() {
         ddList = DiaDiemBLL.loadDataDiaDiem();
-        
+
         dtmdd.setRowCount(0);
-        
+
         ddList.forEach((DiaDiemDTO) -> {
-            dtmdd.addRow(new Object[] {DiaDiemDTO.getMadd(), DiaDiemDTO.getThanhpho(), DiaDiemDTO.getTendd(), DiaDiemDTO.getMota()
-                });
+            dtmdd.addRow(new Object[]{DiaDiemDTO.getMadd(), DiaDiemDTO.getThanhpho(), DiaDiemDTO.getTendd(), DiaDiemDTO.getMota()
+            });
         });
     }
-    
 
-    
     private void showTour() {
         tourList = TourBLL.loadDataTour();
-        
+
         dtmtour.setRowCount(0);
-        
+
         tourList.forEach((TourDTO) -> {
-            dtmtour.addRow(new Object[] {TourDTO.getMatour(), TourDTO.getTentour(), TourDTO.getMadd(), TourDTO.getMota()
-                });
+            dtmtour.addRow(new Object[]{TourDTO.getMatour(), TourDTO.getTentour(), TourDTO.getMadd(), TourDTO.getMota()
+            });
         });
     }
-    
-    
-    void TimKiem(){
+
+    void TimKiem() {
         TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(tblTour.getModel());
         tblTour.setRowSorter(rowSorter);
         txtTimkiem.getDocument().addDocumentListener(new DocumentListener() {
@@ -105,6 +101,7 @@ public class Panel_Tour extends javax.swing.JPanel {
             }
         });
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -358,25 +355,34 @@ public class Panel_Tour extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-     
+        boolean isOK = true;
+        if (txtMatour.getText().length() > 0) {
+            for (TourDTO t : tourList) {
+                if (t.getMatour().matches(txtMatour.getText())) {
+                    JOptionPane.showMessageDialog(btnLamMoi, "Mã tour không được trùng");
+                    isOK = false;
+                    txtMatour.setText("");
+                }
+            }
+        }
         TourDTO t = new TourDTO();
         t.setMatour(txtMatour.getText());
         t.setTentour(txtTentour.getText());
         t.setMadd(txtMadd.getText());
-        t.setMota(txpMota.getText());         
+        t.setMota(txpMota.getText());
         TourBLL.addTour(t);
         JOptionPane.showMessageDialog(null, "Thêm thành công");
-        showTour();   
-               
+        showTour();
+
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void tblTourMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTourMouseClicked
         int selectedIndex = tblTour.getSelectedRow();
-        TourDTO t = tourList.get(selectedIndex); 
+        TourDTO t = tourList.get(selectedIndex);
         txtMatour.setText(t.getMatour());
-        txtTentour.setText(t.getTentour());                                    
-        txtMadd.setText(t.getMadd()); 
-        txpMota.setText(t.getMota()); 
+        txtTentour.setText(t.getTentour());
+        txtMadd.setText(t.getMadd());
+        txpMota.setText(t.getMota());
     }//GEN-LAST:event_tblTourMouseClicked
 
     private void btnLamMoiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLamMoiMouseClicked
@@ -389,25 +395,25 @@ public class Panel_Tour extends javax.swing.JPanel {
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
         int selectedIndex = tblTour.getSelectedRow();
-                if(selectedIndex >= 0) {
-                    TourDTO t = tourList.get(selectedIndex);
+        if (selectedIndex >= 0) {
+            TourDTO t = tourList.get(selectedIndex);
 
-                    int option = JOptionPane.showConfirmDialog(null, "Bạn có muốn xóa?");
-                    if(option == 0) {
-                        TourBLL.removeTour(t.getMatour());
-                        JOptionPane.showMessageDialog(null, "Xóa thành công");
-                        showTour();                              
-                    }
-                }
-        
+            int option = JOptionPane.showConfirmDialog(null, "Bạn có muốn xóa?");
+            if (option == 0) {
+                TourBLL.removeTour(t.getMatour());
+                JOptionPane.showMessageDialog(null, "Xóa thành công");
+                showTour();
+            }
+        }
+
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
         String matour = txtMatour.getText();
-        String tentour = txtTentour.getText();               
+        String tentour = txtTentour.getText();
         String madd = txtMadd.getText();
-        String mota = txpMota.getText();        
+        String mota = txpMota.getText();
 
         TourDTO t = new TourDTO(matour, tentour, madd, mota);
         TourBLL.editTour(t, matour);
@@ -417,16 +423,16 @@ public class Panel_Tour extends javax.swing.JPanel {
 
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
         // TODO add your handling code here:
-        
-        
+
+
     }//GEN-LAST:event_btnLamMoiActionPerformed
 
     private void tblDdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDdMouseClicked
         // TODO add your handling code here:
         int selectedIndex = tblDd.getSelectedRow();
-        DiaDiemDTO dd = ddList.get(selectedIndex); 
-        txtMadd.setText(dd .getMadd());
-        
+        DiaDiemDTO dd = ddList.get(selectedIndex);
+        txtMadd.setText(dd.getMadd());
+
     }//GEN-LAST:event_tblDdMouseClicked
 
 

@@ -375,6 +375,16 @@ public class Panel_ChiPhi extends javax.swing.JPanel {
     }//GEN-LAST:event_txtMaDoanActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        boolean isOK=true;
+        if(txtMaCP.getText().length()>0){
+            for(ChiPhiDTO c : cpList){
+                if(c.getMaCP().matches(txtMaCP.getText())){
+                    JOptionPane.showMessageDialog(this, "Mã chi phí không được trùng");
+                    isOK=false;
+                    txtMaCP.setText("");
+                }
+            }
+        }
         ChiPhiDTO cp = new ChiPhiDTO();
         cp.setMaCP(txtMaCP.getText());
         cp.setMaDoan(txtMaDoan.getText());

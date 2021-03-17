@@ -328,7 +328,7 @@ void BlockText() {
     void Reset() {
         txtMaGia.setText("");
         txtMaDiaDiem.setText("");
-        txtGia.setText("");
+        txtGia.setText(null);
         jdcTuNgay.setCalendar(null);
         jdcDenNgay.setCalendar(null);
         txtTimGia.setText("");
@@ -354,18 +354,21 @@ void BlockText() {
         String tungay = sdf.format(jdcTuNgay.getDate());
         String denngay = sdf.format(jdcDenNgay.getDate());
         Boolean isOK = true;
-//        if (magia.length() == 0) {
-//            JOptionPane.showMessageDialog(this, "Mã giá không được để trống");
-//            isOK = false;
-//        } else if (tungay.equals("")) {
-//            JOptionPane.showMessageDialog(jButton4, "Từ ngày không được để trống");
-//            isOK = false;
-//        } else if (denngay.equals("")) {
-//            JOptionPane.showMessageDialog(this, "Đến ngày không được để trống");
-//            isOK = false;
-//        } else if (sotien < 0) {
-//            JOptionPane.showMessageDialog(this, "Giá không được để trống");
-//            isOK = false;
+
+        if(magia.length() == 0 ){
+            JOptionPane.showMessageDialog(this, "Mã giá không được để trống");
+            isOK=false;
+        }
+//        else if(sotien == 0 || String.valueOf(sotien).length()==0 ) {
+//            JOptionPane.showMessageDialog(this, "Số tiền không được để trống");
+//            isOK=false;
+//        }
+//        sdf.setLenient(false);
+//        try {
+//           sdf.parse(tungay);
+//           sdf.parse(denngay);
+//        } catch (Exception e) {
+//        JOptionPane.showMessageDialog(this,"Từ ngày , đến ngày không hợp lệ");
 //        }
         if (magia.length() > 0) {
             for (GiaDTO g : gia) {
@@ -373,6 +376,7 @@ void BlockText() {
                     JOptionPane.showMessageDialog(this, "Mã giá không được trùng");
                     isOK = false;
                     txtMaGia.setText("");
+                    txtMaGia.setEditable(true);
                 }
             }
         }

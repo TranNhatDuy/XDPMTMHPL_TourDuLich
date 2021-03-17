@@ -341,6 +341,17 @@ public class Panel_Doan extends javax.swing.JPanel {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:      
+        boolean isOK=true;
+        if(txtMadoan.getText().length() > 0){
+            for (DoanDTO d : doanList) {
+                if(d.getMadoan().matches(txtMadoan.getText())){
+                    JOptionPane.showMessageDialog(btnLamMoi, "Mã Đoàn không được trùng");
+                    isOK=false;
+                    txtMadoan.setText("");
+                }
+            }
+        }
+        
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         DoanDTO d = new DoanDTO();
         d.setMadoan(txtMadoan.getText());

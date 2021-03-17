@@ -12,7 +12,7 @@ public class MySQLConnect {
     String user = "root";
 
     String password = "";
-    String url = "jdbc:mysql://localhost:3306/tour_dulich";
+    String url = "jdbc:mysql://localhost:3306/tour_dulich?useUnicode=yes&characterEncoding=UTF-8";
     Connection conn = null;
     Statement st = null;
     ResultSet rs = null;
