@@ -109,7 +109,7 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel14.setText("Tìm kiếm:");
 
-        btnThemDD.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnThemDD.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnThemDD.setText("Thêm");
         btnThemDD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,7 +117,7 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
             }
         });
 
-        btnXoaDD.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnXoaDD.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnXoaDD.setText("Xóa");
         btnXoaDD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,15 +125,15 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
             }
         });
 
-        btnSuaDD.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnSuaDD.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnSuaDD.setText("Sửa");
 
-        txtMadd.setText("ID tự động tăng\n");
-        txtMadd.setEnabled(false);
+        txtMadd.setEditable(false);
+        txtMadd.setText("Mã tự động tăng ");
 
         jScrollPane4.setViewportView(txtMoTa);
 
-        btnLamMoi.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnLamMoi.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnLamMoi.setText("Làm mới");
         btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -165,15 +165,6 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
                                 .addGap(318, 318, 318)
                                 .addComponent(jLabel1))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(162, 162, 162)
-                                .addComponent(btnThemDD)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnXoaDD, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnSuaDD, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnLamMoi))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGap(245, 245, 245)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -190,8 +181,18 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
                                             .addComponent(txtTendd, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
                                             .addComponent(txtMadd)
                                             .addComponent(cbTp, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
-                        .addGap(0, 156, Short.MAX_VALUE)))
+                        .addGap(0, 256, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnThemDD, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnXoaDD, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnSuaDD, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnLamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(140, 140, 140))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,8 +203,8 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(txtTimDD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel12)
                 .addGap(18, 18, 18)
@@ -224,10 +225,10 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnThemDD)
-                    .addComponent(btnXoaDD)
-                    .addComponent(btnSuaDD)
-                    .addComponent(btnLamMoi))
+                    .addComponent(btnThemDD, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnXoaDD, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSuaDD, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(207, 207, 207))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -259,7 +260,7 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
         // TODO add your handling code here:
         if (evt.getSource() == btnLamMoi) {
-            txtMadd.setText("ID tự động tăng");
+            txtMadd.setText("Mã tự động tăng");
             txtTendd.setText("");
             cbTp.setSelectedIndex(0);
             txtMoTa.setText("");
