@@ -337,6 +337,7 @@ public class GUI_Tour extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (evt.getSource() == btnDangXuat) {
             this.setVisible(false);
+            new DangNhapFrm().setVisible(true);
         }
     }//GEN-LAST:event_btnDangXuatActionPerformed
 

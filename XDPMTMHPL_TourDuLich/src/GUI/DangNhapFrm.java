@@ -172,10 +172,10 @@ public class DangNhapFrm extends javax.swing.JFrame {
         ResultSet rs=null;
         StringBuilder sb = new StringBuilder();
         if (username.equals("")) {
-            JOptionPane.showMessageDialog(this, "username is empty \n");
+            JOptionPane.showMessageDialog(this, "Vui lòng điền tên đăng nhập \n");
         }
-        if (pw.equals("")) {
-            JOptionPane.showMessageDialog(this, "password is empty \n");
+        else if (pw.equals("")) {
+            JOptionPane.showMessageDialog(this, "Vui lòng điền mật khẩu \n");
         }
         if (sb.length() > 0) {
             JOptionPane.showMessageDialog(this, sb.toString(), "Invalidation", JOptionPane.ERROR_MESSAGE);
@@ -188,18 +188,28 @@ public class DangNhapFrm extends javax.swing.JFrame {
             int log=1;
             while(rs.next()){
                 if(rs.getString(1).equals(username) && rs.getString(2).equals(pw)){
-                    log=0;
+                    log=0; 
                     break;
-                }}
-                if(log==0){
-                    JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
-                    new GUI_Tour().setVisible(true);
-                    this.dispose();
                 }
-
-            } catch (SQLException ex) {
-                Logger.getLogger(DangNhapFrm.class.getName()).log(Level.SEVERE, null, ex);
+                if(rs.getString(1).equals(username) || rs.getString(2).equals(pw)) {
+                    log=2;
+                    break;
+                }
             }
+            if(log==0){
+                JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
+                new GUI_Tour().setVisible(true);
+                this.dispose();
+            }
+            if(log==2 && !username.equals("") && !pw.equals("")){
+                JOptionPane.showMessageDialog(this, "Đăng nhập thất bại");
+                jtfUsername.setText("");
+                jpfPassword.setText("");
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DangNhapFrm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jbtDangNhapActionPerformed
 
     private void jcbAnHienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbAnHienActionPerformed
@@ -248,7 +258,7 @@ public class DangNhapFrm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DangNhapFrm().setVisible(false);
+                new DangNhapFrm().setVisible(true);
             }
         });
     }

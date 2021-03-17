@@ -181,6 +181,7 @@ public class Panel_KhachHang extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Mã đoàn:");
 
+        txtMaDoan.setEditable(false);
         txtMaDoan.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         txtEmail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
