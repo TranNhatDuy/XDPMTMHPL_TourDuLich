@@ -10,6 +10,7 @@ import DTO.DiaDiemDTO;
 import java.awt.Color;
 import java.awt.TrayIcon;
 import java.util.ArrayList;
+import java.util.HashMap;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
@@ -37,7 +38,7 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
         dtm = (DefaultTableModel) tblDiaDiem.getModel();
         showDiaDiem();
         TimKiem();
-
+        Test();
     }
 
     /**
@@ -63,11 +64,11 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
         btnThemDD = new javax.swing.JButton();
         btnXoaDD = new javax.swing.JButton();
         btnSuaDD = new javax.swing.JButton();
-        txtMadd = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
         txtMoTa = new javax.swing.JTextPane();
         btnLamMoi = new javax.swing.JButton();
         cbTp = new javax.swing.JComboBox<>();
+        cbMdd = new javax.swing.JComboBox<>();
 
         setPreferredSize(new java.awt.Dimension(786, 629));
 
@@ -133,9 +134,6 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
             }
         });
 
-        txtMadd.setEditable(false);
-        txtMadd.setText("Mã tự động tăng ");
-
         jScrollPane4.setViewportView(txtMoTa);
 
         btnLamMoi.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -146,7 +144,9 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
             }
         });
 
-        cbTp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "An Giang", "Bà Rịa Vũng Tàu", "Bạc Liêu", "Bắc Giang", "Buôn Ma Thuột", "Cần Thơ", "Đà Lạt", "Đà Nẵng", "Hồ Chí Minh", "Hà Nội", "Hạ Long", "Huế", "Hải Dương", "Hải Phòng", "Vĩnh Long", "Thanh Hóa", "Long Xuyên", "Mỹ Tho", "Quy Nhơn", "Vinh", " " }));
+        cbTp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "An Giang", "Bà Rịa Vũng Tàu", "Bạc Liêu", "Bắc Kạn", "Bắc Giang", "Bắc Ninh", "Bến Tre", "Bình Dương", "Bình Định", "Bình Phước", "Bình Thuận", "Cà Mau", "Cao Bằng", "Cần Thơ – Hậu Giang", "TP. Đà Nẵng\t", "ĐắkLắk – Đắc Nông", "Đồng Nai", "Đồng Tháp", "Gia Lai", "Hà Giang", "Hà Nam", "TP. Hà Nội", "Hà Tây", "Hà Tĩnh", "Hải Dương", "TP. Hải Phòng", "Hoà Bình", "Hưng Yên", "TP. Hồ Chí Minh", "Khánh Hoà", "Kiên Giang", "Kon Tum", "Lai Châu – Điện Biên", "Lạng Sơn", "Lao Ca", "Lâm Đồng", "Long An", "Nam Định", "Nghệ An", "Ninh Bình", "Ninh Thuận", "Phú Thọ", "Phú Yên", "Quảng Bình", "Quảng Nam", "Quảng Ngãi", "Quảng Ninh", "Quảng Trị", "Sóc Trăng", "Sóc  Trăng", "Tây Ninh", "Thái Bình", "Thái Nguyên", "Thanh Hoá", "Thừa Thiên Huế", "Tiền Giang", "Trà Vinh", "Tuyên Quang", "Vĩnh Long", "Yên Bái" }));
+
+        cbMdd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "94000", "74000", "99000", "17000", "21000", "16000", "83000", "72000", "53000", "77000", "62000", "96000", "22000", "92000", "59000", "55000", "71000", "93000", "54000", "29000", "30000", "10000", "31000", "43000", "34000", "35000", "13000", "39000", "70000", "57000", "95000", "58000", "28000", "20000", "19000", "61000", "81000", "32000", "42000", "40000", "63000", "24000", "56000", "45000", "51000", "52000", "36000", "46000", "97000", "27000", "73000", "33000", "23000", "41000", "47000", "82000", "90000", "25000", "91000", "11000", "26000" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -184,8 +184,8 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
                                         .addGap(57, 57, 57)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(txtTendd, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
-                                            .addComponent(txtMadd)
-                                            .addComponent(cbTp, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                            .addComponent(cbTp, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(cbMdd, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                         .addGap(0, 256, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -219,7 +219,7 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(txtMadd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbMdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
@@ -239,8 +239,15 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
     AutoCreateID autoID = new AutoCreateID();
 
+    void Test() {
+        int i = cbMdd.getSelectedIndex();
+        int j = cbTp.getSelectedIndex();
+        HashMap<Integer, Integer> test = new HashMap<Integer, Integer>();
+        test.put(i, j);
+
+    }
+
     void Reset() {
-        txtMadd.setText("Mã tự động tăng");
         txtTendd.setText("");
         cbTp.setSelectedIndex(0);
         txtMoTa.setText("");
@@ -248,21 +255,22 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
     }
     private void btnThemDDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemDDActionPerformed
 
-        String id = "";
-        String tp = (String) cbTp.getSelectedItem();
-        id = AutoCreateID.AutoID(txtTendd.getText(), id);
-        txtMadd.setText(id);
-        System.out.println(id);
-        DiaDiemDTO dd = new DiaDiemDTO(txtMadd.getText(), tp, txtTendd.getText(), txtMoTa.getText());
-        DiaDiemBLL.addDiaDiem(dd);
+//        String id = "";
+//        String tp = (String) cbTp.getSelectedItem();
+//        id = AutoCreateID.AutoID(txtTendd.getText(), id);
+//        txtMadd.setText(id);
+//        System.out.println(id);
+//        DiaDiemDTO dd = new DiaDiemDTO(txtMadd.getText(), tp, txtTendd.getText(), txtMoTa.getText());
+//        DiaDiemBLL.addDiaDiem(dd);
+//
+//        showDiaDiem();
 
-        showDiaDiem();
     }//GEN-LAST:event_btnThemDDActionPerformed
 
     private void tblDiaDiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDiaDiemMouseClicked
         // TODO add your handling code here:
         int index = tblDiaDiem.getSelectedRow();
-        txtMadd.setText((String) (dtm.getValueAt(index, 0)));
+//        txtMadd.setText((String) (dtm.getValueAt(index, 0)));
         txtTendd.setText((String) (dtm.getValueAt(index, 1)));
         cbTp.setSelectedItem((String) (dtm.getValueAt(index, 2)));
         txtMoTa.setText((String) (dtm.getValueAt(index, 3)));
@@ -275,38 +283,38 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
 
     private void btnXoaDDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaDDActionPerformed
         // TODO add your handling code here:
-        if (evt.getSource() == btnXoaDD) {
-            if (txtMadd.getText().equals("") || txtTendd.getText().equals("") || txtMoTa.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "Thông tin còn trống", "Thông báo", JOptionPane.WARNING_MESSAGE);
-            } else {
-                DiaDiemBLL.removeDiaDiem(txtMadd.getText());
-
-            }
-        }
-        showDiaDiem();
+//        if (evt.getSource() == btnXoaDD) {
+//            if (txtMadd.getText().equals("") || txtTendd.getText().equals("") || txtMoTa.getText().equals("")) {
+//                JOptionPane.showMessageDialog(this, "Thông tin còn trống", "Thông báo", JOptionPane.WARNING_MESSAGE);
+//            } else {
+//                DiaDiemBLL.removeDiaDiem(txtMadd.getText());
+//
+//            }
+//        }
+//        showDiaDiem();
     }//GEN-LAST:event_btnXoaDDActionPerformed
 
     private void btnSuaDDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaDDActionPerformed
-        int index = tblDiaDiem.getSelectedRow();
-        String data = dtm.getValueAt(index, 0).toString();
-        if (index > 0) {
-            DiaDiemDTO d = new DiaDiemDTO();
-            d.setTendd(txtTendd.getText());
-            d.setThanhpho((String) cbTp.getSelectedItem());
-            d.setMota(txtMoTa.getText());
-            if (JOptionPane.showConfirmDialog(this, "Bạn có muốn sửa không ??") == 0) {
-                new DiaDiemBLL().editDiaDiem(d, data);
-                JOptionPane.showMessageDialog(this, "Sửa thành công");
-                showDiaDiem();
-                Reset();
-            } else {
-                JOptionPane.showMessageDialog(this, "Sửa không thành công");
-            }
-        } else {
-            JOptionPane.showMessageDialog(this, "Chọn dòng trong bảng để sửa");
-        }
+//        int index = tblDiaDiem.getSelectedRow();
+//        String data = dtm.getValueAt(index, 0).toString();
+//        if (index > 0) {
+//            DiaDiemDTO d = new DiaDiemDTO();
+//            d.setTendd(txtTendd.getText());
+//            d.setThanhpho((String) cbTp.getSelectedItem());
+//            d.setMota(txtMoTa.getText());
+//            if (JOptionPane.showConfirmDialog(this, "Bạn có muốn sửa không ??") == 0) {
+//                new DiaDiemBLL().editDiaDiem(d, data);
+//                JOptionPane.showMessageDialog(this, "Sửa thành công");
+//                showDiaDiem();
+//                Reset();
+//            } else {
+//                JOptionPane.showMessageDialog(this, "Sửa không thành công");
+//            }
+//        } else {
+//            JOptionPane.showMessageDialog(this, "Chọn dòng trong bảng để sửa");
+//        }
     }//GEN-LAST:event_btnSuaDDActionPerformed
-    private void showDiaDiem() {
+    public void showDiaDiem() {
         ArrayList<DiaDiemDTO> ddList = new DiaDiemBLL().loadDataDiaDiem();
 
         dtm.setRowCount(0);
@@ -351,6 +359,7 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
     private javax.swing.JButton btnSuaDD;
     private javax.swing.JButton btnThemDD;
     private javax.swing.JButton btnXoaDD;
+    private javax.swing.JComboBox<String> cbMdd;
     private javax.swing.JComboBox<String> cbTp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
@@ -362,7 +371,6 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable tblDiaDiem;
-    private javax.swing.JTextField txtMadd;
     private javax.swing.JTextPane txtMoTa;
     private javax.swing.JTextField txtTendd;
     private javax.swing.JTextField txtTimDD;
