@@ -246,17 +246,15 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
         txtMoTa.setText("");
     }
     private void btnThemDDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemDDActionPerformed
-        // TODO add your handling code here:
 
-        if (evt.getSource() == btnThemDD) {
-            String id = "";
-            String tp = (String) cbTp.getSelectedItem();
-            id = AutoCreateID.AutoID(txtTendd.getText(), id);
-            txtMadd.setText(id);
-            System.out.println(id);
-            DiaDiemDTO dd = new DiaDiemDTO(txtMadd.getText(), tp, txtTendd.getText(), txtMoTa.getText());
-            DiaDiemBLL.addDiaDiem(dd);
-        }
+        String id = "";
+        String tp = (String) cbTp.getSelectedItem();
+        id = AutoCreateID.AutoID(txtTendd.getText(), id);
+        txtMadd.setText(id);
+        System.out.println(id);
+        DiaDiemDTO dd = new DiaDiemDTO(txtMadd.getText(), tp, txtTendd.getText(), txtMoTa.getText());
+        DiaDiemBLL.addDiaDiem(dd);
+
         showDiaDiem();
     }//GEN-LAST:event_btnThemDDActionPerformed
 
@@ -295,12 +293,16 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
             d.setTendd(txtTendd.getText());
             d.setThanhpho((String) cbTp.getSelectedItem());
             d.setMota(txtMoTa.getText());
-            if (JOptionPane.showConfirmDialog(btnLamMoi, "Bạn có muốn sửa không ??") == 0) {
+            if (JOptionPane.showConfirmDialog(this, "Bạn có muốn sửa không ??") == 0) {
                 new DiaDiemBLL().editDiaDiem(d, data);
-                JOptionPane.showMessageDialog(btnLamMoi, "Sửa thành công");
+                JOptionPane.showMessageDialog(this, "Sửa thành công");
                 showDiaDiem();
                 Reset();
+            } else {
+                JOptionPane.showMessageDialog(this, "Sửa không thành công");
             }
+        } else {
+            JOptionPane.showMessageDialog(this, "Chọn dòng trong bảng để sửa");
         }
     }//GEN-LAST:event_btnSuaDDActionPerformed
     private void showDiaDiem() {
