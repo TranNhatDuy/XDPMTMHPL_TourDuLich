@@ -351,10 +351,11 @@ public class Panel_KhachHang extends javax.swing.JPanel {
                 }
             }
         }
-        
+        if(isOK){
         if (evt.getSource() == btnThem) {
             KhachHangBLL.addKhachHang(kh);
             showKhachHang();
+        }
         }
     }//GEN-LAST:event_btnThemActionPerformed
 

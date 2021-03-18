@@ -388,6 +388,7 @@ public class Panel_ChiPhi extends javax.swing.JPanel {
                 }
             }
         }
+        if(isOK){
         ChiPhiDTO cp = new ChiPhiDTO();
         cp.setMaCP(txtMaCP.getText());
         cp.setMaDoan(txtMaDoan.getText());
@@ -396,7 +397,7 @@ public class Panel_ChiPhi extends javax.swing.JPanel {
         ChiPhiBLL.addChiPhi(cp);
         JOptionPane.showMessageDialog(this, "Thêm thành công");
         ShowChiPhi();
-        
+        }
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed

@@ -256,6 +256,7 @@ public class GUI_Tour extends javax.swing.JFrame {
             jPanel3.repaint();
             pnKH.repaint();
             pnKH.revalidate();
+            pnKH.ShowDoan();
         }
     }//GEN-LAST:event_btnKhHangActionPerformed
 
@@ -267,6 +268,7 @@ public class GUI_Tour extends javax.swing.JFrame {
             jPanel3.repaint();
             pnTour.revalidate();
             pnTour.repaint();
+            pnTour.showDiadiem();
         }
     }//GEN-LAST:event_btnTourActionPerformed
 
@@ -278,6 +280,7 @@ public class GUI_Tour extends javax.swing.JFrame {
             jPanel3.repaint();
             pnNV.revalidate();
             pnNV.repaint();
+            pnNV.showDoan();
         }
     }//GEN-LAST:event_btnNhanVienActionPerformed
 
@@ -288,6 +291,7 @@ public class GUI_Tour extends javax.swing.JFrame {
             jPanel3.repaint();
             pnGia.revalidate();
             pnGia.repaint();
+            pnGia.ShowTour();
         }
     }//GEN-LAST:event_btnGiaActionPerformed
 
@@ -302,12 +306,13 @@ public class GUI_Tour extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDiaDiemActionPerformed
 
     private void btnDoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoanActionPerformed
-        if (evt.getSource() == btnDoan) {
+       if (evt.getSource() == btnDoan) {
             jPanel3.removeAll();
             jPanel3.add(pnDoan);
             jPanel3.repaint();
             pnDoan.revalidate();
             pnDoan.repaint();
+            pnDoan.showTour();
         }
     }//GEN-LAST:event_btnDoanActionPerformed
 
@@ -319,6 +324,7 @@ public class GUI_Tour extends javax.swing.JFrame {
             jPanel3.repaint();
             pnCP.revalidate();
             pnCP.repaint();
+            pnCP.ShowDoan();
         }
     }//GEN-LAST:event_btnChiphiActionPerformed
 

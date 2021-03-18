@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.RowFilter;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -49,7 +50,7 @@ public class Panel_Tour extends javax.swing.JPanel {
         TimKiem();
     }
 
-    private void showDiadiem() {
+    public void showDiadiem() {
         ddList = DiaDiemBLL.loadDataDiaDiem();
 
         dtmdd.setRowCount(0);
@@ -60,7 +61,7 @@ public class Panel_Tour extends javax.swing.JPanel {
         });
     }
 
-    private void showTour() {
+    public void showTour() {
         tourList = TourBLL.loadDataTour();
 
         dtmtour.setRowCount(0);
@@ -69,6 +70,7 @@ public class Panel_Tour extends javax.swing.JPanel {
             dtmtour.addRow(new Object[]{TourDTO.getMatour(), TourDTO.getTentour(), TourDTO.getMadd(), TourDTO.getMota()
             });
         });
+        
     }
 
     void TimKiem() {
@@ -428,6 +430,14 @@ public class Panel_Tour extends javax.swing.JPanel {
         txtMadd.setText(dd.getMadd());
 
     }//GEN-LAST:event_tblDdMouseClicked
+
+    public JTable getTblTour() {
+        return tblTour;
+    }
+
+    public void setTblTour(JTable tblTour) {
+        this.tblTour = tblTour;
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

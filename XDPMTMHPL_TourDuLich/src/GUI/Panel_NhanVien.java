@@ -383,11 +383,12 @@ public class Panel_NhanVien extends javax.swing.JPanel {
                 }
             }
         }
-        
+        if(isOK){
         NhanVienBLL.addNhanVien(nv);
         JOptionPane.showMessageDialog(this, "Thêm thành công");
         reset();
         showNhanVien();
+        }
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
@@ -507,7 +508,7 @@ public class Panel_NhanVien extends javax.swing.JPanel {
     private javax.swing.JTextField txtTimkiem;
     // End of variables declaration//GEN-END:variables
 
-    private void showNhanVien() {
+    public void showNhanVien() {
         nvList = NhanVienBLL.loadDataNhanVien();
         dtmNV.setRowCount(0);
         for (NhanVienDTO NV : nvList) {
@@ -517,7 +518,7 @@ public class Panel_NhanVien extends javax.swing.JPanel {
         }
     }
 
-    private void showDoan() {
+    public void showDoan() {
         doanList = DoanBLL.loadDataDoan();
         dtmDoan.setRowCount(0);
         for (DoanDTO d : doanList) {
