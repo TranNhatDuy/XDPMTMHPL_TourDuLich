@@ -299,7 +299,7 @@ public class GUI_Tour extends javax.swing.JFrame {
             jPanel3.add(pnDd);
             jPanel3.repaint();
             pnDd.revalidate();
-            pnGia.repaint();
+            pnDd.repaint();
         }
     }//GEN-LAST:event_btnDiaDiemActionPerformed
 

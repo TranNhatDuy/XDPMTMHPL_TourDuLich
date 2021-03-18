@@ -14,14 +14,14 @@ public class GiaDTO {
     String magia;
     int sotien;
     String denngay, tungay;
-    DiaDiemDTO diadiem;
+    TourDTO tour;
 
     public GiaDTO() {
     }
 
-    public GiaDTO(String magia, DiaDiemDTO diadiem, int sotien, String tungay, String denngay) {
+    public GiaDTO(String magia, TourDTO tour, int sotien, String tungay, String denngay) {
         this.magia = magia;
-        this.diadiem = diadiem;
+        this.tour = tour;
         this.sotien = sotien;
         this.tungay = tungay;
         this.denngay = denngay;
@@ -55,13 +55,15 @@ public class GiaDTO {
         this.magia = magia;
     }
 
-    public DiaDiemDTO getDiadiem() {
-        return diadiem;
+    public TourDTO getTour() {
+        return tour;
     }
 
-    public void setDiadiem(DiaDiemDTO diadiem) {
-        this.diadiem = diadiem;
+    public void setTour(TourDTO tour) {
+        this.tour = tour;
     }
+
+
 
     public void setSotien(int sotien) {
         this.sotien = sotien;

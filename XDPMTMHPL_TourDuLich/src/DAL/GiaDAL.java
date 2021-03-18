@@ -7,6 +7,7 @@ package DAL;
 
 import DTO.DiaDiemDTO;
 import DTO.GiaDTO;
+import DTO.TourDTO;
 import com.mysql.jdbc.Statement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,12 +31,10 @@ public class GiaDAL {
             rs = ps.executeQuery();
             while (rs.next()) {
                 GiaDTO g = new GiaDTO();
-                DiaDiemDTO d = new DiaDiemDTO();
-
-                d.setMadd(rs.getString("madd"));
-
+                TourDTO t = new TourDTO();
+                t.setMatour(rs.getString("matour"));
                 g.setMagia(rs.getString("magia"));
-                g.setDiadiem(d);
+                g.setTour(t);
                 g.setSotien(rs.getInt("sotien"));
                 g.setTungay(rs.getString("tungay"));
                 g.setDenngay(rs.getString("denngay"));
@@ -48,12 +47,12 @@ public class GiaDAL {
     }
 
     public boolean addGia(GiaDTO g) {
-        String query = "INSERT INTO gia(magia,madd,sotien,tungay,denngay) VALUES(?,?,?,?,?)";
+        String query = "INSERT INTO gia(magia,matour,sotien,tungay,denngay) VALUES(?,?,?,?,?)";
         try {
 
             ps = new MySQLConnect().conn.prepareStatement(query);
             ps.setString(1, g.getMagia());
-            ps.setString(2, g.getDiadiem().getMadd());
+            ps.setString(2, g.getTour().getMatour());
             ps.setInt(3, g.getSotien());
             ps.setString(4, g.getTungay());
             ps.setString(5, g.getDenngay());
@@ -65,10 +64,10 @@ public class GiaDAL {
     }
 
     public boolean editGia(GiaDTO g, String data) {
-        String query = "UPDATE gia SET madd=?,sotien=?,tungay=?,denngay=? WHERE magia=?";
+        String query = "UPDATE gia SET matour=?,sotien=?,tungay=?,denngay=? WHERE magia=?";
         try {
             ps = new MySQLConnect().conn.prepareStatement(query);
-            ps.setString(1, g.getDiadiem().getMadd());
+            ps.setString(1, g.getTour().getMatour());
             ps.setInt(2, g.getSotien());
             ps.setString(3, g.getTungay());
             ps.setString(4, g.getDenngay());
