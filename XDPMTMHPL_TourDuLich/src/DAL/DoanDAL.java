@@ -83,5 +83,25 @@ public class DoanDAL {
           Logger.getLogger(DoanDAL.class.getName()).log(Level.SEVERE, null, ex);
         }   
         connect.MySQLDisconnect();
-    }    
+    }   
+    
+    public static ArrayList<DoanDTO> loadDataDoanfromTour(String matour) {
+        ArrayList<DoanDTO> dList = new ArrayList<>();
+        MySQLConnect connect = new MySQLConnect();
+        try {
+            String query = "SELECT d.madoan, d.matour, d.tendoan, d.ngaydi, d.ngayve, d.chitietchuongtrinh FROM doan d, tours t where d.matour=t.matour and t.matour= '"+matour+"'";
+            ps = new MySQLConnect().conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                DoanDTO d = new DoanDTO(rs.getString("madoan"),
+                        rs.getString("matour"), rs.getString("tendoan"), rs.getString("ngaydi"),
+                        rs.getString("ngayve"), rs.getString("chitietchuongtrinh"));
+                dList.add(d);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DoanDAL.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        connect.MySQLDisconnect();
+        return dList;
+    }
 }
