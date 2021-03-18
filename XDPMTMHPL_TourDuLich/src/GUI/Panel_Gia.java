@@ -335,6 +335,8 @@ void BlockText() {
         jdcTuNgay.setCalendar(null);
         jdcDenNgay.setCalendar(null);
         txtTimGia.setText("");
+        tblDiaDiem.setRowSelectionAllowed(false);
+        tblGia.setRowSelectionAllowed(false);
     }
 
     private void tblDiaDiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDiaDiemMouseClicked

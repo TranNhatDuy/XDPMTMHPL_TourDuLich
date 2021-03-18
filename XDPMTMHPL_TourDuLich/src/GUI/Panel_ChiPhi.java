@@ -417,7 +417,7 @@ public class Panel_ChiPhi extends javax.swing.JPanel {
         cp.setChiTiet(txtChiTiet.getText()); 
      
         ChiPhiBLL.editChiPhi(cp);
-        JOptionPane.showMessageDialog(null, "Sửa thành công");
+        JOptionPane.showMessageDialog(this, "Sửa thành công");
         ShowChiPhi();
     }//GEN-LAST:event_btnSuaActionPerformed
 
@@ -430,6 +430,9 @@ public class Panel_ChiPhi extends javax.swing.JPanel {
         txtMaDoan.setText("");
         txtTongCP.setText("");
         txtChiTiet.setText("");
+        tblCP.setRowSelectionAllowed(false);
+        tblD.setRowSelectionAllowed(false);
+               
     }//GEN-LAST:event_btnLamMoiActionPerformed
 
     private void tblCPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCPMouseClicked

@@ -393,7 +393,7 @@ public class Panel_KhachHang extends javax.swing.JPanel {
         kh.setEmail(txtEmail.getText());
         
         KhachHangBLL.editKhachHang(kh);
-        JOptionPane.showMessageDialog(null, "Sửa thành công");
+        JOptionPane.showMessageDialog(this, "Sửa thành công");
         showKhachHang();
         
 
@@ -408,6 +408,8 @@ public class Panel_KhachHang extends javax.swing.JPanel {
             txtSdt.setText("");
             jdcNgaySinh.setCalendar(null);
             txtEmail.setText("");
+            tblD.setRowSelectionAllowed(false);
+            tblKH.setRowSelectionAllowed(false);
         }
     }//GEN-LAST:event_btnLamMoiActionPerformed
 

@@ -345,7 +345,7 @@ public class Panel_Doan extends javax.swing.JPanel {
         if(txtMadoan.getText().length() > 0){
             for (DoanDTO d : doanList) {
                 if(d.getMadoan().matches(txtMadoan.getText())){
-                    JOptionPane.showMessageDialog(btnLamMoi, "Mã Đoàn không được trùng");
+                    JOptionPane.showMessageDialog(this, "Mã Đoàn không được trùng");
                     isOK=false;
                     txtMadoan.setText("");
                 }
@@ -361,7 +361,7 @@ public class Panel_Doan extends javax.swing.JPanel {
         d.setNgayve(sdf.format(dcNgayve.getDate()));
         d.setChitietchuongtrinh(txtaChitiet.getText());
         DoanBLL.addDoan(d);
-        JOptionPane.showMessageDialog(null, "Thêm thành công");
+        JOptionPane.showMessageDialog(this, "Thêm thành công");
         showDoan(); 
     }//GEN-LAST:event_btnThemActionPerformed
 
@@ -371,10 +371,10 @@ public class Panel_Doan extends javax.swing.JPanel {
         if(selectedIndex >= 0) {
             DoanDTO d = doanList.get(selectedIndex);
 
-            int option = JOptionPane.showConfirmDialog(null, "Bạn có muốn xóa?");
+            int option = JOptionPane.showConfirmDialog(this, "Bạn có muốn xóa?");
             if(option == 0) {
                 DoanBLL.removeDoan(d.getMadoan());
-                JOptionPane.showMessageDialog(null, "Xóa thành công");
+                JOptionPane.showMessageDialog(this, "Xóa thành công");
                 showDoan();                              
             }
         }
@@ -392,7 +392,7 @@ public class Panel_Doan extends javax.swing.JPanel {
 
         DoanDTO d = new DoanDTO(madoan, matour, tendoan, ngaydi, ngayve, chitiet);
         DoanBLL.editDoan(d, madoan);
-        JOptionPane.showMessageDialog(null, "Sửa thành công");
+        JOptionPane.showMessageDialog(this, "Sửa thành công");
         showDoan();
     }//GEN-LAST:event_btnSuaActionPerformed
 
@@ -404,6 +404,8 @@ public class Panel_Doan extends javax.swing.JPanel {
         dcNgaydi.setCalendar(null);
         dcNgayve.setCalendar(null);      
         txtaChitiet.setText("");
+        tblDoan.setRowSelectionAllowed(false);
+        tblTour.setRowSelectionAllowed(false);
     }//GEN-LAST:event_btnLamMoiActionPerformed
 
     private void tblTourMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTourMouseClicked

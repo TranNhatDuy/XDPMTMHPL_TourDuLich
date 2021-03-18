@@ -360,6 +360,8 @@ public class Panel_NhanVien extends javax.swing.JPanel {
         jdcNgaySinh.setCalendar(null);
         txtEmail.setText("");
         cbNhiemvu.setSelectedItem("Hướng dẫn viên");
+        tblDoan.setRowSelectionAllowed(false);
+        tblNV.setRowSelectionAllowed(false);
     }
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
@@ -383,7 +385,7 @@ public class Panel_NhanVien extends javax.swing.JPanel {
         }
         
         NhanVienBLL.addNhanVien(nv);
-        JOptionPane.showMessageDialog(null, "Thêm thành công");
+        JOptionPane.showMessageDialog(this, "Thêm thành công");
         reset();
         showNhanVien();
     }//GEN-LAST:event_btnThemActionPerformed

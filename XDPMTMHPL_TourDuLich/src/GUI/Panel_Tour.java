@@ -351,7 +351,7 @@ public class Panel_Tour extends javax.swing.JPanel {
         if (txtMatour.getText().length() > 0) {
             for (TourDTO t : tourList) {
                 if (t.getMatour().matches(txtMatour.getText())) {
-                    JOptionPane.showMessageDialog(btnLamMoi, "Mã tour không được trùng");
+                    JOptionPane.showMessageDialog(this, "Mã tour không được trùng");
                     isOK = false;
                     txtMatour.setText("");
                 }
@@ -363,7 +363,7 @@ public class Panel_Tour extends javax.swing.JPanel {
         t.setMadd(txtMadd.getText());
         t.setMota(txpMota.getText());
         TourBLL.addTour(t);
-        JOptionPane.showMessageDialog(null, "Thêm thành công");
+        JOptionPane.showMessageDialog(this, "Thêm thành công");
         showTour();
 
     }//GEN-LAST:event_btnThemActionPerformed
@@ -382,6 +382,8 @@ public class Panel_Tour extends javax.swing.JPanel {
         txtTentour.setText("");
         txtMadd.setText("");
         txpMota.setText("");
+        tblTour.setRowSelectionAllowed(false);
+        tblDd.setRowSelectionAllowed(false);
     }//GEN-LAST:event_btnLamMoiMouseClicked
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
@@ -390,10 +392,10 @@ public class Panel_Tour extends javax.swing.JPanel {
         if (selectedIndex >= 0) {
             TourDTO t = tourList.get(selectedIndex);
 
-            int option = JOptionPane.showConfirmDialog(null, "Bạn có muốn xóa?");
+            int option = JOptionPane.showConfirmDialog(this, "Bạn có muốn xóa?");
             if (option == 0) {
                 TourBLL.removeTour(t.getMatour());
-                JOptionPane.showMessageDialog(null, "Xóa thành công");
+                JOptionPane.showMessageDialog(this, "Xóa thành công");
                 showTour();
             }
         }
@@ -409,7 +411,7 @@ public class Panel_Tour extends javax.swing.JPanel {
 
         TourDTO t = new TourDTO(matour, tentour, madd, mota);
         TourBLL.editTour(t, matour);
-        JOptionPane.showMessageDialog(null, "Sửa thành công");
+        JOptionPane.showMessageDialog(this, "Sửa thành công");
         showTour();
     }//GEN-LAST:event_btnSuaActionPerformed
 

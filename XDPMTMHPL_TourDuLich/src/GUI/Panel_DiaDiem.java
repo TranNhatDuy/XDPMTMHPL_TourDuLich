@@ -244,6 +244,7 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
         txtTendd.setText("");
         cbTp.setSelectedIndex(0);
         txtMoTa.setText("");
+        tblDiaDiem.setRowSelectionAllowed(false);
     }
     private void btnThemDDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemDDActionPerformed
 
