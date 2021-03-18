@@ -9,6 +9,7 @@ import DTO.KhachHangDTO;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Random;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -226,16 +227,11 @@ public class Panel_KhachHang extends javax.swing.JPanel {
                         .addComponent(jScrollPane1)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 269, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(287, 287, 287))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtTimkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())))))
+                        .addGap(0, 545, Short.MAX_VALUE)
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtTimkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -268,13 +264,17 @@ public class Panel_KhachHang extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(281, 281, 281)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTimkiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
@@ -343,11 +343,13 @@ public class Panel_KhachHang extends javax.swing.JPanel {
         kh.setEmail(txtEmail.getText());
         
         if (txtMaKH.getText().length() > 0) {
+            Random rand = new Random();
+            int i = rand.nextInt(1000) + 1;
             for (KhachHangDTO k : khList) {
                 if (k.getMakh().matches(txtMaKH.getText())) {
                     JOptionPane.showMessageDialog(this, "Mã khách hàng không được trùng");
                     isOK = false;
-                    txtMaKH.setText("");
+                    txtMaKH.setText(txtMaKH.getText() + Integer.toString(i));
                 }
             }
         }
@@ -393,7 +395,7 @@ public class Panel_KhachHang extends javax.swing.JPanel {
         kh.setEmail(txtEmail.getText());
         
         KhachHangBLL.editKhachHang(kh);
-        JOptionPane.showMessageDialog(null, "Sửa thành công");
+        JOptionPane.showMessageDialog(this, "Sửa thành công");
         showKhachHang();
         
 
@@ -408,6 +410,8 @@ public class Panel_KhachHang extends javax.swing.JPanel {
             txtSdt.setText("");
             jdcNgaySinh.setCalendar(null);
             txtEmail.setText("");
+            tblD.setRowSelectionAllowed(false);
+            tblKH.setRowSelectionAllowed(false);
         }
     }//GEN-LAST:event_btnLamMoiActionPerformed
 

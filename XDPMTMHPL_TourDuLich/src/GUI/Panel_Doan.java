@@ -1,6 +1,5 @@
 package GUI;
 
-
 import BLL.DoanBLL;
 import BLL.TourBLL;
 import DTO.DoanDTO;
@@ -10,6 +9,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
@@ -30,43 +30,42 @@ public class Panel_Doan extends javax.swing.JPanel {
     List<TourDTO> tourList;
     List<DoanDTO> doanList;
     DefaultTableModel dtmtour, dtmdoan;
-    
+
     public Panel_Doan() {
         initComponents();
         this.setBounds(0, 0, 786, 632);
         this.setBorder(BorderFactory.createLineBorder(Color.black));
         dtmtour = (DefaultTableModel) tblTour.getModel();
         dtmdoan = (DefaultTableModel) tblDoan.getModel();
+
         showTour();
         showDoan();
         TimKiem();
     }
-    
-    private void showDoan() {     
+
+    private void showDoan() {
         doanList = DoanBLL.loadDataDoan();
-        
+
         dtmdoan.setRowCount(0);
-        
+
         doanList.forEach((DoanDTO) -> {
-            dtmdoan.addRow(new Object[] {DoanDTO.getMadoan(), DoanDTO.getMatour(), DoanDTO.getTendoan(), DoanDTO.getNgaydi(), DoanDTO.getNgayve(), DoanDTO.getChitietchuongtrinh()
-                });
+            dtmdoan.addRow(new Object[]{DoanDTO.getMadoan(), DoanDTO.getMatour(), DoanDTO.getTendoan(), DoanDTO.getNgaydi(), DoanDTO.getNgayve(), DoanDTO.getChitietchuongtrinh()
+            });
         });
     }
-    
 
-    
     private void showTour() {
         tourList = TourBLL.loadDataTour();
-        
+
         dtmtour.setRowCount(0);
-        
+
         tourList.forEach((TourDTO) -> {
-            dtmtour.addRow(new Object[] {TourDTO.getMatour(), TourDTO.getTentour(), TourDTO.getMadd(), TourDTO.getMota()
-                });
+            dtmtour.addRow(new Object[]{TourDTO.getMatour(), TourDTO.getTentour(), TourDTO.getMadd(), TourDTO.getMota()
+            });
         });
     }
-    
-    void TimKiem(){
+
+    void TimKiem() {
         TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(tblDoan.getModel());
         tblDoan.setRowSorter(rowSorter);
         txtTimkiem.getDocument().addDocumentListener(new DocumentListener() {
@@ -152,7 +151,7 @@ public class Panel_Doan extends javax.swing.JPanel {
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Chi tiết chương trình:");
 
-        txtMatour.setEnabled(false);
+        txtMatour.setEditable(false);
 
         tblDoan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -280,8 +279,8 @@ public class Panel_Doan extends javax.swing.JPanel {
                                 .addComponent(txtMatour, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane2))))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(124, 124, 124)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -289,18 +288,18 @@ public class Panel_Doan extends javax.swing.JPanel {
                 .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnLamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(121, 121, 121))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel9)
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(txtTimkiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtTimkiem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -341,41 +340,43 @@ public class Panel_Doan extends javax.swing.JPanel {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:      
-        boolean isOK=true;
-        if(txtMadoan.getText().length() > 0){
+        boolean isOK = true;
+        if (txtMadoan.getText().length() > 0) {
             for (DoanDTO d : doanList) {
-                if(d.getMadoan().matches(txtMadoan.getText())){
+                Random rand = new Random();
+                int i = rand.nextInt(10000) + 1;
+                if (d.getMadoan().matches(txtMadoan.getText())) {
                     JOptionPane.showMessageDialog(btnLamMoi, "Mã Đoàn không được trùng");
-                    isOK=false;
-                    txtMadoan.setText("");
+                    isOK = false;
+                    txtMadoan.setText(txtMadoan.getText() + Integer.toString(i));
                 }
             }
         }
-        
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        DoanDTO d = new DoanDTO();
-        d.setMadoan(txtMadoan.getText());
-        d.setMatour(txtMatour.getText());
-        d.setTendoan(txtTendoan.getText());
-        d.setNgaydi(sdf.format(dcNgaydi.getDate()));
-        d.setNgayve(sdf.format(dcNgayve.getDate()));
-        d.setChitietchuongtrinh(txtaChitiet.getText());
-        DoanBLL.addDoan(d);
-        JOptionPane.showMessageDialog(null, "Thêm thành công");
-        showDoan(); 
+        if (isOK == true){
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            DoanDTO d = new DoanDTO();
+            d.setMadoan(txtMadoan.getText());
+            d.setMatour(txtMatour.getText());
+            d.setTendoan(txtTendoan.getText());
+            d.setNgaydi(sdf.format(dcNgaydi.getDate()));
+            d.setNgayve(sdf.format(dcNgayve.getDate()));
+            d.setChitietchuongtrinh(txtaChitiet.getText());
+            DoanBLL.addDoan(d);
+            JOptionPane.showMessageDialog(null, "Thêm thành công");
+        }
+        showDoan();
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
         int selectedIndex = tblDoan.getSelectedRow();
-        if(selectedIndex >= 0) {
+        if (selectedIndex >= 0) {
             DoanDTO d = doanList.get(selectedIndex);
-
             int option = JOptionPane.showConfirmDialog(null, "Bạn có muốn xóa?");
-            if(option == 0) {
+            if (option == 0) {
                 DoanBLL.removeDoan(d.getMadoan());
                 JOptionPane.showMessageDialog(null, "Xóa thành công");
-                showDoan();                              
+                showDoan();
             }
         }
     }//GEN-LAST:event_btnXoaActionPerformed
@@ -385,14 +386,14 @@ public class Panel_Doan extends javax.swing.JPanel {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String madoan = txtMadoan.getText();
         String matour = txtMatour.getText();
-        String tendoan = txtTendoan.getText();               
+        String tendoan = txtTendoan.getText();
         String ngaydi = sdf.format(dcNgaydi.getDate());
         String ngayve = sdf.format(dcNgayve.getDate());
         String chitiet = txtaChitiet.getText();
 
         DoanDTO d = new DoanDTO(madoan, matour, tendoan, ngaydi, ngayve, chitiet);
         DoanBLL.editDoan(d, madoan);
-        JOptionPane.showMessageDialog(null, "Sửa thành công");
+        JOptionPane.showMessageDialog(this, "Sửa thành công");
         showDoan();
     }//GEN-LAST:event_btnSuaActionPerformed
 
@@ -402,14 +403,16 @@ public class Panel_Doan extends javax.swing.JPanel {
         txtMatour.setText("");
         txtTendoan.setText("");
         dcNgaydi.setCalendar(null);
-        dcNgayve.setCalendar(null);      
+        dcNgayve.setCalendar(null);
         txtaChitiet.setText("");
+        tblDoan.setRowSelectionAllowed(false);
+        tblTour.setRowSelectionAllowed(false);
     }//GEN-LAST:event_btnLamMoiActionPerformed
 
     private void tblTourMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTourMouseClicked
         // TODO add your handling code here:
         int selectedIndex = tblTour.getSelectedRow();
-        TourDTO t = tourList.get(selectedIndex); 
+        TourDTO t = tourList.get(selectedIndex);
         txtMatour.setText(t.getMatour());
     }//GEN-LAST:event_tblTourMouseClicked
 
@@ -417,10 +420,10 @@ public class Panel_Doan extends javax.swing.JPanel {
         // TODO add your handling code here:
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         int selectedIndex = tblDoan.getSelectedRow();
-        DoanDTO d = doanList.get(selectedIndex); 
+        DoanDTO d = doanList.get(selectedIndex);
         txtMadoan.setText(d.getMadoan());
         txtMatour.setText(d.getMatour());
-        txtTendoan.setText(d.getTendoan()); 
+        txtTendoan.setText(d.getTendoan());
         try {
             dcNgaydi.setDate(sdf.parse(d.getNgaydi()));
             dcNgayve.setDate(sdf.parse(d.getNgayve()));
