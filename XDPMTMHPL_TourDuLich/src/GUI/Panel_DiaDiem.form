@@ -274,24 +274,28 @@
     <Component class="javax.swing.JComboBox" name="cbTp">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="17">
-            <StringItem index="0" value="H&#x1ed3; Ch&#xed; Minh"/>
-            <StringItem index="1" value="H&#xe0; N&#x1ed9;i"/>
-            <StringItem index="2" value="&#x110;&#xe0; N&#x1eb5;ng"/>
-            <StringItem index="3" value="Hu&#x1ebf;"/>
-            <StringItem index="4" value="V&#x129;nh Long"/>
-            <StringItem index="5" value="&#x110;&#xe0; L&#x1ea1;t"/>
-            <StringItem index="6" value="Quy Nh&#x1a1;n"/>
-            <StringItem index="7" value="V&#x169;ng T&#xe0;u"/>
-            <StringItem index="8" value="H&#x1ea1; Long"/>
-            <StringItem index="9" value="Thanh H&#xf3;a"/>
-            <StringItem index="10" value="Bu&#xf4;n Ma Thu&#x1ed9;t"/>
-            <StringItem index="11" value="Long Xuy&#xea;n"/>
-            <StringItem index="12" value="M&#x1ef9; Tho"/>
-            <StringItem index="13" value="Vinh"/>
-            <StringItem index="14" value="H&#x1ea3;i D&#x1b0;&#x1a1;ng"/>
-            <StringItem index="15" value="H&#x1ea3;i Ph&#xf2;ng"/>
-            <StringItem index="16" value="C&#x1ea7;n Th&#x1a1;"/>
+          <StringArray count="21">
+            <StringItem index="0" value="An Giang"/>
+            <StringItem index="1" value="B&#xe0; R&#x1ecb;a V&#x169;ng T&#xe0;u"/>
+            <StringItem index="2" value="B&#x1ea1;c Li&#xea;u"/>
+            <StringItem index="3" value="B&#x1eaf;c Giang"/>
+            <StringItem index="4" value="Bu&#xf4;n Ma Thu&#x1ed9;t"/>
+            <StringItem index="5" value="C&#x1ea7;n Th&#x1a1;"/>
+            <StringItem index="6" value="&#x110;&#xe0; L&#x1ea1;t"/>
+            <StringItem index="7" value="&#x110;&#xe0; N&#x1eb5;ng"/>
+            <StringItem index="8" value="H&#x1ed3; Ch&#xed; Minh"/>
+            <StringItem index="9" value="H&#xe0; N&#x1ed9;i"/>
+            <StringItem index="10" value="H&#x1ea1; Long"/>
+            <StringItem index="11" value="Hu&#x1ebf;"/>
+            <StringItem index="12" value="H&#x1ea3;i D&#x1b0;&#x1a1;ng"/>
+            <StringItem index="13" value="H&#x1ea3;i Ph&#xf2;ng"/>
+            <StringItem index="14" value="V&#x129;nh Long"/>
+            <StringItem index="15" value="Thanh H&#xf3;a"/>
+            <StringItem index="16" value="Long Xuy&#xea;n"/>
+            <StringItem index="17" value="M&#x1ef9; Tho"/>
+            <StringItem index="18" value="Quy Nh&#x1a1;n"/>
+            <StringItem index="19" value="Vinh"/>
+            <StringItem index="20" value=" "/>
           </StringArray>
         </Property>
       </Properties>

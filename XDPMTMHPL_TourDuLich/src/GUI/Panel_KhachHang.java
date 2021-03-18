@@ -9,6 +9,7 @@ import DTO.KhachHangDTO;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Random;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -342,11 +343,13 @@ public class Panel_KhachHang extends javax.swing.JPanel {
         kh.setEmail(txtEmail.getText());
         
         if (txtMaKH.getText().length() > 0) {
+            Random rand = new Random();
+            int i = rand.nextInt(1000) + 1;
             for (KhachHangDTO k : khList) {
                 if (k.getMakh().matches(txtMaKH.getText())) {
                     JOptionPane.showMessageDialog(this, "Mã khách hàng không được trùng");
                     isOK = false;
-                    txtMaKH.setText("");
+                    txtMaKH.setText(txtMaKH.getText() + Integer.toString(i));
                 }
             }
         }

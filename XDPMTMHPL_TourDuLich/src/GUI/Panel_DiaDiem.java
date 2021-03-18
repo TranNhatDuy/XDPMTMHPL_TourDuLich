@@ -146,7 +146,7 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
             }
         });
 
-        cbTp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hồ Chí Minh", "Hà Nội", "Đà Nẵng", "Huế", "Vĩnh Long", "Đà Lạt", "Quy Nhơn", "Vũng Tàu", "Hạ Long", "Thanh Hóa", "Buôn Ma Thuột", "Long Xuyên", "Mỹ Tho", "Vinh", "Hải Dương", "Hải Phòng", "Cần Thơ" }));
+        cbTp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "An Giang", "Bà Rịa Vũng Tàu", "Bạc Liêu", "Bắc Giang", "Buôn Ma Thuột", "Cần Thơ", "Đà Lạt", "Đà Nẵng", "Hồ Chí Minh", "Hà Nội", "Hạ Long", "Huế", "Hải Dương", "Hải Phòng", "Vĩnh Long", "Thanh Hóa", "Long Xuyên", "Mỹ Tho", "Quy Nhơn", "Vinh", " " }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

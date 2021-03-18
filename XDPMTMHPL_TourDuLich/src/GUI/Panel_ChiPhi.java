@@ -13,6 +13,7 @@ import DTO.ChiPhiDTO;
 import DTO.DoanDTO;
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Random;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
@@ -380,11 +381,13 @@ public class Panel_ChiPhi extends javax.swing.JPanel {
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         boolean isOK=true;
         if(txtMaCP.getText().length()>0){
+            Random rand = new Random();
+            int i = rand.nextInt(10000) +1;
             for(ChiPhiDTO c : cpList){
                 if(c.getMaCP().matches(txtMaCP.getText())){
                     JOptionPane.showMessageDialog(this, "Mã chi phí không được trùng");
                     isOK=false;
-                    txtMaCP.setText("");
+                    txtMaCP.setText(txtMaCP.getText() + Integer.toString(i));
                 }
             }
         }
