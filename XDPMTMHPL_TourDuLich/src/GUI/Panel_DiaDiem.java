@@ -38,7 +38,7 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
         dtm = (DefaultTableModel) tblDiaDiem.getModel();
         showDiaDiem();
         TimKiem();
-        Test();
+//        Test();
     }
 
     /**
@@ -144,9 +144,19 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
             }
         });
 
-        cbTp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "An Giang", "Bà Rịa Vũng Tàu", "Bạc Liêu", "Bắc Kạn", "Bắc Giang", "Bắc Ninh", "Bến Tre", "Bình Dương", "Bình Định", "Bình Phước", "Bình Thuận", "Cà Mau", "Cao Bằng", "Cần Thơ – Hậu Giang", "TP. Đà Nẵng\t", "ĐắkLắk – Đắc Nông", "Đồng Nai", "Đồng Tháp", "Gia Lai", "Hà Giang", "Hà Nam", "TP. Hà Nội", "Hà Tây", "Hà Tĩnh", "Hải Dương", "TP. Hải Phòng", "Hoà Bình", "Hưng Yên", "TP. Hồ Chí Minh", "Khánh Hoà", "Kiên Giang", "Kon Tum", "Lai Châu – Điện Biên", "Lạng Sơn", "Lao Ca", "Lâm Đồng", "Long An", "Nam Định", "Nghệ An", "Ninh Bình", "Ninh Thuận", "Phú Thọ", "Phú Yên", "Quảng Bình", "Quảng Nam", "Quảng Ngãi", "Quảng Ninh", "Quảng Trị", "Sóc Trăng", "Sóc  Trăng", "Tây Ninh", "Thái Bình", "Thái Nguyên", "Thanh Hoá", "Thừa Thiên Huế", "Tiền Giang", "Trà Vinh", "Tuyên Quang", "Vĩnh Long", "Yên Bái" }));
+        cbTp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chọn Thành Phố", "An Giang", "Bà Rịa Vũng Tàu", "Bạc Liêu", "Bắc Kạn", "Bắc Giang", "Bắc Ninh", "Bến Tre", "Bình Dương", "Bình Định", "Bình Phước", "Bình Thuận", "Cà Mau", "Cao Bằng", "Cần Thơ – Hậu Giang", "TP. Đà Nẵng\t", "ĐắkLắk – Đắc Nông", "Đồng Nai", "Đồng Tháp", "Gia Lai", "Hà Giang", "Hà Nam", "TP. Hà Nội", "Hà Tây", "Hà Tĩnh", "Hải Dương", "TP. Hải Phòng", "Hoà Bình", "Hưng Yên", "TP. Hồ Chí Minh", "Khánh Hoà", "Kiên Giang", "Kon Tum", "Lai Châu – Điện Biên", "Lạng Sơn", "Lao Ca", "Lâm Đồng", "Long An", "Nam Định", "Nghệ An", "Ninh Bình", "Ninh Thuận", "Phú Thọ", "Phú Yên", "Quảng Bình", "Quảng Nam", "Quảng Ngãi", "Quảng Ninh", "Quảng Trị", "Sóc Trăng", "Sóc  Trăng", "Tây Ninh", "Thái Bình", "Thái Nguyên", "Thanh Hoá", "Thừa Thiên Huế", "Tiền Giang", "Trà Vinh", "Tuyên Quang", "Vĩnh Long", "Yên Bái" }));
+        cbTp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbTpActionPerformed(evt);
+            }
+        });
 
-        cbMdd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "94000", "74000", "99000", "17000", "21000", "16000", "83000", "72000", "53000", "77000", "62000", "96000", "22000", "92000", "59000", "55000", "71000", "93000", "54000", "29000", "30000", "10000", "31000", "43000", "34000", "35000", "13000", "39000", "70000", "57000", "95000", "58000", "28000", "20000", "19000", "61000", "81000", "32000", "42000", "40000", "63000", "24000", "56000", "45000", "51000", "52000", "36000", "46000", "97000", "27000", "73000", "33000", "23000", "41000", "47000", "82000", "90000", "25000", "91000", "11000", "26000" }));
+        cbMdd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chọn ZipCode", "94000", "74000", "99000", "17000", "21000", "16000", "83000", "72000", "53000", "77000", "62000", "96000", "22000", "92000", "59000", "55000", "71000", "93000", "54000", "29000", "30000", "10000", "31000", "43000", "34000", "35000", "13000", "39000", "70000", "57000", "95000", "58000", "28000", "20000", "19000", "61000", "81000", "32000", "42000", "40000", "63000", "24000", "56000", "45000", "51000", "52000", "36000", "46000", "97000", "27000", "73000", "33000", "23000", "41000", "47000", "82000", "90000", "25000", "91000", "11000", "26000" }));
+        cbMdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbMddActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -154,9 +164,6 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane2))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(253, 253, 253)
                         .addComponent(jLabel12)
@@ -198,6 +205,9 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(btnLamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(140, 140, 140))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane2)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,9 +218,9 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(txtTimDD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(1, 1, 1)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel12)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -239,81 +249,109 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
     AutoCreateID autoID = new AutoCreateID();
 
-    void Test() {
-        int i = cbMdd.getSelectedIndex();
-        int j = cbTp.getSelectedIndex();
-        HashMap<Integer, Integer> test = new HashMap<Integer, Integer>();
-        test.put(i, j);
-
+//    void Test() {
+//        int i = cbMdd.getSelectedIndex();
+//        int j = cbTp.getSelectedIndex();
+//        HashMap<Integer, Integer> test = new HashMap<Integer, Integer>();
+//        test.put(i, j);
+//
+//    }
+    void blockText(boolean isOK) {
+        if (isOK == true) {
+            cbMdd.setEnabled(false);
+            cbTp.setEnabled(false);
+        } else {
+            cbMdd.setEnabled(true);
+            cbTp.setEnabled(true);
+        }
     }
 
     void Reset() {
         txtTendd.setText("");
         cbTp.setSelectedIndex(0);
+        cbMdd.setSelectedIndex(0);
         txtMoTa.setText("");
-        tblDiaDiem.setRowSelectionAllowed(false);
+        tblDiaDiem.setShowHorizontalLines(false);
     }
     private void btnThemDDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemDDActionPerformed
-
-//        String id = "";
-//        String tp = (String) cbTp.getSelectedItem();
-//        id = AutoCreateID.AutoID(txtTendd.getText(), id);
-//        txtMadd.setText(id);
-//        System.out.println(id);
-//        DiaDiemDTO dd = new DiaDiemDTO(txtMadd.getText(), tp, txtTendd.getText(), txtMoTa.getText());
-//        DiaDiemBLL.addDiaDiem(dd);
-//
-//        showDiaDiem();
-
+        String tendd = txtTendd.getText();
+        String zipcode = (String) cbMdd.getSelectedItem();
+        String thanhpho = (String) cbTp.getSelectedItem();
+        String mota = txtMoTa.getText();
+        boolean isOK = true;
+        if (tendd.length() == 0) {
+            JOptionPane.showMessageDialog(this, "Tên địa điểm không để trống");
+            isOK = false;
+        } else if (mota.length() == 0) {
+            JOptionPane.showMessageDialog(this, "Mô tả không để trống");
+            isOK = false;
+        }
+        if (isOK) {
+            DiaDiemDTO dd = new DiaDiemDTO(zipcode, tendd, thanhpho, mota);
+            new DiaDiemBLL().addDiaDiem(dd);
+            JOptionPane.showMessageDialog(this, "Thêm thành công ");
+            Reset();
+            showDiaDiem();
+        } else {
+            JOptionPane.showMessageDialog(this, "Thêm không thành công");
+        }
     }//GEN-LAST:event_btnThemDDActionPerformed
 
     private void tblDiaDiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDiaDiemMouseClicked
         // TODO add your handling code here:
         int index = tblDiaDiem.getSelectedRow();
-//        txtMadd.setText((String) (dtm.getValueAt(index, 0)));
-        txtTendd.setText((String) (dtm.getValueAt(index, 1)));
-        cbTp.setSelectedItem((String) (dtm.getValueAt(index, 2)));
-        txtMoTa.setText((String) (dtm.getValueAt(index, 3)));
+        txtTendd.setText(dtm.getValueAt(index, 1).toString().trim());
+        cbMdd.setSelectedItem(dtm.getValueAt(index, 0).toString().trim());
+        cbTp.setSelectedItem(dtm.getValueAt(index, 2).toString().trim());
+        txtMoTa.setText(dtm.getValueAt(index, 3).toString().trim());
+        blockText(true);
     }//GEN-LAST:event_tblDiaDiemMouseClicked
 
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
         // TODO add your handling code here:
         Reset();
+        blockText(false);
     }//GEN-LAST:event_btnLamMoiActionPerformed
 
     private void btnXoaDDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaDDActionPerformed
-        // TODO add your handling code here:
-//        if (evt.getSource() == btnXoaDD) {
-//            if (txtMadd.getText().equals("") || txtTendd.getText().equals("") || txtMoTa.getText().equals("")) {
-//                JOptionPane.showMessageDialog(this, "Thông tin còn trống", "Thông báo", JOptionPane.WARNING_MESSAGE);
-//            } else {
-//                DiaDiemBLL.removeDiaDiem(txtMadd.getText());
-//
-//            }
-//        }
-//        showDiaDiem();
+        int index = tblDiaDiem.getSelectedRow();
+        if (index == -1) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn dòng rồi xóa");
+        } else {
+            if (JOptionPane.showConfirmDialog(this, "Bạn có muốn xóa không") == 0) {
+                new DiaDiemBLL().removeDiaDiem(dtm.getValueAt(index, 0).toString().trim());
+                JOptionPane.showMessageDialog(this, "Xóa thành công");
+                showDiaDiem();
+            } else {
+                JOptionPane.showMessageDialog(this, "Xóa không thành công");
+            }
+        }
     }//GEN-LAST:event_btnXoaDDActionPerformed
 
     private void btnSuaDDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaDDActionPerformed
-//        int index = tblDiaDiem.getSelectedRow();
-//        String data = dtm.getValueAt(index, 0).toString();
-//        if (index > 0) {
-//            DiaDiemDTO d = new DiaDiemDTO();
-//            d.setTendd(txtTendd.getText());
-//            d.setThanhpho((String) cbTp.getSelectedItem());
-//            d.setMota(txtMoTa.getText());
-//            if (JOptionPane.showConfirmDialog(this, "Bạn có muốn sửa không ??") == 0) {
-//                new DiaDiemBLL().editDiaDiem(d, data);
-//                JOptionPane.showMessageDialog(this, "Sửa thành công");
-//                showDiaDiem();
-//                Reset();
-//            } else {
-//                JOptionPane.showMessageDialog(this, "Sửa không thành công");
-//            }
-//        } else {
-//            JOptionPane.showMessageDialog(this, "Chọn dòng trong bảng để sửa");
-//        }
+        int index = tblDiaDiem.getSelectedRow();
+        if (index == -1) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn dòng để sửa");
+        } else {
+            if (JOptionPane.showConfirmDialog(this, "Bạn có chắc muốn sửa không") == 0) {
+                DiaDiemDTO dd = new DiaDiemDTO(cbMdd.getSelectedItem().toString(), txtTendd.getText(), cbTp.getSelectedItem().toString(), txtMoTa.getText());
+                new DiaDiemBLL().editDiaDiem(dd, dtm.getValueAt(index, 0).toString().trim());
+                JOptionPane.showMessageDialog(this, "Sửa thành công");
+                showDiaDiem();
+            } else {
+                JOptionPane.showMessageDialog(this, "Sửa không thành công");
+            }
+        }
     }//GEN-LAST:event_btnSuaDDActionPerformed
+
+    private void cbMddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMddActionPerformed
+        cbTp.setSelectedIndex(cbMdd.getSelectedIndex());
+
+    }//GEN-LAST:event_cbMddActionPerformed
+
+    private void cbTpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTpActionPerformed
+        cbMdd.setSelectedIndex(cbTp.getSelectedIndex());
+    }//GEN-LAST:event_cbTpActionPerformed
     public void showDiaDiem() {
         ArrayList<DiaDiemDTO> ddList = new DiaDiemBLL().loadDataDiaDiem();
 
