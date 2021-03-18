@@ -143,10 +143,10 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
                 btnLamMoiActionPerformed(evt);
             }
         });
-
         cbTp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "An Giang", "Bà Rịa Vũng Tàu", "Bạc Liêu", "Bắc Kạn", "Bắc Giang", "Bắc Ninh", "Bến Tre", "Bình Dương", "Bình Định", "Bình Phước", "Bình Thuận", "Cà Mau", "Cao Bằng", "Cần Thơ – Hậu Giang", "TP. Đà Nẵng\t", "ĐắkLắk – Đắc Nông", "Đồng Nai", "Đồng Tháp", "Gia Lai", "Hà Giang", "Hà Nam", "TP. Hà Nội", "Hà Tây", "Hà Tĩnh", "Hải Dương", "TP. Hải Phòng", "Hoà Bình", "Hưng Yên", "TP. Hồ Chí Minh", "Khánh Hoà", "Kiên Giang", "Kon Tum", "Lai Châu – Điện Biên", "Lạng Sơn", "Lao Ca", "Lâm Đồng", "Long An", "Nam Định", "Nghệ An", "Ninh Bình", "Ninh Thuận", "Phú Thọ", "Phú Yên", "Quảng Bình", "Quảng Nam", "Quảng Ngãi", "Quảng Ninh", "Quảng Trị", "Sóc Trăng", "Sóc  Trăng", "Tây Ninh", "Thái Bình", "Thái Nguyên", "Thanh Hoá", "Thừa Thiên Huế", "Tiền Giang", "Trà Vinh", "Tuyên Quang", "Vĩnh Long", "Yên Bái" }));
 
         cbMdd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "94000", "74000", "99000", "17000", "21000", "16000", "83000", "72000", "53000", "77000", "62000", "96000", "22000", "92000", "59000", "55000", "71000", "93000", "54000", "29000", "30000", "10000", "31000", "43000", "34000", "35000", "13000", "39000", "70000", "57000", "95000", "58000", "28000", "20000", "19000", "61000", "81000", "32000", "42000", "40000", "63000", "24000", "56000", "45000", "51000", "52000", "36000", "46000", "97000", "27000", "73000", "33000", "23000", "41000", "47000", "82000", "90000", "25000", "91000", "11000", "26000" }));
+        cbTp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "An Giang", "Bà Rịa Vũng Tàu", "Bạc Liêu", "Bắc Giang", "Buôn Ma Thuột", "Cần Thơ", "Đà Lạt", "Đà Nẵng", "Hồ Chí Minh", "Hà Nội", "Hạ Long", "Huế", "Hải Dương", "Hải Phòng", "Vĩnh Long", "Thanh Hóa", "Long Xuyên", "Mỹ Tho", "Quy Nhơn", "Vinh", " " }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

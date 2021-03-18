@@ -9,6 +9,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
@@ -36,12 +37,16 @@ public class Panel_Doan extends javax.swing.JPanel {
         this.setBorder(BorderFactory.createLineBorder(Color.black));
         dtmtour = (DefaultTableModel) tblTour.getModel();
         dtmdoan = (DefaultTableModel) tblDoan.getModel();
+
         showTour();
         showDoan();
         TimKiem();
     }
 
+
     public void showDoan() {
+
+    private void showDoan() {
         doanList = DoanBLL.loadDataDoan();
 
         dtmdoan.setRowCount(0);
@@ -53,6 +58,7 @@ public class Panel_Doan extends javax.swing.JPanel {
     }
 
     public void showTour() {
+    private void showTour() {
         tourList = TourBLL.loadDataTour();
 
         dtmtour.setRowCount(0);
@@ -149,7 +155,7 @@ public class Panel_Doan extends javax.swing.JPanel {
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Chi tiết chương trình:");
 
-        txtMatour.setEnabled(false);
+        txtMatour.setEditable(false);
 
         tblDoan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -349,6 +355,16 @@ public class Panel_Doan extends javax.swing.JPanel {
             }
         }
         if (isOK) {
+                Random rand = new Random();
+                int i = rand.nextInt(10000) + 1;
+                if (d.getMadoan().matches(txtMadoan.getText())) {
+                    JOptionPane.showMessageDialog(btnLamMoi, "Mã Đoàn không được trùng");
+                    isOK = false;
+                    txtMadoan.setText(txtMadoan.getText() + Integer.toString(i));
+                }
+            }
+        }
+        if (isOK == true){
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             DoanDTO d = new DoanDTO();
             d.setMadoan(txtMadoan.getText());
@@ -361,6 +377,9 @@ public class Panel_Doan extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Thêm thành công");
             showDoan();
         }
+            JOptionPane.showMessageDialog(null, "Thêm thành công");
+        }
+        showDoan();
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
@@ -368,11 +387,14 @@ public class Panel_Doan extends javax.swing.JPanel {
         int selectedIndex = tblDoan.getSelectedRow();
         if (selectedIndex >= 0) {
             DoanDTO d = doanList.get(selectedIndex);
-
             int option = JOptionPane.showConfirmDialog(this, "Bạn có muốn xóa?");
             if (option == 0) {
                 DoanBLL.removeDoan(d.getMadoan());
                 JOptionPane.showMessageDialog(this, "Xóa thành công");
+            int option = JOptionPane.showConfirmDialog(null, "Bạn có muốn xóa?");
+            if (option == 0) {
+                DoanBLL.removeDoan(d.getMadoan());
+                JOptionPane.showMessageDialog(null, "Xóa thành công");
                 showDoan();
             }
         }

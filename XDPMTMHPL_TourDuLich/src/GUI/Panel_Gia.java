@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
@@ -109,8 +110,10 @@ public class Panel_Gia extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tblTour);
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setText("Giá:");
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("Từ Ngày:");
 
         jbtThem.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -121,7 +124,11 @@ public class Panel_Gia extends javax.swing.JPanel {
             }
         });
 
+
         jLabel5.setText("Mã Tour:");
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel5.setText("Mã Địa Điểm:");
+
 
         jbtXoa.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jbtXoa.setText("Xoá");
@@ -131,6 +138,7 @@ public class Panel_Gia extends javax.swing.JPanel {
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel6.setText("Mã Giá:");
 
         jbtSua.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -144,6 +152,7 @@ public class Panel_Gia extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setText("Gía Tour");
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel7.setText("Đến Ngày:");
 
         btnLammoi.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -200,6 +209,7 @@ public class Panel_Gia extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(134, 134, 134)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -219,6 +229,22 @@ public class Panel_Gia extends javax.swing.JPanel {
                                             .addComponent(jLabel6)
                                             .addComponent(jLabel5))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+
+                                .addGap(26, 26, 26)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel5)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(28, 28, 28)
+                                            .addComponent(jLabel6))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(45, 45, 45)
+                                            .addComponent(jLabel3))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(12, 12, 12)
+                                            .addComponent(jLabel7)))
+                                    .addComponent(jLabel4))
+                                .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtMaTour, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtMaGia, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -253,6 +279,7 @@ public class Panel_Gia extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
+
                         .addGap(5, 5, 5)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtMaGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -273,6 +300,28 @@ public class Panel_Gia extends javax.swing.JPanel {
                                 .addComponent(jLabel7))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(75, 75, 75)
+
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtMaDiaDiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtMaGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)
+                                .addComponent(txtGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(jLabel5)
+                                .addGap(24, 24, 24)
+                                .addComponent(jLabel6)
+                                .addGap(32, 32, 32)
+                                .addComponent(jLabel3)))
+                        .addGap(22, 22, 22)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(25, 25, 25)
+                                .addComponent(jLabel7))
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(jdcTuNgay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(19, 19, 19)
                                 .addComponent(jdcDenNgay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -389,11 +438,13 @@ void BlockText() {
 //        JOptionPane.showMessageDialog(this,"Từ ngày , đến ngày không hợp lệ");
 //        }
         if (magia.length() > 0) {
+            Random rand = new Random();
+            int i = rand.nextInt(10000) + 1;
             for (GiaDTO g : gia) {
                 if (g.getMagia().matches(magia)) {
                     JOptionPane.showMessageDialog(this, "Mã giá không được trùng");
                     isOK = false;
-                    txtMaGia.setText("");
+                    txtMaGia.setText(txtMaGia.getText() + Integer.toString(i));
                     txtMaGia.setEditable(true);
                 }
             }

@@ -11,10 +11,12 @@ import BLL.DiaDiemBLL;
 import DAL.TourDAL;
 import DTO.DiaDiemDTO;
 import java.awt.Color;
+import static java.lang.Math.random;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -352,22 +354,37 @@ public class Panel_Tour extends javax.swing.JPanel {
         boolean isOK = true;
         if (txtMatour.getText().length() > 0) {
             for (TourDTO t : tourList) {
+                Random rand = new Random();
+                int i = rand.nextInt(10000) + 1;
                 if (t.getMatour().matches(txtMatour.getText())) {
                     JOptionPane.showMessageDialog(this, "Mã tour không được trùng");
                     isOK = false;
-                    txtMatour.setText("");
+                    txtMatour.setText(txtMatour.getText() + Integer.toString(i));
+                } else {
                 }
             }
+            if (isOK == true) {
+                TourDTO t = new TourDTO();
+                t.setMatour(txtMatour.getText());
+                t.setTentour(txtTentour.getText());
+                t.setMadd(txtMadd.getText());
+                t.setMota(txpMota.getText());
+                TourBLL.addTour(t);
+                JOptionPane.showMessageDialog(this, "Thêm thành công");
+                showTour();
+            }
         }
-        TourDTO t = new TourDTO();
-        t.setMatour(txtMatour.getText());
-        t.setTentour(txtTentour.getText());
-        t.setMadd(txtMadd.getText());
-        t.setMota(txpMota.getText());
-        TourBLL.addTour(t);
-        JOptionPane.showMessageDialog(this, "Thêm thành công");
-        showTour();
 
+//        else{
+//            TourDTO t = new TourDTO();
+//            t.setMatour(txtMatour.getText());
+//            t.setTentour(txtTentour.getText());
+//            t.setMadd(txtMadd.getText());
+//            t.setMota(txpMota.getText());
+//            TourBLL.addTour(t);
+//            JOptionPane.showMessageDialog(this, "Thêm thành công");
+//            showTour();
+//        }
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void tblTourMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTourMouseClicked
