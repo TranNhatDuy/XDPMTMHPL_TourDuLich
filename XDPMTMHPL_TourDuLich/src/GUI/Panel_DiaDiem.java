@@ -127,6 +127,11 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
 
         btnSuaDD.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnSuaDD.setText("Sửa");
+        btnSuaDD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaDDActionPerformed(evt);
+            }
+        });
 
         txtMadd.setEditable(false);
         txtMadd.setText("Mã tự động tăng ");
@@ -233,9 +238,16 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
     AutoCreateID autoID = new AutoCreateID();
+
+    void Reset() {
+        txtMadd.setText("Mã tự động tăng");
+        txtTendd.setText("");
+        cbTp.setSelectedIndex(0);
+        txtMoTa.setText("");
+    }
     private void btnThemDDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemDDActionPerformed
         // TODO add your handling code here:
-        
+
         if (evt.getSource() == btnThemDD) {
             String id = "";
             String tp = (String) cbTp.getSelectedItem();
@@ -259,12 +271,7 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
 
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
         // TODO add your handling code here:
-        if (evt.getSource() == btnLamMoi) {
-            txtMadd.setText("Mã tự động tăng");
-            txtTendd.setText("");
-            cbTp.setSelectedIndex(0);
-            txtMoTa.setText("");
-        }
+        Reset();
     }//GEN-LAST:event_btnLamMoiActionPerformed
 
     private void btnXoaDDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaDDActionPerformed
@@ -279,6 +286,23 @@ public class Panel_DiaDiem extends javax.swing.JPanel {
         }
         showDiaDiem();
     }//GEN-LAST:event_btnXoaDDActionPerformed
+
+    private void btnSuaDDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaDDActionPerformed
+        int index = tblDiaDiem.getSelectedRow();
+        String data = dtm.getValueAt(index, 0).toString();
+        if (index > 0) {
+            DiaDiemDTO d = new DiaDiemDTO();
+            d.setTendd(txtTendd.getText());
+            d.setThanhpho((String) cbTp.getSelectedItem());
+            d.setMota(txtMoTa.getText());
+            if (JOptionPane.showConfirmDialog(btnLamMoi, "Bạn có muốn sửa không ??") == 0) {
+                new DiaDiemBLL().editDiaDiem(d, data);
+                JOptionPane.showMessageDialog(btnLamMoi, "Sửa thành công");
+                showDiaDiem();
+                Reset();
+            }
+        }
+    }//GEN-LAST:event_btnSuaDDActionPerformed
     private void showDiaDiem() {
         ArrayList<DiaDiemDTO> ddList = new DiaDiemBLL().loadDataDiaDiem();
 
