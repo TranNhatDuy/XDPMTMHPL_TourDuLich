@@ -51,7 +51,7 @@ public class Panel_Tour extends javax.swing.JPanel {
         TimKiem();
     }
 
-    private void showDiadiem() {
+    public void showDiadiem() {
         ddList = DiaDiemBLL.loadDataDiaDiem();
 
         dtmdd.setRowCount(0);
@@ -145,11 +145,11 @@ public class Panel_Tour extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Mã Tour", "Tên Tour", "Mã địa điểm", "Mô tả"
+                "Mã Tour", "Tên Tour", "Mã địa điểm", "Xuất phát", "Điểm đến", "Mô tả"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, true, true, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

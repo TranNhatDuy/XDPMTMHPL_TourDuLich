@@ -11,20 +11,19 @@ package DTO;
  */
 public class GiaDTO {
 
-    String magia;
-    int sotien;
-    String denngay, tungay;
-    TourDTO tour;
+    String magia, matour, tungay, denngay;
+    int sotien, songay;
 
     public GiaDTO() {
     }
 
-    public GiaDTO(String magia, TourDTO tour, int sotien, String tungay, String denngay) {
+    public GiaDTO(String magia, String matour, int sotien, String tungay, String denngay, int songay) {
         this.magia = magia;
-        this.tour = tour;
+        this.matour = matour;
         this.sotien = sotien;
         this.tungay = tungay;
         this.denngay = denngay;
+        this.songay = songay;
     }
 
     public String getMagia() {
@@ -55,18 +54,24 @@ public class GiaDTO {
         this.magia = magia;
     }
 
-    public TourDTO getTour() {
-        return tour;
+    public String getMatour() {
+        return matour;
     }
 
-    public void setTour(TourDTO tour) {
-        this.tour = tour;
+    public void setMatour(String matour) {
+        this.matour = matour;
     }
-
-
 
     public void setSotien(int sotien) {
         this.sotien = sotien;
+    }
+
+    public int getSongay() {
+        return songay;
+    }
+
+    public void setSongay(int songay) {
+        this.songay = songay;
     }
 
 }

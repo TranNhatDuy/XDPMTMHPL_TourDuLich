@@ -5,9 +5,7 @@
  */
 package DAL;
 
-import DTO.DiaDiemDTO;
 import DTO.GiaDTO;
-import DTO.TourDTO;
 import com.mysql.jdbc.Statement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -31,13 +29,12 @@ public class GiaDAL {
             rs = ps.executeQuery();
             while (rs.next()) {
                 GiaDTO g = new GiaDTO();
-                TourDTO t = new TourDTO();
-                t.setMatour(rs.getString("matour"));
                 g.setMagia(rs.getString("magia"));
-                g.setTour(t);
+                g.setMatour(rs.getString("matour"));
                 g.setSotien(rs.getInt("sotien"));
                 g.setTungay(rs.getString("tungay"));
                 g.setDenngay(rs.getString("denngay"));
+                g.setSongay(rs.getInt("songay"));
                 gia.add(g);
             }
         } catch (Exception e) {
@@ -47,15 +44,15 @@ public class GiaDAL {
     }
 
     public boolean addGia(GiaDTO g) {
-        String query = "INSERT INTO gia(magia,matour,sotien,tungay,denngay) VALUES(?,?,?,?,?)";
+        String query = "INSERT INTO gia(magia,matour,sotien,tungay,denngay,songay) VALUES(?,?,?,?,?,?)";
         try {
-
             ps = new MySQLConnect().conn.prepareStatement(query);
             ps.setString(1, g.getMagia());
-            ps.setString(2, g.getTour().getMatour());
+            ps.setString(2, g.getMatour());
             ps.setInt(3, g.getSotien());
             ps.setString(4, g.getTungay());
             ps.setString(5, g.getDenngay());
+            ps.setInt(6,g.getSongay());
             return ps.executeUpdate() > 0;
         } catch (Exception e) {
             e.printStackTrace();
@@ -64,14 +61,15 @@ public class GiaDAL {
     }
 
     public boolean editGia(GiaDTO g, String data) {
-        String query = "UPDATE gia SET matour=?,sotien=?,tungay=?,denngay=? WHERE magia=?";
+        String query = "UPDATE gia SET matour=?,sotien=?,tungay=?,denngay=?,songay=? WHERE magia=?";
         try {
             ps = new MySQLConnect().conn.prepareStatement(query);
-            ps.setString(1, g.getTour().getMatour());
+            ps.setString(1, g.getMatour());
             ps.setInt(2, g.getSotien());
             ps.setString(3, g.getTungay());
             ps.setString(4, g.getDenngay());
-            ps.setString(5, data);  
+            ps.setInt(5,g.getSongay());
+            ps.setString(6, data);  
             return ps.executeUpdate()>0;
         } catch (Exception e) {
             e.printStackTrace();

@@ -1,6 +1,5 @@
 package GUI;
 
-
 import BLL.GiaBLL;
 import BLL.TourBLL;
 import DAL.KhachHangDAL;
@@ -9,11 +8,14 @@ import DTO.GiaDTO;
 import DTO.KhachHangDTO;
 import DTO.TourDTO;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
@@ -56,6 +58,7 @@ public class Panel_Gia extends javax.swing.JPanel {
         ShowGia();
         ShowTour();
         BlockText();
+
     }
 
     /**
@@ -91,8 +94,25 @@ public class Panel_Gia extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblGia = new javax.swing.JTable();
         txtGia = new javax.swing.JTextField();
+        txtSoNgay = new javax.swing.JTextField();
+        btTinhNgay = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(786, 629));
+
+        jdcTuNgay.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jdcTuNgayAncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        jdcTuNgay.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jdcTuNgayMouseClicked(evt);
+            }
+        });
 
         tblTour.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -108,6 +128,12 @@ public class Panel_Gia extends javax.swing.JPanel {
             }
         });
         jScrollPane2.setViewportView(tblTour);
+
+        jdcDenNgay.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jdcDenNgayMouseClicked(evt);
+            }
+        });
 
         jLabel3.setText("Giá:");
 
@@ -168,7 +194,7 @@ public class Panel_Gia extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Mã Giá", "Mã Tour", "Giá", "Từ Ngày", "Đến Ngày"
+                "Mã Giá", "Mã Tour", "Giá", "Từ Ngày", "Đến Ngày", "Số Ngày"
             }
         ));
         tblGia.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -177,6 +203,13 @@ public class Panel_Gia extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(tblGia);
+
+        btTinhNgay.setText("Tính ngày");
+        btTinhNgay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btTinhNgayActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -216,15 +249,21 @@ public class Panel_Gia extends javax.swing.JPanel {
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel6)
-                                            .addComponent(jLabel5))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtMaTour, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtMaGia, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtGia, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jdcTuNgay, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jdcDenNgay, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel6)
+                                                    .addComponent(jLabel5))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(btTinhNgay)
+                                                .addGap(18, 18, 18)))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtMaTour, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                                    .addComponent(txtMaGia, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                                    .addComponent(txtGia, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                                    .addComponent(jdcDenNgay, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                                    .addComponent(jdcTuNgay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtSoNgay, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(10, 10, 10))
             .addGroup(layout.createSequentialGroup()
@@ -276,7 +315,11 @@ public class Panel_Gia extends javax.swing.JPanel {
                                 .addComponent(jdcTuNgay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(19, 19, 19)
                                 .addComponent(jdcDenNgay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(48, 48, 48)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSoNgay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btTinhNgay))
+                .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jbtThem, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbtXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -285,19 +328,27 @@ public class Panel_Gia extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-void BlockText() {
+
+    void EnableText() {
+        jdcDenNgay.setEnabled(false);
+        txtSoNgay.setEnabled(false);
+        btTinhNgay.setEnabled(false);
+    }
+
+    void BlockText() {
         txtMaTour.setEditable(false);
         txtMaGia.setEditable(false);
+        txtSoNgay.setEditable(false);
     }
 
     public void ShowTour() {
-       tour=new TourBLL().loadDataTour();
-       modeltour.setRowCount(0);
-       for(TourDTO t : tour){
-           modeltour.addRow(new Object[] {
-               t.getMatour(),t.getMadd()
-           });
-       }
+        tour = new TourBLL().loadDataTour();
+        modeltour.setRowCount(0);
+        for (TourDTO t : tour) {
+            modeltour.addRow(new Object[]{
+                t.getMatour(), t.getMadd()
+            });
+        }
     }
 
     void ShowGia() {
@@ -305,7 +356,7 @@ void BlockText() {
         modelgia.setRowCount(0);
         for (GiaDTO g : gia) {
             modelgia.addRow(new Object[]{
-                g.getMagia(), g.getTour().getMatour(), g.getSotien(), g.getTungay(), g.getDenngay()
+                g.getMagia(), g.getMatour(), g.getSotien(), g.getTungay(), g.getDenngay(), g.getSongay()
             });
         }
     }
@@ -350,6 +401,7 @@ void BlockText() {
         txtTimGia.setText("");
         tblTour.setRowSelectionAllowed(false);
         tblGia.setRowSelectionAllowed(false);
+        txtSoNgay.setText("");
     }
 
     private void tblTourMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTourMouseClicked
@@ -364,18 +416,19 @@ void BlockText() {
 
     private void jbtThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtThemActionPerformed
         int index_tour = tblTour.getSelectedRow();
-
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
         String magia = txtMaGia.getText();
         int sotien = Integer.parseInt(txtGia.getText());
         String tungay = sdf.format(jdcTuNgay.getDate());
         String denngay = sdf.format(jdcDenNgay.getDate());
+        String matour = txtMaTour.getText();
+        int songay = Integer.parseInt(txtSoNgay.getText());
+
         Boolean isOK = true;
 
-        if(magia.length() == 0 ){
+        if (magia.length() == 0) {
             JOptionPane.showMessageDialog(this, "Mã giá không được để trống");
-            isOK=false;
+            isOK = false;
         }
 //        else if(sotien == 0 || String.valueOf(sotien).length()==0 ) {
 //            JOptionPane.showMessageDialog(this, "Số tiền không được để trống");
@@ -399,9 +452,13 @@ void BlockText() {
             }
         }
         if (isOK) {
-
-            TourDTO t = tour.get(index_tour);
-            GiaDTO g = new GiaDTO(magia, t, sotien, tungay, denngay);
+            GiaDTO g = new GiaDTO();
+            g.setMagia(magia);
+            g.setMatour(matour);
+            g.setSotien(sotien * songay);
+            g.setTungay(tungay);
+            g.setDenngay(denngay);
+            g.setSongay(sotien);
             new GiaBLL().addGia(g);
             JOptionPane.showMessageDialog(this, "Thêm thành công giá");
             Reset();
@@ -433,10 +490,12 @@ void BlockText() {
 
         if (indexGia >= 0) {
             GiaDTO g = new GiaDTO();
-            g.setSotien(Integer.parseInt(txtGia.getText()));
+            g.setMagia(txtMaGia.getText());
+            g.setMatour(txtMaTour.getText());
+            g.setSotien(Integer.parseInt(txtGia.getText()) * Integer.parseInt(txtSoNgay.getText()));
             g.setTungay(new SimpleDateFormat("yyyy-MM-dd").format(jdcTuNgay.getDate()));
             g.setDenngay(new SimpleDateFormat("yyyy-MM-dd").format(jdcDenNgay.getDate()));
-            g.setTour(new TourDTO(tblGia.getValueAt(indexGia, 1).toString(), "", "", ""));
+            g.setSongay(Integer.parseInt(txtSoNgay.getText()));
             if (JOptionPane.showConfirmDialog(this, "Bạn có chắc muốn sửa không") == 0) {
                 new GiaBLL().editGia(g, data);
                 JOptionPane.showMessageDialog(this, "Sửa thành công");
@@ -462,6 +521,7 @@ void BlockText() {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            txtSoNgay.setText(modelgia.getValueAt(index, 5).toString().trim());
         }
     }//GEN-LAST:event_tblGiaMouseClicked
 
@@ -474,8 +534,38 @@ void BlockText() {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMaGiaActionPerformed
 
+    private void jdcTuNgayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jdcTuNgayMouseClicked
+
+    }//GEN-LAST:event_jdcTuNgayMouseClicked
+
+    private void jdcDenNgayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jdcDenNgayMouseClicked
+
+    }//GEN-LAST:event_jdcDenNgayMouseClicked
+
+    private void jdcTuNgayAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jdcTuNgayAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jdcTuNgayAncestorAdded
+
+    private void btTinhNgayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTinhNgayActionPerformed
+        String tungay = new SimpleDateFormat("yyyy-MM-dd").format(jdcTuNgay.getDate());
+        String denngay = new SimpleDateFormat("yyyy-MM-dd").format(jdcDenNgay.getDate());
+        Date tn = null, dn = null;
+        try {
+            tn = new SimpleDateFormat("yyyy-MM-dd").parse(tungay);
+            dn = new SimpleDateFormat("yyyy-MM-dd").parse(denngay);
+        } catch (ParseException ex) {
+            Logger.getLogger(Panel_Gia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        long tn1 = tn.getTime();
+        long tn2 = dn.getTime();
+        long kq = Math.abs(tn2 - tn1);
+        long songay = kq / (24 * 60 * 60 * 1000);
+        txtSoNgay.setText(String.valueOf(songay));
+    }//GEN-LAST:event_btTinhNgayActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btTinhNgay;
     private javax.swing.JButton btnLammoi;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -496,6 +586,7 @@ void BlockText() {
     private javax.swing.JTextField txtGia;
     private javax.swing.JTextField txtMaGia;
     private javax.swing.JTextField txtMaTour;
+    private javax.swing.JTextField txtSoNgay;
     private javax.swing.JTextField txtTimGia;
     // End of variables declaration//GEN-END:variables
 }

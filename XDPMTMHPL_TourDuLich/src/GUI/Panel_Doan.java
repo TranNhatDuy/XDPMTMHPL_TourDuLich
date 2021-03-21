@@ -54,7 +54,7 @@ public class Panel_Doan extends javax.swing.JPanel {
         });
     }
 
-    private void showTour() {
+    public void showTour() {
         tourList = TourBLL.loadDataTour();
 
         dtmtour.setRowCount(0);

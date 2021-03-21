@@ -518,7 +518,7 @@ public class Panel_NhanVien extends javax.swing.JPanel {
         }
     }
 
-    private void showDoan() {
+    public void showDoan() {
         doanList = DoanBLL.loadDataDoan();
         dtmDoan.setRowCount(0);
         for (DoanDTO d : doanList) {
