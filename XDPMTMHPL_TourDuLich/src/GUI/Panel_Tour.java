@@ -63,7 +63,7 @@ public class Panel_Tour extends javax.swing.JPanel {
         });
     }
 
-    private void showTour() {
+    public void showTour() {
         tourList = TourBLL.loadDataTour();
 
         dtmtour.setRowCount(0);

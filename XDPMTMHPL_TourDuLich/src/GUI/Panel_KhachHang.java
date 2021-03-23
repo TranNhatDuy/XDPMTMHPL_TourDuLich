@@ -43,7 +43,7 @@ public class Panel_KhachHang extends javax.swing.JPanel {
         
     }
 
-    private void showKhachHang() {
+    public void showKhachHang() {
         khList = new KhachHangBLL().loadDataKhachHang();
         
         dtmkh.setRowCount(0);
