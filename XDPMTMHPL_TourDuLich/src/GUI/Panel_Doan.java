@@ -60,7 +60,7 @@ public class Panel_Doan extends javax.swing.JPanel {
         dtmtour.setRowCount(0);
 
         tourList.forEach((TourDTO) -> {
-            dtmtour.addRow(new Object[]{TourDTO.getMatour(), TourDTO.getTentour(), TourDTO.getMadd(), TourDTO.getMota()
+            dtmtour.addRow(new Object[]{TourDTO.getMatour(), TourDTO.getTentour(), TourDTO.getDiemdulich(), TourDTO.getMota()
             });
         });
     }

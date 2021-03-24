@@ -340,7 +340,7 @@ public class Panel_Gia extends javax.swing.JPanel {
         modeltour.setRowCount(0);
         for (TourDTO t : tour) {
             modeltour.addRow(new Object[]{
-                t.getMatour(), t.getMadd()
+                t.getMatour(), t.getDiemdulich()
             });
         }
     }
@@ -553,7 +553,7 @@ public class Panel_Gia extends javax.swing.JPanel {
         long tn1 = tn.getTime();
         long tn2 = dn.getTime();
         long kq = Math.abs(tn2 - tn1);
-        long songay = kq / (24 * 60 * 60 * 1000);
+        long songay = (kq/(24 * 60 * 60 * 1000));
         txtSoNgay.setText(String.valueOf(songay));
     }//GEN-LAST:event_btTinhNgayActionPerformed
 

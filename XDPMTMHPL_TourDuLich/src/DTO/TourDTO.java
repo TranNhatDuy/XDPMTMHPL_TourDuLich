@@ -13,16 +13,37 @@ import java.sql.Date;
  */
 public class TourDTO {
 
-    String matour, tentour, madd, mota;
+    String matour, tentour, diemdulich, mota, xuatphat;
+
+    public TourDTO(String matour, String tentour, String text, String mota) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public String getDiemdulich() {
+        return diemdulich;
+    }
+
+    public void setDiemdulich(String diemdulich) {
+        this.diemdulich = diemdulich;
+    }
+
+    public String getXuatphat() {
+        return xuatphat;
+    }
+
+    public void setXuatphat(String xuatphat) {
+        this.xuatphat = xuatphat;
+    }
 
     public TourDTO() {
         
     }
     
-    public TourDTO(String matour, String tentour, String madd, String mota) {
+    public TourDTO(String matour, String tentour, String diemdulich, String xuatphat, String mota) {
         this.matour = matour;
         this.tentour = tentour;
-        this.madd = madd;
+        this.diemdulich = diemdulich;
+        this.xuatphat = xuatphat;
         this.mota = mota;
     }
 
@@ -32,10 +53,6 @@ public class TourDTO {
 
     public String getTentour() {
         return tentour;
-    }
-
-    public String getMadd() {
-        return madd;
     }
 
     public String getMota() {
@@ -48,10 +65,6 @@ public class TourDTO {
 
     public void setTentour(String tentour) {
         this.tentour = tentour;
-    }
-
-    public void setMadd(String madd) {
-        this.madd = madd;
     }
 
     public void setMota(String mota) {

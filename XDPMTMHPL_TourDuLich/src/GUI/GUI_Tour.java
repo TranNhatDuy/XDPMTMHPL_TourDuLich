@@ -336,6 +336,7 @@ public class GUI_Tour extends javax.swing.JFrame {
             jPanel3.repaint();
             pnTk.revalidate();
             pnTk.repaint();
+            pnTk.showTour();
         }
     }//GEN-LAST:event_btnThongKeActionPerformed
 
