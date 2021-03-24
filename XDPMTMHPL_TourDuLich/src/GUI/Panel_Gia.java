@@ -452,7 +452,7 @@ public class Panel_Gia extends javax.swing.JPanel {
             g.setSotien(sotien * songay);
             g.setTungay(tungay);
             g.setDenngay(denngay);
-            g.setSongay(sotien);
+            g.setSongay(songay);
             new GiaBLL().addGia(g);
             JOptionPane.showMessageDialog(this, "Thêm thành công giá");
             Reset();
